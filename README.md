@@ -1,7 +1,7 @@
 # WebTools - 온라인 개발 유틸리티 모음
 
 코딩 없이 시작할 수 있는 광고 수익형 웹앱 템플릿입니다.
-GitHub Pages에 묣으로 호스팅하고, Google AdSense로 수익을 창출할 수 있습니다.
+GitHub Pages에 무료으로 호스팅하고, Google AdSense로 수익을 창출할 수 있습니다.
 
 **배포 주소:** https://core13773.github.io/webtools/
 
@@ -72,10 +72,10 @@ webtools/
 
 ## 🔍 SEO 트래픽 늘리는 방법
 
-AdSense 수익은 방문자 수와 광고 클릭률에 비례합니다. 묣은 트래픽을 늘리는 방법:
+AdSense 수익은 방문자 수와 광고 클릭률에 비례합니다. 무료  트래픽을 늘리는 방법:
 
 1. **키워드 최적화**: 각 도구 페이지의 `<title>`과 `meta name="description"`을 검색 키워드에 맞게 수정하세요.
-   - 예: `"JSON 포맷터"` → `"JSON 정렬 묣은 프로그램 - 온라인 들여쓰기 도구"`
+   - 예: `"JSON 포맷터"` → `"JSON 정렬 무료  프로그램 - 온라인 들여쓰기 도구"`
 2. **네이버/구글 웹마스터 등록**:
    - [search.google.com/search-console](https://search.google.com/search-console)
    - [searchadvisor.naver.com](https://searchadvisor.naver.com)
