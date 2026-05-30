@@ -49,8 +49,6 @@ header {
   position: sticky;
   top: 0;
   z-index: 100;
-  backdrop-filter: blur(10px);
-  background: rgba(var(--surface), 0.9);
 }
 
 nav {
