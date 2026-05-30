@@ -1,89 +1,89 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="google-adsense-account" content="ca-pub-4794002106764884">
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4794002106764884" crossorigin="anonymous"></script>
-  <title>텍스트 케이스 변환 - 대문자, 소문자, camelCase 변환 | WebTools</title>
-  <meta name="description" content="텍스트를 대문자, 소문자, Capital Case, snake_case, camelCase 등 다양한 형식으로 변환하는 무료 온라인 도구입니다.">
-  <link rel="stylesheet" href="../css/style.css">
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <meta name="google-adsense-account" content="ca-pub-4794002106764884">
+ <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4794002106764884" crossorigin="anonymous"></script>
+ <title>텍스트 케이스 변환 - 대문자, 소문자, camelCase 변환 | WebTools</title>
+ <meta name="description" content="텍스트를 대문자, 소문자, Capital Case, snake_case, camelCase 등 다양한 형식으로 변환하는 온라인 도구입니다.">
+ <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
-  <header>
-    <nav>
-      <a href="../index.html" class="logo">Web<span>Tools</span></a>
-      <ul class="nav-links">
-        <li><a href="../index.html">홈</a></li>
-        <li><button id="theme-toggle" title="다크모드 전환">🌙</button></li>
-      </ul>
-    </nav>
-  </header>
+ <header>
+ <nav>
+ <a href="../index.html" class="logo">Web<span>Tools</span></a>
+ <ul class="nav-links">
+ <li><a href="../index.html">홈</a></li>
+ <li><button id="theme-toggle" title="다크모드 전환">🌙</button></li>
+ </ul>
+ </nav>
+ </header>
 
-  <main class="container">
-    <div class="ad-slot">📢 상단 배너 광고 영역</div>
+ <main class="container">
+ <div class="ad-slot">📢 상단 배너 광고 영역</div>
 
-    <div class="tool-header">
-      <h1>텍스트 케이스 변환</h1>
-      <p>텍스트를 다양한 형식(대문자, 소문자, camelCase 등)으로 변환합니다.</p>
-    </div>
+ <div class="tool-header">
+ <h1>텍스트 케이스 변환</h1>
+ <p>텍스트를 다양한 형식(대문자, 소문자, camelCase 등)으로 변환합니다.</p>
+ </div>
 
-    <div class="tool-box">
-      <div class="form-group">
-        <label for="text-input">입력 텍스트</label>
-        <textarea id="text-input" rows="6" placeholder="예: hello world"></textarea>
-      </div>
+ <div class="tool-box">
+ <div class="form-group">
+ <label for="text-input">입력 텍스트</label>
+ <textarea id="text-input" rows="6" placeholder="예: hello world"></textarea>
+ </div>
 
-      <div class="btn-row">
-        <button class="btn" onclick="toCase('upper')">🔠 대문자</button>
-        <button class="btn" onclick="toCase('lower')">🔡 소문자</button>
-        <button class="btn" onclick="toCase('capital')">🔤 Capital Case</button>
-        <button class="btn" onclick="toCase('snake')">🐍 snake_case</button>
-        <button class="btn" onclick="toCase('camel')">🐫 camelCase</button>
-        <button class="btn btn-outline" onclick="copyResult()">📋 복사</button>
-        <button class="btn btn-outline" onclick="clearAll()">🗑️ 초기화</button>
-      </div>
+ <div class="btn-row">
+ <button class="btn" onclick="toCase('upper')">🔠 대문자</button>
+ <button class="btn" onclick="toCase('lower')">🔡 소문자</button>
+ <button class="btn" onclick="toCase('capital')">🔤 Capital Case</button>
+ <button class="btn" onclick="toCase('snake')">🐍 snake_case</button>
+ <button class="btn" onclick="toCase('camel')">🐫 camelCase</button>
+ <button class="btn btn-outline" onclick="copyResult()">📋 복사</button>
+ <button class="btn btn-outline" onclick="clearAll()">🗑️ 초기화</button>
+ </div>
 
-      <div class="form-group" style="margin-top:1.2rem;">
-        <label for="text-output">결과</label>
-        <div id="text-output" class="result-box">결과가 여기에 표시됩니다.</div>
-      </div>
-    </div>
+ <div class="form-group" style="margin-top:1.2rem;">
+ <label for="text-output">결과</label>
+ <div id="text-output" class="result-box">결과가 여기에 표시됩니다.</div>
+ </div>
+ </div>
 
-    <div class="ad-slot">📢 컨텐츠 내 광고 영역</div>
-  </main>
+ <div class="ad-slot">📢 컨텐츠 내 광고 영역</div>
+ </main>
 
-  <footer><p>© 2026 WebTools. 무료 온라인 도구 모음.</p></footer>
+ <footer><p>© 2026 WebTools. 온라인 도구 모음.</p></footer>
 
-  <script src="../js/app.js"></script>
-  <script>
-    const input = document.getElementById('text-input');
-    const output = document.getElementById('text-output');
+ <script src="../js/app.js"></script>
+ <script>
+ const input = document.getElementById('text-input');
+ const output = document.getElementById('text-output');
 
-    function toCase(type){
-      const text = input.value;
-      if(!text) return output.textContent = '텍스트를 입력해주세요.';
-      let result = '';
-      switch(type){
-        case 'upper': result = text.toUpperCase(); break;
-        case 'lower': result = text.toLowerCase(); break;
-        case 'capital': result = text.toLowerCase().replace(/(?:^|\s)\S/g, a => a.toUpperCase()); break;
-        case 'snake': result = text.trim().replace(/\s+/g, '_').toLowerCase(); break;
-        case 'camel': result = text.toLowerCase().replace(/[^a-zA-Z0-9]+(.)/g, (m, chr) => chr.toUpperCase()); break;
-      }
-      output.textContent = result;
-      output.style.color = 'var(--text)';
-    }
+ function toCase(type){
+ const text = input.value;
+ if(!text) return output.textContent = '텍스트를 입력해주세요.';
+ let result = '';
+ switch(type){
+ case 'upper': result = text.toUpperCase(); break;
+ case 'lower': result = text.toLowerCase(); break;
+ case 'capital': result = text.toLowerCase().replace(/(?:^|\s)\S/g, a => a.toUpperCase()); break;
+ case 'snake': result = text.trim().replace(/\s+/g, '_').toLowerCase(); break;
+ case 'camel': result = text.toLowerCase().replace(/[^a-zA-Z0-9]+(.)/g, (m, chr) => chr.toUpperCase()); break;
+ }
+ output.textContent = result;
+ output.style.color = 'var(--text)';
+ }
 
-    function copyResult(){
-      copyToClipboard(output.textContent).then(()=>showToast('복사 완료!'));
-    }
+ function copyResult(){
+ copyToClipboard(output.textContent).then(()=>showToast('복사 완료!'));
+ }
 
-    function clearAll(){
-      input.value = '';
-      output.textContent = '결과가 여기에 표시됩니다.';
-      output.style.color = 'var(--text-muted)';
-    }
-  </script>
+ function clearAll(){
+ input.value = '';
+ output.textContent = '결과가 여기에 표시됩니다.';
+ output.style.color = 'var(--text-muted)';
+ }
+ </script>
 </body>
 </html>
