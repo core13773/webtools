@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JSON 포맷터 - 온라인 JSON 정렬 및 유효성 검사 | DevUtils</title>
+  <meta name="description" content="복잡한 JSON 데이터를 예쁘게 들여쓰기하고 유효성을 검사하는 묣은 온라인 도구입니다.">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <a href="../index.html" class="logo">Dev<span>Utils</span></a>
+      <ul class="nav-links">
+        <li><a href="../index.html">홈</a></li>
+        <li><a href="json-formatter.html">JSON</a></li>
+        <li><a href="base64.html">Base64</a></li>
+        <li><a href="url-encoder.html">URL</a></li>
+        <li><a href="password-generator.html">비밀번호</a></li>
+        <li><button id="theme-toggle" title="다크모드 전환">🌙</button></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="container">
+    <div class="ad-slot">
+      📢 상단 배너 광고 영역
+    </div>
+
+    <div class="tool-header">
+      <h1>JSON 포맷터 & 유효성 검사</h1>
+      <p>JSON 문자열을 보기 좋게 정렬하고 문법 오류를 확인하세요.</p>
+    </div>
+
+    <div class="tool-box">
+      <div class="form-group">
+        <label for="json-input">입력 JSON</label>
+        <textarea id="json-input" rows="8" placeholder='{"name":"DevUtils","features":["JSON","Base64","URL"]}'></textarea>
+      </div>
+
+      <div class="options">
+        <label><input type="checkbox" id="sort-keys" checked> 키 알파벳 순 정렬</label>
+        <label><input type="checkbox" id="compact" checked> 공백 최소화</label>
+      </div>
+
+      <div class="btn-row">
+        <button class="btn" onclick="formatJSON()">✨ 포맷팅</button>
+        <button class="btn btn-outline" onclick="minifyJSON()">🗜️ 최소화</button>
+        <button class="btn btn-outline" onclick="copyResult()">📋 결과 복사</button>
+        <button class="btn btn-outline" onclick="clearAll()">🗑️ 초기화</button>
+      </div>
+
+      <div class="form-group" style="margin-top:1.2rem;">
+        <label for="json-output">결과</label>
+        <div id="json-output" class="result-box" style="white-space:pre;">결과가 여기에 표시됩니다.</div>
+      </div>
+    </div>
+
+    <div class="ad-slot">
+      📢 컨텐츠 내 광고 영역
+    </div>
+  </main>
+
+  <footer>
+    <p>© 2026 DevUtils. 묣은 온라인 도구 모음.</p>
+  </footer>
+
+  <script src="../js/app.js"></script>
+  <script>
+    const input = document.getElementById('json-input');
+    const output = document.getElementById('json-output');
+
+    function formatJSON(){
+      try {
+        const raw = input.value.trim();
+        if(!raw) return output.textContent = 'JSON을 입력해주세요.';
+        const obj = JSON.parse(raw);
+        const sorted = document.getElementById('sort-keys').checked ? sortObject(obj) : obj;
+        const space = document.getElementById('compact').checked ? 2 : 4;
+        output.textContent = JSON.stringify(sorted, null, space);
+        output.style.color = 'var(--text)';
+      } catch(e) {
+        output.textContent = '❌ 오류: ' + e.message;
+        output.style.color = '#ef4444';
+      }
+    }
+
+    function minifyJSON(){
+      try {
+        const raw = input.value.trim();
+        if(!raw) return output.textContent = 'JSON을 입력해주세요.';
+        const obj = JSON.parse(raw);
+        output.textContent = JSON.stringify(obj);
+        output.style.color = 'var(--text)';
+      } catch(e) {
+        output.textContent = '❌ 오류: ' + e.message;
+        output.style.color = '#ef4444';
+      }
+    }
+
+    function sortObject(obj){
+      if(Array.isArray(obj)) return obj.map(sortObject);
+      if(obj !== null && typeof obj === 'object'){
+        return Object.keys(obj).sort().reduce((acc,k)=>{acc[k]=sortObject(obj[k]);return acc;},{});
+      }
+      return obj;
+    }
+
+    function copyResult(){
+      copyToClipboard(output.textContent).then(()=>showToast('복사 완료!'));
+    }
+
+    function clearAll(){
+      input.value = '';
+      output.textContent = '결과가 여기에 표시됩니다.';
+      output.style.color = 'var(--text-muted)';
+    }
+  </script>
+</body>
+</html>

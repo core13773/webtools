@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Base64 인코더/디코더 - 온라인 텍스트 변환 | DevUtils</title>
+  <meta name="description" content="텍스트를 Base64로 인코딩하거나 Base64 문자열을 디코딩하는 묣은 온라인 도구입니다.">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <a href="../index.html" class="logo">Dev<span>Utils</span></a>
+      <ul class="nav-links">
+        <li><a href="../index.html">홈</a></li>
+        <li><a href="json-formatter.html">JSON</a></li>
+        <li><a href="base64.html">Base64</a></li>
+        <li><a href="url-encoder.html">URL</a></li>
+        <li><a href="password-generator.html">비밀번호</a></li>
+        <li><button id="theme-toggle" title="다크모드 전환">🌙</button></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="container">
+    <div class="ad-slot">📢 상단 배너 광고 영역</div>
+
+    <div class="tool-header">
+      <h1>Base64 인코더 / 디코더</h1>
+      <p>텍스트 ↔ Base64 간 변환을 손쉽게 수행하세요. UTF-8을 기준으로 처리됩니다.</p>
+    </div>
+
+    <div class="tool-box">
+      <div class="form-group">
+        <label for="text-input">입력 텍스트</label>
+        <textarea id="text-input" rows="6" placeholder="인코딩할 텍스트를 입력하세요."></textarea>
+      </div>
+
+      <div class="btn-row">
+        <button class="btn" onclick="encodeBase64()">🔼 인코딩</button>
+        <button class="btn" onclick="decodeBase64()">🔽 디코딩</button>
+        <button class="btn btn-outline" onclick="copyResult()">📋 결과 복사</button>
+        <button class="btn btn-outline" onclick="clearAll()">🗑️ 초기화</button>
+      </div>
+
+      <div class="form-group" style="margin-top:1.2rem;">
+        <label for="text-output">결과</label>
+        <div id="text-output" class="result-box">결과가 여기에 표시됩니다.</div>
+      </div>
+    </div>
+
+    <div class="ad-slot">📢 컨텐츠 내 광고 영역</div>
+  </main>
+
+  <footer><p>© 2026 DevUtils. 묣은 온라인 도구 모음.</p></footer>
+
+  <script src="../js/app.js"></script>
+  <script>
+    const input = document.getElementById('text-input');
+    const output = document.getElementById('text-output');
+
+    function encodeBase64(){
+      try {
+        const text = input.value;
+        if(!text) return output.textContent = '텍스트를 입력해주세요.';
+        output.textContent = btoa(unescape(encodeURIComponent(text)));
+        output.style.color = 'var(--text)';
+      } catch(e) {
+        output.textContent = '❌ 인코딩 오류: ' + e.message;
+        output.style.color = '#ef4444';
+      }
+    }
+
+    function decodeBase64(){
+      try {
+        const text = input.value.trim();
+        if(!text) return output.textContent = 'Base64 문자열을 입력해주세요.';
+        output.textContent = decodeURIComponent(escape(atob(text)));
+        output.style.color = 'var(--text)';
+      } catch(e) {
+        output.textContent = '❌ 디코딩 오류: 올바른 Base64 문자열인지 확인하세요.';
+        output.style.color = '#ef4444';
+      }
+    }
+
+    function copyResult(){
+      copyToClipboard(output.textContent).then(()=>showToast('복사 완료!'));
+    }
+
+    function clearAll(){
+      input.value = '';
+      output.textContent = '결과가 여기에 표시됩니다.';
+      output.style.color = 'var(--text-muted)';
+    }
+  </script>
+</body>
+</html>
