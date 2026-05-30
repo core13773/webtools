@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="google-adsense-account" content="ca-pub-4794002106764884">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4794002106764884" crossorigin="anonymous"></script>
+  <title>HTML 인코더/디코더 - HTML Entity 특수문자 변환 | WebTools</title>
+  <meta name="description" content="특수문자를 HTML Entity 코드로 인코딩하거나, HTML Entity를 원래 문자로 디코딩하는 묣은 온라인 도구입니다.">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <a href="../index.html" class="logo">Web<span>Tools</span></a>
+      <ul class="nav-links">
+        <li><a href="../index.html">홈</a></li>
+        <li><button id="theme-toggle" title="다크모드 전환">🌙</button></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="container">
+    <div class="ad-slot">📢 상단 배너 광고 영역</div>
+
+    <div class="tool-header">
+      <h1>HTML 인코더 / 디코더</h1>
+      <p>특수문자를 HTML Entity(&amp;lt;, &amp;amp; 등)로 변환하거나 되돌립니다.</p>
+    </div>
+
+    <div class="tool-box">
+      <div class="form-group">
+        <label for="text-input">입력 텍스트</label>
+        <textarea id="text-input" rows="8" placeholder="예: <div>안녕하세요! &quot;WebTools&quot;</div>"></textarea>
+      </div>
+
+      <div class="btn-row">
+        <button class="btn" onclick="encodeHtml()">🔼 HTML 인코딩</button>
+        <button class="btn" onclick="decodeHtml()">🔽 HTML 디코딩</button>
+        <button class="btn btn-outline" onclick="copyResult()">📋 결과 복사</button>
+        <button class="btn btn-outline" onclick="clearAll()">🗑️ 초기화</button>
+      </div>
+
+      <div class="form-group" style="margin-top:1.2rem;">
+        <label for="text-output">결과</label>
+        <div id="text-output" class="result-box">결과가 여기에 표시됩니다.</div>
+      </div>
+    </div>
+
+    <div class="ad-slot">📢 컨텐츠 내 광고 영역</div>
+  </main>
+
+  <footer><p>© 2026 WebTools. 묣은 온라인 도구 모음.</p></footer>
+
+  <script src="../js/app.js"></script>
+  <script>
+    const input = document.getElementById('text-input');
+    const output = document.getElementById('text-output');
+
+    function encodeHtml(){
+      const text = input.value;
+      if(!text) return output.textContent = '텍스트를 입력해주세요.';
+      const div = document.createElement('div');
+      div.textContent = text;
+      output.textContent = div.innerHTML;
+      output.style.color = 'var(--text)';
+    }
+
+    function decodeHtml(){
+      const text = input.value;
+      if(!text) return output.textContent = 'HTML Entity를 입력해주세요.';
+      const div = document.createElement('div');
+      div.innerHTML = text;
+      output.textContent = div.textContent;
+      output.style.color = 'var(--text)';
+    }
+
+    function copyResult(){
+      copyToClipboard(output.textContent).then(()=>showToast('복사 완료!'));
+    }
+
+    function clearAll(){
+      input.value = '';
+      output.textContent = '결과가 여기에 표시됩니다.';
+      output.style.color = 'var(--text-muted)';
+    }
+  </script>
+</body>
+</html>

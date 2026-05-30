@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="google-adsense-account" content="ca-pub-4794002106764884">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4794002106764884" crossorigin="anonymous"></script>
+  <title>텍스트 해시 생성기 - MD5, SHA-1, SHA-256 해시 | WebTools</title>
+  <meta name="description" content="텍스트의 MD5, SHA-1, SHA-256 해시 값을 브라우저에서 실시간으로 생성하는 묣은 온라인 도구입니다.">
+  <link rel="stylesheet" href="../css/style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/js-sha256/0.9.0/sha256.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/js-sha1/0.6.0/sha1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/blueimp-md5/2.19.0/js/md5.min.js"></script>
+</head>
+<body>
+  <header>
+    <nav>
+      <a href="../index.html" class="logo">Web<span>Tools</span></a>
+      <ul class="nav-links">
+        <li><a href="../index.html">홈</a></li>
+        <li><button id="theme-toggle" title="다크모드 전환">🌙</button></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="container">
+    <div class="ad-slot">📢 상단 배너 광고 영역</div>
+
+    <div class="tool-header">
+      <h1>텍스트 해시 생성기</h1>
+      <p>텍스트의 MD5, SHA-1, SHA-256 해시 값을 실시간으로 생성합니다.</p>
+    </div>
+
+    <div class="tool-box">
+      <div class="form-group">
+        <label for="text-input">입력 텍스트</label>
+        <textarea id="text-input" rows="6" placeholder="해시를 생성할 텍스트를 입력하세요..."></textarea>
+      </div>
+
+      <div class="btn-row">
+        <button class="btn btn-outline" onclick="copyResult('md5')">📋 MD5 복사</button>
+        <button class="btn btn-outline" onclick="copyResult('sha1')">📋 SHA-1 복사</button>
+        <button class="btn btn-outline" onclick="copyResult('sha256')">📋 SHA-256 복사</button>
+      </div>
+
+      <div id="hash-results" style="margin-top:1.2rem; display:flex; flex-direction:column; gap:.8rem;">
+        <div style="background:var(--bg); border:1px solid var(--border); border-radius:var(--radius-sm); padding:1rem;">
+          <div style="color:var(--text-muted); font-size:.85rem;">MD5</div>
+          <div style="font-family:monospace; font-size:.9rem; word-break:break-all;" id="md5-out">-</div>
+        </div>
+        <div style="background:var(--bg); border:1px solid var(--border); border-radius:var(--radius-sm); padding:1rem;">
+          <div style="color:var(--text-muted); font-size:.85rem;">SHA-1</div>
+          <div style="font-family:monospace; font-size:.9rem; word-break:break-all;" id="sha1-out">-</div>
+        </div>
+        <div style="background:var(--bg); border:1px solid var(--border); border-radius:var(--radius-sm); padding:1rem;">
+          <div style="color:var(--text-muted); font-size:.85rem;">SHA-256</div>
+          <div style="font-family:monospace; font-size:.9rem; word-break:break-all;" id="sha256-out">-</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ad-slot">📢 컨텐츠 내 광고 영역</div>
+  </main>
+
+  <footer><p>© 2026 WebTools. 묣은 온라인 도구 모음.</p></footer>
+
+  <script src="../js/app.js"></script>
+  <script>
+    const input = document.getElementById('text-input');
+
+    function update(){
+      const text = input.value;
+      document.getElementById('md5-out').textContent = text ? md5(text) : '-';
+      document.getElementById('sha1-out').textContent = text ? sha1(text) : '-';
+      document.getElementById('sha256-out').textContent = text ? sha256(text) : '-';
+    }
+
+    input.addEventListener('input', update);
+
+    function copyResult(type){
+      const el = document.getElementById(type + '-out');
+      if(el.textContent === '-') return;
+      copyToClipboard(el.textContent).then(()=>showToast(type.toUpperCase() + ' 복사 완료!'));
+    }
+  </script>
+</body>
+</html>
