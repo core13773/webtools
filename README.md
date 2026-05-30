@@ -1,7 +1,7 @@
 # WebTools - 온라인 개발 유틸리티 모음
 
 코딩 없이 시작할 수 있는 광고 수익형 웹앱 템플릿입니다.
-GitHub Pages에 무볌무볌으로 호스팅하고, Google AdSense로 수익을 창출할 수 있습니다.
+GitHub Pages에 무볌무볌 호스팅하고, Google AdSense로 수익을 창출할 수 있습니다.
 
 **배포 주소:** https://core13773.github.io/webtools/
 
