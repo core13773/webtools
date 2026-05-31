@@ -1,0 +1,45 @@
+name: Minify CSS & JS
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  minify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install minifiers
+        run: npm install -g csso terser
+
+      - name: Minify CSS (in-place)
+        run: csso css/style.css --output css/style.css
+
+      - name: Minify core JS (in-place)
+        run: |
+          terser js/i18n.js --compress --mangle --output js/i18n.js
+          terser js/app.js --compress --mangle --output js/app.js
+
+      - name: Minify tool JS files (in-place)
+        run: |
+          for f in js/tools/*.js; do
+            terser "$f" --compress --mangle --output "$f"
+          done
+
+      - name: Commit minified files
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "chore: auto-minify CSS & JS [skip ci]"
+          commit_author: GitHub Actions <github-actions@github.com>
