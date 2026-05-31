@@ -8,7 +8,7 @@ function encodeURL(){
  output.textContent = encodeURIComponent(text);
  output.style.color = 'var(--text)';
  } catch(e) {
- output.textContent = '❌ 오류: ' + e.message;
+ output.textContent = i18n.t('common.error_prefix') + e.message;
  output.style.color = '#ef4444';
  }
 }

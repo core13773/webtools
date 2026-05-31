@@ -8,7 +8,7 @@ function encodeBase64(){
  output.textContent = utf8ToBase64(text);
  output.style.color = 'var(--text)';
  } catch(e) {
- output.textContent = '❌ 인코딩 오류: ' + e.message;
+ output.textContent = i18n.t('common.error_encoding') + e.message;
  output.style.color = '#ef4444';
  }
 }

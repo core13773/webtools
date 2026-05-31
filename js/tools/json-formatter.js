@@ -11,7 +11,7 @@ function formatJSON(){
  output.textContent = JSON.stringify(sorted, null, space);
  output.style.color = 'var(--text)';
  } catch(e) {
- output.textContent = '❌ 오류: ' + e.message;
+ output.textContent = i18n.t('common.error_prefix') + e.message;
  output.style.color = '#ef4444';
  }
 }
@@ -24,7 +24,7 @@ function minifyJSON(){
  output.textContent = JSON.stringify(obj);
  output.style.color = 'var(--text)';
  } catch(e) {
- output.textContent = '❌ 오류: ' + e.message;
+ output.textContent = i18n.t('common.error_prefix') + e.message;
  output.style.color = '#ef4444';
  }
 }

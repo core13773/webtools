@@ -188,6 +188,8 @@
     "enter_url_encoded": "URL 인코딩된 문자열을 입력하세요",
     "enter_timestamp": "타임스탬프를 입력하세요",
     "enter_number": "숫자를 입력하세요",
+    "error_prefix": "❌ 오류: ",
+    "error_encoding": "❌ 인코딩 오류: ",
     "error_decoding": "❌ 디코딩 오류: 올바른 형식인지 확인하세요",
     "error_invalid_ts": "❌ 유효하지 않은 타임스탬프입니다",
     "error_qr": "QR 코드를 생성할 수 없습니다",

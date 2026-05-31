@@ -188,6 +188,8 @@
     "enter_url_encoded": "Enter URL-encoded string",
     "enter_timestamp": "Enter timestamp",
     "enter_number": "Enter a number",
+    "error_prefix": "❌ Error: ",
+    "error_encoding": "❌ Encoding error: ",
     "error_decoding": "❌ Decoding error: Please check the input format",
     "error_invalid_ts": "❌ Invalid timestamp",
     "error_qr": "Could not generate QR code",
