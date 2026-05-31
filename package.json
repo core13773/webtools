@@ -1,0 +1,25 @@
+{
+  "name": "webtools",
+  "version": "1.0.0",
+  "description": "코딩 없이 시작할 수 있는 광고 수익형 웹앱 템플릿입니다.\r GitHub Pages에 무료로 호스팅하고, Google AdSense로 수익을 창출할 수 있습니다.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/core13773/webtools.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/core13773/webtools/issues"
+  },
+  "homepage": "https://github.com/core13773/webtools#readme",
+  "devDependencies": {
+    "esbuild": "^0.28.0",
+    "html-minifier": "^4.0.0"
+  }
+}

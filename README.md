@@ -1,13 +1,13 @@
 # WebTools - 온라인 개발 유틸리티 모음
 
 코딩 없이 시작할 수 있는 광고 수익형 웹앱 템플릿입니다.
-GitHub Pages에 무볌무볌 호스팅하고, Google AdSense로 수익을 창출할 수 있습니다.
+GitHub Pages에 무료로 호스팅하고, Google AdSense로 수익을 창출할 수 있습니다.
 
 **배포 주소:** https://core13773.github.io/webtools/
 
 ---
 
-## 📁 폴터 구조
+## 📁 폴더 구조
 
 ```
 webtools/
@@ -35,7 +35,7 @@ webtools/
 
 ---
 
-## 🚀 GitHub Pages 배포 방법 (으로)
+## 🚀 GitHub Pages 배포 방법 (무료로)
 
 ### 1단계: GitHub에 코드 업로드 (이 저장소)
 이 프로젝트는 이미 `core13773/webtools` 저장소에 푸시되어 있습니다.
@@ -99,7 +99,7 @@ AdSense 수익은 방문자 수와 광고 클릭률에 비례합니다. 트래�
 
 코딩을 모르셔도 HTML 파일을 **복사해서 수정**하는 방식으로 쉽게 도구를 추가할 수 있습니다.
 
-1. `tools/` 폴터의 기존 파일 하나를 복사하여 새 이름으로 저장합니다.
+1. `tools/` 폴더의 기존 파일 하나를 복사하여 새 이름으로 저장합니다.
 2. `<title>`, `<h1>`, `meta description`을 새 도구에 맞게 바꿉니다.
 3. `<script>` 안의 로직을 새 기능으로 교체합니다.
 4. `index.html`의 카드 그리드에 새 도구 링크를 추가합니다.

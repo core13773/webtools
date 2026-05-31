@@ -1,0 +1,424 @@
+{
+  "lang": {
+    "ko": "한국어",
+    "en": "English"
+  },
+  "theme": {
+    "toggle": "Toggle dark mode"
+  },
+  "nav": {
+    "home": "Home",
+    "tools": "Tools",
+    "about": "About"
+  },
+  "hero": {
+    "title": "No install required.",
+    "subtitle": "Online Developer Tools",
+    "desc": "JSON formatting, Base64 conversion, password generation, text counting, color conversion — all processed in your browser. Nothing is sent to any server.",
+    "search_placeholder": "🔍 Search tools (e.g. json, base64, password...)"
+  },
+  "sections": {
+    "popular": {
+      "title": "🔥 Popular Tools",
+      "desc": "4 essential tools used by most developers"
+    },
+    "more": {
+      "title": "🧰 More Tools",
+      "desc": "Additional useful tools for daily work"
+    },
+    "about": {
+      "title": "ℹ️ About This Site"
+    }
+  },
+  "tool_cards": {
+    "json_formatter": {
+      "title": "JSON Formatter",
+      "desc": "Pretty-print and validate complex JSON data with proper indentation.",
+      "tag": "Dev"
+    },
+    "base64": {
+      "title": "Base64 Encoder/Decoder",
+      "desc": "Convert text to Base64 or decode Base64 back to the original text.",
+      "tag": "Dev"
+    },
+    "password_generator": {
+      "title": "Password Generator",
+      "desc": "Generate secure random passwords with custom length and character sets.",
+      "tag": "Security"
+    },
+    "url_encoder": {
+      "title": "URL Encoder/Decoder",
+      "desc": "Escape unsafe URL characters with percent-encoding or revert them.",
+      "tag": "Dev"
+    },
+    "text_counter": {
+      "title": "Text Counter",
+      "desc": "Count characters, words, lines, and bytes in real time.",
+      "tag": "Docs"
+    },
+    "color_picker": {
+      "title": "Color Converter",
+      "desc": "Convert between HEX, RGB, HSL color codes with live preview.",
+      "tag": "Design"
+    },
+    "timestamp_converter": {
+      "title": "Timestamp Converter",
+      "desc": "Convert Unix timestamps to human-readable dates and times.",
+      "tag": "Dev"
+    },
+    "html_encoder": {
+      "title": "HTML Encoder/Decoder",
+      "desc": "Escape special characters to HTML entities or revert them.",
+      "tag": "Dev"
+    },
+    "qr_generator": {
+      "title": "QR Code Generator",
+      "desc": "Turn URLs or text into scannable QR code images instantly.",
+      "tag": "Utility"
+    },
+    "case_converter": {
+      "title": "Text Case Converter",
+      "desc": "Convert text to UPPER CASE, lower case, Capital Case, snake_case, camelCase and more.",
+      "tag": "Docs"
+    },
+    "uuid_generator": {
+      "title": "UUID Generator",
+      "desc": "Generate multiple UUID v4 (GUID) identifiers at once.",
+      "tag": "Dev"
+    },
+    "hash_generator": {
+      "title": "Hash Generator",
+      "desc": "Generate MD5, SHA-1, and SHA-256 hashes in real time.",
+      "tag": "Security"
+    }
+  },
+  "info_cards": {
+    "privacy": {
+      "title": "🔒 100% Privacy",
+      "desc": "Everything runs in your browser. Your data never touches any server."
+    },
+    "instant": {
+      "title": "⚡ No Installation",
+      "desc": "No downloads, no sign-ups. Just open the site and start using the tools right away."
+    },
+    "responsive": {
+      "title": "📱 Works Everywhere",
+      "desc": "Optimized for desktop, tablet, and smartphone — any device, any screen size."
+    },
+    "darkmode": {
+      "title": "🌙 Dark Mode",
+      "desc": "Switch between light and dark themes for comfortable viewing in any environment."
+    }
+  },
+  "monetize": {
+    "title": "💡 How to Monetize This Site",
+    "steps": [
+      "<strong>Sign up for Google AdSense</strong>: Register your site at google.com/adsense and get approved.",
+      "<strong>Insert ad code</strong>: Paste the ad code into the ad slot areas on each page.",
+      "<strong>SEO optimization</strong>: Register your site with search engines and add relevant content.",
+      "<strong>Drive traffic</strong>: Share your tools on blogs and communities to increase visitors and ad revenue."
+    ]
+  },
+  "footer": {
+    "brand_desc": "Free online developer tools — no installation required.",
+    "copyright": "© 2026 WebTools. Online Tool Suite.",
+    "sitemap": "Sitemap",
+    "links": {
+      "json_formatter": "JSON Formatter",
+      "base64": "Base64",
+      "url_encoder": "URL Encoder",
+      "html_encoder": "HTML Encoder",
+      "password": "Password",
+      "qr_generator": "QR Code",
+      "hash_generator": "Hash",
+      "case_converter": "Case",
+      "uuid_generator": "UUID",
+      "text_counter": "Text Count",
+      "color": "Color",
+      "timestamp": "Timestamp"
+    }
+  },
+  "common": {
+    "copy": "📋 Copy",
+    "download": "💾 Download",
+    "clear": "🗑️ Clear",
+    "result": "Result",
+    "input": "Input",
+    "output": "Output",
+    "copied": "✓ Copied!",
+    "no_result": "No result to download.",
+    "no_password": "No password to download.",
+    "no_uuid": "No UUID to download.",
+    "no_hash": "No hash to download.",
+    "no_color": "No color values to download.",
+    "no_qr_text": "No text to save.",
+    "enter_text": "Please enter some text.",
+    "enter_json": "Please enter JSON.",
+    "enter_base64": "Please enter a Base64 string.",
+    "enter_url_encoded": "Please enter an encoded string.",
+    "enter_timestamp": "Please enter a timestamp.",
+    "enter_number": "Please enter a number.",
+    "enter_html_entity": "Please enter an HTML entity.",
+    "error_prefix": "❌ Error:",
+    "error_encoding": "❌ Encoding error:",
+    "error_decoding": "❌ Decoding error: Please check the format.",
+    "error_invalid_ts": "❌ Invalid timestamp.",
+    "error_qr": "❌ QR code generation failed. The external API may have a temporary issue. Please try again.",
+    "select_charset": "Please select at least one character type.",
+    "generate_password_placeholder": "Generate a password",
+    "result_placeholder": "Result will appear here.",
+    "strength_label": "Strength:",
+    "strength_very_weak": "Very Weak",
+    "strength_weak": "Weak",
+    "strength_normal": "Medium",
+    "strength_strong": "Strong",
+    "strength_very_strong": "Very Strong",
+    "stats_title": "=== Text Statistics ===",
+    "stats_chars": "Total Characters",
+    "stats_chars_no_space": "Characters (no space)",
+    "stats_words": "Words",
+    "stats_lines": "Lines",
+    "stats_bytes": "Bytes",
+    "stats_sentences": "Sentences",
+    "stats_input_text": "--- Input Text ---",
+    "hash_title": "=== Hash Results ===",
+    "hash_input": "--- Input Text ---",
+    "qr_input_placeholder": "e.g. https://example.com",
+    "color_hex": "HEX",
+    "color_rgb": "RGB",
+    "color_hsl": "HSL",
+    "ts_local": "📅 Local Time",
+    "ts_utc": "🌍 UTC Time",
+    "ts_iso": "📊 ISO 8601",
+    "ts_seconds": "Seconds",
+    "ts_milliseconds": "Milliseconds",
+    "ts_current": "Current Time",
+    "ts_current_ts": "Unix Timestamp (s)",
+    "ts_current_date": "Current Date/Time",
+    "ts_placeholder": "e.g. 1717200000 or 1717200000000",
+    "ts_seconds_label": "Seconds (10 digits)",
+    "ts_milliseconds_label": "Milliseconds (13 digits)",
+    "length_label": "Password Length",
+    "chars": "chars",
+    "upper": "Uppercase (A-Z)",
+    "lower": "Lowercase (a-z)",
+    "number": "Numbers (0-9)",
+    "symbol": "Symbols (!@#$...)",
+    "count_label": "Number of UUIDs",
+    "json_result_placeholder": "Result will appear here.",
+    "json_input_placeholder": "{\"name\":\"WebTools\",\"features\":[\"JSON\",\"Base64\",\"URL\"]}",
+    "base64_input_placeholder": "Enter text to encode.",
+    "url_input_placeholder": "e.g. https://example.com/search?q=hello",
+    "text_counter_placeholder": "Paste or type your text here...",
+    "hash_input_placeholder": "Enter text to hash...",
+    "html_input_placeholder": "e.g. <div>Hello &quot;World&quot;</div>",
+    "case_input_placeholder": "e.g. hello world",
+    "uuid_count_placeholder": "5",
+    "color_input_placeholder": "#4f46e5",
+    "password_length": "Password Length: {0}"
+  },
+  "tools_json": {
+    "title": "JSON Formatter & Validator",
+    "desc": "Pretty-print JSON strings and check for syntax errors.",
+    "input_label": "Input JSON",
+    "sort_keys": "Sort keys alphabetically",
+    "compact": "Compact (2-space indent)",
+    "btn_format": "✨ Format",
+    "btn_minify": "🗜️ Minify",
+    "usage_title": "📖 How to Use",
+    "usage_step1_title": "Enter JSON",
+    "usage_step1_desc": "Paste a JSON string into the input field.",
+    "usage_step2_title": "Choose Options",
+    "usage_step2_desc": "Toggle key sorting and adjust indentation (2 or 4 spaces).",
+    "usage_step3_title": "Format or Minify",
+    "usage_step3_desc": "Click ✨ Format to pretty-print, or 🗜️ Minify to remove whitespace.",
+    "usage_step4_title": "Copy Result",
+    "usage_step4_desc": "Click 📋 Copy to save the formatted JSON to your clipboard.",
+    "usage_tip": "💡 Tip: JSON is processed entirely in your browser. No data is sent to any server — safe for sensitive information."
+  },
+  "tools_base64": {
+    "title": "Base64 Encoder / Decoder",
+    "desc": "Easily convert between text and Base64. UTF-8 encoding is used.",
+    "input_label": "Input Text",
+    "btn_encode": "🔼 Encode",
+    "btn_decode": "🔽 Decode",
+    "usage_title": "📖 How to Use",
+    "usage_step1_title": "Enter Text",
+    "usage_step1_desc": "Type or paste text to encode or decode. Supports all UTF-8 characters including Korean, Japanese, and special symbols.",
+    "usage_step2_title": "Encode or Decode",
+    "usage_step2_desc": "Click 🔼 Encode to convert text to Base64, or 🔽 Decode to convert Base64 back to text.",
+    "usage_step3_title": "Use the Result",
+    "usage_step3_desc": "Click 📋 Copy to save to clipboard, or 🗑️ Clear to start over.",
+    "usage_tip": "💡 Tip: Base64 is commonly used for email attachments, data URIs, and API authentication tokens."
+  },
+  "tools_url": {
+    "title": "URL Encoder / Decoder",
+    "desc": "Safely encode URLs containing non-ASCII characters.",
+    "input_label": "Input Text / URL",
+    "btn_encode": "🔼 Encode",
+    "btn_decode": "🔽 Decode",
+    "usage_title": "📖 How to Use",
+    "usage_step1_title": "Enter URL or Text",
+    "usage_step1_desc": "Type or paste the URL or text you want to encode.",
+    "usage_step2_title": "Encode or Decode",
+    "usage_step2_desc": "Click 🔼 Encode to percent-encode special characters, or 🔽 Decode to revert them.",
+    "usage_step3_title": "Review and Copy",
+    "usage_step3_desc": "Check the result and click 📋 Copy to save to your clipboard.",
+    "usage_tip": "💡 Tip: URL encoding is essential when query parameters contain non-ASCII characters like Hangul or spaces."
+  },
+  "tools_password": {
+    "title": "Secure Password Generator",
+    "desc": "Generate strong random passwords instantly. All processing happens in your browser.",
+    "length_label": "Password Length: {0}",
+    "btn_generate": "🎲 Generate",
+    "output_label": "Generated Password",
+    "usage_title": "📖 How to Use",
+    "usage_step1_title": "Set Password Length",
+    "usage_step1_desc": "Drag the slider to set the password length between 4 and 64 characters.",
+    "usage_step2_title": "Select Character Types",
+    "usage_step2_desc": "Check which character types to include: uppercase, lowercase, numbers, and/or symbols.",
+    "usage_step3_title": "Generate and Copy",
+    "usage_step3_desc": "Click 🎲 Generate to create a password, check the strength indicator, then click 📋 Copy to save.",
+    "usage_tip": "💡 Tip: Use 12+ characters with all character types for maximum security. Passwords are generated locally and never sent to any server."
+  },
+  "tools_text_counter": {
+    "title": "Text Counter",
+    "desc": "Count characters, words, bytes, and more in real time.",
+    "input_label": "Enter Text",
+    "btn_copy_text": "📋 Copy Text",
+    "btn_download_stats": "💾 Download Stats",
+    "stat_chars": "Total Characters",
+    "stat_chars_no_space": "Chars (no space)",
+    "stat_words": "Words",
+    "stat_lines": "Lines",
+    "stat_bytes": "Bytes",
+    "stat_sentences": "Sentences",
+    "usage_title": "📖 How to Use",
+    "usage_step1_title": "Enter Text",
+    "usage_step1_desc": "Type or paste the text you want to analyze.",
+    "usage_step2_title": "View Live Statistics",
+    "usage_step2_desc": "All counts update in real time as you type: characters, words, lines, bytes, and sentences.",
+    "usage_step3_title": "Copy or Clear",
+    "usage_step3_desc": "Click 📋 Copy Text to copy the input, or 🗑️ Clear to reset.",
+    "usage_tip": "💡 Tip: Useful for social media posts (Twitter 280 chars, Instagram 2,200 chars), essays, and cover letters. Korean characters count as 3 bytes."
+  },
+  "tools_color": {
+    "title": "Color Converter",
+    "desc": "Convert between HEX, RGB, and HSL color codes with live preview.",
+    "color_label": "Pick a Color",
+    "preview_label": "Preview",
+    "btn_copy_all": "📋 Copy All",
+    "btn_random": "🎲 Random Color",
+    "usage_title": "📖 How to Use",
+    "usage_step1_title": "Select a Color",
+    "usage_step1_desc": "Use the color picker or enter a HEX code directly (e.g. #4f46e5).",
+    "usage_step2_title": "View Converted Values",
+    "usage_step2_desc": "RGB and HSL values are automatically calculated and displayed.",
+    "usage_step3_title": "Copy or Randomize",
+    "usage_step3_desc": "Click on any field to copy its value. Click 🎲 Random Color to generate a random color.",
+    "usage_tip": "💡 Tip: HEX is the most common color format in web design, while RGB and HSL are frequently used in CSS for dynamic color manipulation."
+  },
+  "tools_timestamp": {
+    "title": "Timestamp Converter",
+    "desc": "Convert Unix timestamps (seconds/milliseconds) to readable dates.",
+    "ts_label": "Enter Timestamp",
+    "btn_convert": "🔄 Convert",
+    "btn_use_now": "⏰ Use Current Time",
+    "output_label": "Converted Result",
+    "usage_title": "📖 How to Use",
+    "usage_step1_title": "Check Current Time",
+    "usage_step1_desc": "The current Unix timestamp and date/time update every second at the top.",
+    "usage_step2_title": "Enter and Convert",
+    "usage_step2_desc": "Paste a Unix timestamp and click 🔄 Convert. Seconds (10 digits) and milliseconds (13 digits) are auto-detected.",
+    "usage_step3_title": "Use Current Time",
+    "usage_step3_desc": "Click ⏰ Use Current Time to instantly convert the current moment.",
+    "usage_tip": "💡 Tip: Unix timestamps count seconds (or milliseconds) since January 1, 1970 (UTC). Commonly used in APIs, log files, and databases."
+  },
+  "tools_html": {
+    "title": "HTML Encoder / Decoder",
+    "desc": "Convert special characters to HTML entities (&lt;, &amp;, etc.) and back.",
+    "input_label": "Input Text",
+    "btn_encode": "🔼 HTML Encode",
+    "btn_decode": "🔽 HTML Decode",
+    "usage_title": "📖 How to Use",
+    "usage_step1_title": "Enter Text",
+    "usage_step1_desc": "Type or paste text containing HTML special characters.",
+    "usage_step2_title": "Encode or Decode",
+    "usage_step2_desc": "Click 🔼 HTML Encode to convert <, >, & to entities, or 🔽 HTML Decode to revert them.",
+    "usage_step3_title": "Copy Result",
+    "usage_step3_desc": "Click 📋 Copy to save the encoded/decoded HTML to your clipboard.",
+    "usage_tip": "💡 Tip: HTML encoding is essential for preventing XSS attacks and safely displaying user input on web pages."
+  },
+  "tools_qr": {
+    "title": "QR Code Generator",
+    "desc": "Convert URLs or text into scannable QR code images.",
+    "input_label": "Text or URL",
+    "btn_generate": "📱 Generate QR Code",
+    "btn_save_text": "💾 Save Text",
+    "output_label": "Generated QR Code",
+    "qr_placeholder": "Enter text and click Generate.",
+    "qr_enter_text": "Please enter some text.",
+    "usage_title": "📖 How to Use",
+    "usage_step1_title": "Enter Text or URL",
+    "usage_step1_desc": "Type the URL or text you want to convert into a QR code.",
+    "usage_step2_title": "Generate QR Code",
+    "usage_step2_desc": "Click 📱 Generate QR Code to instantly create the QR code image.",
+    "usage_step3_title": "Scan and Download",
+    "usage_step3_desc": "Use your phone camera to scan the QR code, or click the download link to save the PNG image.",
+    "usage_tip": "💡 Tip: QR codes work reliably even with long URLs. Generated codes are permanent and never expire.",
+    "download_link": "Download Image",
+    "api_notice": "⚠️ Generated via qrserver.com API."
+  },
+  "tools_case": {
+    "title": "Text Case Converter",
+    "desc": "Convert text to UPPER CASE, lower case, Capital Case, snake_case, camelCase and more.",
+    "input_label": "Input Text",
+    "btn_upper": "🔠 UPPER CASE",
+    "btn_lower": "🔡 lower case",
+    "btn_capital": "🔤 Capital Case",
+    "btn_snake": "🐍 snake_case",
+    "btn_camel": "🐫 camelCase",
+    "usage_title": "📖 How to Use",
+    "usage_step1_title": "Enter Text",
+    "usage_step1_desc": "Type or paste the text you want to convert.",
+    "usage_step2_title": "Choose a Format",
+    "usage_step2_desc": "Click the desired format button: UPPER CASE, lower case, Capital Case, snake_case, or camelCase.",
+    "usage_step3_title": "Copy Result",
+    "usage_step3_desc": "Review the converted text and click 📋 Copy to save to your clipboard.",
+    "usage_tip": "💡 Tip: snake_case is common in Python, camelCase in JavaScript. Capital Case is useful for titles and headings."
+  },
+  "tools_uuid": {
+    "title": "UUID Generator",
+    "desc": "Generate UUID v4 (GUID) identifiers instantly.",
+    "count_label": "Number of UUIDs",
+    "btn_generate": "🎲 Generate UUIDs",
+    "output_label": "Generated UUIDs",
+    "usage_title": "📖 How to Use",
+    "usage_step1_title": "Set the Count",
+    "usage_step1_desc": "Enter how many UUIDs to generate (1 to 100).",
+    "usage_step2_title": "Generate UUIDs",
+    "usage_step2_desc": "Click 🎲 Generate UUIDs to create unique identifiers in v4 format.",
+    "usage_step3_title": "Copy and Use",
+    "usage_step3_desc": "Click 📋 Copy to save all generated UUIDs to your clipboard.",
+    "usage_tip": "💡 Tip: UUIDs are used for database primary keys, API identifiers, session tokens, and any situation requiring unique values."
+  },
+  "tools_hash": {
+    "title": "Text Hash Generator",
+    "desc": "Generate SHA-256, SHA-1, and MD5 hashes in your browser. No data leaves your device.",
+    "input_label": "Input Text",
+    "btn_copy_sha256": "📋 Copy SHA-256",
+    "btn_copy_sha1": "📋 Copy SHA-1",
+    "btn_copy_md5": "📋 Copy MD5",
+    "sha256_label": "SHA-256 (Recommended)",
+    "sha1_label": "SHA-1",
+    "md5_label": "MD5",
+    "usage_title": "📖 How to Use",
+    "usage_step1_title": "Enter Text",
+    "usage_step1_desc": "Type the text you want to hash. All hash values update in real time as you type.",
+    "usage_step2_title": "View Hash Values",
+    "usage_step2_desc": "SHA-256 (recommended), SHA-1, and MD5 hashes are displayed simultaneously.",
+    "usage_step3_title": "Copy Results",
+    "usage_step3_desc": "Click the 📋 Copy button for any hash algorithm to save it to your clipboard. SHA-256 is the most secure.",
+    "usage_tip": "💡 Tip: Hash functions are used for password storage (with salt), file integrity verification, and digital signatures. SHA-256 is the current industry standard."
+  }
+}
