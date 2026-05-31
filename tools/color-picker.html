@@ -1,16 +1,291 @@
-<!doctype html><html lang="ko"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="google-adsense-account" content="ca-pub-4794002106764884">
-<link rel="preconnect" href="https://pagead2.googlesyndication.com" crossorigin="anonymous">
-<link rel="preconnect" href="https://googleads.g.doubleclick.net">
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4794002106764884" crossorigin="anonymous"></script><title data-i18n="tools_color.title">색상 변환기 - HEX, RGB, HSL 변환 및 컬러피커 | WebTools</title><meta name="description" content="HEX, RGB, HSL 색상 코드를 서로 변환하고 실시간 미리보기로 확인하는 온라인 컬러 도구입니다."><meta name="robots" content="index, follow"><meta name="keywords" content="색상 변환기, 컬러 피커, HEX RGB HSL, 색상 코드 변환, color picker converter"><link rel="canonical" href="https://core13773.github.io/webtools/tools/color-picker.html"><meta property="og:title" content="색상 변환기 - HEX, RGB, HSL 변환 및 컬러피커 | WebTools"><meta property="og:description" content="HEX, RGB, HSL 색상 코드를 서로 변환하고 실시간 미리보기로 확인하는 온라인 컬러 도구입니다."><meta property="og:type" content="website"><meta property="og:url" content="https://core13773.github.io/webtools/tools/color-picker.html"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="색상 변환기 - HEX, RGB, HSL 변환 및 컬러피커 | WebTools"><meta name="twitter:description" content="HEX, RGB, HSL 색상 코드를 서로 변환하고 실시간 미리보기로 확인하는 온라인 컬러 도구입니다."><meta name="theme-color" content="#4f46e5"><meta property="og:image" content="https://core13773.github.io/webtools/og-image.png"><meta name="twitter:image" content="https://core13773.github.io/webtools/og-image.png"><meta name="google-site-verification" content="uHjCTERGdYuYZtOy-j8ohkxobYfkui3ZBu_Lb58yQrc" />
-<meta name="naver-site-verification" content="cf0df7b2c056093aa8441434c518ec7930db7e00" />
-<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","@id":"https://core13773.github.io/webtools/tools/color-picker.html#webapplication","name":"색상 변환기","url":"https://core13773.github.io/webtools/tools/color-picker.html","description":"HEX, RGB, HSL 색상 코드를 서로 변환하고 미리보기로 확인하는 온라인 도구","applicationCategory":"DesignApplication","operatingSystem":"All","browserRequirements":"Modern browser with JavaScript enabled","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"publisher":{"@id":"https://core13773.github.io/webtools/#organization"}},{"@type":"WebSite","@id":"https://core13773.github.io/webtools/#website","url":"https://core13773.github.io/webtools/","name":"WebTools - 온라인 개발 유틸리티 모음","publisher":{"@id":"https://core13773.github.io/webtools/#organization"}}]}</script>
-<link rel="stylesheet" href="../css/style.css"><script async src="https://www.googletagmanager.com/gtag/js?id=G-DJK0ZFRYKM"></script>
-<script>
-window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-gtag('js', new Date());
-gtag('config', 'G-DJK0ZFRYKM');
-</script>
-</head><body><header><nav><a href="../index.html" class="logo">Web<span>Tools</span></a><ul class="nav-links"><li><a href="../index.html" data-i18n="nav.home">홈</a></li><li class="lang-switcher"><button class="lang-btn active" data-lang="ko" onclick='i18n.switchLang("ko")'>KO</button> <button class="lang-btn" data-lang="en" onclick='i18n.switchLang("en")'>EN</button></li><li><button id="theme-toggle" title="다크모드 전환">🌙</button></li></ul></nav></header><main class="container"><div class="ad-slot"><span aria-hidden="true">📢</span> 상단 배너 광고 영역</div><div class="tool-header"><h1 data-i18n="tools_color.title">색상 변환기</h1><p data-i18n="tools_color.desc">HEX, RGB, HSL 색상 코드를 자유롭게 변환하고 색상을 미리보세요.</p></div><div class="tool-box"><div class="form-group color-group"><label data-i18n="tools_color.color_label">컬러 선택</label> <input type="color" id="color-picker" value="#4f46e5"> <input id="hex-input" value="#4f46e5"></div><div class="form-group"><label data-i18n="common.color_rgb">RGB</label> <input id="rgb-output" readonly="readonly" onclick="copySingle(this)"></div><div class="form-group"><label data-i18n="common.color_hsl">HSL</label> <input id="hsl-output" readonly="readonly" onclick="copySingle(this)"></div><div class="form-group"><label data-i18n="tools_color.preview_label">미리보기</label><div id="color-preview"></div></div><div class="btn-row"><button class="btn btn-outline" onclick="copyAll()" data-i18n="tools_color.btn_copy_all">📋 모두 복사</button> <button class="btn btn-outline" onclick="downloadResult()" data-i18n="common.download">💾 다운로드</button> <button class="btn btn-outline" onclick="randomColor()" data-i18n="tools_color.btn_random">🎲 랜덤 색상</button></div></div><div class="ad-slot"><span aria-hidden="true">📢</span> 컨텐츠 내 광고 영역</div><section class="usage-section"><h2 data-i18n="tools_color.usage_title">📖 사용 방법</h2><div class="usage-steps"><div class="usage-step"><div class="usage-step-badge">1</div><div class="usage-step-content"><strong data-i18n="tools_color.usage_step1_title">색상 선택</strong><p data-i18n="tools_color.usage_step1_desc">컬러 피커(<code>🖌️</code>)를 클릭하여 원하는 색상을 직접 선택하거나, HEX 코드(예: <code>#4f46e5</code>)를 직접 입력합니다.</p></div></div><div class="usage-step"><div class="usage-step-badge">2</div><div class="usage-step-content"><strong data-i18n="tools_color.usage_step2_title">변환 결과 확인</strong><p data-i18n="tools_color.usage_step2_desc">RGB(<code>rgb(79, 70, 229)</code>)와 HSL(<code>hsl(244, 74%, 59%)</code>) 값이 자동으로 변환되어 표시됩니다.</p></div></div><div class="usage-step"><div class="usage-step-badge">3</div><div class="usage-step-content"><strong data-i18n="tools_color.usage_step3_title">값 복사 및 랜덤 생성</strong><p data-i18n="tools_color.usage_step3_desc">각 입력 필드를 클릭하면 해당 값이 클립보드에 복사됩니다. <strong>🎲 랜덤 색상</strong> 버튼으로 무작위 색상을 생성할 수 있습니다.</p></div></div></div><div class="usage-tip"><span data-i18n="tools_color.usage_tip"><strong>💡 팁:</strong> 웹 디자인에서 색상 코드는 HEX가 가장 흔하게 사용되며, CSS에서는 RGB와 HSL도 자주 활용됩니다. 미리보기를 통해 실제 색상을 확인하세요.</span></div></section></main><footer><div class="footer-content"><div class="footer-brand"><a href="../index.html" class="logo">Web<span>Tools</span></a><p data-i18n="footer.brand_desc">설치 없이 바로 쓰는 온라인 개발 도구 모음</p></div></div><div class="footer-bottom"><p><span data-i18n="footer.copyright">© 2026 WebTools. 온라인 도구 모음.</span> | <a href="../sitemap.xml" data-i18n="footer.sitemap">Sitemap</a></p></div></footer><script src="../js/i18n.js"></script>
-<script src="../js/app.js"></script>
-<script src="../js/tools/color-picker.js"></script></body></html>
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="google-adsense-account" content="ca-pub-4794002106764884" />
+    <link
+      rel="preconnect"
+      href="https://pagead2.googlesyndication.com"
+      crossorigin="anonymous"
+    />
+    <link rel="preconnect" href="https://googleads.g.doubleclick.net" />
+    <script
+      async
+      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4794002106764884"
+      crossorigin="anonymous"
+    ></script>
+    <title data-i18n="tools_color.title">
+      색상 변환기 - HEX, RGB, HSL 변환 및 컬러피커 | WebTools
+    </title>
+    <meta
+      name="description"
+      content="HEX, RGB, HSL 색상 코드를 서로 변환하고 실시간 미리보기로 확인하는 온라인 컬러 도구입니다."
+    />
+    <meta name="robots" content="index, follow" />
+    <meta
+      name="keywords"
+      content="색상 변환기, 컬러 피커, HEX RGB HSL, 색상 코드 변환, color picker converter"
+    />
+    <link
+      rel="canonical"
+      href="https://core13773.github.io/webtools/tools/color-picker.html"
+    />
+    <meta
+      property="og:title"
+      content="색상 변환기 - HEX, RGB, HSL 변환 및 컬러피커 | WebTools"
+    />
+    <meta
+      property="og:description"
+      content="HEX, RGB, HSL 색상 코드를 서로 변환하고 실시간 미리보기로 확인하는 온라인 컬러 도구입니다."
+    />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:url"
+      content="https://core13773.github.io/webtools/tools/color-picker.html"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="색상 변환기 - HEX, RGB, HSL 변환 및 컬러피커 | WebTools"
+    />
+    <meta
+      name="twitter:description"
+      content="HEX, RGB, HSL 색상 코드를 서로 변환하고 실시간 미리보기로 확인하는 온라인 컬러 도구입니다."
+    />
+    <meta name="theme-color" content="#4f46e5" />
+    <meta
+      property="og:image"
+      content="https://core13773.github.io/webtools/og-image.png"
+    />
+    <meta
+      name="twitter:image"
+      content="https://core13773.github.io/webtools/og-image.png"
+    />
+    <meta
+      name="google-site-verification"
+      content="uHjCTERGdYuYZtOy-j8ohkxobYfkui3ZBu_Lb58yQrc"
+    />
+    <meta
+      name="naver-site-verification"
+      content="cf0df7b2c056093aa8441434c518ec7930db7e00"
+    />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebApplication",
+            "@id": "https://core13773.github.io/webtools/tools/color-picker.html#webapplication",
+            "name": "색상 변환기",
+            "url": "https://core13773.github.io/webtools/tools/color-picker.html",
+            "description": "HEX, RGB, HSL 색상 코드를 서로 변환하고 미리보기로 확인하는 온라인 도구",
+            "applicationCategory": "DesignApplication",
+            "operatingSystem": "All",
+            "browserRequirements": "Modern browser with JavaScript enabled",
+            "offers": {
+              "@type": "Offer",
+              "price": "0",
+              "priceCurrency": "USD"
+            },
+            "publisher": {
+              "@id": "https://core13773.github.io/webtools/#organization"
+            }
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://core13773.github.io/webtools/#website",
+            "url": "https://core13773.github.io/webtools/",
+            "name": "WebTools - 온라인 개발 유틸리티 모음",
+            "publisher": {
+              "@id": "https://core13773.github.io/webtools/#organization"
+            }
+          }
+        ]
+      }
+    </script>
+    <link rel="stylesheet" href="../css/style.css" />
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-DJK0ZFRYKM"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-DJK0ZFRYKM");
+    </script>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <a href="../index.html" class="logo">Web<span>Tools</span></a>
+        <ul class="nav-links">
+          <li><a href="../index.html" data-i18n="nav.home">홈</a></li>
+          <li class="lang-switcher">
+            <button
+              class="lang-btn active"
+              data-lang="ko"
+              onclick="i18n.switchLang('ko')"
+            >
+              KO
+            </button>
+            <button
+              class="lang-btn"
+              data-lang="en"
+              onclick="i18n.switchLang('en')"
+            >
+              EN
+            </button>
+          </li>
+          <li><button id="theme-toggle" title="다크모드 전환">🌙</button></li>
+        </ul>
+      </nav>
+    </header>
+    <main class="container">
+      <div class="ad-slot">
+        <span aria-hidden="true">📢</span>
+        상단 배너 광고 영역
+      </div>
+      <div class="tool-header">
+        <h1 data-i18n="tools_color.title">색상 변환기</h1>
+        <p data-i18n="tools_color.desc">
+          HEX, RGB, HSL 색상 코드를 자유롭게 변환하고 색상을 미리보세요.
+        </p>
+      </div>
+      <div class="tool-box">
+        <div class="form-group color-group">
+          <label data-i18n="tools_color.color_label">컬러 선택</label>
+          <input type="color" id="color-picker" value="#4f46e5" />
+          <input id="hex-input" value="#4f46e5" />
+        </div>
+        <div class="form-group">
+          <label data-i18n="common.color_rgb">RGB</label>
+          <input
+            id="rgb-output"
+            readonly="readonly"
+            onclick="copySingle(this)"
+          />
+        </div>
+        <div class="form-group">
+          <label data-i18n="common.color_hsl">HSL</label>
+          <input
+            id="hsl-output"
+            readonly="readonly"
+            onclick="copySingle(this)"
+          />
+        </div>
+        <div class="form-group">
+          <label data-i18n="tools_color.preview_label">미리보기</label>
+          <div id="color-preview"></div>
+        </div>
+        <div class="btn-row">
+          <button
+            class="btn btn-outline"
+            onclick="copyAll()"
+            data-i18n="tools_color.btn_copy_all"
+          >
+            📋 모두 복사
+          </button>
+          <button
+            class="btn btn-outline"
+            onclick="downloadResult()"
+            data-i18n="common.download"
+          >
+            💾 다운로드
+          </button>
+          <button
+            class="btn btn-outline"
+            onclick="randomColor()"
+            data-i18n="tools_color.btn_random"
+          >
+            🎲 랜덤 색상
+          </button>
+        </div>
+      </div>
+      <div class="ad-slot">
+        <span aria-hidden="true">📢</span>
+        컨텐츠 내 광고 영역
+      </div>
+      <section class="usage-section">
+        <h2 data-i18n="tools_color.usage_title">📖 사용 방법</h2>
+        <div class="usage-steps">
+          <div class="usage-step">
+            <div class="usage-step-badge">1</div>
+            <div class="usage-step-content">
+              <strong data-i18n="tools_color.usage_step1_title">
+                색상 선택
+              </strong>
+              <p data-i18n="tools_color.usage_step1_desc">
+                컬러 피커(
+                <code>🖌️</code>
+                )를 클릭하여 원하는 색상을 직접 선택하거나, HEX 코드(예:
+                <code>#4f46e5</code>
+                )를 직접 입력합니다.
+              </p>
+            </div>
+          </div>
+          <div class="usage-step">
+            <div class="usage-step-badge">2</div>
+            <div class="usage-step-content">
+              <strong data-i18n="tools_color.usage_step2_title">
+                변환 결과 확인
+              </strong>
+              <p data-i18n="tools_color.usage_step2_desc">
+                RGB(
+                <code>rgb(79, 70, 229)</code>
+                )와 HSL(
+                <code>hsl(244, 74%, 59%)</code>
+                ) 값이 자동으로 변환되어 표시됩니다.
+              </p>
+            </div>
+          </div>
+          <div class="usage-step">
+            <div class="usage-step-badge">3</div>
+            <div class="usage-step-content">
+              <strong data-i18n="tools_color.usage_step3_title">
+                값 복사 및 랜덤 생성
+              </strong>
+              <p data-i18n="tools_color.usage_step3_desc">
+                각 입력 필드를 클릭하면 해당 값이 클립보드에 복사됩니다.
+                <strong>🎲 랜덤 색상</strong>
+                버튼으로 무작위 색상을 생성할 수 있습니다.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="usage-tip">
+          <span data-i18n="tools_color.usage_tip">
+            <strong>💡 팁:</strong>
+            웹 디자인에서 색상 코드는 HEX가 가장 흔하게 사용되며, CSS에서는
+            RGB와 HSL도 자주 활용됩니다. 미리보기를 통해 실제 색상을 확인하세요.
+          </span>
+        </div>
+      </section>
+    </main>
+    <footer>
+      <div class="footer-content">
+        <div class="footer-brand">
+          <a href="../index.html" class="logo">Web<span>Tools</span></a>
+          <p data-i18n="footer.brand_desc">
+            설치 없이 바로 쓰는 온라인 개발 도구 모음
+          </p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>
+          <span data-i18n="footer.copyright">
+            © 2026 WebTools. 온라인 도구 모음.
+          </span>
+          |
+          <a href="../sitemap.xml" data-i18n="footer.sitemap">Sitemap</a>
+        </p>
+      </div>
+    </footer>
+    <script src="../js/i18n.js"></script>
+    <script src="../js/app.js"></script>
+    <script src="../js/tools/color-picker.js"></script>
+  </body>
+</html>
