@@ -54,6 +54,7 @@
       content="URL에 사용할 수 없는 문자를 퍼센트 인코딩으로 변환하거나 원래 문자로 되돌리는 온라인 도구입니다."
     />
     <meta name="theme-color" content="#4f46e5" />
+    <link rel="manifest" href="../manifest.json" />
     <meta
       property="og:image"
       content="https://core13773.github.io/webtools/og-image.png"
@@ -299,5 +300,12 @@
     <script src="../js/i18n.js"></script>
     <script src="../js/app.js"></script>
     <script src="../js/tools/url-encoder.js"></script>
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('../sw.js').catch(() => {});
+        });
+      }
+    </script>
   </body>
 </html>

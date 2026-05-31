@@ -1,0 +1,29 @@
+{
+  "name": "WebTools - 온라인 개발 유틸리티 모음",
+  "short_name": "WebTools",
+  "description": "설치 없이 바로 쓰는 12가지 온라인 개발 도구 - JSON 포맷터, Base64, URL 인코더, 비밀번호 생성기 등",
+  "start_url": "/webtools/",
+  "scope": "/webtools/",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#f8f9fa",
+  "theme_color": "#4f46e5",
+  "categories": ["developer-tools", "utilities", "productivity"],
+  "lang": "ko",
+  "dir": "ltr",
+  "prefer_related_applications": false,
+  "icons": [
+    {
+      "src": "/webtools/icons/icon-192.svg",
+      "sizes": "192x192",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/webtools/icons/icon-512.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

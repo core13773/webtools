@@ -54,6 +54,7 @@
       content="텍스트의 SHA-256, SHA-1, MD5 해시 값을 브라우저 내에서 실시간으로 생성하는 온라인 도구입니다."
     />
     <meta name="theme-color" content="#4f46e5" />
+    <link rel="manifest" href="../manifest.json" />
     <meta
       property="og:image"
       content="https://core13773.github.io/webtools/og-image.png"
@@ -300,5 +301,12 @@
     <script src="../js/i18n.js"></script>
     <script src="../js/app.js"></script>
     <script src="../js/tools/hash-generator.js"></script>
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('../sw.js').catch(() => {});
+        });
+      }
+    </script>
   </body>
 </html>

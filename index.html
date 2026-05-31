@@ -52,6 +52,7 @@
     />
     <link rel="canonical" href="https://core13773.github.io/webtools/" />
     <meta name="theme-color" content="#4f46e5" />
+    <link rel="manifest" href="manifest.json" />
     <meta
       name="google-site-verification"
       content="uHjCTERGdYuYZtOy-j8ohkxobYfkui3ZBu_Lb58yQrc"
@@ -584,6 +585,13 @@
           e && filterTools(e);
         }),
         setTimeout(buildMonetizeSteps, 100));
+    </script>
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('sw.js').catch(() => {});
+        });
+      }
     </script>
   </body>
 </html>

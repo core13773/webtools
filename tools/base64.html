@@ -54,6 +54,7 @@
       content="텍스트를 Base64로 인코딩하거나 Base64 문자열을 디코딩하는 온라인 도구입니다."
     />
     <meta name="theme-color" content="#4f46e5" />
+    <link rel="manifest" href="../manifest.json" />
     <meta
       property="og:image"
       content="https://core13773.github.io/webtools/og-image.png"
@@ -290,5 +291,12 @@
     <script src="../js/i18n.js"></script>
     <script src="../js/app.js"></script>
     <script src="../js/tools/base64.js"></script>
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('../sw.js').catch(() => {});
+        });
+      }
+    </script>
   </body>
 </html>

@@ -54,6 +54,7 @@
       content="HEX, RGB, HSL 색상 코드를 서로 변환하고 실시간 미리보기로 확인하는 온라인 컬러 도구입니다."
     />
     <meta name="theme-color" content="#4f46e5" />
+    <link rel="manifest" href="../manifest.json" />
     <meta
       property="og:image"
       content="https://core13773.github.io/webtools/og-image.png"
@@ -287,5 +288,12 @@
     <script src="../js/i18n.js"></script>
     <script src="../js/app.js"></script>
     <script src="../js/tools/color-picker.js"></script>
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('../sw.js').catch(() => {});
+        });
+      }
+    </script>
   </body>
 </html>
