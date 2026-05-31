@@ -26,3 +26,6 @@ build/
 # Temp
 *.tmp
 *.temp
+
+# Lighthouse reports
+lighthouse-reports/
