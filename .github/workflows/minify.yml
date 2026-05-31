@@ -25,12 +25,15 @@ jobs:
         run: npm install -g csso terser
 
       - name: Minify CSS (in-place)
-        run: csso css/style.css --output css/style.css
+        run: |
+          csso css/style.css --output css/style.css
+          csso css/tools.css --output css/tools.css
 
       - name: Minify core JS (in-place)
         run: |
           terser js/i18n.js --compress --mangle --output js/i18n.js
           terser js/app.js --compress --mangle --output js/app.js
+          terser js/layout.js --compress --mangle --output js/layout.js
 
       - name: Minify tool JS files (in-place)
         run: |

@@ -20,11 +20,9 @@ const i18n = {
 
   async loadTranslations() {
     try {
-      // Determine base path from script location so fetch works from any page depth
-      const scripts = document.getElementsByTagName('script');
-      const src = scripts[scripts.length - 1].src;
-      const base = src.substring(0, src.lastIndexOf('/js/') + 1);
-      const res = await fetch(`${base}i18n/${this.currentLang}.json`);
+      // Determine base path from page location so fetch works from any page depth
+      const prefix = location.pathname.includes('/tools/') ? '../' : '';
+      const res = await fetch(`${prefix}i18n/${this.currentLang}.json`);
       this.translations = await res.json();
     } catch (e) {
       console.warn('i18n load failed, using defaults:', e);
