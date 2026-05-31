@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/core13773/webtools#readme",
   "devDependencies": {
+    "@resvg/resvg-js": "^2.6.2",
     "esbuild": "^0.28.0",
     "html-minifier": "^4.0.0"
   }

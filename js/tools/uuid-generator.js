@@ -25,3 +25,12 @@ function copyResult(){
 }
 
 generate();
+
+
+/* ===== 키보드 단축키 ===== */
+if(typeof setupKeyboardShortcuts === 'function'){
+  setupKeyboardShortcuts({
+    'ctrl+enter': generate,
+    'ctrl+shift+c': copyResult,
+  });
+}

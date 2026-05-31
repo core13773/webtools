@@ -58,3 +58,12 @@ function replaceRegex() {
 }
 
 [patternInput, flagsInput, testInput].forEach(el => el && el.addEventListener('input', testRegex));
+
+
+/* ===== 키보드 단축키 ===== */
+if(typeof setupKeyboardShortcuts === 'function'){
+  setupKeyboardShortcuts({
+    'ctrl+enter': testRegex,
+    'escape': ()=>{document.getElementById('regex-pattern').value='';document.getElementById('regex-test').value='';document.getElementById('regex-result').innerHTML='';document.getElementById('regex-matches').textContent='';},
+  });
+}

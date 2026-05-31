@@ -63,3 +63,12 @@ function copyResult(){
 
 // 페이지 로드 시 자동 생성
 generate();
+
+
+/* ===== 키보드 단축키 ===== */
+if(typeof setupKeyboardShortcuts === 'function'){
+  setupKeyboardShortcuts({
+    'ctrl+enter': generate,
+    'ctrl+shift+c': copyResult,
+  });
+}

@@ -78,3 +78,11 @@ function copySingle(el){
 }
 
 update('#4f46e5');
+
+
+/* ===== 키보드 단축키 ===== */
+if(typeof setupKeyboardShortcuts === 'function'){
+  setupKeyboardShortcuts({
+    'ctrl+shift+c': copyAll,
+  });
+}

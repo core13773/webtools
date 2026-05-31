@@ -29,3 +29,12 @@ function copyHeader() {
 function copyPayload() {
   copyToClipboard(document.getElementById('jwt-payload').textContent).then(() => showToast(i18n.t('common.copied')));
 }
+
+
+/* ===== 키보드 단축키 ===== */
+if(typeof setupKeyboardShortcuts === 'function'){
+  setupKeyboardShortcuts({
+    'ctrl+enter': decodeJWT,
+    'ctrl+shift+c': copyPayload,
+  });
+}

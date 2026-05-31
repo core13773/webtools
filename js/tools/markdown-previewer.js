@@ -39,3 +39,11 @@ function downloadMd() {
 
 mdInput.addEventListener('input', renderMarkdown);
 renderMarkdown();
+
+
+/* ===== 키보드 단축키 ===== */
+if(typeof setupKeyboardShortcuts === 'function'){
+  setupKeyboardShortcuts({
+    'ctrl+shift+c': copyHtml,
+  });
+}

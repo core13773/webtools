@@ -79,3 +79,12 @@ function downloadCsvResult() {
   const ext = hasHeader.checked ? '.json' : '.csv'; // simplistic
   downloadFile(csvOutput.textContent, 'result' + ext);
 }
+
+
+/* ===== 키보드 단축키 ===== */
+if(typeof setupKeyboardShortcuts === 'function'){
+  setupKeyboardShortcuts({
+    'ctrl+enter': csvToJson,
+    'ctrl+shift+c': copyCsvResult,
+  });
+}

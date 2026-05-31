@@ -127,3 +127,34 @@ document.addEventListener('click', (e) => {
     if(banner) banner.style.display = 'none';
   });
 });
+
+/* ===== 키보드 단축키 ===== */
+function setupKeyboardShortcuts(shortcuts) {
+  document.addEventListener('keydown', (e) => {
+    const parts = [];
+    if(e.ctrlKey || e.metaKey) parts.push('ctrl');
+    if(e.shiftKey) parts.push('shift');
+    if(e.altKey) parts.push('alt');
+    parts.push(e.key.toLowerCase());
+    const combo = parts.join('+');
+    if(shortcuts[combo]) {
+      e.preventDefault();
+      shortcuts[combo]();
+    }
+  });
+}
+
+// Global shortcuts available on all pages
+document.addEventListener('keydown', (e) => {
+  const combo = [];
+  if(e.ctrlKey || e.metaKey) combo.push('ctrl');
+  if(e.shiftKey) combo.push('shift');
+  if(e.altKey) combo.push('alt');
+  combo.push(e.key.toLowerCase());
+  // Ctrl+K: focus search (index page)
+  if(combo.join('+') === 'ctrl+k') {
+    e.preventDefault();
+    const search = document.getElementById('tool-search');
+    if(search) search.focus();
+  }
+});

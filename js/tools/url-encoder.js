@@ -36,3 +36,13 @@ function clearAll(){
  input.value = '';  output.textContent = i18n.t('common.result_placeholder');
   output.style.color = 'var(--text-muted)';
 }
+
+
+/* ===== 키보드 단축키 ===== */
+if(typeof setupKeyboardShortcuts === 'function'){
+  setupKeyboardShortcuts({
+    'ctrl+enter': encodeURL,
+    'ctrl+shift+c': copyResult,
+    'escape': clearAll,
+  });
+}

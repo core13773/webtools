@@ -47,3 +47,12 @@ function downloadResult(){
 function copyResult(){
  copyToClipboard(tsOutput.textContent).then(()=>showToast(i18n.t('common.copied')));
 }
+
+
+/* ===== 키보드 단축키 ===== */
+if(typeof setupKeyboardShortcuts === 'function'){
+  setupKeyboardShortcuts({
+    'ctrl+enter': convertTs,
+    'ctrl+shift+c': copyResult,
+  });
+}

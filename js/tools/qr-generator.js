@@ -60,3 +60,12 @@ function clearAll() {
   resultBox.innerHTML = '<p style="color:var(--text-muted);">' + i18n.t('tools_qr.qr_placeholder') + '</p>';
   currentQRCode = null;
 }
+
+
+/* ===== 키보드 단축키 ===== */
+if(typeof setupKeyboardShortcuts === 'function'){
+  setupKeyboardShortcuts({
+    'ctrl+enter': generateQR,
+    'escape': clearAll,
+  });
+}

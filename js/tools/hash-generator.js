@@ -83,3 +83,11 @@ function copyResult(type){
  if(el.textContent === '-') return;
  copyToClipboard(el.textContent).then(()=>showToast(i18n.t('common.copied')));
 }
+
+
+/* ===== 키보드 단축키 ===== */
+if(typeof setupKeyboardShortcuts === 'function'){
+  setupKeyboardShortcuts({
+    'ctrl+shift+c': ()=>copyResult('sha256'),
+  });
+}

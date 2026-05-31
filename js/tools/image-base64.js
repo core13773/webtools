@@ -30,3 +30,11 @@ function copyImgBase64() {
 function downloadImgBase64() {
   downloadFile(output.value, 'image-base64.txt');
 }
+
+
+/* ===== 키보드 단축키 ===== */
+if(typeof setupKeyboardShortcuts === 'function'){
+  setupKeyboardShortcuts({
+    'ctrl+shift+c': copyImgBase64,
+  });
+}

@@ -42,3 +42,12 @@ function minifyCSS() {
 function copyCssResult() {
   copyToClipboard(cssOutput.textContent).then(() => showToast(i18n.t('common.copied')));
 }
+
+
+/* ===== 키보드 단축키 ===== */
+if(typeof setupKeyboardShortcuts === 'function'){
+  setupKeyboardShortcuts({
+    'ctrl+enter': formatCSS,
+    'ctrl+shift+c': copyCssResult,
+  });
+}
