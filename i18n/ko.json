@@ -1,0 +1,398 @@
+{
+  "nav": {
+    "home": "홈",
+    "tools": "도구",
+    "about": "소개"
+  },
+  "theme": {
+    "toggle": "다크모드 전환"
+  },
+  "hero": {
+    "title": "설치 없이 바로 쓰는",
+    "subtitle": "온라인 개발 도구 모음",
+    "desc": "JSON 정렬, Base64 변환, 비밀번호 생성, 글자수 세기, 색상 변환까지.\n모든 처리는 브라우저에서 이루어지며 서버로 전송되지 않아 안전합니다.",
+    "search_placeholder": "🔍 도구 검색 (예: json, base64, 비밀번호...)"
+  },
+  "sections": {
+    "popular": {
+      "title": "🔥 인기 도구",
+      "desc": "가장 많이 사용하는 4가지 핵심 도구"
+    },
+    "more": {
+      "title": "🧰 더 많은 도구",
+      "desc": "일상과 업무에서 유용한 추가 도구들"
+    },
+    "about": {
+      "title": "ℹ️ 이 사이트 소개"
+    }
+  },
+  "info_cards": {
+    "privacy": {
+      "title": "100% 프라이버시 보호",
+      "desc": "모든 처리는 브라우저 내부에서 이루어집니다. 입력한 데이터는 서버로 전송되지 않아 완전히 안전합니다."
+    },
+    "instant": {
+      "title": "설치 없이 즉시 사용",
+      "desc": "별도의 프로그램 설치나 회원가입 없이 웹사이트에 접속만 하면 모든 도구를 바로 사용할 수 있습니다."
+    },
+    "responsive": {
+      "title": "모든 기기 지원",
+      "desc": "데스크톱, 태블릿, 스마트폰 등 어떤 기기에서도 최적화된 화면으로 이용 가능합니다."
+    },
+    "darkmode": {
+      "title": "다크모드 지원",
+      "desc": "밝은 환경과 어두운 환경 모두에서 눈이 편안한 다크모드를 지원합니다."
+    }
+  },
+  "monetize": {
+    "title": "💡 이 사이트로 수익을 내는 방법",
+    "steps_html": "",
+    "steps": [
+      "Google AdSense에 가입하고 광고를 게재하여 수익을 창출하세요.",
+      "각 도구 페이지에 자연스럽게 광고를 배치하여 클릭률을 높이세요.",
+      "SNS와 커뮤니티에 도구를 공유하여 더 많은 방문자를 유치하세요.",
+      "사용자 피드백을 반영하여 새로운 도구를 지속적으로 추가하세요."
+    ]
+  },
+  "tool_cards": {
+    "json_formatter": {
+      "title": "JSON 포맷터",
+      "desc": "복잡한 JSON 데이터를 예쁘게 정렬하고 들여쓰기합니다. 유효성 검사도 함께.",
+      "tag": "개발"
+    },
+    "base64": {
+      "title": "Base64 인코더/디코더",
+      "desc": "텍스트를 Base64로 변환하거나, Base64를 원래 텍스트로 되돌립니다.",
+      "tag": "개발"
+    },
+    "password_generator": {
+      "title": "비밀번호 생성기",
+      "desc": "안전하고 강력한 랜덤 비밀번호를 원하는 길이와 조합으로 생성합니다.",
+      "tag": "보안"
+    },
+    "url_encoder": {
+      "title": "URL 인코더/디코더",
+      "desc": "URL에 사용할 수 없는 문자를 퍼센트 인코딩으로 변환합니다.",
+      "tag": "개발"
+    },
+    "text_counter": {
+      "title": "글자수 세기",
+      "desc": "글자수, 단어수, 공백 제외 글자수, 바이트 수를 실시간으로 확인합니다.",
+      "tag": "문서"
+    },
+    "color_picker": {
+      "title": "색상 변환기",
+      "desc": "HEX, RGB, HSL 색상 코드를 서로 변환하고 미리보기로 확인합니다.",
+      "tag": "디자인"
+    },
+    "timestamp_converter": {
+      "title": "타임스탬프 변환기",
+      "desc": "Unix 타임스탬프를 사람이 읽을 수 있는 날짜로 변환합니다.",
+      "tag": "개발"
+    },
+    "html_encoder": {
+      "title": "HTML 인코더/디코더",
+      "desc": "특수문자를 HTML Entity로 변환하거나 원래 문자로 되돌립니다.",
+      "tag": "개발"
+    },
+    "qr_generator": {
+      "title": "QR 코드 생성기",
+      "desc": "URL이나 텍스트를 스캔할 수 있는 QR 코드 이미지로 즉시 변환합니다.",
+      "tag": "유틸리티"
+    },
+    "case_converter": {
+      "title": "텍스트 케이스 변환",
+      "desc": "대문자, 소문자, Capital Case, snake_case, camelCase 등으로 변환합니다.",
+      "tag": "문서"
+    },
+    "uuid_generator": {
+      "title": "UUID 생성기",
+      "desc": "범용 고유 식별자(UUID v4)를 한 번에 여러 개 생성합니다.",
+      "tag": "개발"
+    },
+    "hash_generator": {
+      "title": "텍스트 해시 생성기",
+      "desc": "MD5, SHA-1, SHA-256 해시 값을 실시간으로 생성합니다.",
+      "tag": "보안"
+    }
+  },
+  "footer": {
+    "brand_desc": "설치 없이 바로 쓰는 온라인 개발 도구 모음",
+    "links": {
+      "json_formatter": "JSON 포맷터",
+      "base64": "Base64",
+      "url_encoder": "URL 인코더",
+      "html_encoder": "HTML 인코더",
+      "password": "비밀번호",
+      "qr_generator": "QR 코드",
+      "hash_generator": "해시",
+      "case_converter": "케이스 변환",
+      "uuid_generator": "UUID",
+      "text_counter": "글자수",
+      "color": "색상",
+      "timestamp": "타임스탬프"
+    },
+    "copyright": "© 2026 WebTools. 온라인 도구 모음.",
+    "sitemap": "Sitemap"
+  },
+  "common": {
+    "copy": "📋 복사",
+    "download": "💾 다운로드",
+    "clear": "🗑️ 초기화",
+    "result": "결과",
+    "result_placeholder": "결과가 여기에 표시됩니다.",
+    "upper": "대문자 (A-Z)",
+    "lower": "소문자 (a-z)",
+    "number": "숫자 (0-9)",
+    "symbol": "특수문자 (!@#$...)",
+    "enter_text": "텍스트를 입력하세요",
+    "enter_base64": "Base64 문자열을 입력하세요",
+    "enter_json": "JSON을 입력하세요",
+    "enter_html_entity": "HTML 엔티티를 입력하세요",
+    "enter_url_encoded": "URL 인코딩된 문자열을 입력하세요",
+    "enter_timestamp": "타임스탬프를 입력하세요",
+    "enter_number": "숫자를 입력하세요",
+    "error_decoding": "❌ 디코딩 오류: 올바른 형식인지 확인하세요",
+    "error_invalid_ts": "❌ 유효하지 않은 타임스탬프입니다",
+    "error_qr": "QR 코드를 생성할 수 없습니다",
+    "copied": "✅ 복사 완료!",
+    "no_result": "결과가 없습니다",
+    "no_password": "먼저 비밀번호를 생성하세요",
+    "no_color": "먼저 색상을 선택하세요",
+    "no_qr_text": "텍스트를 입력하세요",
+    "no_hash": "텍스트를 입력하세요",
+    "no_uuid": "UUID를 생성하세요",
+    "select_charset": "문자 종류를 선택하세요",
+    "generate_password_placeholder": "비밀번호를 생성하세요",
+    "strength_very_weak": "매우 약함",
+    "strength_weak": "약함",
+    "strength_normal": "보통",
+    "strength_strong": "강함",
+    "strength_very_strong": "매우 강함",
+    "strength_label": "보안 강도:",
+    "stats_title": "📊 텍스트 통계",
+    "stats_chars": "전체 글자수",
+    "stats_chars_no_space": "공백 제외 글자수",
+    "stats_words": "단어수",
+    "stats_lines": "줄 수",
+    "stats_bytes": "바이트",
+    "stats_sentences": "문장 수",
+    "stats_input_text": "📝 입력된 텍스트",
+    "hash_title": "🔐 해시 결과",
+    "hash_input": "📝 입력 텍스트",
+    "ts_current": "⏰ 현재 시간",
+    "ts_current_ts": "Unix Timestamp (초)",
+    "ts_current_date": "현재 날짜/시간",
+    "ts_local": "현지 시간",
+    "ts_utc": "UTC 시간",
+    "ts_iso": "ISO 8601",
+    "ts_seconds": "초 (Unix 타임스탬프)",
+    "ts_milliseconds": "밀리초",
+    "color_rgb": "RGB",
+    "color_hsl": "HSL"
+  },
+  "tools_json": {
+    "title": "JSON 포맷터 & 유효성 검사",
+    "desc": "JSON 문자열을 보기 좋게 정렬하고 문법 오류를 확인하세요.",
+    "input_label": "입력 JSON",
+    "sort_keys": "키 알파벳 순 정렬",
+    "compact": "간결하게 (2칸 들여쓰기)",
+    "btn_format": "✨ 포맷팅",
+    "btn_minify": "🗜️ 최소화",
+    "usage_title": "📖 사용 방법",
+    "usage_step1_title": "JSON 입력",
+    "usage_step1_desc": "정렬이 필요한 JSON 문자열을 입력창에 붙여넣습니다.",
+    "usage_step2_title": "옵션 선택",
+    "usage_step2_desc": "키 알파벳 순 정렬 체크 시 객체 키가 가나다순으로 정렬됩니다. 간결하게 (2칸 들여쓰기)로 들여쓰기 간격을 조절할 수 있습니다.",
+    "usage_step3_title": "포맷팅 또는 최소화",
+    "usage_step3_desc": "✨ 포맷팅 버튼으로 JSON을 보기 좋게 정렬하거나, 🗜️ 최소화 버튼으로 공백을 제거하여 용량을 줄입니다.",
+    "usage_step4_title": "결과 복사",
+    "usage_step4_desc": "📋 결과 복사 버튼으로 변환된 JSON을 클립보드에 저장합니다. JSON 문법이 잘못된 경우 오류 메시지가 표시됩니다.",
+    "usage_tip": "💡 팁: JSON 데이터는 브라우저 내에서만 처리되며 서버로 전송되지 않습니다. 민감한 데이터도 안전하게 사용하세요."
+  },
+  "tools_base64": {
+    "title": "Base64 인코더 / 디코더",
+    "desc": "텍스트 ↔ Base64 간 변환을 손쉽게 수행하세요. UTF-8을 기준으로 처리됩니다.",
+    "input_label": "입력 텍스트",
+    "btn_encode": "🔼 인코딩",
+    "btn_decode": "🔽 디코딩",
+    "usage_title": "📖 사용 방법",
+    "usage_step1_title": "텍스트 입력",
+    "usage_step1_desc": "인코딩하거나 디코딩할 텍스트를 입력창에 입력합니다. 한글, 특수문자 등 모든 UTF-8 문자를 지원합니다.",
+    "usage_step2_title": "인코딩 또는 디코딩",
+    "usage_step2_desc": "입력한 텍스트를 Base64로 변환하려면 🔼 인코딩 버튼을, Base64를 원래 텍스트로 복원하려면 🔽 디코딩 버튼을 클릭합니다.",
+    "usage_step3_title": "결과 활용",
+    "usage_step3_desc": "📋 결과 복사 버튼으로 변환된 값을 클립보드에 저장하거나, 🗑️ 초기화 버튼으로 입력을 지웁니다.",
+    "usage_tip": "💡 팁: Base64는 이메일 첨부파일, 데이터 URI, API 인증 토큰 등 다양한 곳에서 사용됩니다. 디코딩 시 올바른 Base64 형식인지 확인하세요."
+  },
+  "tools_password": {
+    "title": "강력한 비밀번호 생성기",
+    "desc": "해킹에 강한 랜덤 비밀번호를 즉시 생성하세요. 브라우저에서 처리되며 서버로 전송되지 않습니다.",
+    "length_label_html": "비밀번호 길이: <strong id=\"len-val\">16</strong>자",
+    "btn_generate": "🎲 생성하기",
+    "output_label": "생성된 비밀번호",
+    "usage_title": "📖 사용 방법",
+    "usage_step1_title": "비밀번호 길이 설정",
+    "usage_step1_desc": "슬라이더를 좌우로 움직여 비밀번호 길이를 4~64자 사이에서 조절합니다. 길이가 길수록 더 안전합니다.",
+    "usage_step2_title": "포함할 문자 선택",
+    "usage_step2_desc": "대문자(A-Z), 소문자(a-z), 숫자(0-9), 특수문자(!@#$...) 중 포함할 문자 종류를 체크합니다. 많을수록 안전합니다.",
+    "usage_step3_title": "생성 및 복사",
+    "usage_step3_desc": "🎲 생성하기 버튼으로 즉시 비밀번호를 생성하고, 하단의 보안 강도를 확인한 후 📋 복사 버튼으로 저장합니다.",
+    "usage_tip": "💡 팁: 생성된 비밀번호는 브라우저 내에서만 처리되며 서버로 전송되지 않습니다. 12자 이상, 모든 문자 종류를 포함하는 것이 가장 안전합니다."
+  },
+  "tools_url": {
+    "title": "URL 인코더 / 디코더",
+    "desc": "한글이나 특수문자가 포함된 URL을 안전하게 인코딩하세요.",
+    "input_label": "입력 텍스트 / URL",
+    "btn_encode": "🔼 인코딩",
+    "btn_decode": "🔽 디코딩",
+    "usage_title": "📖 사용 방법",
+    "usage_step1_title": "URL 또는 텍스트 입력",
+    "usage_step1_desc": "인코딩할 URL이나 텍스트를 입력합니다.",
+    "usage_step2_title": "인코딩 또는 디코딩",
+    "usage_step2_desc": "🔼 인코딩 버튼으로 한글, 공백, 특수문자를 %EB%AC%B8%EC%9E%90 형식으로 변환합니다. 🔽 디코딩 버튼으로 다시 원래 문자로 복원할 수 있습니다.",
+    "usage_step3_title": "결과 확인 및 복사",
+    "usage_step3_desc": "변환된 URL을 확인하고 📋 결과 복사 버튼으로 클립보드에 저장합니다. 잘못된 인코딩 문자열은 디코딩 시 오류가 표시됩니다.",
+    "usage_tip": "💡 팁: URL 인코딩은 웹 브라우저가 URL을 안전하게 전송하기 위해 필요합니다. 쿼리 파라미터에 한글이나 특수문자가 포함된 경우 필수로 사용됩니다."
+  },
+  "tools_text_counter": {
+    "title": "글자수 세기",
+    "desc": "텍스트를 입력하면 글자수, 단어수, 바이트 수를 실시간으로 계산합니다.",
+    "input_label": "텍스트 입력",
+    "btn_copy_text": "📋 텍스트 복사",
+    "btn_download_stats": "💾 통계 다운로드",
+    "stat_chars": "전체 글자수",
+    "stat_chars_no_space": "공백 제외 글자수",
+    "stat_words": "단어수",
+    "stat_lines": "줄 수",
+    "stat_bytes": "바이트",
+    "stat_sentences": "문장 수",
+    "usage_title": "📖 사용 방법",
+    "usage_step1_title": "텍스트 입력",
+    "usage_step1_desc": "글자수를 확인할 텍스트를 입력창에 입력하거나 붙여넣습니다.",
+    "usage_step2_title": "실시간 통계 확인",
+    "usage_step2_desc": "입력과 동시에 전체 글자수, 공백 제외 글자수, 단어수, 줄 수, 바이트, 문장 수가 실시간으로 업데이트됩니다.",
+    "usage_step3_title": "텍스트 복사 또는 초기화",
+    "usage_step3_desc": "📋 텍스트 복사 버튼으로 입력한 텍스트를 그대로 복사하거나, 🗑️ 초기화 버튼으로 입력을 지웁니다.",
+    "usage_tip": "💡 팁: 글자수 세기는 SNS 게시물(트위터 280자, 인스타그램 2,200자), 에세이, 자기소개서 작성 시 유용하게 사용됩니다. 바이트 수는 한글 3바이트, 영문 1바이트로 계산됩니다."
+  },
+  "tools_color": {
+    "title": "색상 변환기",
+    "desc": "HEX, RGB, HSL 색상 코드를 자유롭게 변환하고 색상을 미리보세요.",
+    "color_label": "컬러 선택",
+    "preview_label": "미리보기",
+    "btn_copy_all": "📋 모두 복사",
+    "btn_random": "🎲 랜덤 색상",
+    "usage_title": "📖 사용 방법",
+    "usage_step1_title": "색상 선택",
+    "usage_step1_desc": "컬러 피커(🖌️)를 클릭하여 원하는 색상을 직접 선택하거나, HEX 코드(예: #4f46e5)를 직접 입력합니다.",
+    "usage_step2_title": "변환 결과 확인",
+    "usage_step2_desc": "RGB(rgb(79, 70, 229))와 HSL(hsl(244, 74%, 59%)) 값이 자동으로 변환되어 표시됩니다.",
+    "usage_step3_title": "값 복사 및 랜덤 생성",
+    "usage_step3_desc": "각 입력 필드를 클릭하면 해당 값이 클립보드에 복사됩니다. 🎲 랜덤 색상 버튼으로 무작위 색상을 생성할 수 있습니다.",
+    "usage_tip": "💡 팁: 웹 디자인에서 색상 코드는 HEX가 가장 흔하게 사용되며, CSS에서는 RGB와 HSL도 자주 활용됩니다. 미리보기를 통해 실제 색상을 확인하세요."
+  },
+  "tools_timestamp": {
+    "title": "타임스탬프 변환기",
+    "desc": "Unix 타임스탬프(초/밀리초)를 날짜/시간으로 변환합니다.",
+    "ts_label": "타임스탬프 입력",
+    "btn_convert": "🔄 변환",
+    "btn_use_now": "⏰ 현재 시간 사용",
+    "output_label": "변환 결과",
+    "usage_title": "📖 사용 방법",
+    "usage_step1_title": "현재 시간 확인",
+    "usage_step1_desc": "상단에 현재 Unix 타임스탬프(초)와 날짜/시간이 1초 간격으로 자동 갱신되어 표시됩니다.",
+    "usage_step2_title": "타임스탬프 입력 및 변환",
+    "usage_step2_desc": "변환할 Unix 타임스탬프(초 또는 밀리초 단위)를 입력하고 🔄 변환 버튼을 클릭합니다. 초 단위(10자리)와 밀리초 단위(13자리)를 자동으로 구분합니다.",
+    "usage_step3_title": "현재 시간으로 변환",
+    "usage_step3_desc": "⏰ 현재 시간 사용 버튼으로 현재 시각의 타임스탬프를 즉시 변환할 수 있습니다. 변환 결과는 📋 복사 버튼으로 저장하세요.",
+    "usage_tip": "💡 팁: Unix 타임스탬프는 1970년 1월 1일(UTC)부터 경과된 초(또는 밀리초)입니다. API 응답, 로그 파일, 데이터베이스에서 날짜 처리 시 자주 사용됩니다."
+  },
+  "tools_html": {
+    "title": "HTML 인코더 / 디코더",
+    "desc": "특수문자를 HTML Entity(&lt;, &amp; 등)로 변환하거나 되돌립니다.",
+    "input_label": "입력 텍스트",
+    "btn_encode": "🔼 HTML 인코딩",
+    "btn_decode": "🔽 HTML 디코딩",
+    "usage_title": "📖 사용 방법",
+    "usage_step1_title": "텍스트 입력",
+    "usage_step1_desc": "HTML 특수문자가 포함된 텍스트를 입력합니다.",
+    "usage_step2_title": "인코딩 또는 디코딩",
+    "usage_step2_desc": "🔼 HTML 인코딩 버튼으로 <, >, & 등을 HTML Entity로 변환합니다. 🔽 HTML 디코딩 버튼으로 다시 원래 문자로 복원합니다.",
+    "usage_step3_title": "결과 복사",
+    "usage_step3_desc": "📋 결과 복사 버튼으로 변환된 HTML을 클립보드에 저장합니다. 인코딩된 HTML은 웹페이지에 안전하게 삽입할 수 있습니다.",
+    "usage_tip": "💡 팁: HTML 인코딩은 XSS(크로스사이트 스크립팅) 공격을 방지하고, 사용자 입력을 안전하게 웹페이지에 표시할 때 필수적으로 사용됩니다."
+  },
+  "tools_qr": {
+    "title": "QR 코드 생성기",
+    "desc": "URL이나 텍스트를 QR 코드 이미지로 변환합니다.",
+    "input_label": "텍스트 또는 URL 입력",
+    "btn_generate": "📱 QR 코드 생성",
+    "btn_save_text": "💾 텍스트 저장",
+    "output_label": "생성된 QR 코드",
+    "qr_placeholder": "텍스트를 입력하고 생성 버튼을 누르세요.",
+    "qr_enter_text": "텍스트를 입력하세요",
+    "download_link": "📥 이미지 다운로드 (PNG)",
+    "api_notice": "🔒 QR 코드는 브라우저 내에서 직접 생성되며 외부 서버로 데이터가 전송되지 않습니다.",
+    "usage_title": "📖 사용 방법",
+    "usage_step1_title": "텍스트 또는 URL 입력",
+    "usage_step1_desc": "QR 코드로 변환할 URL이나 텍스트를 입력합니다. 예: 웹사이트 주소, 연락처 정보, Wi-Fi 설정 등.",
+    "usage_step2_title": "QR 코드 생성",
+    "usage_step2_desc": "📱 QR 코드 생성 버튼을 클릭하면 입력한 내용이 QR 코드 이미지로 즉시 변환됩니다.",
+    "usage_step3_title": "스캔 및 다운로드",
+    "usage_step3_desc": "스마트폰 카메라로 QR 코드를 스캔하여 내용을 확인하거나, 📥 이미지 다운로드 링크로 PNG 파일을 저장합니다.",
+    "usage_tip": "💡 팁: URL이 긴 경우에도 QR 코드는 안정적으로 인식됩니다. 생성된 QR 코드는 브라우저 내에서 직접 생성되어 외부로 전송되지 않아 안전합니다."
+  },
+  "tools_case": {
+    "title": "텍스트 케이스 변환",
+    "desc": "텍스트를 다양한 형식(대문자, 소문자, camelCase 등)으로 변환합니다.",
+    "input_label": "입력 텍스트",
+    "btn_upper": "🔠 대문자",
+    "btn_lower": "🔡 소문자",
+    "btn_capital": "🔤 Capital Case",
+    "btn_snake": "🐍 snake_case",
+    "btn_camel": "🐫 camelCase",
+    "usage_title": "📖 사용 방법",
+    "usage_step1_title": "텍스트 입력",
+    "usage_step1_desc": "변환할 텍스트를 입력합니다.",
+    "usage_step2_title": "변환 방식 선택",
+    "usage_step2_desc": "원하는 형식의 버튼을 클릭합니다: 대문자 (HELLO) · 소문자 (hello) · Capital Case (Hello World) · snake_case (hello_world) · camelCase (helloWorld)",
+    "usage_step3_title": "결과 복사",
+    "usage_step3_desc": "변환된 텍스트를 확인하고 📋 복사 버튼으로 클립보드에 저장합니다. 필요시 🗑️ 초기화 버튼으로 입력을 지웁니다.",
+    "usage_tip": "💡 팁: snake_case는 Python 변수명, camelCase는 JavaScript 변수명에 주로 사용됩니다. Capital Case는 제목이나 이름을 작성할 때 유용합니다."
+  },
+  "tools_uuid": {
+    "title": "UUID 생성기",
+    "desc": "범용 고유 식별자(UUID v4)를 즉시 생성합니다.",
+    "count_label": "생성 개수",
+    "btn_generate": "🎲 UUID 생성",
+    "output_label": "생성 결과",
+    "usage_title": "📖 사용 방법",
+    "usage_step1_title": "생성 개수 설정",
+    "usage_step1_desc": "생성할 UUID의 개수를 입력합니다. 최소 1개에서 최대 100개까지 한 번에 생성할 수 있습니다.",
+    "usage_step2_title": "UUID 생성",
+    "usage_step2_desc": "🎲 UUID 생성 버튼을 클릭하면 UUID v4 형식의 고유 식별자가 지정된 개수만큼 생성됩니다.",
+    "usage_step3_title": "결과 복사 및 사용",
+    "usage_step3_desc": "📋 복사 버튼으로 생성된 모든 UUID를 클립보드에 저장합니다. 각 UUID는 xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx 형식입니다.",
+    "usage_tip": "💡 팁: UUID(Universally Unique Identifier)는 데이터베이스 기본 키, API 식별자, 세션 토큰 등 중복되면 안 되는 고유 값이 필요할 때 사용됩니다."
+  },
+  "tools_hash": {
+    "title": "텍스트 해시 생성기",
+    "desc": "텍스트의 SHA-256, SHA-1, MD5 해시 값을 브라우저 내에서 실시간으로 생성합니다. 외부 서버로 데이터가 전송되지 않습니다.",
+    "input_label": "입력 텍스트",
+    "btn_copy_sha256": "📋 SHA-256 복사",
+    "btn_copy_sha1": "📋 SHA-1 복사",
+    "btn_copy_md5": "📋 MD5 복사",
+    "sha256_label": "SHA-256 (권장)",
+    "sha1_label": "SHA-1",
+    "md5_label": "MD5",
+    "usage_title": "📖 사용 방법",
+    "usage_step1_title": "텍스트 입력",
+    "usage_step1_desc": "해시를 생성할 텍스트를 입력창에 입력합니다. 입력과 동시에 모든 해시 값이 실시간으로 자동 생성됩니다.",
+    "usage_step2_title": "해시 값 확인",
+    "usage_step2_desc": "SHA-256(권장), SHA-1, MD5 세 가지 해시 알고리즘의 결과가 각각 표시됩니다. 동일한 입력값은 항상 동일한 해시를 반환합니다.",
+    "usage_step3_title": "결과 복사",
+    "usage_step3_desc": "필요한 해시 값의 📋 복사 버튼을 클릭하여 클립보드에 저장합니다. SHA-256이 가장 안전하므로 보안 용도로 권장됩니다.",
+    "usage_tip": "💡 팁: 해시 함수는 비밀번호 저장(실제로는 salt와 함께 사용), 파일 무결성 검증, 디지털 서명 등에 사용됩니다. SHA-256은 현재 업계 표준이며 MD5와 SHA-1은 보안 취약점이 발견되었습니다."
+  }
+}
