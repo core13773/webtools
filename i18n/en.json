@@ -196,6 +196,8 @@
     "enter_timestamp": "Please enter a timestamp.",
     "enter_number": "Please enter a number.",
     "enter_html_entity": "Please enter an HTML entity.",
+    "offline_warning": "⚠️ You are offline. Some features may be limited.",
+    "online_restored": "✅ Back online.",
     "error_prefix": "❌ Error:",
     "error_encoding": "❌ Encoding error:",
     "error_decoding": "❌ Decoding error: Please check the format.",

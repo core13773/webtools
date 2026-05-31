@@ -106,8 +106,8 @@ function showToast(msg){
 })();
 
 /* ===== 오프라인 알림 ===== */
-window.addEventListener('offline', () => showToast('⚠️ 오프라인 상태입니다. 일부 기능이 제한될 수 있습니다.'));
-window.addEventListener('online', () => showToast('✅ 온라인에 연결되었습니다.'));
+window.addEventListener('offline', () => showToast(i18n.t('common.offline_warning')));
+window.addEventListener('online', () => showToast(i18n.t('common.online_restored')));
 
 /* ===== PWA 설치 배너 ===== */
 let deferredInstallPrompt = null;
