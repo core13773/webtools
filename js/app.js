@@ -2,7 +2,7 @@
 const themeToggle = document.getElementById('theme-toggle');
 const savedTheme = localStorage.getItem('theme') || 'light';
 
-document.documentElement.setAttribute('data-theme', savedTheme);
+// Note: FOIT prevention is handled by inline script in <head>
 if(themeToggle) themeToggle.textContent = savedTheme === 'dark' ? '☀️' : '🌙';
 
 if(themeToggle){
@@ -69,3 +69,61 @@ function showToast(msg){
   document.body.appendChild(el);
   setTimeout(() => el.remove(), 1800);
 }
+
+/* ===== 최근 사용 도구 기록 ===== */
+(function recordRecentTool(){
+  const path = location.pathname;
+  const toolMatch = path.match(/\/tools\/([^/]+)\.html$/);
+  if(!toolMatch) return;
+  const toolId = toolMatch[1];
+  const toolMap = {
+    'json-formatter': {title:'JSON 포맷터', titleEn:'JSON Formatter', icon:'📋', tag:'개발', tagEn:'Dev'},
+    'base64': {title:'Base64 인코더/디코더', titleEn:'Base64 Encoder/Decoder', icon:'🔐', tag:'개발', tagEn:'Dev'},
+    'password-generator': {title:'비밀번호 생성기', titleEn:'Password Generator', icon:'🔑', tag:'보안', tagEn:'Security'},
+    'url-encoder': {title:'URL 인코더/디코더', titleEn:'URL Encoder/Decoder', icon:'🌐', tag:'개발', tagEn:'Dev'},
+    'text-counter': {title:'글자수 세기', titleEn:'Character Counter', icon:'📝', tag:'문서', tagEn:'Writing'},
+    'color-picker': {title:'색상 변환기', titleEn:'Color Converter', icon:'🎨', tag:'디자인', tagEn:'Design'},
+    'timestamp-converter': {title:'타임스탬프 변환기', titleEn:'Timestamp Converter', icon:'⏰', tag:'개발', tagEn:'Dev'},
+    'html-encoder': {title:'HTML 인코더/디코더', titleEn:'HTML Encoder/Decoder', icon:'📄', tag:'개발', tagEn:'Dev'},
+    'qr-generator': {title:'QR 코드 생성기', titleEn:'QR Code Generator', icon:'📱', tag:'유틸리티', tagEn:'Utility'},
+    'case-converter': {title:'텍스트 케이스 변환', titleEn:'Text Case Converter', icon:'🔤', tag:'문서', tagEn:'Writing'},
+    'uuid-generator': {title:'UUID 생성기', titleEn:'UUID Generator', icon:'🆔', tag:'개발', tagEn:'Dev'},
+    'hash-generator': {title:'텍스트 해시 생성기', titleEn:'Hash Generator', icon:'🔒', tag:'보안', tagEn:'Security'},
+    'jwt-decoder': {title:'JWT 디코더', titleEn:'JWT Decoder', icon:'🛡️', tag:'보안', tagEn:'Security'},
+    'regex-tester': {title:'정규식 테스트기', titleEn:'Regex Tester', icon:'🔍', tag:'개발', tagEn:'Dev'},
+    'csv-json-converter': {title:'CSV ↔ JSON 변환기', titleEn:'CSV ↔ JSON Converter', icon:'🔄', tag:'개발', tagEn:'Dev'},
+    'css-formatter': {title:'CSS 포맷터', titleEn:'CSS Formatter', icon:'🎨', tag:'디자인', tagEn:'Design'},
+    'markdown-previewer': {title:'Markdown 프리뷰어', titleEn:'Markdown Previewer', icon:'📝', tag:'문서', tagEn:'Writing'},
+    'px-converter': {title:'PX ↔ REM/EM 변환기', titleEn:'PX ↔ REM/EM Converter', icon:'📐', tag:'디자인', tagEn:'Design'},
+    'image-base64': {title:'이미지 Base64 변환', titleEn:'Image to Base64', icon:'🖼️', tag:'유틸리티', tagEn:'Utility'}
+  };
+  const info = toolMap[toolId];
+  if(!info) return;
+  const recents = JSON.parse(localStorage.getItem('recentTools') || '[]');
+  const filtered = recents.filter(r => r.id !== toolId);
+  filtered.unshift({id: toolId, ...info, timestamp: Date.now()});
+  localStorage.setItem('recentTools', JSON.stringify(filtered.slice(0, 6)));
+})();
+
+/* ===== 오프라인 알림 ===== */
+window.addEventListener('offline', () => showToast('⚠️ 오프라인 상태입니다. 일부 기능이 제한될 수 있습니다.'));
+window.addEventListener('online', () => showToast('✅ 온라인에 연결되었습니다.'));
+
+/* ===== PWA 설치 배너 ===== */
+let deferredInstallPrompt = null;
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault();
+  deferredInstallPrompt = e;
+  const banner = document.getElementById('pwa-install-banner');
+  if(banner) banner.style.display = 'flex';
+});
+document.addEventListener('click', (e) => {
+  const btn = e.target.closest('#pwa-install-btn');
+  if(!btn || !deferredInstallPrompt) return;
+  deferredInstallPrompt.prompt();
+  deferredInstallPrompt.userChoice.then(() => {
+    deferredInstallPrompt = null;
+    const banner = document.getElementById('pwa-install-banner');
+    if(banner) banner.style.display = 'none';
+  });
+});

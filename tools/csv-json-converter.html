@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <script>(function(){const t=localStorage.getItem('theme')||'light';document.documentElement.setAttribute('data-theme',t);})();</script>
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title data-i18n="tools_csv_json.title">CSV ↔ JSON 변환기 - 온라인 데이터 변환 | WebTools</title>
+    <meta name="description" content="CSV 데이터를 JSON으로, JSON을 CSV로 자유롭게 변환하는 온라인 도구입니다." />
+    <meta name="robots" content="index, follow" />
+    <meta name="keywords" content="CSV JSON 변환기, csv to json, json to csv, 온라인 변환" />
+    <link rel="canonical" href="https://core13773.github.io/webtools/tools/csv-json-converter.html" />
+    <link rel="alternate" hreflang="ko" href="https://core13773.github.io/webtools/tools/csv-json-converter.html" />
+    <link rel="alternate" hreflang="en" href="https://core13773.github.io/webtools/tools/csv-json-converter.html" />
+    <link rel="alternate" hreflang="x-default" href="https://core13773.github.io/webtools/tools/csv-json-converter.html" />
+    <meta property="og:title" content="CSV ↔ JSON 변환기 - 온라인 데이터 변환 | WebTools" />
+    <meta property="og:description" content="CSV 데이터를 JSON으로, JSON을 CSV로 자유롭게 변환하는 온라인 도구입니다." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://core13773.github.io/webtools/tools/csv-json-converter.html" />
+    <meta property="og:locale" content="ko_KR" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="CSV ↔ JSON 변환기 - 온라인 데이터 변환 | WebTools" />
+    <meta name="twitter:description" content="CSV 데이터를 JSON으로, JSON을 CSV로 자유롭게 변환하는 온라인 도구입니다." />
+    <meta name="theme-color" content="#4f46e5" />
+    <link rel="manifest" href="../manifest.json" />
+    <link rel="icon" href="../favicon.svg" sizes="any" type="image/svg+xml" />
+    <meta property="og:image" content="https://core13773.github.io/webtools/og-image.svg" />
+    <meta name="twitter:image" content="https://core13773.github.io/webtools/og-image.svg" />
+    <meta name="google-site-verification" content="uHjCTERGdYuYZtOy-j8ohkxobYfkui3ZBu_Lb58yQrc" />
+    <meta name="naver-site-verification" content="cf0df7b2c056093aa8441434c518ec7930db7e00" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebApplication",
+            "@id": "https://core13773.github.io/webtools/tools/csv-json-converter.html#webapplication",
+            "name": "CSV ↔ JSON 변환기",
+            "url": "https://core13773.github.io/webtools/tools/csv-json-converter.html",
+            "description": "CSV 데이터를 JSON으로, JSON을 CSV로 자유롭게 변환하는 온라인 도구",
+            "applicationCategory": "DeveloperApplication",
+            "operatingSystem": "All",
+            "browserRequirements": "Modern browser with JavaScript enabled",
+            "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+            "publisher": { "@id": "https://core13773.github.io/webtools/#organization" }
+          },
+          {
+            "@type": "BreadcrumbList",
+            "@id": "https://core13773.github.io/webtools/tools/csv-json-converter.html#breadcrumb",
+            "itemListElement": [
+              { "@type": "ListItem", "position": 1, "name": "WebTools", "item": "https://core13773.github.io/webtools/" },
+              { "@type": "ListItem", "position": 2, "name": "CSV ↔ JSON 변환기", "item": "https://core13773.github.io/webtools/tools/csv-json-converter.html" }
+            ]
+          }
+        ]
+      }
+    </script>
+    <style>
+      :root{--bg:#f8f9fa;--surface:#fff;--text:#212529;--text-muted:#6c757d;--primary:#4f46e5;--primary-hover:#4338ca;--primary-light:rgba(79,70,229,0.1);--border:#dee2e6;--radius:12px;--radius-sm:8px;--font:'Segoe UI','Apple SD Gothic Neo','Noto Sans KR','Malgun Gothic',sans-serif}
+      [data-theme="dark"]{--bg:#0f172a;--surface:#1e293b;--text:#f1f5f9;--text-muted:#94a3b8;--primary:#818cf8;--primary-hover:#6366f1;--primary-light:rgba(129,140,248,0.1);--border:#334155}
+      *{box-sizing:border-box;margin:0;padding:0}
+      body{font-family:var(--font);background:var(--bg);color:var(--text);line-height:1.6}
+      header{background:var(--surface);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100}
+      nav{max-width:1100px;margin:0 auto;padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-between}
+      .logo{font-size:1.4rem;font-weight:800;color:var(--primary);text-decoration:none;letter-spacing:-.5px}
+      .logo span{color:var(--text)}
+      .nav-links{display:flex;gap:1.2rem;align-items:center;list-style:none}
+      .container{max-width:1100px;margin:0 auto;padding:2rem 1.5rem}
+    </style>
+    <link rel="preload" href="../css/style.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+    <noscript><link rel="stylesheet" href="../css/style.css" /></noscript>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-DJK0ZFRYKM"></script>
+    <script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-DJK0ZFRYKM');</script>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <a href="../index.html" class="logo">Web<span>Tools</span></a>
+        <ul class="nav-links">
+          <li><a href="../index.html" data-i18n="nav.home">홈</a></li>
+          <li class="lang-switcher">
+            <button class="lang-btn active" data-lang="ko" onclick="i18n.switchLang('ko')">KO</button>
+            <button class="lang-btn" data-lang="en" onclick="i18n.switchLang('en')">EN</button>
+          </li>
+          <li><button id="theme-toggle" title="다크모드 전환">🌙</button></li>
+        </ul>
+      </nav>
+    </header>
+    <main class="container">
+      <div class="tool-header">
+        <h1 data-i18n="tools_csv_json.title">CSV ↔ JSON 변환기</h1>
+        <p data-i18n="tools_csv_json.desc">CSV 데이터를 JSON 배열로, JSON을 CSV로 자유롭게 변환합니다.</p>
+      </div>
+      <div class="tool-box">
+        <div class="form-group">
+          <label for="csv-input" data-i18n="tools_csv_json.input_label">입력 데이터</label>
+          <textarea id="csv-input" rows="8" placeholder="name,age&#10;Alice,30&#10;Bob,25"></textarea>
+        </div>
+        <div class="options">
+          <label>
+            <span data-i18n="tools_csv_json.delimiter_label">구분자</span>
+            <select id="csv-delimiter">
+              <option value=",">,</option>
+              <option value="\t">Tab</option>
+              <option value=";">;</option>
+            </select>
+          </label>
+          <label>
+            <input type="checkbox" id="csv-header" checked="checked" />
+            <span data-i18n="tools_csv_json.has_header">첫 줄을 헤더로 사용</span>
+          </label>
+        </div>
+        <div class="btn-row">
+          <button class="btn" onclick="csvToJson()" data-i18n="tools_csv_json.btn_csv_to_json">CSV → JSON</button>
+          <button class="btn btn-outline" onclick="jsonToCsv()" data-i18n="tools_csv_json.btn_json_to_csv">JSON → CSV</button>
+          <button class="btn btn-outline" onclick="copyCsvResult()" data-i18n="common.copy">📋 복사</button>
+          <button class="btn btn-outline" onclick="downloadCsvResult()" data-i18n="common.download">💾 다운로드</button>
+          <button class="btn btn-outline" onclick="document.getElementById('csv-input').value='';document.getElementById('csv-output').textContent='';" data-i18n="common.clear">🗑️ 초기화</button>
+        </div>
+        <div class="form-group result-group">
+          <label for="csv-output" data-i18n="tools_csv_json.result_label">결과</label>
+          <div id="csv-output" class="result-box" aria-live="polite" data-i18n="common.result_placeholder">결과가 여기에 표시됩니다.</div>
+        </div>
+      </div>
+      <section class="usage-section">
+        <h2 data-i18n="tools_csv_json.usage_title">📖 사용 방법</h2>
+        <div class="usage-steps">
+          <div class="usage-step">
+            <div class="usage-step-badge">1</div>
+            <div class="usage-step-content">
+              <strong data-i18n="tools_csv_json.usage_step1_title">데이터 입력</strong>
+              <p data-i18n="tools_csv_json.usage_step1_desc">CSV 또는 JSON 데이터를 입력합니다.</p>
+            </div>
+          </div>
+          <div class="usage-step">
+            <div class="usage-step-badge">2</div>
+            <div class="usage-step-content">
+              <strong data-i18n="tools_csv_json.usage_step2_title">변환 방향 선택</strong>
+              <p data-i18n="tools_csv_json.usage_step2_desc">CSV → JSON 또는 JSON → CSV 버튼을 클릭합니다.</p>
+            </div>
+          </div>
+          <div class="usage-step">
+            <div class="usage-step-badge">3</div>
+            <div class="usage-step-content">
+              <strong data-i18n="tools_csv_json.usage_step3_title">결과 복사</strong>
+              <p data-i18n="tools_csv_json.usage_step3_desc">변환된 결과를 확인하고 📋 복사 버튼으로 저장합니다.</p>
+            </div>
+          </div>
+        </div>
+        <div class="usage-tip">
+          <span data-i18n="tools_csv_json.usage_tip">💡 팁: CSV의 첫 줄을 헤더로 사용하면 JSON 객체 배열로, 사용하지 않으면 2차원 배열로 변환됩니다.</span>
+        </div>
+      </section>
+    </main>
+    <footer>
+      <div class="footer-content">
+        <div class="footer-brand">
+          <a href="../index.html" class="logo">Web<span>Tools</span></a>
+          <p data-i18n="footer.brand_desc">설치 없이 바로 쓰는 온라인 개발 도구 모음</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>
+          <span data-i18n="footer.copyright">© 2026 WebTools. 온라인 도구 모음.</span>
+          | <a href="../sitemap.xml" data-i18n="footer.sitemap">Sitemap</a>
+          | <a href="https://github.com/core13773/webtools/issues" target="_blank" rel="noopener noreferrer" data-i18n="feedback.link">도구 제안 및 피드백 보내기</a>
+        </p>
+      </div>
+    </footer>
+    <script defer src="../js/i18n.js"></script>
+    <script defer src="../js/app.js"></script>
+    <script defer src="../js/tools/csv-json-converter.js"></script>
+    <script>if('serviceWorker' in navigator){ window.addEventListener('load', ()=>{ navigator.serviceWorker.register('../sw.js').catch(()=>{}); }); }</script>
+  </body>
+</html>

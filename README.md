@@ -1,7 +1,7 @@
 # WebTools - 온라인 개발 유틸리티 모음
 
-코딩 없이 시작할 수 있는 광고 수익형 웹앱 템플릿입니다.
-GitHub Pages에 무료로 호스팅하고, Google AdSense로 수익을 창출할 수 있습니다.
+설치 없이 바로 쓰는 온라인 개발 도구 모음입니다.
+GitHub Pages에 무료로 호스팅할 수 있습니다.
 
 **배포 주소:** https://core13773.github.io/webtools/
 
@@ -15,7 +15,6 @@ webtools/
 ├── css/style.css # 공통 디자인 (라이트/다크모드 지원)
 ├── js/app.js # 공통 기능 (테마, 클립보드, 토스트)
 ├── sitemap.xml # 검색엔진 사이트맵
-├── ads.txt # AdSense 인증 파일
 ├── robots.txt # 크롤러 접근 허용
 ├── tools/
 │ ├── json-formatter.html # JSON 정렬 및 유효성 검사
@@ -52,38 +51,9 @@ webtools/
 
 ---
 
-## 💰 Google AdSense 수익화 가이드
+## 🔍 SEO 및 트래픽 가이드
 
-### AdSense 가입 및 승인
-1. [google.com/adsense](https://www.google.com/adsense) 에 접속하여 가입합니다.
-2. **사이트 추가** 단계에서 `https://core13773.github.io/webtools/` 주소를 입력합니다.
-3. AdSense에서 제공하는 인증 코드를 `index.html`의 `<head>` 안에 붙여넣습니다.
- ```html
- <head>
- <!-- AdSense 인증 코드 -->
- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX"
- crossorigin="anonymous"></script>
- ...
- </head>
- ```
-4. 변경사항을 Git에 커밋하고 푸시하면 자동으로 배포됩니다.
-5. AdSense 검토 기간(보통 며칠~2주)을 기다립니다.
-
-### 광고 삽입 방법
-- 각 HTML 파일의 `<!-- Google AdSense 광고 코드를 여기에 붙여넣으세요 -->` 부분을 찾습니다.
-- AdSense 대시보드에서 광고 단위를 생성하고 코드를 복사해서 붙여넣으면 됩니다.
-- **반응형 광고**를 사용하면 모바일/데스크톱 모두 자동으로 맞춰집니다.
-
-### 광고 배치 팁
-- **상단 배너**: 페이지 상단에 배치 (가시성 높음)
-- **컨텐츠 내 광고**: 도구 사용 후 스크롤하면 보이는 위치
-- 너무 많은 광고는 사용자 경험을 해치니 페이지당 **최대 2개** 권장
-
----
-
-## 🔍 SEO 트래픽 늘리는 방법
-
-AdSense 수익은 방문자 수와 광고 클릭률에 비례합니다. 트래픽을 늘리는 방법:
+더 많은 사용자가 유용하게 쓸 수 있도록 트래픽을 늘리는 방법:
 
 1. **키워드 최적화**: 각 도구 페이지의 `<title>`과 `meta name="description"`을 검색 키워드에 맞게 수정하세요.
  - 예: `"JSON 포맷터"` → `"JSON 정렬 프로그램 - 온라인 들여쓰기 도구"`
@@ -109,4 +79,4 @@ AdSense 수익은 방문자 수와 광고 클릭률에 비례합니다. 트래�
 ## 📝 라이선스
 
 이 템플릿은 자유롭게 수정 및 상업적 이용이 가능합니다.
-AdSense 수익 창출을 위해 마음껏 활용하세요!
+자유롭게 수정 및 활용하세요!

@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <script>(function(){const t=localStorage.getItem('theme')||'light';document.documentElement.setAttribute('data-theme',t);})();</script>
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title data-i18n="tools_image_base64.title">이미지 Base64 변환 - 드래그앤드롭 인코딩 | WebTools</title>
+    <meta name="description" content="이미지 파일을 드래그앤드롭 또는 파일 선택으로 Base64 문자열로 인코딩하는 온라인 도구입니다." />
+    <meta name="robots" content="index, follow" />
+    <meta name="keywords" content="이미지 Base64 변환, image to base64, data uri, 인코딩" />
+    <link rel="canonical" href="https://core13773.github.io/webtools/tools/image-base64.html" />
+    <link rel="alternate" hreflang="ko" href="https://core13773.github.io/webtools/tools/image-base64.html" />
+    <link rel="alternate" hreflang="en" href="https://core13773.github.io/webtools/tools/image-base64.html" />
+    <link rel="alternate" hreflang="x-default" href="https://core13773.github.io/webtools/tools/image-base64.html" />
+    <meta property="og:title" content="이미지 Base64 변환 - 드래그앤드롭 인코딩 | WebTools" />
+    <meta property="og:description" content="이미지 파일을 드래그앤드롭 또는 파일 선택으로 Base64 문자열로 인코딩하는 온라인 도구입니다." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://core13773.github.io/webtools/tools/image-base64.html" />
+    <meta property="og:locale" content="ko_KR" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="이미지 Base64 변환 - 드래그앤드롭 인코딩 | WebTools" />
+    <meta name="twitter:description" content="이미지 파일을 드래그앤드롭 또는 파일 선택으로 Base64 문자열로 인코딩하는 온라인 도구입니다." />
+    <meta name="theme-color" content="#4f46e5" />
+    <link rel="manifest" href="../manifest.json" />
+    <link rel="icon" href="../favicon.svg" sizes="any" type="image/svg+xml" />
+    <meta property="og:image" content="https://core13773.github.io/webtools/og-image.svg" />
+    <meta name="twitter:image" content="https://core13773.github.io/webtools/og-image.svg" />
+    <meta name="google-site-verification" content="uHjCTERGdYuYZtOy-j8ohkxobYfkui3ZBu_Lb58yQrc" />
+    <meta name="naver-site-verification" content="cf0df7b2c056093aa8441434c518ec7930db7e00" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebApplication",
+            "@id": "https://core13773.github.io/webtools/tools/image-base64.html#webapplication",
+            "name": "이미지 Base64 변환",
+            "url": "https://core13773.github.io/webtools/tools/image-base64.html",
+            "description": "이미지 파일을 드래그앤드롭 또는 파일 선택으로 Base64 문자열로 인코딩하는 온라인 도구",
+            "applicationCategory": "DeveloperApplication",
+            "operatingSystem": "All",
+            "browserRequirements": "Modern browser with JavaScript enabled",
+            "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+            "publisher": { "@id": "https://core13773.github.io/webtools/#organization" }
+          },
+          {
+            "@type": "BreadcrumbList",
+            "@id": "https://core13773.github.io/webtools/tools/image-base64.html#breadcrumb",
+            "itemListElement": [
+              { "@type": "ListItem", "position": 1, "name": "WebTools", "item": "https://core13773.github.io/webtools/" },
+              { "@type": "ListItem", "position": 2, "name": "이미지 Base64 변환", "item": "https://core13773.github.io/webtools/tools/image-base64.html" }
+            ]
+          }
+        ]
+      }
+    </script>
+    <style>
+      :root{--bg:#f8f9fa;--surface:#fff;--text:#212529;--text-muted:#6c757d;--primary:#4f46e5;--primary-hover:#4338ca;--primary-light:rgba(79,70,229,0.1);--border:#dee2e6;--radius:12px;--radius-sm:8px;--font:'Segoe UI','Apple SD Gothic Neo','Noto Sans KR','Malgun Gothic',sans-serif}
+      [data-theme="dark"]{--bg:#0f172a;--surface:#1e293b;--text:#f1f5f9;--text-muted:#94a3b8;--primary:#818cf8;--primary-hover:#6366f1;--primary-light:rgba(129,140,248,0.1);--border:#334155}
+      *{box-sizing:border-box;margin:0;padding:0}
+      body{font-family:var(--font);background:var(--bg);color:var(--text);line-height:1.6}
+      header{background:var(--surface);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100}
+      nav{max-width:1100px;margin:0 auto;padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-between}
+      .logo{font-size:1.4rem;font-weight:800;color:var(--primary);text-decoration:none;letter-spacing:-.5px}
+      .logo span{color:var(--text)}
+      .nav-links{display:flex;gap:1.2rem;align-items:center;list-style:none}
+      .container{max-width:1100px;margin:0 auto;padding:2rem 1.5rem}
+      #img-drop-zone{border:2px dashed var(--border);border-radius:var(--radius);padding:2rem;text-align:center;color:var(--text-muted);cursor:pointer;transition:border-color .2s}
+      #img-drop-zone:hover{border-color:var(--primary)}
+    </style>
+    <link rel="preload" href="../css/style.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+    <noscript><link rel="stylesheet" href="../css/style.css" /></noscript>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-DJK0ZFRYKM"></script>
+    <script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-DJK0ZFRYKM');</script>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <a href="../index.html" class="logo">Web<span>Tools</span></a>
+        <ul class="nav-links">
+          <li><a href="../index.html" data-i18n="nav.home">홈</a></li>
+          <li class="lang-switcher">
+            <button class="lang-btn active" data-lang="ko" onclick="i18n.switchLang('ko')">KO</button>
+            <button class="lang-btn" data-lang="en" onclick="i18n.switchLang('en')">EN</button>
+          </li>
+          <li><button id="theme-toggle" title="다크모드 전환">🌙</button></li>
+        </ul>
+      </nav>
+    </header>
+    <main class="container">
+      <div class="tool-header">
+        <h1 data-i18n="tools_image_base64.title">이미지 Base64 변환</h1>
+        <p data-i18n="tools_image_base64.desc">이미지 파일을 드래그앤드롭 또는 파일 선택으로 Base64 문자열로 인코딩합니다.</p>
+      </div>
+      <div class="tool-box">
+        <input type="file" id="img-file-input" accept="image/*" style="display:none" />
+        <div id="img-drop-zone">
+          <div style="font-size:2rem;margin-bottom:.5rem">📤</div>
+          <p data-i18n="tools_image_base64.drop_label">이미지를 여기에 드래그하거나 클릭하여 선택하세요</p>
+        </div>
+        <div class="form-group" style="margin-top:1rem">
+          <label data-i18n="tools_image_base64.file_info">파일 정보</label>
+          <div id="img-info" class="result-box" style="min-height:40px"></div>
+        </div>
+        <div class="form-group">
+          <label>Base64 결과</label>
+          <textarea id="img-output" rows="6" readonly="readonly"></textarea>
+        </div>
+        <div class="btn-row">
+          <button class="btn btn-outline" onclick="copyImgBase64()" data-i18n="tools_image_base64.btn_copy">📋 Base64 복사</button>
+          <button class="btn btn-outline" onclick="downloadImgBase64()" data-i18n="tools_image_base64.btn_download">💾 TXT 다운로드</button>
+          <button class="btn btn-outline" onclick="document.getElementById('img-output').value='';document.getElementById('img-info').textContent='';" data-i18n="common.clear">🗑️ 초기화</button>
+        </div>
+      </div>
+      <section class="usage-section">
+        <h2 data-i18n="tools_image_base64.usage_title">📖 사용 방법</h2>
+        <div class="usage-steps">
+          <div class="usage-step">
+            <div class="usage-step-badge">1</div>
+            <div class="usage-step-content">
+              <strong data-i18n="tools_image_base64.usage_step1_title">이미지 업로드</strong>
+              <p data-i18n="tools_image_base64.usage_step1_desc">파일을 드래그앤드롭하거나 클릭하여 이미지 파일(JPG, PNG, GIF, SVG 등)을 선택합니다.</p>
+            </div>
+          </div>
+          <div class="usage-step">
+            <div class="usage-step-badge">2</div>
+            <div class="usage-step-content">
+              <strong data-i18n="tools_image_base64.usage_step2_title">자동 인코딩</strong>
+              <p data-i18n="tools_image_base64.usage_step2_desc">이미지가 선택되면 즉시 Base64 문자열로 변환되어 표시됩니다.</p>
+            </div>
+          </div>
+          <div class="usage-step">
+            <div class="usage-step-badge">3</div>
+            <div class="usage-step-content">
+              <strong data-i18n="tools_image_base64.usage_step3_title">복사 또는 다운로드</strong>
+              <p data-i18n="tools_image_base64.usage_step3_desc">📋 복사 버튼으로 Base64 문자열을 클립보드에 저장하거나, 💾 다운로드로 텍스트 파일로 저장합니다.</p>
+            </div>
+          </div>
+        </div>
+        <div class="usage-tip">
+          <span data-i18n="tools_image_base64.usage_tip">💡 팁: Base64 인코딩된 이미지는 CSS background-image나 HTML img 태그의 src 속성에 직접 사용할 수 있습니다. 다만 파일 크기가 약 33% 증가하니 큰 이미지는 주의하세요.</span>
+        </div>
+      </section>
+    </main>
+    <footer>
+      <div class="footer-content">
+        <div class="footer-brand">
+          <a href="../index.html" class="logo">Web<span>Tools</span></a>
+          <p data-i18n="footer.brand_desc">설치 없이 바로 쓰는 온라인 개발 도구 모음</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>
+          <span data-i18n="footer.copyright">© 2026 WebTools. 온라인 도구 모음.</span>
+          | <a href="../sitemap.xml" data-i18n="footer.sitemap">Sitemap</a>
+          | <a href="https://github.com/core13773/webtools/issues" target="_blank" rel="noopener noreferrer" data-i18n="feedback.link">도구 제안 및 피드백 보내기</a>
+        </p>
+      </div>
+    </footer>
+    <script defer src="../js/i18n.js"></script>
+    <script defer src="../js/app.js"></script>
+    <script defer src="../js/tools/image-base64.js"></script>
+    <script>if('serviceWorker' in navigator){ window.addEventListener('load', ()=>{ navigator.serviceWorker.register('../sw.js').catch(()=>{}); }); }</script>
+  </body>
+</html>

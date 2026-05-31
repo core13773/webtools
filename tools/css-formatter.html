@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <script>(function(){const t=localStorage.getItem('theme')||'light';document.documentElement.setAttribute('data-theme',t);})();</script>
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title data-i18n="tools_css.title">CSS 포맷터 - CSS 정렬 및 최소화 | WebTools</title>
+    <meta name="description" content="CSS 코드를 보기 좋게 정렬하거나 최소화하여 용량을 줄이는 온라인 도구입니다." />
+    <meta name="robots" content="index, follow" />
+    <meta name="keywords" content="CSS 포맷터, CSS formatter, minify, prettify, 정렬" />
+    <link rel="canonical" href="https://core13773.github.io/webtools/tools/css-formatter.html" />
+    <link rel="alternate" hreflang="ko" href="https://core13773.github.io/webtools/tools/css-formatter.html" />
+    <link rel="alternate" hreflang="en" href="https://core13773.github.io/webtools/tools/css-formatter.html" />
+    <link rel="alternate" hreflang="x-default" href="https://core13773.github.io/webtools/tools/css-formatter.html" />
+    <meta property="og:title" content="CSS 포맷터 - CSS 정렬 및 최소화 | WebTools" />
+    <meta property="og:description" content="CSS 코드를 보기 좋게 정렬하거나 최소화하여 용량을 줄이는 온라인 도구입니다." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://core13773.github.io/webtools/tools/css-formatter.html" />
+    <meta property="og:locale" content="ko_KR" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="CSS 포맷터 - CSS 정렬 및 최소화 | WebTools" />
+    <meta name="twitter:description" content="CSS 코드를 보기 좋게 정렬하거나 최소화하여 용량을 줄이는 온라인 도구입니다." />
+    <meta name="theme-color" content="#4f46e5" />
+    <link rel="manifest" href="../manifest.json" />
+    <link rel="icon" href="../favicon.svg" sizes="any" type="image/svg+xml" />
+    <meta property="og:image" content="https://core13773.github.io/webtools/og-image.svg" />
+    <meta name="twitter:image" content="https://core13773.github.io/webtools/og-image.svg" />
+    <meta name="google-site-verification" content="uHjCTERGdYuYZtOy-j8ohkxobYfkui3ZBu_Lb58yQrc" />
+    <meta name="naver-site-verification" content="cf0df7b2c056093aa8441434c518ec7930db7e00" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebApplication",
+            "@id": "https://core13773.github.io/webtools/tools/css-formatter.html#webapplication",
+            "name": "CSS 포맷터",
+            "url": "https://core13773.github.io/webtools/tools/css-formatter.html",
+            "description": "CSS 코드를 보기 좋게 정렬하거나 최소화하여 용량을 줄이는 온라인 도구",
+            "applicationCategory": "DeveloperApplication",
+            "operatingSystem": "All",
+            "browserRequirements": "Modern browser with JavaScript enabled",
+            "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+            "publisher": { "@id": "https://core13773.github.io/webtools/#organization" }
+          },
+          {
+            "@type": "BreadcrumbList",
+            "@id": "https://core13773.github.io/webtools/tools/css-formatter.html#breadcrumb",
+            "itemListElement": [
+              { "@type": "ListItem", "position": 1, "name": "WebTools", "item": "https://core13773.github.io/webtools/" },
+              { "@type": "ListItem", "position": 2, "name": "CSS 포맷터", "item": "https://core13773.github.io/webtools/tools/css-formatter.html" }
+            ]
+          }
+        ]
+      }
+    </script>
+    <style>
+      :root{--bg:#f8f9fa;--surface:#fff;--text:#212529;--text-muted:#6c757d;--primary:#4f46e5;--primary-hover:#4338ca;--primary-light:rgba(79,70,229,0.1);--border:#dee2e6;--radius:12px;--radius-sm:8px;--font:'Segoe UI','Apple SD Gothic Neo','Noto Sans KR','Malgun Gothic',sans-serif}
+      [data-theme="dark"]{--bg:#0f172a;--surface:#1e293b;--text:#f1f5f9;--text-muted:#94a3b8;--primary:#818cf8;--primary-hover:#6366f1;--primary-light:rgba(129,140,248,0.1);--border:#334155}
+      *{box-sizing:border-box;margin:0;padding:0}
+      body{font-family:var(--font);background:var(--bg);color:var(--text);line-height:1.6}
+      header{background:var(--surface);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100}
+      nav{max-width:1100px;margin:0 auto;padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-between}
+      .logo{font-size:1.4rem;font-weight:800;color:var(--primary);text-decoration:none;letter-spacing:-.5px}
+      .logo span{color:var(--text)}
+      .nav-links{display:flex;gap:1.2rem;align-items:center;list-style:none}
+      .container{max-width:1100px;margin:0 auto;padding:2rem 1.5rem}
+    </style>
+    <link rel="preload" href="../css/style.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+    <noscript><link rel="stylesheet" href="../css/style.css" /></noscript>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-DJK0ZFRYKM"></script>
+    <script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-DJK0ZFRYKM');</script>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <a href="../index.html" class="logo">Web<span>Tools</span></a>
+        <ul class="nav-links">
+          <li><a href="../index.html" data-i18n="nav.home">홈</a></li>
+          <li class="lang-switcher">
+            <button class="lang-btn active" data-lang="ko" onclick="i18n.switchLang('ko')">KO</button>
+            <button class="lang-btn" data-lang="en" onclick="i18n.switchLang('en')">EN</button>
+          </li>
+          <li><button id="theme-toggle" title="다크모드 전환">🌙</button></li>
+        </ul>
+      </nav>
+    </header>
+    <main class="container">
+      <div class="tool-header">
+        <h1 data-i18n="tools_css.title">CSS 포맷터 & 미니파이어</h1>
+        <p data-i18n="tools_css.desc">CSS 코드를 보기 좋게 정렬하거나 최소화하여 용량을 줄입니다.</p>
+      </div>
+      <div class="tool-box">
+        <div class="form-group">
+          <label for="css-input" data-i18n="tools_css.input_label">CSS 입력</label>
+          <textarea id="css-input" rows="8" placeholder="body{color:#333;margin:0}"></textarea>
+        </div>
+        <div class="options">
+          <label>
+            <span data-i18n="tools_css.indent_label">들여쓰기</span>
+            <select id="css-indent">
+              <option value="2">2 spaces</option>
+              <option value="4">4 spaces</option>
+              <option value="tab">Tab</option>
+            </select>
+          </label>
+        </div>
+        <div class="btn-row">
+          <button class="btn" onclick="formatCSS()" data-i18n="tools_css.btn_format">✨ 포맷팅</button>
+          <button class="btn btn-outline" onclick="minifyCSS()" data-i18n="tools_css.btn_minify">🗜️ 최소화</button>
+          <button class="btn btn-outline" onclick="copyCssResult()" data-i18n="common.copy">📋 복사</button>
+          <button class="btn btn-outline" onclick="document.getElementById('css-input').value='';document.getElementById('css-output').textContent='';" data-i18n="common.clear">🗑️ 초기화</button>
+        </div>
+        <div class="form-group result-group">
+          <label for="css-output" data-i18n="common.result">결과</label>
+          <div id="css-output" class="result-box" aria-live="polite" data-i18n="common.result_placeholder">결과가 여기에 표시됩니다.</div>
+        </div>
+      </div>
+      <section class="usage-section">
+        <h2 data-i18n="tools_css.usage_title">📖 사용 방법</h2>
+        <div class="usage-steps">
+          <div class="usage-step">
+            <div class="usage-step-badge">1</div>
+            <div class="usage-step-content">
+              <strong data-i18n="tools_css.usage_step1_title">CSS 입력</strong>
+              <p data-i18n="tools_css.usage_step1_desc">정렬하거나 최소화할 CSS 코드를 입력합니다.</p>
+            </div>
+          </div>
+          <div class="usage-step">
+            <div class="usage-step-badge">2</div>
+            <div class="usage-step-content">
+              <strong data-i18n="tools_css.usage_step2_title">포맷팅 또는 최소화</strong>
+              <p data-i18n="tools_css.usage_step2_desc">✨ 포맷팅으로 코드를 보기 좋게 정렬하거나, 🗜️ 최소화로 공백과 줄바꿈을 제거합니다.</p>
+            </div>
+          </div>
+          <div class="usage-step">
+            <div class="usage-step-badge">3</div>
+            <div class="usage-step-content">
+              <strong data-i18n="tools_css.usage_step3_title">결과 복사</strong>
+              <p data-i18n="tools_css.usage_step3_desc">📋 복사 버튼으로 변환된 CSS를 클립보드에 저장합니다.</p>
+            </div>
+          </div>
+        </div>
+        <div class="usage-tip">
+          <span data-i18n="tools_css.usage_tip">💡 팁: 최소화된 CSS는 웹사이트 로딩 속도를 빠르게 합니다. 포맷팅은 코드 리뷰나 디버깅 시 유용합니다.</span>
+        </div>
+      </section>
+    </main>
+    <footer>
+      <div class="footer-content">
+        <div class="footer-brand">
+          <a href="../index.html" class="logo">Web<span>Tools</span></a>
+          <p data-i18n="footer.brand_desc">설치 없이 바로 쓰는 온라인 개발 도구 모음</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>
+          <span data-i18n="footer.copyright">© 2026 WebTools. 온라인 도구 모음.</span>
+          | <a href="../sitemap.xml" data-i18n="footer.sitemap">Sitemap</a>
+          | <a href="https://github.com/core13773/webtools/issues" target="_blank" rel="noopener noreferrer" data-i18n="feedback.link">도구 제안 및 피드백 보내기</a>
+        </p>
+      </div>
+    </footer>
+    <script defer src="../js/i18n.js"></script>
+    <script defer src="../js/app.js"></script>
+    <script defer src="../js/tools/css-formatter.js"></script>
+    <script>if('serviceWorker' in navigator){ window.addEventListener('load', ()=>{ navigator.serviceWorker.register('../sw.js').catch(()=>{}); }); }</script>
+  </body>
+</html>

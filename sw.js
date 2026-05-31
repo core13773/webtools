@@ -9,6 +9,8 @@ const STATIC_ASSETS = [
   "/webtools/manifest.json",
   "/webtools/icons/icon-192.svg",
   "/webtools/icons/icon-512.svg",
+  "/webtools/i18n/ko.json",
+  "/webtools/i18n/en.json",
   "/webtools/tools/json-formatter.html",
   "/webtools/tools/base64.html",
   "/webtools/tools/password-generator.html",
@@ -32,7 +34,21 @@ const STATIC_ASSETS = [
   "/webtools/js/tools/qr-generator.js",
   "/webtools/js/tools/case-converter.js",
   "/webtools/js/tools/uuid-generator.js",
-  "/webtools/js/tools/hash-generator.js"
+  "/webtools/js/tools/hash-generator.js",
+  "/webtools/tools/jwt-decoder.html",
+  "/webtools/tools/regex-tester.html",
+  "/webtools/tools/csv-json-converter.html",
+  "/webtools/tools/css-formatter.html",
+  "/webtools/tools/markdown-previewer.html",
+  "/webtools/tools/px-converter.html",
+  "/webtools/tools/image-base64.html",
+  "/webtools/js/tools/jwt-decoder.js",
+  "/webtools/js/tools/regex-tester.js",
+  "/webtools/js/tools/csv-json-converter.js",
+  "/webtools/js/tools/css-formatter.js",
+  "/webtools/js/tools/markdown-previewer.js",
+  "/webtools/js/tools/px-converter.js",
+  "/webtools/js/tools/image-base64.js"
 ];
 
 // Install: cache app shell
