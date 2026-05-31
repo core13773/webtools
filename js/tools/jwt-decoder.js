@@ -11,7 +11,7 @@ function decodeJWT() {
   const sigBox = document.getElementById('jwt-signature');
   if (!input) { showToast(i18n.t('common.enter_text')); return; }
   const parts = input.split('.');
-  if (parts.length !== 3) { showToast('❌ 올바른 JWT 형식이 아닙니다'); return; }
+  if (parts.length !== 3) { showToast(i18n.t('tools_jwt.error_invalid_format')); return; }
   try {
     const header = JSON.parse(base64UrlDecode(parts[0]) || '{}');
     const payload = JSON.parse(base64UrlDecode(parts[1]) || '{}');
@@ -19,7 +19,7 @@ function decodeJWT() {
     payloadBox.textContent = JSON.stringify(payload, null, 2);
     sigBox.textContent = parts[2];
   } catch (e) {
-    showToast('❌ 디코딩 오류: ' + e.message);
+    showToast(i18n.t('tools_jwt.error_decoding_prefix') + e.message);
   }
 }
 

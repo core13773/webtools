@@ -14,12 +14,12 @@ dropZone.addEventListener('drop', e => {
 fileInput.addEventListener('change', e => { if (e.target.files.length) handleFile(e.target.files[0]); });
 
 function handleFile(file) {
-  if (!file.type.startsWith('image/')) { showToast('이미지 파일만 지원합니다'); return; }
+  if (!file.type.startsWith('image/')) { showToast(i18n.t('tools_image_base64.error_image_only')); return; }
   const reader = new FileReader();
   reader.onload = e => {
     const base64 = e.target.result;
     output.value = base64;
-    infoBox.textContent = `이름: ${file.name} | 크기: ${(file.size / 1024).toFixed(1)} KB | 타입: ${file.type}`;
+    infoBox.textContent = `${i18n.t('tools_image_base64.label_name')}: ${file.name} | ${i18n.t('tools_image_base64.label_size')}: ${(file.size / 1024).toFixed(1)} KB | ${i18n.t('tools_image_base64.label_type')}: ${file.type}`;
   };
   reader.readAsDataURL(file);
 }

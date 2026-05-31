@@ -37,7 +37,7 @@ function csvToJson() {
   if (!text) { showToast(i18n.t('common.enter_text')); return; }
   const sep = delimiter.value || ',';
   const lines = text.split(/\r?\n/).filter(l => l.trim() !== '');
-  if (lines.length === 0) { showToast('빈 데이터입니다'); return; }
+  if (lines.length === 0) { showToast(i18n.t('tools_csv_json.error_empty_data')); return; }
   const headers = hasHeader.checked ? parseCSVLine(lines[0], sep) : null;
   const start = hasHeader.checked ? 1 : 0;
   const result = [];
@@ -59,7 +59,7 @@ function jsonToCsv() {
   if (!text) { showToast(i18n.t('common.enter_text')); return; }
   let data;
   try { data = JSON.parse(text); } catch (e) { showToast(i18n.t('common.error_decoding')); return; }
-  if (!Array.isArray(data) || data.length === 0) { showToast('JSON 배열이 필요합니다'); return; }
+  if (!Array.isArray(data) || data.length === 0) { showToast(i18n.t('tools_csv_json.error_json_array_required')); return; }
   const sep = delimiter.value || ',';
   let csv = '';
   if (Array.isArray(data[0])) {

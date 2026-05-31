@@ -438,7 +438,9 @@
     "usage_step2_desc": "Click 🔓 Decode to split and display the header, payload, and signature.",
     "usage_step3_title": "Copy Result",
     "usage_step3_desc": "Use 📋 Copy buttons to save the header or payload to clipboard.",
-    "usage_tip": "💡 Tip: JWTs are commonly used for server authentication. The payload is Base64Url-encoded and readable by anyone, but only the signature can verify tampering."
+    "usage_tip": "💡 Tip: JWTs are commonly used for server authentication. The payload is Base64Url-encoded and readable by anyone, but only the signature can verify tampering.",
+    "error_invalid_format": "❌ Invalid JWT format",
+    "error_decoding_prefix": "❌ Decoding error: "
   },
   "tools_regex": {
     "title": "Regex Tester",
@@ -458,6 +460,8 @@
     "usage_step2_desc": "Type the string to apply the pattern to. Matches are highlighted in real time.",
     "usage_step3_title": "Replace (Optional)",
     "usage_step3_desc": "Enter a replacement string and click 🔄 Replace to see the substituted result.",
+    "error_enter_pattern": "Please enter a regex pattern",
+    "no_matches": "No matches",
     "usage_tip": "💡 Tip: g flag = global search, i = case-insensitive, m = multiline mode."
   },
   "tools_csv_json": {
@@ -476,6 +480,8 @@
     "usage_step2_desc": "Click CSV → JSON or JSON → CSV to convert.",
     "usage_step3_title": "Copy Result",
     "usage_step3_desc": "Verify the converted result and click 📋 Copy to save.",
+    "error_empty_data": "Data is empty",
+    "error_json_array_required": "JSON array required",
     "usage_tip": "💡 Tip: When using the first row as header, CSV converts to an array of objects. Otherwise it converts to a 2D array."
   },
   "tools_css": {
@@ -540,6 +546,10 @@
     "usage_step2_desc": "The image is instantly converted to a Base64 string upon selection.",
     "usage_step3_title": "Copy or Download",
     "usage_step3_desc": "Use 📋 Copy to save the Base64 string to clipboard, or 💾 Download to save as a text file.",
+    "error_image_only": "Only image files are supported",
+    "label_name": "Name",
+    "label_size": "Size",
+    "label_type": "Type",
     "usage_tip": "💡 Tip: Base64-encoded images can be used directly in CSS background-image or HTML img src. Note that file size increases by about 33%."
   },
   "p404": {

@@ -64,7 +64,7 @@
       '<p>' +
       '<span data-i18n="footer.copyright">' + t('footer.copyright', '© 2026 WebTools. 온라인 도구 모음.') + '</span>' +
       ' | <a href="' + p + 'sitemap.xml" data-i18n="footer.sitemap">' + t('footer.sitemap', 'Sitemap') + '</a>' +
-      ' | <a href="https://github.com/core13773/webtools/issues" target="_blank" rel="noopener noreferrer" data-i18n="feedback.link">' + t('feedback.link', '도구 제안 및 피드백 볌내기') + '</a>' +
+      ' | <a href="https://github.com/core13773/webtools/issues" target="_blank" rel="noopener noreferrer" data-i18n="feedback.link">' + t('feedback.link', '도구 제안 및 피드백 보내기') + '</a>' +
       '</p>' +
       '</div>'
     );

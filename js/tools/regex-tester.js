@@ -36,7 +36,7 @@ function testRegex() {
     });
     html += escapeHtml(text.slice(lastIndex));
     resultBox.innerHTML = html || escapeHtml(text);
-    matchesBox.textContent = matches.map((m, i) => `Match ${i + 1}: "${m[0]}" (index: ${m.index})`).join('\n') || 'No matches';
+    matchesBox.textContent = matches.map((m, i) => `Match ${i + 1}: "${m[0]}" (index: ${m.index})`).join('\n') || i18n.t('tools_regex.no_matches');
   } catch (e) {
     resultBox.textContent = '❌ ' + e.message;
     matchesBox.textContent = '';
@@ -48,7 +48,7 @@ function replaceRegex() {
   const flags = flagsInput.value;
   const text = testInput.value;
   const replacement = replaceInput.value;
-  if (!pattern) { showToast('정규식 패턴을 입력하세요'); return; }
+  if (!pattern) { showToast(i18n.t('tools_regex.error_enter_pattern')); return; }
   try {
     const re = new RegExp(pattern, flags);
     resultBox.innerHTML = escapeHtml(text.replace(re, replacement));

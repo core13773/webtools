@@ -11,11 +11,20 @@ GitHub Pages에 무료로 호스팅할 수 있습니다.
 
 ```
 webtools/
-├── index.html # 메인 페이지 (12개 도구 목록 + 검색)
+├── index.html # 메인 페이지 (19개 도구 목록 + 검색)
+├── 404.html # 404 오류 페이지
 ├── css/style.css # 공통 디자인 (라이트/다크모드 지원)
+├── css/tools.css # 도구별 공통 스타일
 ├── js/app.js # 공통 기능 (테마, 클립보드, 토스트)
+├── js/i18n.js # 다국어(i18n) 엔진
+├── js/layout.js # 공통 레이아웃 주입
+├── js/tools/  도구별 JavaScript 파일
+├── i18n/ko.json # 한국어 번역
+├── i18n/en.json # 영어 번역
 ├── sitemap.xml # 검색엔진 사이트맵
 ├── robots.txt # 크롤러 접근 허용
+├── manifest.json # PWA 매니페스트
+├── sw.js # 서비스 워커 (오프라인 지원)
 ├── tools/
 │ ├── json-formatter.html # JSON 정렬 및 유효성 검사
 │ ├── base64.html # Base64 인코딩/디코딩
@@ -23,12 +32,19 @@ webtools/
 │ ├── password-generator.html # 강력한 랜덤 비밀번호 생성
 │ ├── text-counter.html # 글자수/단어수/바이트 계산
 │ ├── color-picker.html # HEX/RGB/HSL 색상 변환
-│ ├── timestamp-converter.html# Unix 타임스탬프 ↔ 날짜 변환
+│ ├── timestamp-converter.html # Unix 타임스탬프 ↔ 날짜 변환
 │ ├── html-encoder.html # HTML Entity 인코딩/디코딩
 │ ├── qr-generator.html # QR 코드 이미지 생성
 │ ├── case-converter.html # 대소문자/케이스 변환
 │ ├── uuid-generator.html # UUID v4 생성
-│ └── hash-generator.html # SHA-256/SHA-1/MD5 해시 생성
+│ ├── hash-generator.html # SHA-256/SHA-1/MD5 해시 생성
+│ ├── jwt-decoder.html # JWT 토큰 디코딩
+│ ├── regex-tester.html # 정규식 테스트
+│ ├── csv-json-converter.html # CSV ↔ JSON 변환
+│ ├── css-formatter.html # CSS 포맷팅/최소화
+│ ├── markdown-previewer.html # Markdown 미리보기
+│ ├── px-converter.html # PX ↔ REM/EM 변환
+│ └── image-base64.html # 이미지 Base64 변환
 └── README.md # 이 파일
 ```
 

@@ -414,7 +414,7 @@
   },
   "feedback": {
     "text": "💬 필요한 도구가 있으신가요?",
-    "link": "도구 제안 및 피드백 볌내기"
+    "link": "도구 제안 및 피드백 보내기"
   },
   "pwa": {
     "install_text": "WebTools를 홈 화면에 추가하고 언제 어디서나 빠르게 사용하세요!",
@@ -438,7 +438,9 @@
     "usage_step2_desc": "🔓 디코딩 버튼을 클릭하면 헤더, 페이로드, 서명이 분리되어 표시됩니다.",
     "usage_step3_title": "결과 복사",
     "usage_step3_desc": "📋 복사 버튼으로 헤더나 페이로드를 클립보드에 저장합니다.",
-    "usage_tip": "💡 팁: JWT는 서버 인증에 많이 사용됩니다. 페이로드는 Base64Url로 인코딩되어 있어 누구나 읽을 수 있으나, 서명을 통해서만 위변조 여부를 확인할 수 있습니다."
+    "usage_tip": "💡 팁: JWT는 서버 인증에 많이 사용됩니다. 페이로드는 Base64Url로 인코딩되어 있어 누구나 읽을 수 있으나, 서명을 통해서만 위변조 여부를 확인할 수 있습니다.",
+    "error_invalid_format": "❌ 올바른 JWT 형식이 아닙니다",
+    "error_decoding_prefix": "❌ 디코딩 오류: "
   },
   "tools_regex": {
     "title": "정규식 테스트기",
@@ -458,6 +460,8 @@
     "usage_step2_desc": "패턴을 적용할 문자열을 입력합니다. 실시간으로 매칭 결과가 강조 표시됩니다.",
     "usage_step3_title": "치환 (선택)",
     "usage_step3_desc": "치환 문자열을 입력하고 🔄 치환 버튼을 클릭하면 패턴이 치환된 결과를 확인할 수 있습니다.",
+    "error_enter_pattern": "정규식 패턴을 입력하세요",
+    "no_matches": "일치하는 항목 없음",
     "usage_tip": "💡 팁: g 플래그는 전역 검색, i는 대소문자 무시, m은 멀티라인 모드를 의미합니다."
   },
   "tools_csv_json": {
@@ -476,6 +480,8 @@
     "usage_step2_desc": "CSV → JSON 또는 JSON → CSV 버튼을 클릭합니다.",
     "usage_step3_title": "결과 복사",
     "usage_step3_desc": "변환된 결과를 확인하고 📋 복사 버튼으로 저장합니다.",
+    "error_empty_data": "빈 데이터입니다",
+    "error_json_array_required": "JSON 배열이 필요합니다",
     "usage_tip": "💡 팁: CSV의 첫 줄을 헤더로 사용하면 JSON 객체 배열로, 사용하지 않으면 2차원 배열로 변환됩니다."
   },
   "tools_css": {
@@ -540,6 +546,10 @@
     "usage_step2_desc": "이미지가 선택되면 즉시 Base64 문자열로 변환되어 표시됩니다.",
     "usage_step3_title": "복사 또는 다운로드",
     "usage_step3_desc": "📋 복사 버튼으로 Base64 문자열을 클립보드에 저장하거나, 💾 다운로드로 텍스트 파일로 저장합니다.",
+    "error_image_only": "이미지 파일만 지원합니다",
+    "label_name": "이름",
+    "label_size": "크기",
+    "label_type": "타입",
     "usage_tip": "💡 팁: Base64 인코딩된 이미지는 CSS background-image나 HTML img 태그의 src 속성에 직접 사용할 수 있습니다. 다만 파일 크기가 약 33% 증가하니 큰 이미지는 주의하세요."
   },
   "p404": {

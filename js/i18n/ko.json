@@ -90,6 +90,41 @@
       "title": "텍스트 해시 생성기",
       "desc": "MD5, SHA-1, SHA-256 해시 값을 실시간으로 생성합니다.",
       "tag": "보안"
+    },
+    "jwt_decoder": {
+      "title": "JWT 디코더",
+      "desc": "JWT 토큰의 헤더, 페이로드, 서명을 디코딩하고 claims를 확인합니다.",
+      "tag": "보안"
+    },
+    "regex_tester": {
+      "title": "정규식 테스트기",
+      "desc": "정규식 패턴을 실시간으로 테스트하고 매칭 결과와 치환을 확인합니다.",
+      "tag": "개발"
+    },
+    "csv_json_converter": {
+      "title": "CSV ↔ JSON 변환기",
+      "desc": "CSV 데이터를 JSON으로, JSON을 CSV로 자유롭게 변환합니다.",
+      "tag": "개발"
+    },
+    "css_formatter": {
+      "title": "CSS 포맷터",
+      "desc": "CSS 코드를 보기 좋게 정렬하거나 최소화하여 용량을 줄입니다.",
+      "tag": "디자인"
+    },
+    "markdown_previewer": {
+      "title": "Markdown 프리뷰어",
+      "desc": "Markdown 문법을 실시간으로 HTML로 렌더링하고 미리보기합니다.",
+      "tag": "문서"
+    },
+    "px_converter": {
+      "title": "PX ↔ REM/EM 변환기",
+      "desc": "px 값을 rem/em으로 변환하고, 기준 폰트 크기를 조절합니다.",
+      "tag": "디자인"
+    },
+    "image_base64": {
+      "title": "이미지 Base64 변환",
+      "desc": "이미지 파일을 드래그앤드롭으로 Base64 문자열로 인코딩합니다.",
+      "tag": "유틸리티"
     }
   },
   "info_cards": {
@@ -135,7 +170,14 @@
       "uuid_generator": "UUID",
       "text_counter": "글자수",
       "color": "색상",
-      "timestamp": "타임스탬프"
+      "timestamp": "타임스탬프",
+      "jwt_decoder": "JWT 디코더",
+      "regex_tester": "정규식",
+      "csv_json_converter": "CSV↔JSON",
+      "css_formatter": "CSS 포맷터",
+      "markdown_previewer": "Markdown",
+      "px_converter": "PX 변환",
+      "image_base64": "이미지 Base64"
     }
   },
   "common": {
@@ -367,7 +409,7 @@
     "usage_step3_desc": "스마트폰 카메라로 QR 코드를 스캔하여 내용을 확인하거나, 이미지 다운로드 링크로 PNG 파일을 저장합니다.",
     "usage_tip": "💡 팁: URL이 긴 경우에도 QR 코드는 안정적으로 인식됩니다. 생성된 QR 코드는 영구적으로 유효합니다.",
     "download_link": "이미지 다운로드",
-    "api_notice": "⚠️ qrserver.com API를 통해 생성됩니다."
+    "api_notice": "🔒 QR 코드는 브라우저 내에서 직접 생성되며 외부 서버로 데이터가 전송되지 않습니다."
   },
   "tools_case": {
     "title": "텍스트 케이스 변환",
@@ -420,5 +462,126 @@
     "usage_step3_title": "결과 복사",
     "usage_step3_desc": "필요한 해시 값의 📋 복사 버튼을 클릭하여 클립보드에 저장합니다. SHA-256이 가장 안전합니다.",
     "usage_tip": "💡 팁: 해시 함수는 비밀번호 저장, 파일 무결성 검증, 디지털 서명 등에 사용됩니다. SHA-256은 현재 업계 표준입니다."
+  },
+  "tools_jwt": {
+    "title": "JWT 디코더",
+    "desc": "JWT(JSON Web Token)의 헤더, 페이로드, 서명을 디코딩하고 claims를 확인합니다.",
+    "input_label": "JWT 토큰 입력",
+    "btn_decode": "🔓 디코딩",
+    "btn_copy_header": "📋 헤더 복사",
+    "btn_copy_payload": "📋 페이로드 복사",
+    "header_label": "헤더 (Header)",
+    "payload_label": "페이로드 (Payload)",
+    "signature_label": "서명 (Signature)",
+    "usage_title": "📖 사용 방법",
+    "usage_step1_title": "JWT 입력",
+    "usage_step1_desc": "디코딩할 JWT 토큰을 입력합니다. 예: eyJhbGciOiJIUzI1NiIs...",
+    "usage_step2_title": "디코딩 확인",
+    "usage_step2_desc": "🔓 디코딩 버튼을 클릭하면 헤더, 페이로드, 서명이 분리되어 표시됩니다.",
+    "usage_step3_title": "결과 복사",
+    "usage_step3_desc": "📋 복사 버튼으로 헤더나 페이로드를 클립보드에 저장합니다.",
+    "usage_tip": "💡 팁: JWT는 서버 인증에 많이 사용됩니다. 페이로드는 Base64Url로 인코딩되어 있어 누구나 읽을 수 있으나, 서명을 통해서만 위변조 여부를 확인할 수 있습니다."
+  },
+  "tools_regex": {
+    "title": "정규식 테스트기",
+    "desc": "정규식 패턴을 실시간으로 테스트하고 매칭 결과를 확인합니다.",
+    "pattern_label": "정규식 패턴",
+    "flags_label": "플래그",
+    "test_label": "테스트 문자열",
+    "btn_test": "🔍 테스트",
+    "btn_replace": "🔄 치환",
+    "replace_label": "치환 문자열",
+    "result_label": "결과",
+    "matches_label": "매칭 결과",
+    "usage_title": "📖 사용 방법",
+    "usage_step1_title": "패턴 입력",
+    "usage_step1_desc": "테스트할 정규식 패턴을 입력합니다. 예: \\d+, [a-z]+",
+    "usage_step2_title": "테스트 문자열 입력",
+    "usage_step2_desc": "패턴을 적용할 문자열을 입력합니다. 실시간으로 매칭 결과가 강조 표시됩니다.",
+    "usage_step3_title": "치환 (선택)",
+    "usage_step3_desc": "치환 문자열을 입력하고 🔄 치환 버튼을 클릭하면 패턴이 치환된 결과를 확인할 수 있습니다.",
+    "usage_tip": "💡 팁: g 플래그는 전역 검색, i는 대소문자 무시, m은 멀티라인 모드를 의미합니다."
+  },
+  "tools_csv_json": {
+    "title": "CSV ↔ JSON 변환기",
+    "desc": "CSV 데이터를 JSON 배열로, JSON을 CSV로 자유롭게 변환합니다.",
+    "input_label": "입력 데이터",
+    "btn_csv_to_json": "CSV → JSON",
+    "btn_json_to_csv": "JSON → CSV",
+    "delimiter_label": "구분자",
+    "has_header": "첫 줄을 헤더로 사용",
+    "result_label": "결과",
+    "usage_title": "📖 사용 방법",
+    "usage_step1_title": "데이터 입력",
+    "usage_step1_desc": "CSV 또는 JSON 데이터를 입력합니다.",
+    "usage_step2_title": "변환 방향 선택",
+    "usage_step2_desc": "CSV → JSON 또는 JSON → CSV 버튼을 클릭합니다.",
+    "usage_step3_title": "결과 복사",
+    "usage_step3_desc": "변환된 결과를 확인하고 📋 복사 버튼으로 저장합니다.",
+    "usage_tip": "💡 팁: CSV의 첫 줄을 헤더로 사용하면 JSON 객체 배열로, 사용하지 않으면 2차원 배열로 변환됩니다."
+  },
+  "tools_css": {
+    "title": "CSS 포맷터 & 미니파이어",
+    "desc": "CSS 코드를 보기 좋게 정렬하거나 최소화하여 용량을 줄입니다.",
+    "input_label": "CSS 입력",
+    "btn_format": "✨ 포맷팅",
+    "btn_minify": "🗜️ 최소화",
+    "indent_label": "들여쓰기",
+    "usage_title": "📖 사용 방법",
+    "usage_step1_title": "CSS 입력",
+    "usage_step1_desc": "정렬하거나 최소화할 CSS 코드를 입력합니다.",
+    "usage_step2_title": "포맷팅 또는 최소화",
+    "usage_step2_desc": "✨ 포맷팅으로 코드를 보기 좋게 정렬하거나, 🗜️ 최소화로 공백과 줄바꿈을 제거합니다.",
+    "usage_step3_title": "결과 복사",
+    "usage_step3_desc": "📋 복사 버튼으로 변환된 CSS를 클립보드에 저장합니다.",
+    "usage_tip": "💡 팁: 최소화된 CSS는 웹사이트 로딩 속도를 빠르게 합니다. 포맷팅은 코드 리뷰나 디버깅 시 유용합니다."
+  },
+  "tools_markdown": {
+    "title": "Markdown 프리뷰어",
+    "desc": "Markdown 문법을 실시간으로 HTML로 렌더링하고 미리보기합니다.",
+    "input_label": "Markdown 입력",
+    "preview_label": "미리보기",
+    "btn_copy_html": "📋 HTML 복사",
+    "btn_download_md": "💾 Markdown 다운로드",
+    "usage_title": "📖 사용 방법",
+    "usage_step1_title": "Markdown 입력",
+    "usage_step1_desc": "Markdown 문법으로 작성된 텍스트를 입력합니다. # 제목, **굵게**, `코드` 등을 지원합니다.",
+    "usage_step2_title": "실시간 미리보기",
+    "usage_step2_desc": "입력과 동시에 HTML 렌더링 결과가 실시간으로 표시됩니다.",
+    "usage_step3_title": "HTML 복사 또는 다운로드",
+    "usage_step3_desc": "📋 HTML 복사 버튼으로 렌더링된 HTML을 클립보드에 저장하거나, 💾 다운로드로 Markdown 파일을 저장합니다.",
+    "usage_tip": "💡 팁: 이 도구는 GitHub Flavored Markdown의 기본 문법을 지원합니다. 테이블, 목록, 코드 블록 등 다양한 요소를 미리 확인하세요."
+  },
+  "tools_px": {
+    "title": "PX ↔ REM/EM 변환기",
+    "desc": "px 값을 rem/em으로 변환하고, 기준 폰트 크기를 자유롭게 조절합니다.",
+    "px_label": "PX (픽셀)",
+    "rem_label": "REM",
+    "em_label": "EM",
+    "base_label": "기준 폰트 크기 (px)",
+    "usage_title": "📖 사용 방법",
+    "usage_step1_title": "기준 폰트 크기 설정",
+    "usage_step1_desc": "기본적으로 16px이 설정되어 있습니다. 디자인 시스템에 맞게 변경하세요.",
+    "usage_step2_title": "값 입력",
+    "usage_step2_desc": "PX, REM, EM 중 하나를 입력하면 나머지 두 단위가 자동으로 계산됩니다.",
+    "usage_step3_title": "결과 활용",
+    "usage_step3_desc": "변환된 값을 복사하여 CSS나 디자인 도구에 바로 적용하세요.",
+    "usage_tip": "💡 팁: 1rem은 루트 요소(html)의 폰트 크기입니다. 반응형 웹 디자인에서는 rem을 사용하는 것이 접근성과 유지보수에 유리합니다."
+  },
+  "tools_image_base64": {
+    "title": "이미지 Base64 변환",
+    "desc": "이미지 파일을 드래그앤드롭 또는 파일 선택으로 Base64 문자열로 인코딩합니다.",
+    "drop_label": "이미지를 여기에 드래그하거나 클릭하여 선택하세요",
+    "btn_copy": "📋 Base64 복사",
+    "btn_download": "💾 TXT 다운로드",
+    "file_info": "파일 정보",
+    "usage_title": "📖 사용 방법",
+    "usage_step1_title": "이미지 업로드",
+    "usage_step1_desc": "파일을 드래그앤드롭하거나 클릭하여 이미지 파일(JPG, PNG, GIF, SVG 등)을 선택합니다.",
+    "usage_step2_title": "자동 인코딩",
+    "usage_step2_desc": "이미지가 선택되면 즉시 Base64 문자열로 변환되어 표시됩니다.",
+    "usage_step3_title": "복사 또는 다운로드",
+    "usage_step3_desc": "📋 복사 버튼으로 Base64 문자열을 클립보드에 저장하거나, 💾 다운로드로 텍스트 파일로 저장합니다.",
+    "usage_tip": "💡 팁: Base64 인코딩된 이미지는 CSS background-image나 HTML img 태그의 src 속성에 직접 사용할 수 있습니다. 다만 파일 크기가 약 33% 증가하니 큰 이미지는 주의하세요."
   }
 }

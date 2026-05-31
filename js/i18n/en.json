@@ -90,6 +90,41 @@
       "title": "Hash Generator",
       "desc": "Generate MD5, SHA-1, and SHA-256 hashes in real time.",
       "tag": "Security"
+    },
+    "jwt_decoder": {
+      "title": "JWT Decoder",
+      "desc": "Decode JWT token header, payload, and signature to inspect claims.",
+      "tag": "Security"
+    },
+    "regex_tester": {
+      "title": "Regex Tester",
+      "desc": "Test regex patterns in real time with match highlighting and replacement.",
+      "tag": "Dev"
+    },
+    "csv_json_converter": {
+      "title": "CSV ↔ JSON Converter",
+      "desc": "Convert CSV data to JSON array and JSON to CSV freely.",
+      "tag": "Dev"
+    },
+    "css_formatter": {
+      "title": "CSS Formatter",
+      "desc": "Prettify CSS code or minify it to reduce file size.",
+      "tag": "Design"
+    },
+    "markdown_previewer": {
+      "title": "Markdown Previewer",
+      "desc": "Render Markdown syntax to HTML in real time with live preview.",
+      "tag": "Writing"
+    },
+    "px_converter": {
+      "title": "PX ↔ REM/EM Converter",
+      "desc": "Convert px to rem/em with adjustable base font size.",
+      "tag": "Design"
+    },
+    "image_base64": {
+      "title": "Image to Base64",
+      "desc": "Encode image files to Base64 string via drag & drop or file picker.",
+      "tag": "Utility"
     }
   },
   "info_cards": {
@@ -135,7 +170,14 @@
       "uuid_generator": "UUID",
       "text_counter": "Text Count",
       "color": "Color",
-      "timestamp": "Timestamp"
+      "timestamp": "Timestamp",
+      "jwt_decoder": "JWT Decoder",
+      "regex_tester": "Regex",
+      "csv_json_converter": "CSV↔JSON",
+      "css_formatter": "CSS Formatter",
+      "markdown_previewer": "Markdown",
+      "px_converter": "PX Converter",
+      "image_base64": "Image Base64"
     }
   },
   "common": {
@@ -367,7 +409,7 @@
     "usage_step3_desc": "Use your phone camera to scan the QR code, or click the download link to save the PNG image.",
     "usage_tip": "💡 Tip: QR codes work reliably even with long URLs. Generated codes are permanent and never expire.",
     "download_link": "Download Image",
-    "api_notice": "⚠️ Generated via qrserver.com API."
+    "api_notice": "🔒 QR codes are generated directly in your browser — no data is sent to external servers."
   },
   "tools_case": {
     "title": "Text Case Converter",
@@ -420,5 +462,126 @@
     "usage_step3_title": "Copy Results",
     "usage_step3_desc": "Click the 📋 Copy button for any hash algorithm to save it to your clipboard. SHA-256 is the most secure.",
     "usage_tip": "💡 Tip: Hash functions are used for password storage (with salt), file integrity verification, and digital signatures. SHA-256 is the current industry standard."
+  },
+  "tools_jwt": {
+    "title": "JWT Decoder",
+    "desc": "Decode JWT (JSON Web Token) header, payload, and signature to inspect claims.",
+    "input_label": "Enter JWT Token",
+    "btn_decode": "🔓 Decode",
+    "btn_copy_header": "📋 Copy Header",
+    "btn_copy_payload": "📋 Copy Payload",
+    "header_label": "Header",
+    "payload_label": "Payload",
+    "signature_label": "Signature",
+    "usage_title": "📖 How to Use",
+    "usage_step1_title": "Enter JWT",
+    "usage_step1_desc": "Paste the JWT token you want to decode. e.g. eyJhbGciOiJIUzI1NiIs...",
+    "usage_step2_title": "Decode",
+    "usage_step2_desc": "Click 🔓 Decode to split and display the header, payload, and signature.",
+    "usage_step3_title": "Copy Result",
+    "usage_step3_desc": "Use 📋 Copy buttons to save the header or payload to clipboard.",
+    "usage_tip": "💡 Tip: JWTs are commonly used for server authentication. The payload is Base64Url-encoded and readable by anyone, but only the signature can verify tampering."
+  },
+  "tools_regex": {
+    "title": "Regex Tester",
+    "desc": "Test regex patterns in real time with match highlighting and replacement.",
+    "pattern_label": "Regex Pattern",
+    "flags_label": "Flags",
+    "test_label": "Test String",
+    "btn_test": "🔍 Test",
+    "btn_replace": "🔄 Replace",
+    "replace_label": "Replacement String",
+    "result_label": "Result",
+    "matches_label": "Match Results",
+    "usage_title": "📖 How to Use",
+    "usage_step1_title": "Enter Pattern",
+    "usage_step1_desc": "Type the regex pattern to test. e.g. \\d+, [a-z]+",
+    "usage_step2_title": "Enter Test String",
+    "usage_step2_desc": "Type the string to apply the pattern to. Matches are highlighted in real time.",
+    "usage_step3_title": "Replace (Optional)",
+    "usage_step3_desc": "Enter a replacement string and click 🔄 Replace to see the substituted result.",
+    "usage_tip": "💡 Tip: g flag = global search, i = case-insensitive, m = multiline mode."
+  },
+  "tools_csv_json": {
+    "title": "CSV ↔ JSON Converter",
+    "desc": "Convert CSV data to JSON array and JSON to CSV freely.",
+    "input_label": "Input Data",
+    "btn_csv_to_json": "CSV → JSON",
+    "btn_json_to_csv": "JSON → CSV",
+    "delimiter_label": "Delimiter",
+    "has_header": "Use first row as header",
+    "result_label": "Result",
+    "usage_title": "📖 How to Use",
+    "usage_step1_title": "Enter Data",
+    "usage_step1_desc": "Paste CSV or JSON data into the input area.",
+    "usage_step2_title": "Choose Direction",
+    "usage_step2_desc": "Click CSV → JSON or JSON → CSV to convert.",
+    "usage_step3_title": "Copy Result",
+    "usage_step3_desc": "Verify the converted result and click 📋 Copy to save.",
+    "usage_tip": "💡 Tip: When using the first row as header, CSV converts to an array of objects. Otherwise it converts to a 2D array."
+  },
+  "tools_css": {
+    "title": "CSS Formatter & Minifier",
+    "desc": "Prettify CSS code or minify it to reduce file size.",
+    "input_label": "Input CSS",
+    "btn_format": "✨ Format",
+    "btn_minify": "🗜️ Minify",
+    "indent_label": "Indentation",
+    "usage_title": "📖 How to Use",
+    "usage_step1_title": "Enter CSS",
+    "usage_step1_desc": "Paste the CSS code you want to format or minify.",
+    "usage_step2_title": "Format or Minify",
+    "usage_step2_desc": "Click ✨ Format to prettify the code, or 🗜️ Minify to remove whitespace and newlines.",
+    "usage_step3_title": "Copy Result",
+    "usage_step3_desc": "Use 📋 Copy to save the transformed CSS to clipboard.",
+    "usage_tip": "💡 Tip: Minified CSS improves website loading speed. Formatting is useful for code review and debugging."
+  },
+  "tools_markdown": {
+    "title": "Markdown Previewer",
+    "desc": "Render Markdown syntax to HTML in real time with live preview.",
+    "input_label": "Markdown Input",
+    "preview_label": "Preview",
+    "btn_copy_html": "📋 Copy HTML",
+    "btn_download_md": "💾 Download Markdown",
+    "usage_title": "📖 How to Use",
+    "usage_step1_title": "Enter Markdown",
+    "usage_step1_desc": "Type Markdown text. Supports # headings, **bold**, `code`, and more.",
+    "usage_step2_title": "Live Preview",
+    "usage_step2_desc": "The rendered HTML is displayed in real time as you type.",
+    "usage_step3_title": "Copy HTML or Download",
+    "usage_step3_desc": "Use 📋 Copy HTML to save the rendered HTML, or 💾 Download to save the Markdown file.",
+    "usage_tip": "💡 Tip: This tool supports basic GitHub Flavored Markdown syntax. Preview tables, lists, code blocks, and more."
+  },
+  "tools_px": {
+    "title": "PX ↔ REM/EM Converter",
+    "desc": "Convert px to rem/em with adjustable base font size.",
+    "px_label": "PX (Pixels)",
+    "rem_label": "REM",
+    "em_label": "EM",
+    "base_label": "Base Font Size (px)",
+    "usage_title": "📖 How to Use",
+    "usage_step1_title": "Set Base Font Size",
+    "usage_step1_desc": "Default is 16px. Adjust it to match your design system.",
+    "usage_step2_title": "Enter a Value",
+    "usage_step2_desc": "Enter a value in PX, REM, or EM and the other two units are calculated automatically.",
+    "usage_step3_title": "Apply Result",
+    "usage_step3_desc": "Copy the converted values and use them directly in your CSS or design tool.",
+    "usage_tip": "💡 Tip: 1rem equals the root element (html) font size. Using rem is recommended for responsive and accessible web design."
+  },
+  "tools_image_base64": {
+    "title": "Image to Base64",
+    "desc": "Encode image files to Base64 string via drag & drop or file picker.",
+    "drop_label": "Drag & drop an image here or click to select",
+    "btn_copy": "📋 Copy Base64",
+    "btn_download": "💾 Download TXT",
+    "file_info": "File Info",
+    "usage_title": "📖 How to Use",
+    "usage_step1_title": "Upload Image",
+    "usage_step1_desc": "Drag & drop or click to select an image file (JPG, PNG, GIF, SVG, etc.).",
+    "usage_step2_title": "Auto Encode",
+    "usage_step2_desc": "The image is instantly converted to a Base64 string upon selection.",
+    "usage_step3_title": "Copy or Download",
+    "usage_step3_desc": "Use 📋 Copy to save the Base64 string to clipboard, or 💾 Download to save as a text file.",
+    "usage_tip": "💡 Tip: Base64-encoded images can be used directly in CSS background-image or HTML img src. Note that file size increases by about 33%."
   }
 }
