@@ -257,7 +257,8 @@
   },
   "feedback": {
     "text": "💬 Need a tool?",
-    "link": "Suggest a tool or send feedback"
+    "link": "Suggest a tool or send feedback",
+    "email": "✉️ core13773@gmail.com"
   },
   "pwa": {
     "install_text": "Add WebTools to your home screen for quick access anywhere!",
