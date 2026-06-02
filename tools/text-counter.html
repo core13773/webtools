@@ -37,16 +37,6 @@
       hreflang="ko"
       href="https://core13773.github.io/webtools/tools/text-counter.html"
     />
-    <link
-      rel="alternate"
-      hreflang="en"
-      href="https://core13773.github.io/webtools/tools/text-counter.html"
-    />
-    <link
-      rel="alternate"
-      hreflang="x-default"
-      href="https://core13773.github.io/webtools/tools/text-counter.html"
-    />
     <meta
       property="og:title"
       content="글자수 세기 - 온라인 문자수, 단어수, 바이트 계산 | WebTools"
@@ -74,6 +64,7 @@
     <meta name="theme-color" content="#4f46e5" />
     <link rel="manifest" href="../manifest.json" />
     <link rel="icon" href="../favicon.svg" sizes="any" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="../icons/icon-192.svg" />
     <meta
       property="og:image"
       content="https://core13773.github.io/webtools/og-image.png"
@@ -244,7 +235,7 @@
             </div>
           </div>
           <div class="stat-card">
-            <div class="stat-value" id="stat-chars-no-space">0</div>
+            <div class="stat-value" id="stat-chars-no-space" aria-live="polite">0</div>
             <div
               class="stat-label"
               data-i18n="tools_text_counter.stat_chars_no_space"
@@ -253,25 +244,25 @@
             </div>
           </div>
           <div class="stat-card">
-            <div class="stat-value" id="stat-words">0</div>
+            <div class="stat-value" id="stat-words" aria-live="polite">0</div>
             <div class="stat-label" data-i18n="tools_text_counter.stat_words">
               단어수
             </div>
           </div>
           <div class="stat-card">
-            <div class="stat-value" id="stat-lines">0</div>
+            <div class="stat-value" id="stat-lines" aria-live="polite">0</div>
             <div class="stat-label" data-i18n="tools_text_counter.stat_lines">
               줄 수
             </div>
           </div>
           <div class="stat-card">
-            <div class="stat-value" id="stat-bytes">0</div>
+            <div class="stat-value" id="stat-bytes" aria-live="polite">0</div>
             <div class="stat-label" data-i18n="tools_text_counter.stat_bytes">
               바이트
             </div>
           </div>
           <div class="stat-card">
-            <div class="stat-value" id="stat-sentences">0</div>
+            <div class="stat-value" id="stat-sentences" aria-live="polite">0</div>
             <div
               class="stat-label"
               data-i18n="tools_text_counter.stat_sentences"

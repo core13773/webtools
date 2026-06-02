@@ -7,7 +7,7 @@
   </defs>
   <rect width="1200" height="630" fill="url(#bg)"/>
   <rect x="40" y="40" width="1120" height="550" rx="20" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.15)" stroke-width="2"/>
-  <text x="600" y="240" font-family="system-ui,-apple-system,sans-serif" font-size="80" font-weight="800" fill="#ffffff" text-anchor="middle" letter-spacing="2">Web<span style="fill:#a5b4fc">Tools</span></text>
+  <text x="600" y="240" font-family="system-ui,-apple-system,sans-serif" font-size="80" font-weight="800" fill="#ffffff" text-anchor="middle" letter-spacing="2">Web<tspan fill="#a5b4fc">Tools</tspan></text>
   <text x="600" y="320" font-family="system-ui,-apple-system,sans-serif" font-size="32" fill="rgba(255,255,255,0.85)" text-anchor="middle">Online Developer Tools</text>
   <text x="600" y="370" font-family="system-ui,-apple-system,sans-serif" font-size="28" fill="rgba(255,255,255,0.6)" text-anchor="middle">JSON · Base64 · URL · Password · QR · Hash · Color &amp; more</text>
   <rect x="440" y="420" width="320" height="56" rx="28" fill="rgba(255,255,255,0.15)" stroke="rgba(255,255,255,0.25)" stroke-width="1.5"/>

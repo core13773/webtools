@@ -6,7 +6,7 @@ const resultBox = document.getElementById('regex-result');
 const matchesBox = document.getElementById('regex-matches');
 
 function escapeHtml(str) {
-  return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
 }
 
 function testRegex() {
@@ -36,7 +36,7 @@ function testRegex() {
     });
     html += escapeHtml(text.slice(lastIndex));
     resultBox.innerHTML = html || escapeHtml(text);
-    matchesBox.textContent = matches.map((m, i) => `Match ${i + 1}: "${m[0]}" (index: ${m.index})`).join('\n') || i18n.t('tools_regex.no_matches');
+    matchesBox.textContent = matches.map((m, i) => `${i18n.t('tools_regex.match') || 'Match'} ${i + 1}: "${m[0]}" (${i18n.t('tools_regex.index') || 'index'}: ${m.index})`).join('\n') || i18n.t('tools_regex.no_matches');
   } catch (e) {
     resultBox.textContent = '❌ ' + e.message;
     matchesBox.textContent = '';
@@ -64,6 +64,13 @@ function replaceRegex() {
 if(typeof setupKeyboardShortcuts === 'function'){
   setupKeyboardShortcuts({
     'ctrl+enter': testRegex,
-    'escape': ()=>{document.getElementById('regex-pattern').value='';document.getElementById('regex-test').value='';document.getElementById('regex-result').innerHTML='';document.getElementById('regex-matches').textContent='';},
+    'escape': clearRegex,
   });
+}
+
+function clearRegex(){
+  document.getElementById('regex-pattern').value = '';
+  document.getElementById('regex-test').value = '';
+  document.getElementById('regex-result').innerHTML = '';
+  document.getElementById('regex-matches').textContent = '';
 }

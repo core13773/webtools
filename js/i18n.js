@@ -23,6 +23,7 @@ const i18n = {
       // Determine base path from page location so fetch works from any page depth
       const prefix = location.pathname.includes('/tools/') ? '../' : '';
       const res = await fetch(`${prefix}i18n/${this.currentLang}.json`);
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
       this.translations = await res.json();
     } catch (e) {
       console.warn('i18n load failed, using defaults:', e);
@@ -51,17 +52,21 @@ const i18n = {
       const key = el.getAttribute('data-i18n-title');
       el.title = this.t(key);
     });
-    // data-i18n-value (for input values)
+    // data-i18n-value (for input/select/button values)
     document.querySelectorAll('[data-i18n-value]').forEach(el => {
       const key = el.getAttribute('data-i18n-value');
-      if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+      if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA' || el.tagName === 'SELECT' || el.tagName === 'BUTTON') {
         el.value = this.t(key);
       }
     });
-    // data-i18n-html: innerHTML (for rich content)
+    // data-i18n-html: innerHTML (for rich content) — sanitized
     document.querySelectorAll('[data-i18n-html]').forEach(el => {
       const key = el.getAttribute('data-i18n-html');
-      el.innerHTML = this.t(key);
+      const val = this.t(key);
+      // Only allow safe HTML tags; strip script/event handlers
+      const sanitized = val.replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '')
+                           .replace(/\son\w+\s*=/gi, ' blocked=');
+      el.innerHTML = sanitized;
     });
     // data-i18n-aria-label
     document.querySelectorAll('[data-i18n-aria-label]').forEach(el => {

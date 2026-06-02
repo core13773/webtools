@@ -19,7 +19,9 @@ function handleFile(file) {
   reader.onload = e => {
     const base64 = e.target.result;
     output.value = base64;
-    infoBox.textContent = `${i18n.t('tools_image_base64.label_name')}: ${file.name} | ${i18n.t('tools_image_base64.label_size')}: ${(file.size / 1024).toFixed(1)} KB | ${i18n.t('tools_image_base64.label_type')}: ${file.type}`;
+    const sizeKB = file.size / 1024;
+    const sizeStr = sizeKB >= 1024 ? (sizeKB / 1024).toFixed(1) + ' MB' : sizeKB.toFixed(1) + ' KB';
+    infoBox.textContent = `${i18n.t('tools_image_base64.label_name')}: ${file.name} | ${i18n.t('tools_image_base64.label_size')}: ${sizeStr} | ${i18n.t('tools_image_base64.label_type')}: ${file.type}`;
   };
   reader.readAsDataURL(file);
 }
@@ -28,7 +30,14 @@ function copyImgBase64() {
   copyToClipboard(output.value).then(() => showToast(i18n.t('common.copied')));
 }
 function downloadImgBase64() {
+  if (!output.value) return showToast(i18n.t('common.no_result'));
   downloadFile(output.value, 'image-base64.txt');
+}
+
+function clearAll() {
+  output.value = '';
+  if (infoBox) infoBox.textContent = '';
+  fileInput.value = '';
 }
 
 

@@ -202,7 +202,7 @@
     "error_encoding": "❌ Encoding error:",
     "error_decoding": "❌ Decoding error: Please check the format.",
     "error_invalid_ts": "❌ Invalid timestamp.",
-    "error_qr": "❌ QR code generation failed. The external API may have a temporary issue. Please try again.",
+    "error_qr": "❌ QR code generation failed. An error occurred while generating the QR code in your browser. Please try again.",
     "select_charset": "Please select at least one character type.",
     "generate_password_placeholder": "Generate a password",
     "result_placeholder": "Result will appear here.",

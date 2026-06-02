@@ -2,12 +2,13 @@ const mdInput = document.getElementById('md-input');
 const preview = document.getElementById('md-preview');
 
 function escapeHtml(str) {
-  return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
 }
 
 function parseMarkdown(md) {
   if (!md) return '';
   let html = escapeHtml(md);
+  // Code blocks first (before other transformations)
   html = html.replace(/```([\s\S]*?)```/gm, '<pre><code>$1</code></pre>');
   html = html.replace(/^#### (.*$)/gim, '<h4>$1</h4>');
   html = html.replace(/^### (.*$)/gim, '<h3>$1</h3>');
@@ -17,12 +18,19 @@ function parseMarkdown(md) {
   html = html.replace(/\*\*(.*?)\*\*/gim, '<strong>$1</strong>');
   html = html.replace(/\*(.*?)\*/gim, '<em>$1</em>');
   html = html.replace(/`([^`]+)`/gim, '<code>$1</code>');
+  // Sanitize javascript: protocol in links and images
+  html = html.replace(/!\[([^\]]*)\]\((\s*javascript:[^\)]*)\)/gim, '<img alt="$1" src="" style="max-width:100%">');
+  html = html.replace(/\[([^\]]+)\]\((\s*javascript:[^\)]*)\)/gim, '<a href="#" target="_blank" rel="noopener noreferrer">$1</a>');
   html = html.replace(/!\[([^\]]*)\]\(([^\)]+)\)/gim, '<img alt="$1" src="$2" style="max-width:100%">');
   html = html.replace(/\[([^\]]+)\]\(([^\)]+)\)/gim, '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>');
-  html = html.replace(/^\- (.*$)/gim, '<li>$1</li>');
-  html = html.replace(/^\d+\. (.*$)/gim, '<li>$1</li>');
-  html = html.replace(/(<li>.*<\/li>\n?)+/gim, '<ul>$&</ul>');
-  html = html.replace(/\n/gim, '<br>');
+  // Lists: ordered and unordered separately
+  html = html.replace(/^\d+\. (.*$)/gim, '<oli>$1</oli>');
+  html = html.replace(/^\- (.*$)/gim, '<uli>$1</uli>');
+  html = html.replace(/(<oli>.*<\/oli>\n?)+/gim, function(match) { return '<ol>' + match.replace(/<\/?oli>/g, function(t) { return t.replace('oli', 'li'); }) + '</ol>'; });
+  html = html.replace(/(<uli>.*<\/uli>\n?)+/gim, function(match) { return '<ul>' + match.replace(/<\/?uli>/g, function(t) { return t.replace('uli', 'li'); }) + '</ul>'; });
+  // Convert remaining newlines to <br>, but not inside <pre> blocks
+  const parts = html.split(/(<pre>[\s\S]*?<\/pre>)/g);
+  html = parts.map((part, i) => i % 2 === 0 ? part.replace(/\n/g, '<br>') : part).join('');
   return html;
 }
 

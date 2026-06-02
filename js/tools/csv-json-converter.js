@@ -3,6 +3,8 @@ const delimiter = document.getElementById('csv-delimiter');
 const hasHeader = document.getElementById('csv-header');
 const csvOutput = document.getElementById('csv-output');
 
+let lastConversionType = 'csv'; // Track which conversion was last run
+
 function parseCSVLine(line, sep) {
   const result = [];
   let current = '';
@@ -33,6 +35,7 @@ function escapeCsv(val) {
 }
 
 function csvToJson() {
+  lastConversionType = 'json';
   const text = csvInput.value.trim();
   if (!text) { showToast(i18n.t('common.enter_text')); return; }
   const sep = delimiter.value || ',';
@@ -55,6 +58,7 @@ function csvToJson() {
 }
 
 function jsonToCsv() {
+  lastConversionType = 'csv';
   const text = csvInput.value.trim();
   if (!text) { showToast(i18n.t('common.enter_text')); return; }
   let data;
@@ -65,9 +69,9 @@ function jsonToCsv() {
   if (Array.isArray(data[0])) {
     csv = data.map(row => row.map(escapeCsv).join(sep)).join('\n');
   } else {
-    const headers = Object.keys(data[0]);
-    csv = headers.map(escapeCsv).join(sep) + '\n';
-    csv += data.map(row => headers.map(h => escapeCsv(row[h] !== undefined ? row[h] : '')).join(sep)).join('\n');
+    const allKeys = [...new Set(data.flatMap(obj => Object.keys(obj)))];
+    csv = allKeys.map(escapeCsv).join(sep) + '\n';
+    csv += data.map(row => allKeys.map(h => escapeCsv(row[h] !== undefined ? row[h] : '')).join(sep)).join('\n');
   }
   csvOutput.textContent = csv;
 }
@@ -76,7 +80,7 @@ function copyCsvResult() {
   copyToClipboard(csvOutput.textContent).then(() => showToast(i18n.t('common.copied')));
 }
 function downloadCsvResult() {
-  const ext = hasHeader.checked ? '.json' : '.csv'; // simplistic
+  const ext = lastConversionType === 'json' ? '.json' : '.csv';
   downloadFile(csvOutput.textContent, 'result' + ext);
 }
 

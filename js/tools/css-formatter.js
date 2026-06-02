@@ -4,6 +4,7 @@ const cssOutput = document.getElementById('css-output');
 
 function formatCSS() {
   const css = cssInput.value;
+  if (!css.trim()) { showToast(i18n.t('common.enter_text')); return; }
   const indent = indentSel.value === 'tab' ? '\t' : ' '.repeat(parseInt(indentSel.value));
   let formatted = '';
   let depth = 0;
@@ -31,6 +32,7 @@ function formatCSS() {
 
 function minifyCSS() {
   const css = cssInput.value;
+  if (!css.trim()) { showToast(i18n.t('common.enter_text')); return; }
   cssOutput.textContent = css
     .replace(/\/\*[\s\S]*?\*\//g, '')
     .replace(/\s+/g, ' ')
@@ -41,6 +43,17 @@ function minifyCSS() {
 
 function copyCssResult() {
   copyToClipboard(cssOutput.textContent).then(() => showToast(i18n.t('common.copied')));
+}
+
+function downloadCssResult() {
+  const content = cssOutput.textContent;
+  if (!content || content.startsWith('❌')) return showToast(i18n.t('common.no_result'));
+  downloadFile(content, 'formatted.css');
+}
+
+function clearAll() {
+  cssInput.value = '';
+  cssOutput.textContent = i18n.t('common.result_placeholder');
 }
 
 

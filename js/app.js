@@ -41,6 +41,7 @@ function copyToClipboard(text){
   } else {
     const ta = document.createElement('textarea');
     ta.value = text;
+    ta.style.cssText = 'position:fixed;left:-9999px;top:-9999px;opacity:0;';
     document.body.appendChild(ta);
     ta.select();
     document.execCommand('copy');
@@ -99,7 +100,8 @@ function showToast(msg){
   };
   const info = toolMap[toolId];
   if(!info) return;
-  const recents = JSON.parse(localStorage.getItem('recentTools') || '[]');
+  let recents;
+  try { recents = JSON.parse(localStorage.getItem('recentTools') || '[]'); } catch(e) { recents = []; }
   const filtered = recents.filter(r => r.id !== toolId);
   filtered.unshift({id: toolId, ...info, timestamp: Date.now()});
   localStorage.setItem('recentTools', JSON.stringify(filtered.slice(0, 6)));
@@ -145,15 +147,8 @@ function setupKeyboardShortcuts(shortcuts) {
 }
 
 // Global shortcuts available on all pages
-document.addEventListener('keydown', (e) => {
-  const combo = [];
-  if(e.ctrlKey || e.metaKey) combo.push('ctrl');
-  if(e.shiftKey) combo.push('shift');
-  if(e.altKey) combo.push('alt');
-  combo.push(e.key.toLowerCase());
-  // Ctrl+K: focus search (index page)
-  if(combo.join('+') === 'ctrl+k') {
-    e.preventDefault();
+setupKeyboardShortcuts({
+  'ctrl+k': () => {
     const search = document.getElementById('tool-search');
     if(search) search.focus();
   }

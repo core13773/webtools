@@ -22,9 +22,10 @@ function md5(text){
  for(let i=0;i<64;i++) K[i]=Math.floor(Math.abs(Math.sin(i+1))*4294967296);
  const r=[7,12,17,22,7,12,17,22,7,12,17,22,7,12,17,22,5,9,14,20,5,9,14,20,5,9,14,20,5,9,14,20,4,11,16,23,4,11,16,23,4,11,16,23,4,11,16,23,6,10,15,21,6,10,15,21,6,10,15,21,6,10,15,21];
  function str2binl(str){
+ // Use TextEncoder for correct UTF-8 byte handling (supports Korean etc.)
+ const bytes = new TextEncoder().encode(str);
  const bin=[];
- const mask=(1<<8)-1;
- for(let i=0;i<str.length*8;i+=8) bin[i>>5]|=(str.charCodeAt(i/8)&mask)<<(i%32);
+ for(let i=0;i<bytes.length*8;i+=8) bin[i>>5]|=(bytes[i/8] & 0xFF)<<(i%32);
  return bin;
  }
  function binl2hex(binarray){
@@ -61,16 +62,16 @@ async function update(){
 input.addEventListener('input', update);
 
 function downloadResult(){
- const sha256 = document.getElementById('sha256-out').textContent;
- const sha1 = document.getElementById('sha1-out').textContent;
- const md5 = document.getElementById('md5-out').textContent;
- if(sha256 === '-') return showToast(i18n.t('common.no_hash'));
+ const sha256Val = document.getElementById('sha256-out').textContent;
+ const sha1Val = document.getElementById('sha1-out').textContent;
+ const md5Val = document.getElementById('md5-out').textContent;
+ if(sha256Val === '-') return showToast(i18n.t('common.no_hash'));
  const content = [
    i18n.t('common.hash_title'),
    '',
-   `SHA-256: ${sha256}`,
-   `SHA-1:   ${sha1}`,
-   `MD5:     ${md5}`,
+   `SHA-256: ${sha256Val}`,
+   `SHA-1:   ${sha1Val}`,
+   `MD5:     ${md5Val}`,
    '',
    i18n.t('common.hash_input'),
    input.value

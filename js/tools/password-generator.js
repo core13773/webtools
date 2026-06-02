@@ -9,7 +9,7 @@ const CHARS = {
 };
 
 function generate(){
- const len = parseInt(document.getElementById('length').value);
+ const len = Math.max(1, Math.min(10000, parseInt(document.getElementById('length').value, 10) || 16));
  const pools = [];
  if(document.getElementById('use-upper').checked) pools.push(CHARS.upper);
  if(document.getElementById('use-lower').checked) pools.push(CHARS.lower);
@@ -24,12 +24,15 @@ function generate(){
 
  const all = pools.join('');
  let pwd = '';
- const cryptoObj = window.crypto || window.msCrypto;
  const arr = new Uint32Array(len);
- cryptoObj.getRandomValues(arr);
+ crypto.getRandomValues(arr);
 
  for(let i=0;i<len;i++){
- pwd += all[arr[i] % all.length];
+ // Rejection sampling to avoid modulo bias
+ const maxValid = Math.floor(0xFFFFFFFF / all.length) * all.length;
+ let val = arr[i];
+ while(val >= maxValid) { crypto.getRandomValues(arr); val = arr[i]; }
+ pwd += all[val % all.length];
  }
 
  output.textContent = pwd;

@@ -9,6 +9,7 @@ const STATIC_ASSETS = [
   "/webtools/js/layout.js",
   "/webtools/js/app.js",
   "/webtools/manifest.json",
+  "/webtools/favicon.svg",
   "/webtools/icons/icon-192.svg",
   "/webtools/icons/icon-512.svg",
   "/webtools/i18n/ko.json",

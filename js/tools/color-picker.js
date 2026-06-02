@@ -56,7 +56,7 @@ hexInput.addEventListener('input', (e)=>{
 });
 
 function randomColor(){
- const hex = '#' + Math.floor(Math.random()*16777215).toString(16).padStart(6,'0');
+ const hex = '#' + Math.floor(Math.random()*16777216).toString(16).padStart(6,'0');
  picker.value = hex;
  hexInput.value = hex;
  update(hex);

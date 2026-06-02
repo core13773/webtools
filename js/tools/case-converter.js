@@ -9,8 +9,9 @@ function toCase(type){
  case 'upper': result = text.toUpperCase(); break;
  case 'lower': result = text.toLowerCase(); break;
  case 'capital': result = text.toLowerCase().replace(/(?:^|\s)\S/g, a => a.toUpperCase()); break;
- case 'snake': result = text.trim().replace(/\s+/g, '_').toLowerCase(); break;
+ case 'snake': result = text.trim().replace(/([a-z])([A-Z])/g, '$1_$2').replace(/[\s\-]+/g, '_').toLowerCase(); break;
  case 'camel': result = text.toLowerCase().replace(/[^a-zA-Z0-9]+(.)/g, (m, chr) => chr.toUpperCase()); break;
+ default: result = text; break;
  }
  output.textContent = result;
  output.style.color = 'var(--text)';

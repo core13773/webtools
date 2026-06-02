@@ -1,6 +1,7 @@
 function base64UrlDecode(str) {
-  str += new Array(5 - (str.length % 4)).join('=');
-  str = str.replace(/\-/g, '+').replace(/\_/g, '/');
+  const pad = str.length % 4;
+  if (pad) str += '='.repeat(4 - pad);
+  str = str.replace(/-/g, '+').replace(/_/g, '/');
   try { return base64ToUtf8(str); } catch (e) { return null; }
 }
 

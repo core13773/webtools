@@ -14,8 +14,6 @@
     <meta name="keywords" content="이미지 Base64 변환, image to base64, data uri, 인코딩" />
     <link rel="canonical" href="https://core13773.github.io/webtools/tools/image-base64.html" />
     <link rel="alternate" hreflang="ko" href="https://core13773.github.io/webtools/tools/image-base64.html" />
-    <link rel="alternate" hreflang="en" href="https://core13773.github.io/webtools/tools/image-base64.html" />
-    <link rel="alternate" hreflang="x-default" href="https://core13773.github.io/webtools/tools/image-base64.html" />
     <meta property="og:title" content="이미지 Base64 변환 - 드래그앤드롭 인코딩 | WebTools" />
     <meta property="og:description" content="이미지 파일을 드래그앤드롭 또는 파일 선택으로 Base64 문자열로 인코딩하는 온라인 도구입니다." />
     <meta property="og:type" content="website" />
@@ -28,6 +26,7 @@
     <meta name="theme-color" content="#4f46e5" />
     <link rel="manifest" href="../manifest.json" />
     <link rel="icon" href="../favicon.svg" sizes="any" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="../icons/icon-192.svg" />
     <meta property="og:image" content="https://core13773.github.io/webtools/og-image.png" />
     <meta name="twitter:image" content="https://core13773.github.io/webtools/og-image.png" />
     <meta name="google-site-verification" content="uHjCTERGdYuYZtOy-j8ohkxobYfkui3ZBu_Lb58yQrc" />
@@ -55,6 +54,13 @@
               { "@type": "ListItem", "position": 1, "name": "WebTools", "item": "https://core13773.github.io/webtools/" },
               { "@type": "ListItem", "position": 2, "name": "이미지 Base64 변환", "item": "https://core13773.github.io/webtools/tools/image-base64.html" }
             ]
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://core13773.github.io/webtools/#website",
+            "url": "https://core13773.github.io/webtools/",
+            "name": "WebTools - 온라인 개발 유틸리티 모음",
+            "publisher": { "@id": "https://core13773.github.io/webtools/#organization" }
           }
         ]
       }
@@ -108,7 +114,7 @@
           <div id="img-info" class="result-box" style="min-height:40px"></div>
         </div>
         <div class="form-group">
-          <label>Base64 결과</label>
+          <label for="img-output" data-i18n="common.result">Base64 결과</label>
           <textarea id="img-output" rows="6" readonly="readonly"></textarea>
         </div>
         <div class="btn-row">

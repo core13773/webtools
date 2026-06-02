@@ -152,7 +152,7 @@
   "footer": {
     "brand_desc": "설치 없이 바로 쓰는 온라인 개발 도구 모음",
     "copyright": "© 2026 WebTools. 온라인 도구 모음.",
-    "sitemap": "Sitemap",
+    "sitemap": "사이트맵",
     "links": {
       "json_formatter": "JSON 포맷터",
       "base64": "Base64",
@@ -202,7 +202,7 @@
     "error_encoding": "❌ 인코딩 오류:",
     "error_decoding": "❌ 디코딩 오류: 올바른 형식인지 확인하세요.",
     "error_invalid_ts": "❌ 유효하지 않은 타임스탬프입니다.",
-    "error_qr": "❌ QR 코드 생성 실패. 외부 API에 일시적으로 문제가 있을 수 있습니다. 다시 시도해주세요.",
+    "error_qr": "❌ QR 코드 생성 실패. 브라우저에서 QR 코드를 생성하는 중 오류가 발생했습니다. 다시 시도해주세요.",
     "select_charset": "최소 하나의 문자 종류를 선택하세요.",
     "generate_password_placeholder": "비밀번호를 생성하세요",
     "result_placeholder": "결과가 여기에 표시됩니다.",

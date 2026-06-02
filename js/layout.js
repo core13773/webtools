@@ -26,8 +26,8 @@
       '<li><a href="' + p + 'index.html#tools" data-i18n="nav.tools">' + t('nav.tools', '도구') + '</a></li>' +
       '<li><a href="' + p + 'index.html#about" data-i18n="nav.about">' + t('nav.about', '소개') + '</a></li>' +
       '<li class="lang-switcher">' +
-      '<button class="lang-btn active" data-lang="ko" onclick="i18n.switchLang(\'ko\')">KO</button>' +
-      '<button class="lang-btn" data-lang="en" onclick="i18n.switchLang(\'en\')">EN</button>' +
+      '<button class="lang-btn" data-lang="ko">KO</button>' +
+      '<button class="lang-btn" data-lang="en">EN</button>' +
       '</li>' +
       '<li><button id="theme-toggle" title="' + t('theme.toggle', '다크모드 전환') + '" data-i18n-aria-label="theme.toggle" aria-label="' + t('theme.toggle', '다크모드 전환') + '">🌙</button></li>' +
       '</ul>' +
@@ -81,6 +81,12 @@
     if (typeof i18n !== 'undefined' && i18n.applyTranslations) {
       i18n.applyTranslations();
     }
+    // Attach language switcher event listeners (replaces inline onclick)
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        if (typeof i18n !== 'undefined') i18n.switchLang(btn.dataset.lang);
+      });
+    });
     const themeToggle = document.getElementById('theme-toggle');
     if (themeToggle) {
       const savedTheme = localStorage.getItem('theme') || 'light';
