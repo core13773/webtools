@@ -3,6 +3,7 @@ const CACHE = "webtools-v2";
 const STATIC_ASSETS = [
   "/index.html",
   "/404.html",
+  "/privacy.html",
   "/css/style.css",
   "/css/tools.css",
   "/js/i18n.js",

@@ -1,6 +1,6 @@
 // i18n 엔진 - 다국어 지원
 const i18n = {
-  currentLang: 'ko',
+  currentLang: 'en',
   translations: {},
   callbacks: [],
 

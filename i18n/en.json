@@ -604,5 +604,24 @@
     "label_size": "Size",
     "label_type": "Type",
     "usage_tip": "💡 Tip: Base64-encoded images can be used directly in CSS background-image or HTML img src. Note that file size increases by about 33%."
+  },
+  "privacy": {
+    "title": "Privacy Policy",
+    "last_updated": "Last updated: June 12, 2026",
+    "overview_title": "1. Overview",
+    "overview_text": "WebTools is committed to protecting your privacy. All our tools process data entirely within your browser. No personal information is collected, stored, or transmitted to any server.",
+    "no_collect_title": "2. Information We Do Not Collect",
+    "no_collect_text": "We do not require registration or sign-in. We do not collect names, email addresses, phone numbers, or any personally identifiable information. The data you input into our tools (JSON, Base64, URLs, passwords, etc.) never leaves your browser.",
+    "local_storage_title": "3. Local Storage",
+    "local_storage_text": "WebTools uses your browser's localStorage to save your preferences: theme choice (light/dark), language preference (English/Korean), and a list of recently used tools. This data never leaves your device and you can clear it at any time via your browser settings.",
+    "ga_title": "4. Google Analytics",
+    "ga_text": "We use Google Analytics to understand how visitors use our site. Google Analytics collects anonymized traffic data (page views, session duration, approximate location). This data is managed according to Google's Privacy Policy. You can opt out of Google Analytics tracking via the Google Analytics Opt-out Browser Add-on.",
+    "adsense_title": "5. Google AdSense",
+    "adsense_text": "We display advertisements through Google AdSense. Google AdSense may use cookies to serve personalized ads based on your browsing history. You can opt out of personalized advertising by visiting Google Ad Settings. We use Google's default ad serving which may use interest-based advertising.",
+    "cookies_title": "6. Cookies",
+    "cookies_text": "WebTools itself does not set any cookies. However, third-party services integrated into this site (Google Analytics, Google AdSense) may use cookies to provide their services. You can disable cookies in your browser settings at any time.",
+    "contact_title": "7. Contact",
+    "contact_text": "If you have questions about this Privacy Policy, please contact us:",
+    "github_text": "You can also open an issue on our GitHub repository:"
   }
 }
