@@ -2,8 +2,8 @@
   "name": "WebTools - Online Developer Tools",
   "short_name": "WebTools",
   "description": "19 free online developer tools — JSON Formatter, Base64, URL Encoder, Password Generator, and more. No installation required.",
-  "start_url": "/webtools/",
-  "scope": "/webtools/",
+  "start_url": "/",
+  "scope": "/",
   "display": "standalone",
   "orientation": "any",
   "background_color": "#f8f9fa",
@@ -14,19 +14,19 @@
   "prefer_related_applications": false,
   "icons": [
     {
-      "src": "/webtools/icons/icon-192.svg",
+      "src": "/icons/icon-192.svg",
       "sizes": "192x192",
       "type": "image/svg+xml",
       "purpose": "any"
     },
     {
-      "src": "/webtools/icons/icon-512.svg",
+      "src": "/icons/icon-512.svg",
       "sizes": "512x512",
       "type": "image/svg+xml",
       "purpose": "any"
     },
     {
-      "src": "/webtools/icons/icon-512.svg",
+      "src": "/icons/icon-512.svg",
       "sizes": "512x512",
       "type": "image/svg+xml",
       "purpose": "maskable"

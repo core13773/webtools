@@ -222,7 +222,7 @@
     "stats_input_text": "--- 입력 텍스트 ---",
     "hash_title": "=== 해시 결과 ===",
     "hash_input": "--- 입력 텍스트 ---",
-    "qr_input_placeholder": "예: https://core13773.github.io/webtools/",
+    "qr_input_placeholder": "예: https://webtool.monster/",
     "color_hex": "HEX",
     "color_rgb": "RGB",
     "color_hsl": "HSL",

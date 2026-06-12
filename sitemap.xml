@@ -1,121 +1,121 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
  <url>
- <loc>https://core13773.github.io/webtools/</loc>
+ <loc>https://webtool.monster/</loc>
  <lastmod>2026-06-01</lastmod>
  <changefreq>weekly</changefreq>
  <priority>1.0</priority>
  </url>
  <url>
- <loc>https://core13773.github.io/webtools/tools/json-formatter.html</loc>
+ <loc>https://webtool.monster/tools/json-formatter.html</loc>
  <lastmod>2026-06-01</lastmod>
  <changefreq>monthly</changefreq>
  <priority>0.9</priority>
  </url>
  <url>
- <loc>https://core13773.github.io/webtools/tools/base64.html</loc>
+ <loc>https://webtool.monster/tools/base64.html</loc>
  <lastmod>2026-06-01</lastmod>
  <changefreq>monthly</changefreq>
  <priority>0.9</priority>
  </url>
  <url>
- <loc>https://core13773.github.io/webtools/tools/url-encoder.html</loc>
+ <loc>https://webtool.monster/tools/url-encoder.html</loc>
  <lastmod>2026-06-01</lastmod>
  <changefreq>monthly</changefreq>
  <priority>0.9</priority>
  </url>
  <url>
- <loc>https://core13773.github.io/webtools/tools/password-generator.html</loc>
+ <loc>https://webtool.monster/tools/password-generator.html</loc>
  <lastmod>2026-06-01</lastmod>
  <changefreq>monthly</changefreq>
  <priority>0.9</priority>
  </url>
  <url>
- <loc>https://core13773.github.io/webtools/tools/text-counter.html</loc>
+ <loc>https://webtool.monster/tools/text-counter.html</loc>
  <lastmod>2026-06-01</lastmod>
  <changefreq>monthly</changefreq>
  <priority>0.8</priority>
  </url>
  <url>
- <loc>https://core13773.github.io/webtools/tools/color-picker.html</loc>
+ <loc>https://webtool.monster/tools/color-picker.html</loc>
  <lastmod>2026-06-01</lastmod>
  <changefreq>monthly</changefreq>
  <priority>0.8</priority>
  </url>
  <url>
- <loc>https://core13773.github.io/webtools/tools/timestamp-converter.html</loc>
+ <loc>https://webtool.monster/tools/timestamp-converter.html</loc>
  <lastmod>2026-06-01</lastmod>
  <changefreq>monthly</changefreq>
  <priority>0.8</priority>
  </url>
  <url>
- <loc>https://core13773.github.io/webtools/tools/html-encoder.html</loc>
+ <loc>https://webtool.monster/tools/html-encoder.html</loc>
  <lastmod>2026-06-01</lastmod>
  <changefreq>monthly</changefreq>
  <priority>0.8</priority>
  </url>
  <url>
- <loc>https://core13773.github.io/webtools/tools/qr-generator.html</loc>
+ <loc>https://webtool.monster/tools/qr-generator.html</loc>
  <lastmod>2026-06-01</lastmod>
  <changefreq>monthly</changefreq>
  <priority>0.7</priority>
  </url>
  <url>
- <loc>https://core13773.github.io/webtools/tools/case-converter.html</loc>
+ <loc>https://webtool.monster/tools/case-converter.html</loc>
  <lastmod>2026-06-01</lastmod>
  <changefreq>monthly</changefreq>
  <priority>0.7</priority>
  </url>
  <url>
- <loc>https://core13773.github.io/webtools/tools/uuid-generator.html</loc>
+ <loc>https://webtool.monster/tools/uuid-generator.html</loc>
  <lastmod>2026-06-01</lastmod>
  <changefreq>monthly</changefreq>
  <priority>0.7</priority>
  </url>
  <url>
- <loc>https://core13773.github.io/webtools/tools/hash-generator.html</loc>
+ <loc>https://webtool.monster/tools/hash-generator.html</loc>
  <lastmod>2026-06-01</lastmod>
  <changefreq>monthly</changefreq>
  <priority>0.7</priority>
  </url>
  <url>
- <loc>https://core13773.github.io/webtools/tools/jwt-decoder.html</loc>
+ <loc>https://webtool.monster/tools/jwt-decoder.html</loc>
  <lastmod>2026-06-01</lastmod>
  <changefreq>monthly</changefreq>
  <priority>0.8</priority>
  </url>
  <url>
- <loc>https://core13773.github.io/webtools/tools/regex-tester.html</loc>
+ <loc>https://webtool.monster/tools/regex-tester.html</loc>
  <lastmod>2026-06-01</lastmod>
  <changefreq>monthly</changefreq>
  <priority>0.8</priority>
  </url>
  <url>
- <loc>https://core13773.github.io/webtools/tools/csv-json-converter.html</loc>
+ <loc>https://webtool.monster/tools/csv-json-converter.html</loc>
  <lastmod>2026-06-01</lastmod>
  <changefreq>monthly</changefreq>
  <priority>0.8</priority>
  </url>
  <url>
- <loc>https://core13773.github.io/webtools/tools/css-formatter.html</loc>
+ <loc>https://webtool.monster/tools/css-formatter.html</loc>
  <lastmod>2026-06-01</lastmod>
  <changefreq>monthly</changefreq>
  <priority>0.8</priority>
  </url>
  <url>
- <loc>https://core13773.github.io/webtools/tools/markdown-previewer.html</loc>
+ <loc>https://webtool.monster/tools/markdown-previewer.html</loc>
  <lastmod>2026-06-01</lastmod>
  <changefreq>monthly</changefreq>
  <priority>0.7</priority>
  </url>
  <url>
- <loc>https://core13773.github.io/webtools/tools/px-converter.html</loc>
+ <loc>https://webtool.monster/tools/px-converter.html</loc>
  <lastmod>2026-06-01</lastmod>
  <changefreq>monthly</changefreq>
  <priority>0.7</priority>
  </url>
  <url>
- <loc>https://core13773.github.io/webtools/tools/image-base64.html</loc>
+ <loc>https://webtool.monster/tools/image-base64.html</loc>
  <lastmod>2026-06-01</lastmod>
  <changefreq>monthly</changefreq>
  <priority>0.7</priority>

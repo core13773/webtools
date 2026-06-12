@@ -3,7 +3,7 @@
 A collection of 19 free online developer tools that run entirely in your browser. No installation, no sign-up, no data sent to any server.
 설치 없이 바로 쓰는 19가지 온라인 개발 도구 모음입니다. 모든 처리는 브라우저에서 이루어집니다.
 
-**Live Site / 배포 주소:** https://core13773.github.io/webtools/
+**Live Site / 배포 주소:** https://webtool.monster/
 
 ---
 
@@ -63,7 +63,7 @@ This project is already available at `core13773/webtools`.
    - **Branch**: `main`
    - **Folder**: `/ (root)`
    - Click **Save** / **Save** 버튼 클릭
-5. After 1-2 minutes / 1~2분 후: `https://core13773.github.io/webtools/` is live / 활성화됩니다.
+5. After 1-2 minutes / 1~2분 후: `https://webtool.monster/` is live / 활성화됩니다.
 
 ---
 

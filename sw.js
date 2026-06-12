@@ -1,57 +1,57 @@
 /* WebTools Service Worker */
-const CACHE = "webtools-v1";
+const CACHE = "webtools-v2";
 const STATIC_ASSETS = [
-  "/webtools/index.html",
-  "/webtools/404.html",
-  "/webtools/css/style.css",
-  "/webtools/css/tools.css",
-  "/webtools/js/i18n.js",
-  "/webtools/js/layout.js",
-  "/webtools/js/app.js",
-  "/webtools/manifest.json",
-  "/webtools/favicon.svg",
-  "/webtools/icons/icon-192.svg",
-  "/webtools/icons/icon-512.svg",
-  "/webtools/i18n/ko.json",
-  "/webtools/i18n/en.json",
-  "/webtools/tools/json-formatter.html",
-  "/webtools/tools/base64.html",
-  "/webtools/tools/password-generator.html",
-  "/webtools/tools/url-encoder.html",
-  "/webtools/tools/text-counter.html",
-  "/webtools/tools/color-picker.html",
-  "/webtools/tools/timestamp-converter.html",
-  "/webtools/tools/html-encoder.html",
-  "/webtools/tools/qr-generator.html",
-  "/webtools/tools/case-converter.html",
-  "/webtools/tools/uuid-generator.html",
-  "/webtools/tools/hash-generator.html",
-  "/webtools/js/tools/json-formatter.js",
-  "/webtools/js/tools/base64.js",
-  "/webtools/js/tools/password-generator.js",
-  "/webtools/js/tools/url-encoder.js",
-  "/webtools/js/tools/text-counter.js",
-  "/webtools/js/tools/color-picker.js",
-  "/webtools/js/tools/timestamp-converter.js",
-  "/webtools/js/tools/html-encoder.js",
-  "/webtools/js/tools/qr-generator.js",
-  "/webtools/js/tools/case-converter.js",
-  "/webtools/js/tools/uuid-generator.js",
-  "/webtools/js/tools/hash-generator.js",
-  "/webtools/tools/jwt-decoder.html",
-  "/webtools/tools/regex-tester.html",
-  "/webtools/tools/csv-json-converter.html",
-  "/webtools/tools/css-formatter.html",
-  "/webtools/tools/markdown-previewer.html",
-  "/webtools/tools/px-converter.html",
-  "/webtools/tools/image-base64.html",
-  "/webtools/js/tools/jwt-decoder.js",
-  "/webtools/js/tools/regex-tester.js",
-  "/webtools/js/tools/csv-json-converter.js",
-  "/webtools/js/tools/css-formatter.js",
-  "/webtools/js/tools/markdown-previewer.js",
-  "/webtools/js/tools/px-converter.js",
-  "/webtools/js/tools/image-base64.js"
+  "/index.html",
+  "/404.html",
+  "/css/style.css",
+  "/css/tools.css",
+  "/js/i18n.js",
+  "/js/layout.js",
+  "/js/app.js",
+  "/manifest.json",
+  "/favicon.svg",
+  "/icons/icon-192.svg",
+  "/icons/icon-512.svg",
+  "/i18n/ko.json",
+  "/i18n/en.json",
+  "/tools/json-formatter.html",
+  "/tools/base64.html",
+  "/tools/password-generator.html",
+  "/tools/url-encoder.html",
+  "/tools/text-counter.html",
+  "/tools/color-picker.html",
+  "/tools/timestamp-converter.html",
+  "/tools/html-encoder.html",
+  "/tools/qr-generator.html",
+  "/tools/case-converter.html",
+  "/tools/uuid-generator.html",
+  "/tools/hash-generator.html",
+  "/js/tools/json-formatter.js",
+  "/js/tools/base64.js",
+  "/js/tools/password-generator.js",
+  "/js/tools/url-encoder.js",
+  "/js/tools/text-counter.js",
+  "/js/tools/color-picker.js",
+  "/js/tools/timestamp-converter.js",
+  "/js/tools/html-encoder.js",
+  "/js/tools/qr-generator.js",
+  "/js/tools/case-converter.js",
+  "/js/tools/uuid-generator.js",
+  "/js/tools/hash-generator.js",
+  "/tools/jwt-decoder.html",
+  "/tools/regex-tester.html",
+  "/tools/csv-json-converter.html",
+  "/tools/css-formatter.html",
+  "/tools/markdown-previewer.html",
+  "/tools/px-converter.html",
+  "/tools/image-base64.html",
+  "/js/tools/jwt-decoder.js",
+  "/js/tools/regex-tester.js",
+  "/js/tools/csv-json-converter.js",
+  "/js/tools/css-formatter.js",
+  "/js/tools/markdown-previewer.js",
+  "/js/tools/px-converter.js",
+  "/js/tools/image-base64.js"
 ];
 
 // Install: cache app shell
@@ -85,8 +85,8 @@ self.addEventListener("fetch", (event) => {
   const { request } = event;
   const url = new URL(request.url);
 
-  // Only handle webtools scope
-  if (!url.pathname.startsWith("/webtools/")) return;
+  // Only handle same-origin requests
+  if (url.origin !== self.location.origin) return;
 
   // HTML pages (tool pages): network-first, fallback to cache
   if (request.mode === "navigate" || url.pathname.endsWith(".html")) {
@@ -131,7 +131,7 @@ async function networkFirst(request) {
     const cached = await caches.match(request);
     if (cached) return cached;
     // Fallback to 404 page for unknown pages
-    const fallback = await caches.match("/webtools/404.html");
+    const fallback = await caches.match("/404.html");
     if (fallback) return fallback;
     return new Response("Offline", { status: 503 });
   }
