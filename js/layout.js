@@ -5,7 +5,7 @@
   }
 
   function getLang() {
-    return (typeof i18n !== 'undefined' && i18n.currentLang) || document.documentElement.lang || 'ko';
+    return (typeof i18n !== 'undefined' && i18n.currentLang) || document.documentElement.lang || 'en';
   }
 
   function t(key, fallback) {
@@ -22,14 +22,14 @@
       '<nav>' +
       '<a href="' + p + 'index.html" class="logo">Web<span>Tools</span></a>' +
       '<ul class="nav-links">' +
-      '<li><a href="' + p + 'index.html" data-i18n="nav.home">' + t('nav.home', '홈') + '</a></li>' +
-      '<li><a href="' + p + 'index.html#tools" data-i18n="nav.tools">' + t('nav.tools', '도구') + '</a></li>' +
-      '<li><a href="' + p + 'index.html#about" data-i18n="nav.about">' + t('nav.about', '소개') + '</a></li>' +
+      '<li><a href="' + p + 'index.html" data-i18n="nav.home">' + t('nav.home', 'Home') + '</a></li>' +
+      '<li><a href="' + p + 'index.html#tools" data-i18n="nav.tools">' + t('nav.tools', 'Tools') + '</a></li>' +
+      '<li><a href="' + p + 'index.html#about" data-i18n="nav.about">' + t('nav.about', 'About') + '</a></li>' +
       '<li class="lang-switcher">' +
       '<button class="lang-btn" data-lang="ko">KO</button>' +
       '<button class="lang-btn" data-lang="en">EN</button>' +
       '</li>' +
-      '<li><button id="theme-toggle" title="' + t('theme.toggle', '다크모드 전환') + '" data-i18n-aria-label="theme.toggle" aria-label="' + t('theme.toggle', '다크모드 전환') + '">🌙</button></li>' +
+      '<li><button id="theme-toggle" title="' + t('theme.toggle', 'Toggle dark mode') + '" data-i18n-aria-label="theme.toggle" aria-label="' + t('theme.toggle', 'Toggle dark mode') + '">🌙</button></li>' +
       '</ul>' +
       '</nav>'
     );
@@ -41,7 +41,7 @@
       '<div class="footer-content">' +
       '<div class="footer-brand">' +
       '<a href="' + p + 'index.html" class="logo">Web<span>Tools</span></a>' +
-      '<p data-i18n="footer.brand_desc">' + t('footer.brand_desc', '설치 없이 바로 쓰는 온라인 개발 도구 모음') + '</p>' +
+      '<p data-i18n="footer.brand_desc">' + t('footer.brand_desc', 'Free online developer tools — no installation required.') + '</p>' +
       '</div>' +
       '<div class="footer-links">' +
       '<a href="' + p + 'tools/json-formatter.html">JSON</a>' +
@@ -62,10 +62,10 @@
       '</div>' +
       '<div class="footer-bottom">' +
       '<p>' +
-      '<span data-i18n="footer.copyright">' + t('footer.copyright', '© 2026 WebTools. 온라인 도구 모음.') + '</span>' +
+      '<span data-i18n="footer.copyright">' + t('footer.copyright', '© 2026 WebTools. Online Tool Suite.') + '</span>' +
       ' | <a href="' + p + 'sitemap.xml" data-i18n="footer.sitemap">' + t('footer.sitemap', 'Sitemap') + '</a>' +
       ' | <a href="mailto:core13773@gmail.com" data-i18n="feedback.email">' + t('feedback.email', '✉️ core13773@gmail.com') + '</a>' +
-' | <a href="https://github.com/core13773/webtools/issues" target="_blank" rel="noopener noreferrer" data-i18n="feedback.link">' + t('feedback.link', '도구 제안 및 피드백 보내기') + '</a>' +
+' | <a href="https://github.com/core13773/webtools/issues" target="_blank" rel="noopener noreferrer" data-i18n="feedback.link">' + t('feedback.link', 'Suggest a tool or send feedback') + '</a>' +
       '</p>' +
       '</div>'
     );

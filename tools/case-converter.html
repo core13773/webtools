@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ko" id="root-html">
+<html lang="en" id="root-html">
   <head>
     <meta charset="UTF-8" />
     <script>(function(){const t=localStorage.getItem('theme')||'light';document.documentElement.setAttribute('data-theme',t);})();</script>
@@ -17,32 +17,32 @@
       crossorigin="anonymous"
     ></script>
     <title data-i18n="tools_case.title">
-      텍스트 케이스 변환 - 대문자, 소문자, camelCase 변환 | WebTools
+      Text Case Converter - UPPER, lower, snake_case, camelCase | WebTools
     </title>
     <meta
       name="description"
-      content="텍스트를 대문자, 소문자, Capital Case, snake_case, camelCase 등 다양한 형식으로 변환하는 온라인 도구입니다."
+      content="Convert text to UPPER CASE, lower case, Capital Case, snake_case, camelCase and more."
     />
     <meta name="robots" content="index, follow" />
     <meta
       name="keywords"
-      content="텍스트 케이스 변환, 대문자 소문자 변환, camelCase, snake_case, text case converter"
+      content="case converter, uppercase, lowercase, snake case, camel case, text case tool"
     />
     <link
       rel="canonical"
       href="https://webtool.monster/tools/case-converter.html"
     />
-    <link rel="alternate" hreflang="ko" href="https://webtool.monster/tools/case-converter.html" />
     <link rel="alternate" hreflang="en" href="https://webtool.monster/tools/case-converter.html" />
+    <link rel="alternate" hreflang="ko" href="https://webtool.monster/tools/case-converter.html" />
     <link rel="alternate" hreflang="x-default" href="https://webtool.monster/tools/case-converter.html" />
     
     <meta
       property="og:title"
-      content="텍스트 케이스 변환 - 대문자, 소문자, camelCase 변환 | WebTools"
+      content="Text Case Converter - UPPER, lower, snake_case, camelCase | WebTools"
     />
     <meta
       property="og:description"
-      content="텍스트를 대문자, 소문자, Capital Case, snake_case, camelCase 등 다양한 형식으로 변환하는 온라인 도구입니다."
+      content="Convert text to UPPER CASE, lower case, Capital Case, snake_case, camelCase and more."
     />
     <meta property="og:type" content="website" />
     <meta
@@ -54,11 +54,11 @@
     <meta name="twitter:card" content="summary_large_image" />
     <meta
       name="twitter:title"
-      content="텍스트 케이스 변환 - 대문자, 소문자, camelCase 변환 | WebTools"
+      content="Text Case Converter - UPPER, lower, snake_case, camelCase | WebTools"
     />
     <meta
       name="twitter:description"
-      content="텍스트를 대문자, 소문자, Capital Case, snake_case, camelCase 등 다양한 형식으로 변환하는 온라인 도구입니다."
+      content="Convert text to UPPER CASE, lower case, Capital Case, snake_case, camelCase and more."
     />
     <meta name="theme-color" content="#4f46e5" />
     <link rel="manifest" href="../manifest.json" />
@@ -87,9 +87,9 @@
           {
             "@type": "WebApplication",
             "@id": "https://webtool.monster/tools/case-converter.html#webapplication",
-            "name": "텍스트 케이스 변환",
+            "name": "Text Case Converter",
             "url": "https://webtool.monster/tools/case-converter.html",
-            "description": "대문자, 소문자, Capital Case, snake_case, camelCase 등으로 텍스트를 변환하는 온라인 도구",
+            "description": "Convert text to UPPER CASE, lower case, camelCase and more online",
             "applicationCategory": "DeveloperApplication",
             "operatingSystem": "All",
             "browserRequirements": "Modern browser with JavaScript enabled",
@@ -115,7 +115,7 @@
               {
                 "@type": "ListItem",
                 "position": 2,
-                "name": "텍스트 케이스 변환",
+                "name": "Text Case Converter",
                 "item": "https://webtool.monster/tools/case-converter.html"
               }
             ]
@@ -124,7 +124,7 @@
             "@type": "WebSite",
             "@id": "https://webtool.monster/#website",
             "url": "https://webtool.monster/",
-            "name": "WebTools - 온라인 개발 유틸리티 모음",
+            "name": "WebTools - Free Online Developer Tools",
             "publisher": {
               "@id": "https://webtool.monster/#organization"
             }
@@ -167,27 +167,15 @@
           <li><a href="../index.html" data-i18n="nav.home">홈</a></li>
           <li class="lang-switcher">
             <button
-              class="lang-btn active"
-              data-lang="ko"
-              onclick="i18n.switchLang('ko')"
-            >
-              KO
-            </button>
-            <button
-              class="lang-btn"
-              data-lang="en"
-              onclick="i18n.switchLang('en')"
-            >
-              EN
-            </button>
+              class="lang-btn" data-lang="ko" onclick="i18n.switchLang('ko')">KO</button><button class="lang-btn active" data-lang="en" onclick="i18n.switchLang('en')">EN</button>
           </li>
-          <li><button id="theme-toggle" title="다크모드 전환">🌙</button></li>
+          <li><button id="theme-toggle" title="Toggle dark mode">🌙</button></li>
         </ul>
       </nav>
     </header>
     <main class="container">
       <div class="tool-header">
-        <h1 data-i18n="tools_case.title">텍스트 케이스 변환</h1>
+        <h1 data-i18n="tools_case.title">Text Case Converter</h1>
         <p data-i18n="tools_case.desc">
           텍스트를 다양한 형식(대문자, 소문자, camelCase 등)으로 변환합니다.
         </p>

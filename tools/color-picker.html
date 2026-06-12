@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ko" id="root-html">
+<html lang="en" id="root-html">
   <head>
     <meta charset="UTF-8" />
     <script>(function(){const t=localStorage.getItem('theme')||'light';document.documentElement.setAttribute('data-theme',t);})();</script>
@@ -17,32 +17,32 @@
       crossorigin="anonymous"
     ></script>
     <title data-i18n="tools_color.title">
-      색상 변환기 - HEX, RGB, HSL 변환 및 컬러피커 | WebTools
+      Color Converter - HEX, RGB, HSL Color Code Converter | WebTools
     </title>
     <meta
       name="description"
-      content="HEX, RGB, HSL 색상 코드를 서로 변환하고 실시간 미리보기로 확인하는 온라인 컬러 도구입니다."
+      content="Convert between HEX, RGB, HSL color codes with live preview."
     />
     <meta name="robots" content="index, follow" />
     <meta
       name="keywords"
-      content="색상 변환기, 컬러 피커, HEX RGB HSL, 색상 코드 변환, color picker converter"
+      content="color converter, HEX to RGB, RGB to HSL, color picker, online color tool"
     />
     <link
       rel="canonical"
       href="https://webtool.monster/tools/color-picker.html"
     />
-    <link rel="alternate" hreflang="ko" href="https://webtool.monster/tools/color-picker.html" />
     <link rel="alternate" hreflang="en" href="https://webtool.monster/tools/color-picker.html" />
+    <link rel="alternate" hreflang="ko" href="https://webtool.monster/tools/color-picker.html" />
     <link rel="alternate" hreflang="x-default" href="https://webtool.monster/tools/color-picker.html" />
     
     <meta
       property="og:title"
-      content="색상 변환기 - HEX, RGB, HSL 변환 및 컬러피커 | WebTools"
+      content="Color Converter - HEX, RGB, HSL Color Code Converter | WebTools"
     />
     <meta
       property="og:description"
-      content="HEX, RGB, HSL 색상 코드를 서로 변환하고 실시간 미리보기로 확인하는 온라인 컬러 도구입니다."
+      content="Convert between HEX, RGB, HSL color codes with live preview."
     />
     <meta property="og:type" content="website" />
     <meta
@@ -54,11 +54,11 @@
     <meta name="twitter:card" content="summary_large_image" />
     <meta
       name="twitter:title"
-      content="색상 변환기 - HEX, RGB, HSL 변환 및 컬러피커 | WebTools"
+      content="Color Converter - HEX, RGB, HSL Color Code Converter | WebTools"
     />
     <meta
       name="twitter:description"
-      content="HEX, RGB, HSL 색상 코드를 서로 변환하고 실시간 미리보기로 확인하는 온라인 컬러 도구입니다."
+      content="Convert between HEX, RGB, HSL color codes with live preview."
     />
     <meta name="theme-color" content="#4f46e5" />
     <link rel="manifest" href="../manifest.json" />
@@ -87,7 +87,7 @@
           {
             "@type": "WebApplication",
             "@id": "https://webtool.monster/tools/color-picker.html#webapplication",
-            "name": "색상 변환기",
+            "name": "Color Converter",
             "url": "https://webtool.monster/tools/color-picker.html",
             "description": "HEX, RGB, HSL 색상 코드를 서로 변환하고 미리보기로 확인하는 온라인 도구",
             "applicationCategory": "DesignApplication",
@@ -115,7 +115,7 @@
               {
                 "@type": "ListItem",
                 "position": 2,
-                "name": "색상 변환기",
+                "name": "Color Converter",
                 "item": "https://webtool.monster/tools/color-picker.html"
               }
             ]
@@ -124,7 +124,7 @@
             "@type": "WebSite",
             "@id": "https://webtool.monster/#website",
             "url": "https://webtool.monster/",
-            "name": "WebTools - 온라인 개발 유틸리티 모음",
+            "name": "WebTools - Free Online Developer Tools",
             "publisher": {
               "@id": "https://webtool.monster/#organization"
             }
@@ -167,27 +167,15 @@
           <li><a href="../index.html" data-i18n="nav.home">홈</a></li>
           <li class="lang-switcher">
             <button
-              class="lang-btn active"
-              data-lang="ko"
-              onclick="i18n.switchLang('ko')"
-            >
-              KO
-            </button>
-            <button
-              class="lang-btn"
-              data-lang="en"
-              onclick="i18n.switchLang('en')"
-            >
-              EN
-            </button>
+              class="lang-btn" data-lang="ko" onclick="i18n.switchLang('ko')">KO</button><button class="lang-btn active" data-lang="en" onclick="i18n.switchLang('en')">EN</button>
           </li>
-          <li><button id="theme-toggle" title="다크모드 전환">🌙</button></li>
+          <li><button id="theme-toggle" title="Toggle dark mode">🌙</button></li>
         </ul>
       </nav>
     </header>
     <main class="container">
       <div class="tool-header">
-        <h1 data-i18n="tools_color.title">색상 변환기</h1>
+        <h1 data-i18n="tools_color.title">Color Converter</h1>
         <p data-i18n="tools_color.desc">
           HEX, RGB, HSL 색상 코드를 자유롭게 변환하고 색상을 미리보세요.
         </p>

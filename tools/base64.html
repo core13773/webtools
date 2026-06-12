@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ko" id="root-html">
+<html lang="en" id="root-html">
   <head>
     <meta charset="UTF-8" />
     <script>(function(){const t=localStorage.getItem('theme')||'light';document.documentElement.setAttribute('data-theme',t);})();</script>
@@ -17,32 +17,32 @@
       crossorigin="anonymous"
     ></script>
     <title data-i18n="tools_base64.title">
-      Base64 인코더/디코더 - 온라인 텍스트 변환 | WebTools
+      Base64 Encoder / Decoder - Online Encode & Decode | WebTools
     </title>
     <meta
       name="description"
-      content="텍스트를 Base64로 인코딩하거나 Base64 문자열을 디코딩하는 온라인 도구입니다."
+      content="Convert text to Base64 or decode Base64 back to the original text. Supports all UTF-8 characters."
     />
     <meta name="robots" content="index, follow" />
     <meta
       name="keywords"
-      content="Base64 인코더, Base64 디코더, Base64 변환, 텍스트 인코딩, base64 encode decode"
+      content="Base64 encoder, Base64 decoder, Base64 encode decode, online Base64 tool"
     />
     <link
       rel="canonical"
       href="https://webtool.monster/tools/base64.html"
     />
-    <link rel="alternate" hreflang="ko" href="https://webtool.monster/tools/base64.html" />
     <link rel="alternate" hreflang="en" href="https://webtool.monster/tools/base64.html" />
+    <link rel="alternate" hreflang="ko" href="https://webtool.monster/tools/base64.html" />
     <link rel="alternate" hreflang="x-default" href="https://webtool.monster/tools/base64.html" />
     
     <meta
       property="og:title"
-      content="Base64 인코더/디코더 - 온라인 텍스트 변환 | WebTools"
+      content="Base64 Encoder / Decoder - Online Encode & Decode | WebTools"
     />
     <meta
       property="og:description"
-      content="텍스트를 Base64로 인코딩하거나 Base64 문자열을 디코딩하는 온라인 도구입니다."
+      content="Convert text to Base64 or decode Base64 back to the original text. Supports all UTF-8 characters."
     />
     <meta property="og:type" content="website" />
     <meta
@@ -54,11 +54,11 @@
     <meta name="twitter:card" content="summary_large_image" />
     <meta
       name="twitter:title"
-      content="Base64 인코더/디코더 - 온라인 텍스트 변환 | WebTools"
+      content="Base64 Encoder / Decoder - Online Encode & Decode | WebTools"
     />
     <meta
       name="twitter:description"
-      content="텍스트를 Base64로 인코딩하거나 Base64 문자열을 디코딩하는 온라인 도구입니다."
+      content="Convert text to Base64 or decode Base64 back to the original text. Supports all UTF-8 characters."
     />
     <meta name="theme-color" content="#4f46e5" />
     <link rel="manifest" href="../manifest.json" />
@@ -87,9 +87,9 @@
           {
             "@type": "WebApplication",
             "@id": "https://webtool.monster/tools/base64.html#webapplication",
-            "name": "Base64 인코더/디코더",
+            "name": "Base64 Encoder / Decoder",
             "url": "https://webtool.monster/tools/base64.html",
-            "description": "텍스트를 Base64로 변환하거나 Base64를 원래 텍스트로 되돌리는 온라인 도구",
+            "description": "Convert text to Base64 or decode Base64 back to the original text online",
             "applicationCategory": "DeveloperApplication",
             "operatingSystem": "All",
             "browserRequirements": "Modern browser with JavaScript enabled",
@@ -115,7 +115,7 @@
               {
                 "@type": "ListItem",
                 "position": 2,
-                "name": "Base64 인코더/디코더",
+                "name": "Base64 Encoder / Decoder",
                 "item": "https://webtool.monster/tools/base64.html"
               }
             ]
@@ -124,7 +124,7 @@
             "@type": "WebSite",
             "@id": "https://webtool.monster/#website",
             "url": "https://webtool.monster/",
-            "name": "WebTools - 온라인 개발 유틸리티 모음",
+            "name": "WebTools - Free Online Developer Tools",
             "publisher": {
               "@id": "https://webtool.monster/#organization"
             }
@@ -167,21 +167,9 @@
           <li><a href="../index.html" data-i18n="nav.home">홈</a></li>
           <li class="lang-switcher">
             <button
-              class="lang-btn active"
-              data-lang="ko"
-              onclick="i18n.switchLang('ko')"
-            >
-              KO
-            </button>
-            <button
-              class="lang-btn"
-              data-lang="en"
-              onclick="i18n.switchLang('en')"
-            >
-              EN
-            </button>
+              class="lang-btn" data-lang="ko" onclick="i18n.switchLang('ko')">KO</button><button class="lang-btn active" data-lang="en" onclick="i18n.switchLang('en')">EN</button>
           </li>
-          <li><button id="theme-toggle" title="다크모드 전환">🌙</button></li>
+          <li><button id="theme-toggle" title="Toggle dark mode">🌙</button></li>
         </ul>
       </nav>
     </header>

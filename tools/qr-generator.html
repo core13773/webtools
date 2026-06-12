@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ko" id="root-html">
+<html lang="en" id="root-html">
   <head>
     <meta charset="UTF-8" />
     <script>(function(){const t=localStorage.getItem('theme')||'light';document.documentElement.setAttribute('data-theme',t);})();</script>
@@ -17,32 +17,32 @@
       crossorigin="anonymous"
     ></script>
     <title data-i18n="tools_qr.title">
-      QR 코드 생성기 - 텍스트/URL을 QR 코드로 변환 | WebTools
+      QR Code Generator - Create QR Codes Online | WebTools
     </title>
     <meta
       name="description"
-      content="URL이나 텍스트를 스캔할 수 있는 QR 코드 이미지로 즉시 변환하는 온라인 도구입니다."
+      content="Turn URLs or text into scannable QR code images instantly."
     />
     <meta name="robots" content="index, follow" />
     <meta
       name="keywords"
-      content="QR 코드 생성기, QR code generator, QR 만들기, 바코드 생성, qr 코드"
+      content="QR code generator, QR code maker, create QR code, online QR generator"
     />
     <link
       rel="canonical"
       href="https://webtool.monster/tools/qr-generator.html"
     />
-    <link rel="alternate" hreflang="ko" href="https://webtool.monster/tools/qr-generator.html" />
     <link rel="alternate" hreflang="en" href="https://webtool.monster/tools/qr-generator.html" />
+    <link rel="alternate" hreflang="ko" href="https://webtool.monster/tools/qr-generator.html" />
     <link rel="alternate" hreflang="x-default" href="https://webtool.monster/tools/qr-generator.html" />
     
     <meta
       property="og:title"
-      content="QR 코드 생성기 - 텍스트/URL을 QR 코드로 변환 | WebTools"
+      content="QR Code Generator - Create QR Codes Online | WebTools"
     />
     <meta
       property="og:description"
-      content="URL이나 텍스트를 스캔할 수 있는 QR 코드 이미지로 즉시 변환하는 온라인 도구입니다."
+      content="Turn URLs or text into scannable QR code images instantly."
     />
     <meta property="og:type" content="website" />
     <meta
@@ -54,11 +54,11 @@
     <meta name="twitter:card" content="summary_large_image" />
     <meta
       name="twitter:title"
-      content="QR 코드 생성기 - 텍스트/URL을 QR 코드로 변환 | WebTools"
+      content="QR Code Generator - Create QR Codes Online | WebTools"
     />
     <meta
       name="twitter:description"
-      content="URL이나 텍스트를 스캔할 수 있는 QR 코드 이미지로 즉시 변환하는 온라인 도구입니다."
+      content="Turn URLs or text into scannable QR code images instantly."
     />
     <meta name="theme-color" content="#4f46e5" />
     <link rel="manifest" href="../manifest.json" />
@@ -87,7 +87,7 @@
           {
             "@type": "WebApplication",
             "@id": "https://webtool.monster/tools/qr-generator.html#webapplication",
-            "name": "QR 코드 생성기",
+            "name": "QR Code Generator",
             "url": "https://webtool.monster/tools/qr-generator.html",
             "description": "URL이나 텍스트를 스캔할 수 있는 QR 코드 이미지로 즉시 변환하는 온라인 도구",
             "applicationCategory": "UtilitiesApplication",
@@ -115,7 +115,7 @@
               {
                 "@type": "ListItem",
                 "position": 2,
-                "name": "QR 코드 생성기",
+                "name": "QR Code Generator",
                 "item": "https://webtool.monster/tools/qr-generator.html"
               }
             ]
@@ -124,7 +124,7 @@
             "@type": "WebSite",
             "@id": "https://webtool.monster/#website",
             "url": "https://webtool.monster/",
-            "name": "WebTools - 온라인 개발 유틸리티 모음",
+            "name": "WebTools - Free Online Developer Tools",
             "publisher": {
               "@id": "https://webtool.monster/#organization"
             }
@@ -167,27 +167,15 @@
           <li><a href="../index.html" data-i18n="nav.home">홈</a></li>
           <li class="lang-switcher">
             <button
-              class="lang-btn active"
-              data-lang="ko"
-              onclick="i18n.switchLang('ko')"
-            >
-              KO
-            </button>
-            <button
-              class="lang-btn"
-              data-lang="en"
-              onclick="i18n.switchLang('en')"
-            >
-              EN
-            </button>
+              class="lang-btn" data-lang="ko" onclick="i18n.switchLang('ko')">KO</button><button class="lang-btn active" data-lang="en" onclick="i18n.switchLang('en')">EN</button>
           </li>
-          <li><button id="theme-toggle" title="다크모드 전환">🌙</button></li>
+          <li><button id="theme-toggle" title="Toggle dark mode">🌙</button></li>
         </ul>
       </nav>
     </header>
     <main class="container">
       <div class="tool-header">
-        <h1 data-i18n="tools_qr.title">QR 코드 생성기</h1>
+        <h1 data-i18n="tools_qr.title">QR Code Generator</h1>
         <p data-i18n="tools_qr.desc">
           URL이나 텍스트를 QR 코드 이미지로 변환합니다.
         </p>

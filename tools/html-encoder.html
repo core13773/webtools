@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ko" id="root-html">
+<html lang="en" id="root-html">
   <head>
     <meta charset="UTF-8" />
     <script>(function(){const t=localStorage.getItem('theme')||'light';document.documentElement.setAttribute('data-theme',t);})();</script>
@@ -17,32 +17,32 @@
       crossorigin="anonymous"
     ></script>
     <title data-i18n="tools_html.title">
-      HTML 인코더/디코더 - HTML Entity 특수문자 변환 | WebTools
+      HTML Encoder / Decoder - Online HTML Entity Tool | WebTools
     </title>
     <meta
       name="description"
-      content="특수문자를 HTML Entity 코드로 인코딩하거나, HTML Entity를 원래 문자로 디코딩하는 온라인 도구입니다."
+      content="Escape special characters to HTML entities (&lt;, &amp;, etc.) and decode them back."
     />
     <meta name="robots" content="index, follow" />
     <meta
       name="keywords"
-      content="HTML 인코더, HTML 디코더, HTML Entity, 특수문자 변환, html encoder decoder"
+      content="HTML encoder, HTML decoder, HTML entity, HTML escape, online HTML tool"
     />
     <link
       rel="canonical"
       href="https://webtool.monster/tools/html-encoder.html"
     />
-    <link rel="alternate" hreflang="ko" href="https://webtool.monster/tools/html-encoder.html" />
     <link rel="alternate" hreflang="en" href="https://webtool.monster/tools/html-encoder.html" />
+    <link rel="alternate" hreflang="ko" href="https://webtool.monster/tools/html-encoder.html" />
     <link rel="alternate" hreflang="x-default" href="https://webtool.monster/tools/html-encoder.html" />
     
     <meta
       property="og:title"
-      content="HTML 인코더/디코더 - HTML Entity 특수문자 변환 | WebTools"
+      content="HTML Encoder / Decoder - Online HTML Entity Tool | WebTools"
     />
     <meta
       property="og:description"
-      content="특수문자를 HTML Entity 코드로 인코딩하거나, HTML Entity를 원래 문자로 디코딩하는 온라인 도구입니다."
+      content="Escape special characters to HTML entities (&lt;, &amp;, etc.) and decode them back."
     />
     <meta property="og:type" content="website" />
     <meta
@@ -54,11 +54,11 @@
     <meta name="twitter:card" content="summary_large_image" />
     <meta
       name="twitter:title"
-      content="HTML 인코더/디코더 - HTML Entity 특수문자 변환 | WebTools"
+      content="HTML Encoder / Decoder - Online HTML Entity Tool | WebTools"
     />
     <meta
       name="twitter:description"
-      content="특수문자를 HTML Entity 코드로 인코딩하거나, HTML Entity를 원래 문자로 디코딩하는 온라인 도구입니다."
+      content="Escape special characters to HTML entities (&lt;, &amp;, etc.) and decode them back."
     />
     <meta name="theme-color" content="#4f46e5" />
     <link rel="manifest" href="../manifest.json" />
@@ -87,7 +87,7 @@
           {
             "@type": "WebApplication",
             "@id": "https://webtool.monster/tools/html-encoder.html#webapplication",
-            "name": "HTML 인코더/디코더",
+            "name": "HTML Encoder / Decoder",
             "url": "https://webtool.monster/tools/html-encoder.html",
             "description": "특수문자를 HTML Entity(&lt;, &amp; 등)로 변환하거나 원래 문자로 되돌리는 온라인 도구",
             "applicationCategory": "DeveloperApplication",
@@ -115,7 +115,7 @@
               {
                 "@type": "ListItem",
                 "position": 2,
-                "name": "HTML 인코더/디코더",
+                "name": "HTML Encoder / Decoder",
                 "item": "https://webtool.monster/tools/html-encoder.html"
               }
             ]
@@ -124,7 +124,7 @@
             "@type": "WebSite",
             "@id": "https://webtool.monster/#website",
             "url": "https://webtool.monster/",
-            "name": "WebTools - 온라인 개발 유틸리티 모음",
+            "name": "WebTools - Free Online Developer Tools",
             "publisher": {
               "@id": "https://webtool.monster/#organization"
             }
@@ -167,21 +167,9 @@
           <li><a href="../index.html" data-i18n="nav.home">홈</a></li>
           <li class="lang-switcher">
             <button
-              class="lang-btn active"
-              data-lang="ko"
-              onclick="i18n.switchLang('ko')"
-            >
-              KO
-            </button>
-            <button
-              class="lang-btn"
-              data-lang="en"
-              onclick="i18n.switchLang('en')"
-            >
-              EN
-            </button>
+              class="lang-btn" data-lang="ko" onclick="i18n.switchLang('ko')">KO</button><button class="lang-btn active" data-lang="en" onclick="i18n.switchLang('en')">EN</button>
           </li>
-          <li><button id="theme-toggle" title="다크모드 전환">🌙</button></li>
+          <li><button id="theme-toggle" title="Toggle dark mode">🌙</button></li>
         </ul>
       </nav>
     </header>

@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ko" id="root-html">
+<html lang="en" id="root-html">
   <head>
     <meta charset="UTF-8" />
     <script>(function(){const t=localStorage.getItem('theme')||'light';document.documentElement.setAttribute('data-theme',t);})();</script>
@@ -8,24 +8,24 @@
     <link rel="preconnect" href="https://pagead2.googlesyndication.com" crossorigin="anonymous" />
     <link rel="preconnect" href="https://googleads.g.doubleclick.net" />
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4794002106764884" crossorigin="anonymous"></script>
-    <title data-i18n="tools_px.title">PX ↔ REM/EM 변환기 - CSS 단위 변환 | WebTools</title>
-    <meta name="description" content="px 값을 rem/em으로 변환하고, 기준 폰트 크기를 자유롭게 조절하는 온라인 도구입니다." />
+    <title data-i18n="tools_px.title">PX ↔ REM/EM Converter - Convert CSS Units Online | WebTools</title>
+    <meta name="description" content="Convert px to rem/em with adjustable base font size." />
     <meta name="robots" content="index, follow" />
-    <meta name="keywords" content="PX REM EM 변환기, px to rem, px to em, css 단위 변환" />
+    <meta name="keywords" content="PX to REM, PX to EM, REM converter, CSS unit converter, online PX converter" />
     <link rel="canonical" href="https://webtool.monster/tools/px-converter.html" />
-    <link rel="alternate" hreflang="ko" href="https://webtool.monster/tools/px-converter.html" />
     <link rel="alternate" hreflang="en" href="https://webtool.monster/tools/px-converter.html" />
+    <link rel="alternate" hreflang="ko" href="https://webtool.monster/tools/px-converter.html" />
     <link rel="alternate" hreflang="x-default" href="https://webtool.monster/tools/px-converter.html" />
     
-    <meta property="og:title" content="PX ↔ REM/EM 변환기 - CSS 단위 변환 | WebTools" />
-    <meta property="og:description" content="px 값을 rem/em으로 변환하고, 기준 폰트 크기를 자유롭게 조절하는 온라인 도구입니다." />
+    <meta property="og:title" content="PX ↔ REM/EM Converter - Convert CSS Units Online | WebTools" />
+    <meta property="og:description" content="Convert px to rem/em with adjustable base font size." />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://webtool.monster/tools/px-converter.html" />
     <meta property="og:locale" content="en_US" />
     <meta property="og:locale:alternate" content="ko_KR" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="PX ↔ REM/EM 변환기 - CSS 단위 변환 | WebTools" />
-    <meta name="twitter:description" content="px 값을 rem/em으로 변환하고, 기준 폰트 크기를 자유롭게 조절하는 온라인 도구입니다." />
+    <meta name="twitter:title" content="PX ↔ REM/EM Converter - Convert CSS Units Online | WebTools" />
+    <meta name="twitter:description" content="Convert px to rem/em with adjustable base font size." />
     <meta name="theme-color" content="#4f46e5" />
     <link rel="manifest" href="../manifest.json" />
     <link rel="icon" href="../favicon.svg" sizes="any" type="image/svg+xml" />
@@ -41,7 +41,7 @@
           {
             "@type": "WebApplication",
             "@id": "https://webtool.monster/tools/px-converter.html#webapplication",
-            "name": "PX ↔ REM/EM 변환기",
+            "name": "PX ↔ REM/EM Converter",
             "url": "https://webtool.monster/tools/px-converter.html",
             "description": "px 값을 rem/em으로 변환하고, 기준 폰트 크기를 자유롭게 조절하는 온라인 도구",
             "applicationCategory": "DeveloperApplication",
@@ -55,14 +55,14 @@
             "@id": "https://webtool.monster/tools/px-converter.html#breadcrumb",
             "itemListElement": [
               { "@type": "ListItem", "position": 1, "name": "WebTools", "item": "https://webtool.monster/" },
-              { "@type": "ListItem", "position": 2, "name": "PX ↔ REM/EM 변환기", "item": "https://webtool.monster/tools/px-converter.html" }
+              { "@type": "ListItem", "position": 2, "name": "PX ↔ REM/EM Converter", "item": "https://webtool.monster/tools/px-converter.html" }
             ]
           },
           {
             "@type": "WebSite",
             "@id": "https://webtool.monster/#website",
             "url": "https://webtool.monster/",
-            "name": "WebTools - 온라인 개발 유틸리티 모음",
+            "name": "WebTools - Free Online Developer Tools",
             "publisher": { "@id": "https://webtool.monster/#organization" }
           }
         ]
@@ -92,16 +92,15 @@
         <ul class="nav-links">
           <li><a href="../index.html" data-i18n="nav.home">홈</a></li>
           <li class="lang-switcher">
-            <button class="lang-btn active" data-lang="ko" onclick="i18n.switchLang('ko')">KO</button>
-            <button class="lang-btn" data-lang="en" onclick="i18n.switchLang('en')">EN</button>
+            <button class="lang-btn" data-lang="ko" onclick="i18n.switchLang('ko')">KO</button><button class="lang-btn active" data-lang="en" onclick="i18n.switchLang('en')">EN</button>
           </li>
-          <li><button id="theme-toggle" title="다크모드 전환">🌙</button></li>
+          <li><button id="theme-toggle" title="Toggle dark mode">🌙</button></li>
         </ul>
       </nav>
     </header>
     <main class="container">
       <div class="tool-header">
-        <h1 data-i18n="tools_px.title">PX ↔ REM/EM 변환기</h1>
+        <h1 data-i18n="tools_px.title">PX ↔ REM/EM Converter</h1>
         <p data-i18n="tools_px.desc">px 값을 rem/em으로 변환하고, 기준 폰트 크기를 자유롭게 조절합니다.</p>
       </div>
       <div class="tool-box">

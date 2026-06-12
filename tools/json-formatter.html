@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ko" id="root-html">
+<html lang="en" id="root-html">
   <head>
     <meta charset="UTF-8" />
     <script>(function(){const t=localStorage.getItem('theme')||'light';document.documentElement.setAttribute('data-theme',t);})();</script>
@@ -17,31 +17,31 @@
       crossorigin="anonymous"
     ></script>
     <title data-i18n="tools_json.title">
-      JSON 포맷터 - 온라인 JSON 정렬 및 유효성 검사 | WebTools
+      JSON Formatter - Online JSON Pretty Print & Validation | WebTools
     </title>
     <meta
       name="description"
-      content="복잡한 JSON 데이터를 예쁘게 들여쓰기하고 유효성을 검사하는 온라인 도구입니다."
+      content="Pretty-print and validate complex JSON data with proper indentation."
     />
     <meta name="robots" content="index, follow" />
     <meta
       name="keywords"
-      content="JSON 포맷터, JSON 정렬, JSON 유효성 검사, JSON validator, pretty print, json formatter"
+      content="JSON formatter, JSON validator, JSON pretty print, online JSON tool, json format"
     />
     <link
       rel="canonical"
       href="https://webtool.monster/tools/json-formatter.html"
     />
-    <link rel="alternate" hreflang="ko" href="https://webtool.monster/tools/json-formatter.html" />
     <link rel="alternate" hreflang="en" href="https://webtool.monster/tools/json-formatter.html" />
+    <link rel="alternate" hreflang="ko" href="https://webtool.monster/tools/json-formatter.html" />
     <link rel="alternate" hreflang="x-default" href="https://webtool.monster/tools/json-formatter.html" />
     <meta
       property="og:title"
-      content="JSON 포맷터 - 온라인 JSON 정렬 및 유효성 검사 | WebTools"
+      content="JSON Formatter - Online JSON Pretty Print & Validation | WebTools"
     />
     <meta
       property="og:description"
-      content="복잡한 JSON 데이터를 예쁘게 들여쓰기하고 유효성을 검사하는 온라인 도구입니다."
+      content="Pretty-print and validate complex JSON data with proper indentation."
     />
     <meta property="og:type" content="website" />
     <meta
@@ -53,11 +53,11 @@
     <meta name="twitter:card" content="summary_large_image" />
     <meta
       name="twitter:title"
-      content="JSON 포맷터 - 온라인 JSON 정렬 및 유효성 검사 | WebTools"
+      content="JSON Formatter - Online JSON Pretty Print & Validation | WebTools"
     />
     <meta
       name="twitter:description"
-      content="복잡한 JSON 데이터를 예쁘게 들여쓰기하고 유효성을 검사하는 온라인 도구입니다."
+      content="Pretty-print and validate complex JSON data with proper indentation."
     />
     <meta name="theme-color" content="#4f46e5" />
     <link rel="manifest" href="../manifest.json" />
@@ -86,9 +86,9 @@
           {
             "@type": "WebApplication",
             "@id": "https://webtool.monster/tools/json-formatter.html#webapplication",
-            "name": "JSON 포맷터 & 유효성 검사",
+            "name": "JSON Formatter & Validator",
             "url": "https://webtool.monster/tools/json-formatter.html",
-            "description": "복잡한 JSON 데이터를 예쁘게 들여쓰기하고 유효성을 검사하는 온라인 도구",
+            "description": "Pretty-print and validate complex JSON data online",
             "applicationCategory": "DeveloperApplication",
             "operatingSystem": "All",
             "browserRequirements": "Modern browser with JavaScript enabled",
@@ -114,7 +114,7 @@
               {
                 "@type": "ListItem",
                 "position": 2,
-                "name": "JSON 포맷터 & 유효성 검사",
+                "name": "JSON Formatter & Validator",
                 "item": "https://webtool.monster/tools/json-formatter.html"
               }
             ]
@@ -123,7 +123,7 @@
             "@type": "WebSite",
             "@id": "https://webtool.monster/#website",
             "url": "https://webtool.monster/",
-            "name": "WebTools - 온라인 개발 유틸리티 모음",
+            "name": "WebTools - Free Online Developer Tools",
             "publisher": {
               "@id": "https://webtool.monster/#organization"
             }
@@ -166,27 +166,15 @@
           <li><a href="../index.html" data-i18n="nav.home">홈</a></li>
           <li class="lang-switcher">
             <button
-              class="lang-btn active"
-              data-lang="ko"
-              onclick="i18n.switchLang('ko')"
-            >
-              KO
-            </button>
-            <button
-              class="lang-btn"
-              data-lang="en"
-              onclick="i18n.switchLang('en')"
-            >
-              EN
-            </button>
+              class="lang-btn" data-lang="ko" onclick="i18n.switchLang('ko')">KO</button><button class="lang-btn active" data-lang="en" onclick="i18n.switchLang('en')">EN</button>
           </li>
-          <li><button id="theme-toggle" title="다크모드 전환">🌙</button></li>
+          <li><button id="theme-toggle" title="Toggle dark mode">🌙</button></li>
         </ul>
       </nav>
     </header>
     <main class="container">
       <div class="tool-header">
-        <h1 data-i18n="tools_json.title">JSON 포맷터 & 유효성 검사</h1>
+        <h1 data-i18n="tools_json.title">JSON Formatter & Validator</h1>
         <p data-i18n="tools_json.desc">
           JSON 문자열을 보기 좋게 정렬하고 문법 오류를 확인하세요.
         </p>

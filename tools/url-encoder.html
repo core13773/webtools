@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ko" id="root-html">
+<html lang="en" id="root-html">
   <head>
     <meta charset="UTF-8" />
     <script>(function(){const t=localStorage.getItem('theme')||'light';document.documentElement.setAttribute('data-theme',t);})();</script>
@@ -17,32 +17,32 @@
       crossorigin="anonymous"
     ></script>
     <title data-i18n="tools_url.title">
-      URL 인코더/디코더 - 온라인 퍼센트 인코딩 | WebTools
+      URL Encoder / Decoder - Online Percent Encoding Tool | WebTools
     </title>
     <meta
       name="description"
-      content="URL에 사용할 수 없는 문자를 퍼센트 인코딩으로 변환하거나 원래 문자로 되돌리는 온라인 도구입니다."
+      content="Escape unsafe URL characters with percent-encoding or revert them."
     />
     <meta name="robots" content="index, follow" />
     <meta
       name="keywords"
-      content="URL 인코더, URL 디코더, 퍼센트 인코딩, URL 변환, percent encoding, url encoder decoder"
+      content="URL encoder, URL decoder, percent encoding, URL escape, online URL tool"
     />
     <link
       rel="canonical"
       href="https://webtool.monster/tools/url-encoder.html"
     />
-    <link rel="alternate" hreflang="ko" href="https://webtool.monster/tools/url-encoder.html" />
     <link rel="alternate" hreflang="en" href="https://webtool.monster/tools/url-encoder.html" />
+    <link rel="alternate" hreflang="ko" href="https://webtool.monster/tools/url-encoder.html" />
     <link rel="alternate" hreflang="x-default" href="https://webtool.monster/tools/url-encoder.html" />
     
     <meta
       property="og:title"
-      content="URL 인코더/디코더 - 온라인 퍼센트 인코딩 | WebTools"
+      content="URL Encoder / Decoder - Online Percent Encoding Tool | WebTools"
     />
     <meta
       property="og:description"
-      content="URL에 사용할 수 없는 문자를 퍼센트 인코딩으로 변환하거나 원래 문자로 되돌리는 온라인 도구입니다."
+      content="Escape unsafe URL characters with percent-encoding or revert them."
     />
     <meta property="og:type" content="website" />
     <meta
@@ -54,11 +54,11 @@
     <meta name="twitter:card" content="summary_large_image" />
     <meta
       name="twitter:title"
-      content="URL 인코더/디코더 - 온라인 퍼센트 인코딩 | WebTools"
+      content="URL Encoder / Decoder - Online Percent Encoding Tool | WebTools"
     />
     <meta
       name="twitter:description"
-      content="URL에 사용할 수 없는 문자를 퍼센트 인코딩으로 변환하거나 원래 문자로 되돌리는 온라인 도구입니다."
+      content="Escape unsafe URL characters with percent-encoding or revert them."
     />
     <meta name="theme-color" content="#4f46e5" />
     <link rel="manifest" href="../manifest.json" />
@@ -87,7 +87,7 @@
           {
             "@type": "WebApplication",
             "@id": "https://webtool.monster/tools/url-encoder.html#webapplication",
-            "name": "URL 인코더/디코더",
+            "name": "URL Encoder / Decoder",
             "url": "https://webtool.monster/tools/url-encoder.html",
             "description": "한글이나 특수문자가 포함된 URL을 퍼센트 인코딩으로 안전하게 변환하는 온라인 도구",
             "applicationCategory": "DeveloperApplication",
@@ -115,7 +115,7 @@
               {
                 "@type": "ListItem",
                 "position": 2,
-                "name": "URL 인코더/디코더",
+                "name": "URL Encoder / Decoder",
                 "item": "https://webtool.monster/tools/url-encoder.html"
               }
             ]
@@ -124,7 +124,7 @@
             "@type": "WebSite",
             "@id": "https://webtool.monster/#website",
             "url": "https://webtool.monster/",
-            "name": "WebTools - 온라인 개발 유틸리티 모음",
+            "name": "WebTools - Free Online Developer Tools",
             "publisher": {
               "@id": "https://webtool.monster/#organization"
             }
@@ -167,21 +167,9 @@
           <li><a href="../index.html" data-i18n="nav.home">홈</a></li>
           <li class="lang-switcher">
             <button
-              class="lang-btn active"
-              data-lang="ko"
-              onclick="i18n.switchLang('ko')"
-            >
-              KO
-            </button>
-            <button
-              class="lang-btn"
-              data-lang="en"
-              onclick="i18n.switchLang('en')"
-            >
-              EN
-            </button>
+              class="lang-btn" data-lang="ko" onclick="i18n.switchLang('ko')">KO</button><button class="lang-btn active" data-lang="en" onclick="i18n.switchLang('en')">EN</button>
           </li>
-          <li><button id="theme-toggle" title="다크모드 전환">🌙</button></li>
+          <li><button id="theme-toggle" title="Toggle dark mode">🌙</button></li>
         </ul>
       </nav>
     </header>
