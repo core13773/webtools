@@ -16,7 +16,7 @@
       src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4794002106764884"
       crossorigin="anonymous"
     ></script>
-    <title data-i18n="tools_case.title">
+    <title>
       Text Case Converter - UPPER, lower, snake_case, camelCase | WebTools
     </title>
     <meta
@@ -164,7 +164,7 @@
       <nav>
         <a href="../index.html" class="logo">Web<span>Tools</span></a>
         <ul class="nav-links">
-          <li><a href="../index.html" data-i18n="nav.home">홈</a></li>
+          <li><a href="../index.html" data-i18n="nav.home">Home</a></li>
           <li class="lang-switcher">
             <button
               class="lang-btn" data-lang="ko" onclick="i18n.switchLang('ko')">KO</button><button class="lang-btn active" data-lang="en" onclick="i18n.switchLang('en')">EN</button>
@@ -177,18 +177,18 @@
       <div class="tool-header">
         <h1 data-i18n="tools_case.title">Text Case Converter</h1>
         <p data-i18n="tools_case.desc">
-          텍스트를 다양한 형식(대문자, 소문자, camelCase 등)으로 변환합니다.
+          Convert text to UPPER CASE, lower case, Capital Case, snake_case, camelCase and more.
         </p>
       </div>
       <div class="tool-box">
         <div class="form-group">
           <label for="text-input" data-i18n="tools_case.input_label">
-            입력 텍스트
+            Input Text
           </label>
           <textarea
             id="text-input"
             rows="6"
-            placeholder="예: hello world"
+            placeholder="e.g. hello world"
           ></textarea>
         </div>
         <div class="btn-row">
@@ -197,14 +197,14 @@
             onclick="toCase('upper')"
             data-i18n="tools_case.btn_upper"
           >
-            🔠 대문자
+            🔠 UPPER CASE
           </button>
           <button
             class="btn"
             onclick="toCase('lower')"
             data-i18n="tools_case.btn_lower"
           >
-            🔡 소문자
+            🔡 lower case
           </button>
           <button
             class="btn"
@@ -232,49 +232,46 @@
             onclick="copyResult()"
             data-i18n="common.copy"
           >
-            📋 복사
+            📋 Copy
           </button>
           <button
             class="btn btn-outline"
             onclick="downloadResult()"
             data-i18n="common.download"
           >
-            💾 다운로드
+            💾 Download
           </button>
           <button
             class="btn btn-outline"
             onclick="clearAll()"
             data-i18n="common.clear"
           >
-            🗑️ 초기화
+            🗑️ Clear
           </button>
         </div>
         <div class="form-group result-group">
-          <label for="text-output" data-i18n="common.result">결과</label>
+          <label for="text-output" data-i18n="common.result">Result</label>
           <div
             id="text-output"
             class="result-box"
             aria-live="polite"
             data-i18n="common.result_placeholder"
           >
-            결과가 여기에 표시됩니다.
+            Result will appear here.
           </div>
         </div>
       </div>
       <section class="usage-section">
-        <h2 data-i18n="tools_case.usage_title">📖 사용 방법</h2>
+        <h2 data-i18n="tools_case.usage_title">📖 How to Use</h2>
         <div class="usage-steps">
           <div class="usage-step">
             <div class="usage-step-badge">1</div>
             <div class="usage-step-content">
               <strong data-i18n="tools_case.usage_step1_title">
-                텍스트 입력
+                Enter Text
               </strong>
               <p data-i18n="tools_case.usage_step1_desc">
-                변환할 텍스트를 입력합니다. 예:
-                <code>hello world</code>
-                또는
-                <code>my_variable_name</code>
+                Type or paste the text you want to convert.
               </p>
             </div>
           </div>
@@ -282,20 +279,10 @@
             <div class="usage-step-badge">2</div>
             <div class="usage-step-content">
               <strong data-i18n="tools_case.usage_step2_title">
-                변환 방식 선택
+                Choose a Format
               </strong>
               <p data-i18n="tools_case.usage_step2_desc">
-                원하는 형식의 버튼을 클릭합니다:
-                <strong>대문자</strong>
-                (HELLO) ·
-                <strong>소문자</strong>
-                (hello) ·
-                <strong>Capital Case</strong>
-                (Hello World) ·
-                <strong>snake_case</strong>
-                (hello_world) ·
-                <strong>camelCase</strong>
-                (helloWorld)
+                Click the desired format button: UPPER CASE, lower case, Capital Case, snake_case, or camelCase.
               </p>
             </div>
           </div>
@@ -303,26 +290,17 @@
             <div class="usage-step-badge">3</div>
             <div class="usage-step-content">
               <strong data-i18n="tools_case.usage_step3_title">
-                결과 복사
+                Copy Result
               </strong>
               <p data-i18n="tools_case.usage_step3_desc">
-                변환된 텍스트를 확인하고
-                <strong>📋 복사</strong>
-                버튼으로 클립보드에 저장합니다. 필요시
-                <strong>🗑️ 초기화</strong>
-                버튼으로 입력을 지웁니다.
+                Review the converted text and click 📋 Copy to save to your clipboard.
               </p>
             </div>
           </div>
         </div>
         <div class="usage-tip">
           <span data-i18n="tools_case.usage_tip">
-            <strong>💡 팁:</strong>
-            <code>snake_case</code>
-            는 Python 변수명,
-            <code>camelCase</code>
-            는 JavaScript 변수명에 주로 사용됩니다. Capital Case는 제목이나
-            이름을 작성할 때 유용합니다.
+            💡 Tip: snake_case is common in Python, camelCase in JavaScript. Capital Case is useful for titles and headings.
           </span>
         </div>
       </section>
@@ -332,19 +310,19 @@
         <div class="footer-brand">
           <a href="../index.html" class="logo">Web<span>Tools</span></a>
           <p data-i18n="footer.brand_desc">
-            설치 없이 바로 쓰는 온라인 개발 도구 모음
+            Free online developer tools — no installation required.
           </p>
         </div>
       </div>
       <div class="footer-bottom">
         <p>
           <span data-i18n="footer.copyright">
-            © 2026 WebTools. 온라인 도구 모음.
+            © 2026 WebTools. Online Tool Suite.
           </span>
           |
           <a href="../sitemap.xml" data-i18n="footer.sitemap">Sitemap</a>
           |
-          <a href="https://github.com/core13773/webtools/issues" target="_blank" rel="noopener noreferrer" data-i18n="feedback.link">도구 제안 및 피드백 보내기</a>
+          <a href="https://github.com/core13773/webtools/issues" target="_blank" rel="noopener noreferrer" data-i18n="feedback.link">Suggest a tool or send feedback</a>
         </p>
       </div>
     </footer>

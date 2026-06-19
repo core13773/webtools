@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://pagead2.googlesyndication.com" crossorigin="anonymous" />
     <link rel="preconnect" href="https://googleads.g.doubleclick.net" />
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4794002106764884" crossorigin="anonymous"></script>
-    <title data-i18n="tools_px.title">PX ↔ REM/EM Converter - Convert CSS Units Online | WebTools</title>
+    <title>PX ↔ REM/EM Converter - Convert CSS Units Online | WebTools</title>
     <meta name="description" content="Convert px to rem/em with adjustable base font size." />
     <meta name="robots" content="index, follow" />
     <meta name="keywords" content="PX to REM, PX to EM, REM converter, CSS unit converter, online PX converter" />
@@ -43,7 +43,7 @@
             "@id": "https://webtool.monster/tools/px-converter.html#webapplication",
             "name": "PX ↔ REM/EM Converter",
             "url": "https://webtool.monster/tools/px-converter.html",
-            "description": "px 값을 rem/em으로 변환하고, 기준 폰트 크기를 자유롭게 조절하는 온라인 도구",
+            "description": "Convert px to rem/em with adjustable base font size.",
             "applicationCategory": "DeveloperApplication",
             "operatingSystem": "All",
             "browserRequirements": "Modern browser with JavaScript enabled",
@@ -90,7 +90,7 @@
       <nav>
         <a href="../index.html" class="logo">Web<span>Tools</span></a>
         <ul class="nav-links">
-          <li><a href="../index.html" data-i18n="nav.home">홈</a></li>
+          <li><a href="../index.html" data-i18n="nav.home">Home</a></li>
           <li class="lang-switcher">
             <button class="lang-btn" data-lang="ko" onclick="i18n.switchLang('ko')">KO</button><button class="lang-btn active" data-lang="en" onclick="i18n.switchLang('en')">EN</button>
           </li>
@@ -101,15 +101,15 @@
     <main class="container">
       <div class="tool-header">
         <h1 data-i18n="tools_px.title">PX ↔ REM/EM Converter</h1>
-        <p data-i18n="tools_px.desc">px 값을 rem/em으로 변환하고, 기준 폰트 크기를 자유롭게 조절합니다.</p>
+        <p data-i18n="tools_px.desc">Convert px to rem/em with adjustable base font size.</p>
       </div>
       <div class="tool-box">
         <div class="form-group">
-          <label for="px-base" data-i18n="tools_px.base_label">기준 폰트 크기 (px)</label>
+          <label for="px-base" data-i18n="tools_px.base_label">Base Font Size (px)</label>
           <input type="number" id="px-base" value="16" min="1" style="max-width:150px" />
         </div>
         <div class="form-group">
-          <label for="px-value" data-i18n="tools_px.px_label">PX (픽셀)</label>
+          <label for="px-value" data-i18n="tools_px.px_label">PX (Pixels)</label>
           <input type="number" id="px-value" placeholder="16" />
         </div>
         <div class="form-group">
@@ -121,36 +121,36 @@
           <input type="number" id="em-value" placeholder="1" />
         </div>
         <div class="btn-row">
-          <button class="btn btn-outline" onclick="document.getElementById('px-value').value='';document.getElementById('rem-value').value='';document.getElementById('em-value').value='';" data-i18n="common.clear">🗑️ 초기화</button>
+          <button class="btn btn-outline" onclick="document.getElementById('px-value').value='';document.getElementById('rem-value').value='';document.getElementById('em-value').value='';" data-i18n="common.clear">🗑️ Clear</button>
         </div>
       </div>
       <section class="usage-section">
-        <h2 data-i18n="tools_px.usage_title">📖 사용 방법</h2>
+        <h2 data-i18n="tools_px.usage_title">📖 How to Use</h2>
         <div class="usage-steps">
           <div class="usage-step">
             <div class="usage-step-badge">1</div>
             <div class="usage-step-content">
-              <strong data-i18n="tools_px.usage_step1_title">기준 폰트 크기 설정</strong>
-              <p data-i18n="tools_px.usage_step1_desc">기본적으로 16px이 설정되어 있습니다. 디자인 시스템에 맞게 변경하세요.</p>
+              <strong data-i18n="tools_px.usage_step1_title">Set Base Font Size</strong>
+              <p data-i18n="tools_px.usage_step1_desc">Default is 16px. Adjust it to match your design system.</p>
             </div>
           </div>
           <div class="usage-step">
             <div class="usage-step-badge">2</div>
             <div class="usage-step-content">
-              <strong data-i18n="tools_px.usage_step2_title">값 입력</strong>
-              <p data-i18n="tools_px.usage_step2_desc">PX, REM, EM 중 하나를 입력하면 나머지 두 단위가 자동으로 계산됩니다.</p>
+              <strong data-i18n="tools_px.usage_step2_title">Enter a Value</strong>
+              <p data-i18n="tools_px.usage_step2_desc">Enter a value in PX, REM, or EM and the other two units are calculated automatically.</p>
             </div>
           </div>
           <div class="usage-step">
             <div class="usage-step-badge">3</div>
             <div class="usage-step-content">
-              <strong data-i18n="tools_px.usage_step3_title">결과 활용</strong>
-              <p data-i18n="tools_px.usage_step3_desc">변환된 값을 복사하여 CSS나 디자인 도구에 바로 적용하세요.</p>
+              <strong data-i18n="tools_px.usage_step3_title">Apply Result</strong>
+              <p data-i18n="tools_px.usage_step3_desc">Copy the converted values and use them directly in your CSS or design tool.</p>
             </div>
           </div>
         </div>
         <div class="usage-tip">
-          <span data-i18n="tools_px.usage_tip">💡 팁: 1rem은 루트 요소(html)의 폰트 크기입니다. 반응형 웹 디자인에서는 rem을 사용하는 것이 접근성과 유지보수에 유리합니다.</span>
+          <span data-i18n="tools_px.usage_tip">💡 Tip: 1rem equals the root element (html) font size. Using rem is recommended for responsive and accessible web design.</span>
         </div>
       </section>
     </main>
@@ -158,14 +158,14 @@
       <div class="footer-content">
         <div class="footer-brand">
           <a href="../index.html" class="logo">Web<span>Tools</span></a>
-          <p data-i18n="footer.brand_desc">설치 없이 바로 쓰는 온라인 개발 도구 모음</p>
+          <p data-i18n="footer.brand_desc">Free online developer tools — no installation required.</p>
         </div>
       </div>
       <div class="footer-bottom">
         <p>
-          <span data-i18n="footer.copyright">© 2026 WebTools. 온라인 도구 모음.</span>
+          <span data-i18n="footer.copyright">© 2026 WebTools. Online Tool Suite.</span>
           | <a href="../sitemap.xml" data-i18n="footer.sitemap">Sitemap</a>
-          | <a href="https://github.com/core13773/webtools/issues" target="_blank" rel="noopener noreferrer" data-i18n="feedback.link">도구 제안 및 피드백 보내기</a>
+          | <a href="https://github.com/core13773/webtools/issues" target="_blank" rel="noopener noreferrer" data-i18n="feedback.link">Suggest a tool or send feedback</a>
         </p>
       </div>
     </footer>

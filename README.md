@@ -1,7 +1,7 @@
 # WebTools - Online Developer Tools / 온라인 개발 유틸리티 모음
 
-A collection of 19 free online developer tools that run entirely in your browser. No installation, no sign-up, no data sent to any server.
-설치 없이 바로 쓰는 19가지 온라인 개발 도구 모음입니다. 모든 처리는 브라우저에서 이루어집니다.
+A collection of 20 free online developer tools that run entirely in your browser. No installation, no sign-up, no data sent to any server.
+설치 없이 바로 쓰는 20가지 온라인 개발 도구 모음입니다. 모든 처리는 브라우저에서 이루어집니다.
 
 **Live Site / 배포 주소:** https://webtool.monster/
 
@@ -11,7 +11,7 @@ A collection of 19 free online developer tools that run entirely in your browser
 
 ```
 webtools/
-├── index.html                 # Main page / 메인 페이지 (19 tools + search)
+├── index.html                 # Main page / 메인 페이지 (20 tools + search)
 ├── 404.html                   # 404 error page / 오류 페이지
 ├── css/style.css              # Common styles / 공통 디자인 (light/dark mode)
 ├── css/tools.css              # Tool-specific styles / 도구별 스타일
@@ -44,7 +44,8 @@ webtools/
     ├── css-formatter.html     # CSS Formatter & Minifier
     ├── markdown-previewer.html # Markdown Live Previewer
     ├── px-converter.html      # PX ↔ REM/EM Converter
-    └── image-base64.html      # Image to Base64 Encoder
+    ├── image-base64.html      # Image to Base64 Encoder
+    └── slug-generator.html    # URL Slug Generator
 ```
 
 ---

@@ -96,7 +96,8 @@ function showToast(msg){
     'css-formatter': {title:'CSS 포맷터', titleEn:'CSS Formatter', icon:'🎨', tag:'디자인', tagEn:'Design'},
     'markdown-previewer': {title:'Markdown 프리뷰어', titleEn:'Markdown Previewer', icon:'📝', tag:'문서', tagEn:'Writing'},
     'px-converter': {title:'PX ↔ REM/EM 변환기', titleEn:'PX ↔ REM/EM Converter', icon:'📐', tag:'디자인', tagEn:'Design'},
-    'image-base64': {title:'이미지 Base64 변환', titleEn:'Image to Base64', icon:'🖼️', tag:'유틸리티', tagEn:'Utility'}
+    'image-base64': {title:'이미지 Base64 변환', titleEn:'Image to Base64', icon:'🖼️', tag:'유틸리티', tagEn:'Utility'},
+    'slug-generator': {title:'슬러그 생성기', titleEn:'Slug Generator', icon:'🔗', tag:'개발', tagEn:'Dev'}
   };
   const info = toolMap[toolId];
   if(!info) return;

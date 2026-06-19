@@ -1,7 +1,7 @@
 {
   "name": "WebTools - Online Developer Tools",
   "short_name": "WebTools",
-  "description": "19 free online developer tools — JSON Formatter, Base64, URL Encoder, Password Generator, and more. No installation required. | 설치 없이 바로 쓰는 19가지 온라인 개발 도구 모음",
+  "description": "20 free online developer tools — JSON Formatter, Base64, URL Encoder, Password Generator, and more. No installation required. | 설치 없이 바로 쓰는 20가지 온라인 개발 도구 모음",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",

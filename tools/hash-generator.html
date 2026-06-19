@@ -16,7 +16,7 @@
       src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4794002106764884"
       crossorigin="anonymous"
     ></script>
-    <title data-i18n="tools_hash.title">
+    <title>
       Text Hash Generator - SHA-256, SHA-1, MD5 Online | WebTools
     </title>
     <meta
@@ -89,7 +89,7 @@
             "@id": "https://webtool.monster/tools/hash-generator.html#webapplication",
             "name": "Hash Generator",
             "url": "https://webtool.monster/tools/hash-generator.html",
-            "description": "MD5, SHA-1, SHA-256 해시 값을 브라우저 내에서 실시간으로 생성하는 온라인 도구",
+            "description": "Generate MD5, SHA-1, and SHA-256 hashes in real time in your browser online",
             "applicationCategory": "SecurityApplication",
             "operatingSystem": "All",
             "browserRequirements": "Modern browser with JavaScript enabled",
@@ -164,7 +164,7 @@
       <nav>
         <a href="../index.html" class="logo">Web<span>Tools</span></a>
         <ul class="nav-links">
-          <li><a href="../index.html" data-i18n="nav.home">홈</a></li>
+          <li><a href="../index.html" data-i18n="nav.home">Home</a></li>
           <li class="lang-switcher">
             <button
               class="lang-btn" data-lang="ko" onclick="i18n.switchLang('ko')">KO</button><button class="lang-btn active" data-lang="en" onclick="i18n.switchLang('en')">EN</button>
@@ -177,19 +177,18 @@
       <div class="tool-header">
         <h1 data-i18n="tools_hash.title">Hash Generator</h1>
         <p data-i18n="tools_hash.desc">
-          텍스트의 SHA-256, SHA-1, MD5 해시 값을 브라우저 내에서 실시간으로
-          생성합니다. 외부 서버로 데이터가 전송되지 않습니다.
+          Generate SHA-256, SHA-1, and MD5 hashes in your browser. No data leaves your device.
         </p>
       </div>
       <div class="tool-box">
         <div class="form-group">
           <label for="text-input" data-i18n="tools_hash.input_label">
-            입력 텍스트
+            Input Text
           </label>
           <textarea
             id="text-input"
             rows="6"
-            placeholder="해시를 생성할 텍스트를 입력하세요..."
+            placeholder="Enter text to hash..."
           ></textarea>
         </div>
         <div class="btn-row">
@@ -198,34 +197,34 @@
             onclick="copyResult('sha256')"
             data-i18n="tools_hash.btn_copy_sha256"
           >
-            📋 SHA-256 복사
+            📋 Copy SHA-256
           </button>
           <button
             class="btn btn-outline"
             onclick="copyResult('sha1')"
             data-i18n="tools_hash.btn_copy_sha1"
           >
-            📋 SHA-1 복사
+            📋 Copy SHA-1
           </button>
           <button
             class="btn btn-outline"
             onclick="copyResult('md5')"
             data-i18n="tools_hash.btn_copy_md5"
           >
-            📋 MD5 복사
+            📋 Copy MD5
           </button>
           <button
             class="btn btn-outline"
             onclick="downloadResult()"
             data-i18n="common.download"
           >
-            💾 다운로드
+            💾 Download
           </button>
         </div>
         <div id="hash-results" class="hash-results">
           <div class="hash-card">
             <div class="hash-card-label" data-i18n="tools_hash.sha256_label">
-              SHA-256 (권장)
+              SHA-256 (Recommended)
             </div>
             <div class="hash-card-value" id="sha256-out" aria-live="polite">
               -
@@ -248,17 +247,16 @@
         </div>
       </div>
       <section class="usage-section">
-        <h2 data-i18n="tools_hash.usage_title">📖 사용 방법</h2>
+        <h2 data-i18n="tools_hash.usage_title">📖 How to Use</h2>
         <div class="usage-steps">
           <div class="usage-step">
             <div class="usage-step-badge">1</div>
             <div class="usage-step-content">
               <strong data-i18n="tools_hash.usage_step1_title">
-                텍스트 입력
+                Enter Text
               </strong>
               <p data-i18n="tools_hash.usage_step1_desc">
-                해시를 생성할 텍스트를 입력창에 입력합니다. 입력과 동시에 모든
-                해시 값이 실시간으로 자동 생성됩니다.
+                Type the text you want to hash. All hash values update in real time as you type.
               </p>
             </div>
           </div>
@@ -266,11 +264,10 @@
             <div class="usage-step-badge">2</div>
             <div class="usage-step-content">
               <strong data-i18n="tools_hash.usage_step2_title">
-                해시 값 확인
+                View Hash Values
               </strong>
               <p data-i18n="tools_hash.usage_step2_desc">
-                SHA-256(권장), SHA-1, MD5 세 가지 해시 알고리즘의 결과가 각각
-                표시됩니다. 동일한 입력값은 항상 동일한 해시를 반환합니다.
+                SHA-256 (recommended), SHA-1, and MD5 hashes are displayed simultaneously.
               </p>
             </div>
           </div>
@@ -278,23 +275,17 @@
             <div class="usage-step-badge">3</div>
             <div class="usage-step-content">
               <strong data-i18n="tools_hash.usage_step3_title">
-                결과 복사
+                Copy Results
               </strong>
               <p data-i18n="tools_hash.usage_step3_desc">
-                필요한 해시 값의
-                <strong>📋 복사</strong>
-                버튼을 클릭하여 클립보드에 저장합니다. SHA-256이 가장 안전하므로
-                보안 용도로 권장됩니다.
+                Click the 📋 Copy button for any hash algorithm to save it to your clipboard. SHA-256 is the most secure.
               </p>
             </div>
           </div>
         </div>
         <div class="usage-tip">
           <span data-i18n="tools_hash.usage_tip">
-            <strong>💡 팁:</strong>
-            해시 함수는 비밀번호 저장(실제로는 salt와 함께 사용), 파일 무결성
-            검증, 디지털 서명 등에 사용됩니다. SHA-256은 현재 업계 표준이며
-            MD5와 SHA-1은 보안 취약점이 발견되었습니다.
+            💡 Tip: Hash functions are used for password storage (with salt), file integrity verification, and digital signatures. SHA-256 is the current industry standard.
           </span>
         </div>
       </section>
@@ -304,19 +295,19 @@
         <div class="footer-brand">
           <a href="../index.html" class="logo">Web<span>Tools</span></a>
           <p data-i18n="footer.brand_desc">
-            설치 없이 바로 쓰는 온라인 개발 도구 모음
+            Free online developer tools — no installation required.
           </p>
         </div>
       </div>
       <div class="footer-bottom">
         <p>
           <span data-i18n="footer.copyright">
-            © 2026 WebTools. 온라인 도구 모음.
+            © 2026 WebTools. Online Tool Suite.
           </span>
           |
           <a href="../sitemap.xml" data-i18n="footer.sitemap">Sitemap</a>
           |
-          <a href="https://github.com/core13773/webtools/issues" target="_blank" rel="noopener noreferrer" data-i18n="feedback.link">도구 제안 및 피드백 보내기</a>
+          <a href="https://github.com/core13773/webtools/issues" target="_blank" rel="noopener noreferrer" data-i18n="feedback.link">Suggest a tool or send feedback</a>
         </p>
       </div>
     </footer>

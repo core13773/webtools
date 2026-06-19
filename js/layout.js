@@ -1,4 +1,4 @@
-/* ===== 공통 레이아웃 주입 ===== */
+/* ===== 공통 레이아웃 주입 (헤더/푸터/접근성) ===== */
 (function () {
   function getPrefix() {
     return location.pathname.includes('/tools/') ? '../' : '';
@@ -18,19 +18,26 @@
 
   function buildHeader() {
     const p = getPrefix();
+    const menuLabel = t('a11y.menu_toggle', 'Menu');
     return (
+      '<a class="skip-link" href="#main-content" data-i18n="a11y.skip">' + t('a11y.skip', 'Skip to content') + '</a>' +
       '<nav>' +
       '<a href="' + p + 'index.html" class="logo">Web<span>Tools</span></a>' +
-      '<ul class="nav-links">' +
-      '<li><a href="' + p + 'index.html" data-i18n="nav.home">' + t('nav.home', 'Home') + '</a></li>' +
-      '<li><a href="' + p + 'index.html#tools" data-i18n="nav.tools">' + t('nav.tools', 'Tools') + '</a></li>' +
-      '<li><a href="' + p + 'index.html#about" data-i18n="nav.about">' + t('nav.about', 'About') + '</a></li>' +
+      '<ul class="nav-links" id="nav-links">' +
+      '<li class="nav-page"><a href="' + p + 'index.html" data-i18n="nav.home">' + t('nav.home', 'Home') + '</a></li>' +
+      '<li class="nav-page"><a href="' + p + 'index.html#tools" data-i18n="nav.tools">' + t('nav.tools', 'Tools') + '</a></li>' +
+      '<li class="nav-page"><a href="' + p + 'index.html#about" data-i18n="nav.about">' + t('nav.about', 'About') + '</a></li>' +
       '<li class="lang-switcher">' +
       '<button class="lang-btn" data-lang="ko">KO</button>' +
       '<button class="lang-btn" data-lang="en">EN</button>' +
       '</li>' +
       '<li><button id="theme-toggle" title="' + t('theme.toggle', 'Toggle dark mode') + '" data-i18n-aria-label="theme.toggle" aria-label="' + t('theme.toggle', 'Toggle dark mode') + '">🌙</button></li>' +
       '</ul>' +
+      '<button class="nav-toggle" aria-label="' + menuLabel + '" data-i18n-aria-label="a11y.menu_toggle" aria-expanded="false" aria-controls="nav-links">' +
+      '<span class="nav-toggle-bar" aria-hidden="true"></span>' +
+      '<span class="nav-toggle-bar" aria-hidden="true"></span>' +
+      '<span class="nav-toggle-bar" aria-hidden="true"></span>' +
+      '</button>' +
       '</nav>'
     );
   }
@@ -71,19 +78,82 @@
     );
   }
 
+  function setupMobileMenu() {
+    const toggle = document.querySelector('.nav-toggle');
+    const links = document.getElementById('nav-links');
+    if (!toggle || !links) return;
+    const close = function () {
+      links.classList.remove('open');
+      toggle.setAttribute('aria-expanded', 'false');
+    };
+    toggle.addEventListener('click', function () {
+      const open = links.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    // 링크 클릭 시 메뉴 닫기
+    links.querySelectorAll('a').forEach(function (a) { a.addEventListener('click', close); });
+    // 외부 클릭 시 닫기
+    document.addEventListener('click', function (e) {
+      if (links.classList.contains('open') && !links.contains(e.target) && !toggle.contains(e.target)) close();
+    });
+    // 데스크톱으로 리사이즈 시 닫기
+    window.addEventListener('resize', function () { if (window.innerWidth > 640) close(); });
+  }
+
+  function setupShortcutHelp() {
+    if (document.querySelector('.shortcut-backdrop')) return;
+    function row(keys, key, fb) {
+      return '<tr><td><kbd>' + keys + '</kbd></td><td data-i18n="' + key + '">' + t(key, fb) + '</td></tr>';
+    }
+    const backdrop = document.createElement('div');
+    backdrop.className = 'shortcut-backdrop';
+    backdrop.setAttribute('role', 'dialog');
+    backdrop.setAttribute('aria-modal', 'true');
+    backdrop.setAttribute('aria-labelledby', 'shortcut-title');
+    backdrop.innerHTML =
+      '<div class="shortcut-modal" tabindex="-1">' +
+      '<h2 id="shortcut-title" data-i18n="a11y.shortcut_title">' + t('a11y.shortcut_title', 'Keyboard Shortcuts') + '</h2>' +
+      '<table><tbody>' +
+      row('Ctrl + K', 'a11y.shortcut_search', 'Focus search box') +
+      row('Ctrl + Enter', 'a11y.shortcut_run', 'Run / Convert') +
+      row('Ctrl + Shift + C', 'a11y.shortcut_copy', 'Copy result') +
+      row('Esc', 'a11y.shortcut_clear', 'Clear') +
+      row('?', 'a11y.shortcut_help', 'Show this help') +
+      '</tbody></table>' +
+      '<button class="btn shortcut-close" data-i18n="a11y.shortcut_close">' + t('a11y.shortcut_close', 'Close') + '</button>' +
+      '</div>';
+    document.body.appendChild(backdrop);
+    var modal = backdrop.querySelector('.shortcut-modal');
+    var closeBtn = backdrop.querySelector('.shortcut-close');
+    function open() { backdrop.classList.add('open'); modal.focus(); }
+    function close() { backdrop.classList.remove('open'); }
+    closeBtn.addEventListener('click', close);
+    backdrop.addEventListener('click', function (e) { if (e.target === backdrop) close(); });
+    // ? 키로 열기/닫기 (입력창 포커스 중에는 동작 안 함)
+    document.addEventListener('keydown', function (e) {
+      var tag = (e.target && e.target.tagName) || '';
+      if (e.key === '?' && !/INPUT|TEXTAREA|SELECT/.test(tag)) {
+        e.preventDefault();
+        backdrop.classList.contains('open') ? close() : open();
+      } else if (e.key === 'Escape') {
+        close();
+      }
+    });
+  }
+
   function injectLayout() {
     const header = document.querySelector('header');
     const footer = document.querySelector('footer');
     if (header) header.innerHTML = buildHeader();
     if (footer) footer.innerHTML = buildFooter();
 
-    // Re-trigger i18n & theme if already loaded
+    // i18n이 이미 로드되어 있으면 다시 적용
     if (typeof i18n !== 'undefined' && i18n.applyTranslations) {
       i18n.applyTranslations();
     }
-    // Attach language switcher event listeners (replaces inline onclick)
-    document.querySelectorAll('.lang-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
+    // 언어 전환 버튼 이벤트 연결
+    document.querySelectorAll('.lang-btn').forEach(function (btn) {
+      btn.addEventListener('click', function () {
         if (typeof i18n !== 'undefined') i18n.switchLang(btn.dataset.lang);
       });
     });
@@ -92,6 +162,15 @@
       const savedTheme = localStorage.getItem('theme') || 'light';
       themeToggle.textContent = savedTheme === 'dark' ? '☀️' : '🌙';
     }
+
+    // 본문에 id 부여 (skip-link 타겟) — 포커스 가능하도록 tabindex 설정
+    const main = document.querySelector('main');
+    if (main && !main.id) main.id = 'main-content';
+    const mainEl = document.getElementById('main-content');
+    if (mainEl) mainEl.setAttribute('tabindex', '-1');
+
+    setupMobileMenu();
+    setupShortcutHelp();
   }
 
   if (document.readyState === 'loading') {

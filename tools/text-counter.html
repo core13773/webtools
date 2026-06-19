@@ -16,7 +16,7 @@
       src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4794002106764884"
       crossorigin="anonymous"
     ></script>
-    <title data-i18n="tools_text_counter.title">
+    <title>
       Text Counter - Count Characters, Words, Lines & Bytes | WebTools
     </title>
     <meta
@@ -89,7 +89,7 @@
             "@id": "https://webtool.monster/tools/text-counter.html#webapplication",
             "name": "Text Counter",
             "url": "https://webtool.monster/tools/text-counter.html",
-            "description": "글자수, 단어수, 공백 제외 글자수, 바이트 수를 실시간으로 계산하는 온라인 도구",
+            "description": "Count characters, words, bytes, and more in real time.",
             "applicationCategory": "UtilitiesApplication",
             "operatingSystem": "All",
             "browserRequirements": "Modern browser with JavaScript enabled",
@@ -164,7 +164,7 @@
       <nav>
         <a href="../index.html" class="logo">Web<span>Tools</span></a>
         <ul class="nav-links">
-          <li><a href="../index.html" data-i18n="nav.home">홈</a></li>
+          <li><a href="../index.html" data-i18n="nav.home">Home</a></li>
           <li class="lang-switcher">
             <button
               class="lang-btn" data-lang="ko" onclick="i18n.switchLang('ko')">KO</button><button class="lang-btn active" data-lang="en" onclick="i18n.switchLang('en')">EN</button>
@@ -177,18 +177,18 @@
       <div class="tool-header">
         <h1 data-i18n="tools_text_counter.title">Text Counter</h1>
         <p data-i18n="tools_text_counter.desc">
-          텍스트를 입력하면 글자수, 단어수, 바이트 수를 실시간으로 계산합니다.
+          Count characters, words, bytes, and more in real time.
         </p>
       </div>
       <div class="tool-box">
         <div class="form-group">
           <label for="text-input" data-i18n="tools_text_counter.input_label">
-            텍스트 입력
+            Enter Text
           </label>
           <textarea
             id="text-input"
             rows="10"
-            placeholder="여기에 텍스트를 입력하세요..."
+            placeholder="Paste or type your text here..."
           ></textarea>
         </div>
         <div class="btn-row">
@@ -197,28 +197,28 @@
             onclick="copyText()"
             data-i18n="tools_text_counter.btn_copy_text"
           >
-            📋 텍스트 복사
+            📋 Copy Text
           </button>
           <button
             class="btn btn-outline"
             onclick="downloadResult()"
             data-i18n="tools_text_counter.btn_download_stats"
           >
-            💾 통계 다운로드
+            💾 Download Stats
           </button>
           <button
             class="btn btn-outline"
             onclick="clearText()"
             data-i18n="common.clear"
           >
-            🗑️ 초기화
+            🗑️ Clear
           </button>
         </div>
         <div class="stats-grid">
           <div class="stat-card">
             <div class="stat-value" id="stat-chars" aria-live="polite">0</div>
             <div class="stat-label" data-i18n="tools_text_counter.stat_chars">
-              전체 글자수
+              Total Characters
             </div>
           </div>
           <div class="stat-card">
@@ -227,25 +227,25 @@
               class="stat-label"
               data-i18n="tools_text_counter.stat_chars_no_space"
             >
-              공백 제외 글자수
+              Chars (no space)
             </div>
           </div>
           <div class="stat-card">
             <div class="stat-value" id="stat-words" aria-live="polite">0</div>
             <div class="stat-label" data-i18n="tools_text_counter.stat_words">
-              단어수
+              Words
             </div>
           </div>
           <div class="stat-card">
             <div class="stat-value" id="stat-lines" aria-live="polite">0</div>
             <div class="stat-label" data-i18n="tools_text_counter.stat_lines">
-              줄 수
+              Lines
             </div>
           </div>
           <div class="stat-card">
             <div class="stat-value" id="stat-bytes" aria-live="polite">0</div>
             <div class="stat-label" data-i18n="tools_text_counter.stat_bytes">
-              바이트
+              Bytes
             </div>
           </div>
           <div class="stat-card">
@@ -254,22 +254,22 @@
               class="stat-label"
               data-i18n="tools_text_counter.stat_sentences"
             >
-              문장 수
+              Sentences
             </div>
           </div>
         </div>
       </div>
       <section class="usage-section">
-        <h2 data-i18n="tools_text_counter.usage_title">📖 사용 방법</h2>
+        <h2 data-i18n="tools_text_counter.usage_title">📖 How to Use</h2>
         <div class="usage-steps">
           <div class="usage-step">
             <div class="usage-step-badge">1</div>
             <div class="usage-step-content">
               <strong data-i18n="tools_text_counter.usage_step1_title">
-                텍스트 입력
+                Enter Text
               </strong>
               <p data-i18n="tools_text_counter.usage_step1_desc">
-                글자수를 확인할 텍스트를 입력창에 입력하거나 붙여넣습니다.
+                Type or paste the text you want to analyze.
               </p>
             </div>
           </div>
@@ -277,11 +277,10 @@
             <div class="usage-step-badge">2</div>
             <div class="usage-step-content">
               <strong data-i18n="tools_text_counter.usage_step2_title">
-                실시간 통계 확인
+                View Live Statistics
               </strong>
               <p data-i18n="tools_text_counter.usage_step2_desc">
-                입력과 동시에 전체 글자수, 공백 제외 글자수, 단어수, 줄 수,
-                바이트, 문장 수가 실시간으로 업데이트됩니다.
+                All counts update in real time as you type: characters, words, lines, bytes, and sentences.
               </p>
             </div>
           </div>
@@ -289,21 +288,17 @@
             <div class="usage-step-badge">3</div>
             <div class="usage-step-content">
               <strong data-i18n="tools_text_counter.usage_step3_title">
-                텍스트 복사 또는 초기화
+                Copy or Clear
               </strong>
               <p data-i18n="tools_text_counter.usage_step3_desc">
-                📋 텍스트 복사 버튼으로 입력한 텍스트를 그대로 복사하거나, 🗑️
-                초기화 버튼으로 입력을 지웁니다.
+                Click 📋 Copy Text to copy the input, or 🗑️ Clear to reset.
               </p>
             </div>
           </div>
         </div>
         <div class="usage-tip">
           <span data-i18n="tools_text_counter.usage_tip">
-            <strong>💡 팁:</strong>
-            Text Counter는 SNS 게시물(트위터 280자, 인스타그램 2,200자), 에세이,
-            자기소개서 작성 시 유용하게 사용됩니다. 바이트 수는 한글 3바이트,
-            영문 1바이트로 계산됩니다.
+            💡 Tip: Useful for social media posts (Twitter 280 chars, Instagram 2,200 chars), essays, and cover letters. Korean characters count as 3 bytes.
           </span>
         </div>
       </section>
@@ -313,19 +308,19 @@
         <div class="footer-brand">
           <a href="../index.html" class="logo">Web<span>Tools</span></a>
           <p data-i18n="footer.brand_desc">
-            설치 없이 바로 쓰는 온라인 개발 도구 모음
+            Free online developer tools — no installation required.
           </p>
         </div>
       </div>
       <div class="footer-bottom">
         <p>
           <span data-i18n="footer.copyright">
-            © 2026 WebTools. 온라인 도구 모음.
+            © 2026 WebTools. Online Tool Suite.
           </span>
           |
           <a href="../sitemap.xml" data-i18n="footer.sitemap">Sitemap</a>
           |
-          <a href="https://github.com/core13773/webtools/issues" target="_blank" rel="noopener noreferrer" data-i18n="feedback.link">도구 제안 및 피드백 보내기</a>
+          <a href="https://github.com/core13773/webtools/issues" target="_blank" rel="noopener noreferrer" data-i18n="feedback.link">Suggest a tool or send feedback</a>
         </p>
       </div>
     </footer>

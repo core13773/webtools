@@ -8,24 +8,24 @@
     <link rel="preconnect" href="https://pagead2.googlesyndication.com" crossorigin="anonymous" />
     <link rel="preconnect" href="https://googleads.g.doubleclick.net" />
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4794002106764884" crossorigin="anonymous"></script>
-    <title>Image to Base64 - Encode Images to Base64 String | WebTools</title>
-    <meta name="description" content="Encode image files to Base64 string via drag & drop or file picker." />
+    <title>Slug Generator - Create Clean URL Slugs Online | WebTools</title>
+    <meta name="description" content="Convert titles and text into clean, SEO-friendly URL slugs instantly. Accents are folded and separators are customizable." />
     <meta name="robots" content="index, follow" />
-    <meta name="keywords" content="image to Base64, Base64 image encoder, image Base64 converter, data URI, online image tool" />
-    <link rel="canonical" href="https://webtool.monster/tools/image-base64.html" />
-    <link rel="alternate" hreflang="en" href="https://webtool.monster/tools/image-base64.html" />
-    <link rel="alternate" hreflang="ko" href="https://webtool.monster/tools/image-base64.html" />
-    <link rel="alternate" hreflang="x-default" href="https://webtool.monster/tools/image-base64.html" />
-    
-    <meta property="og:title" content="Image to Base64 - Encode Images to Base64 String | WebTools" />
-    <meta property="og:description" content="Encode image files to Base64 string via drag & drop or file picker." />
+    <meta name="keywords" content="slug generator, url slug, slugify, seo slug, permalink generator, kebab case, online slug tool" />
+    <link rel="canonical" href="https://webtool.monster/tools/slug-generator.html" />
+    <link rel="alternate" hreflang="en" href="https://webtool.monster/tools/slug-generator.html" />
+    <link rel="alternate" hreflang="ko" href="https://webtool.monster/tools/slug-generator.html" />
+    <link rel="alternate" hreflang="x-default" href="https://webtool.monster/tools/slug-generator.html" />
+
+    <meta property="og:title" content="Slug Generator - Create Clean URL Slugs Online | WebTools" />
+    <meta property="og:description" content="Convert titles and text into clean, SEO-friendly URL slugs instantly." />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://webtool.monster/tools/image-base64.html" />
+    <meta property="og:url" content="https://webtool.monster/tools/slug-generator.html" />
     <meta property="og:locale" content="en_US" />
     <meta property="og:locale:alternate" content="ko_KR" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Image to Base64 - Encode Images to Base64 String | WebTools" />
-    <meta name="twitter:description" content="Encode image files to Base64 string via drag & drop or file picker." />
+    <meta name="twitter:title" content="Slug Generator - Create Clean URL Slugs Online | WebTools" />
+    <meta name="twitter:description" content="Convert titles and text into clean, SEO-friendly URL slugs instantly." />
     <meta name="theme-color" content="#4f46e5" />
     <link rel="manifest" href="../manifest.json" />
     <link rel="icon" href="../favicon.svg" sizes="any" type="image/svg+xml" />
@@ -40,10 +40,10 @@
         "@graph": [
           {
             "@type": "WebApplication",
-            "@id": "https://webtool.monster/tools/image-base64.html#webapplication",
-            "name": "Image to Base64",
-            "url": "https://webtool.monster/tools/image-base64.html",
-            "description": "Encode image files to Base64 string via drag & drop or file picker.",
+            "@id": "https://webtool.monster/tools/slug-generator.html#webapplication",
+            "name": "Slug Generator",
+            "url": "https://webtool.monster/tools/slug-generator.html",
+            "description": "Convert titles and text into clean, SEO-friendly URL slugs online",
             "applicationCategory": "DeveloperApplication",
             "operatingSystem": "All",
             "browserRequirements": "Modern browser with JavaScript enabled",
@@ -52,10 +52,10 @@
           },
           {
             "@type": "BreadcrumbList",
-            "@id": "https://webtool.monster/tools/image-base64.html#breadcrumb",
+            "@id": "https://webtool.monster/tools/slug-generator.html#breadcrumb",
             "itemListElement": [
               { "@type": "ListItem", "position": 1, "name": "WebTools", "item": "https://webtool.monster/" },
-              { "@type": "ListItem", "position": 2, "name": "Image to Base64", "item": "https://webtool.monster/tools/image-base64.html" }
+              { "@type": "ListItem", "position": 2, "name": "Slug Generator", "item": "https://webtool.monster/tools/slug-generator.html" }
             ]
           },
           {
@@ -79,8 +79,6 @@
       .logo span{color:var(--text)}
       .nav-links{display:flex;gap:1.2rem;align-items:center;list-style:none}
       .container{max-width:1100px;margin:0 auto;padding:2rem 1.5rem}
-      #img-drop-zone{border:2px dashed var(--border);border-radius:var(--radius);padding:2rem;text-align:center;color:var(--text-muted);cursor:pointer;transition:border-color .2s}
-      #img-drop-zone:hover{border-color:var(--primary)}
     </style>
     <link rel="preload" href="../css/style.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
     <noscript><link rel="stylesheet" href="../css/style.css" /></noscript>
@@ -102,56 +100,64 @@
     </header>
     <main class="container">
       <div class="tool-header">
-        <h1 data-i18n="tools_image_base64.title">Image to Base64</h1>
-        <p data-i18n="tools_image_base64.desc">Encode image files to Base64 string via drag & drop or file picker.</p>
+        <h1 data-i18n="tools_slug.title">Slug Generator</h1>
+        <p data-i18n="tools_slug.desc">Convert titles and text into clean, URL-safe slugs instantly.</p>
       </div>
       <div class="tool-box">
-        <input type="file" id="img-file-input" accept="image/*" style="display:none" />
-        <div id="img-drop-zone">
-          <div style="font-size:2rem;margin-bottom:.5rem">📤</div>
-          <p data-i18n="tools_image_base64.drop_label">Drag & drop an image here or click to select</p>
-        </div>
-        <div class="form-group" style="margin-top:1rem">
-          <label data-i18n="tools_image_base64.file_info">File Info</label>
-          <div id="img-info" class="result-box" style="min-height:40px"></div>
-        </div>
         <div class="form-group">
-          <label for="img-output" data-i18n="common.result">Result</label>
-          <textarea id="img-output" rows="6" readonly="readonly"></textarea>
+          <label for="slug-input" data-i18n="tools_slug.input_label">Input Text</label>
+          <textarea id="slug-input" rows="4" placeholder="e.g. 10 Tips for Better SEO in 2026!"></textarea>
+        </div>
+        <div class="options">
+          <label>
+            <span data-i18n="tools_slug.separator_label">Separator</span>
+            <select id="slug-separator">
+              <option value="-">- (hyphen)</option>
+              <option value="_">_ (underscore)</option>
+            </select>
+          </label>
+          <label>
+            <input type="checkbox" id="slug-lower" checked="checked" />
+            <span data-i18n="tools_slug.lower_label">Lowercase</span>
+          </label>
         </div>
         <div class="btn-row">
-          <button class="btn btn-outline" onclick="copyImgBase64()" data-i18n="tools_image_base64.btn_copy">📋 Copy Base64</button>
-          <button class="btn btn-outline" onclick="downloadImgBase64()" data-i18n="tools_image_base64.btn_download">💾 Download TXT</button>
-          <button class="btn btn-outline" onclick="document.getElementById('img-output').value='';document.getElementById('img-info').textContent='';" data-i18n="common.clear">🗑️ Clear</button>
+          <button class="btn btn-outline" onclick="copyResult()" data-i18n="common.copy">📋 Copy</button>
+          <button class="btn btn-outline" onclick="downloadResult()" data-i18n="common.download">💾 Download</button>
+          <button class="btn btn-outline" onclick="clearAll()" data-i18n="common.clear">🗑️ Clear</button>
+        </div>
+        <div class="form-group result-group">
+          <label for="slug-output" data-i18n="common.result">Result</label>
+          <div id="slug-output" class="result-box" aria-live="polite" data-i18n="common.result_placeholder">Result will appear here.</div>
         </div>
       </div>
       <section class="usage-section">
-        <h2 data-i18n="tools_image_base64.usage_title">📖 How to Use</h2>
+        <h2 data-i18n="tools_slug.usage_title">📖 How to Use</h2>
         <div class="usage-steps">
           <div class="usage-step">
             <div class="usage-step-badge">1</div>
             <div class="usage-step-content">
-              <strong data-i18n="tools_image_base64.usage_step1_title">Upload Image</strong>
-              <p data-i18n="tools_image_base64.usage_step1_desc">Drag & drop or click to select an image file (JPG, PNG, GIF, SVG, etc.).</p>
+              <strong data-i18n="tools_slug.usage_step1_title">Enter Text</strong>
+              <p data-i18n="tools_slug.usage_step1_desc">Type or paste a title, heading, or any text you want to turn into a URL slug.</p>
             </div>
           </div>
           <div class="usage-step">
             <div class="usage-step-badge">2</div>
             <div class="usage-step-content">
-              <strong data-i18n="tools_image_base64.usage_step2_title">Auto Encode</strong>
-              <p data-i18n="tools_image_base64.usage_step2_desc">The image is instantly converted to a Base64 string upon selection.</p>
+              <strong data-i18n="tools_slug.usage_step2_title">Choose Options</strong>
+              <p data-i18n="tools_slug.usage_step2_desc">Pick a separator (hyphen or underscore) and toggle lowercase. Accented characters are automatically folded (é → e).</p>
             </div>
           </div>
           <div class="usage-step">
             <div class="usage-step-badge">3</div>
             <div class="usage-step-content">
-              <strong data-i18n="tools_image_base64.usage_step3_title">Copy or Download</strong>
-              <p data-i18n="tools_image_base64.usage_step3_desc">Use 📋 Copy to save the Base64 string to clipboard, or 💾 Download to save as a text file.</p>
+              <strong data-i18n="tools_slug.usage_step3_title">Copy Result</strong>
+              <p data-i18n="tools_slug.usage_step3_desc">The slug updates in real time. Click 📋 Copy to save it to your clipboard.</p>
             </div>
           </div>
         </div>
         <div class="usage-tip">
-          <span data-i18n="tools_image_base64.usage_tip">💡 Tip: Base64-encoded images can be used directly in CSS background-image or HTML img src. Note that file size increases by about 33%.</span>
+          <span data-i18n="tools_slug.usage_tip">💡 Tip: URL slugs should be short, lowercase, and use hyphens to separate words. This improves readability and SEO for blog posts, product pages, and documentation.</span>
         </div>
       </section>
     </main>
@@ -173,7 +179,7 @@
     <script defer src="../js/layout.js"></script>
     <script defer src="../js/i18n.js"></script>
     <script defer src="../js/app.js"></script>
-    <script defer src="../js/tools/image-base64.js"></script>
+    <script defer src="../js/tools/slug-generator.js"></script>
     <script>if('serviceWorker' in navigator){ window.addEventListener('load', ()=>{ navigator.serviceWorker.register('../sw.js').catch(()=>{}); }); }</script>
   </body>
 </html>

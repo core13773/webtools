@@ -76,6 +76,7 @@ nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  position: relative;
 }
 
 .logo {
@@ -120,6 +121,107 @@ nav {
   border-color: var(--primary);
   color: var(--primary);
 }
+
+/* ===== 모바일 햄버거 토글 (데스크톱에서는 숨김) ===== */
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+  width: 38px;
+  height: 38px;
+  padding: 9px;
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.nav-toggle-bar {
+  display: block;
+  height: 2px;
+  width: 100%;
+  background: var(--text);
+  border-radius: 2px;
+  transition: transform .2s, opacity .2s;
+}
+
+.nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(1) {
+  transform: translateY(6px) rotate(45deg);
+}
+.nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(2) { opacity: 0; }
+.nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(3) {
+  transform: translateY(-6px) rotate(-45deg);
+}
+
+/* ===== 건너뛰기 링크 (접근성) ===== */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 200;
+  background: var(--primary);
+  color: #fff;
+  padding: .7rem 1.2rem;
+  border-radius: 0 0 8px 0;
+  text-decoration: none;
+  font-weight: 600;
+}
+.skip-link:focus { left: 0; }
+
+/* ===== 단축키 도움말 모달 ===== */
+.shortcut-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 300;
+  padding: 1rem;
+}
+.shortcut-backdrop.open { display: flex; }
+
+.shortcut-modal {
+  background: var(--surface);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  max-width: 440px;
+  width: 100%;
+  box-shadow: var(--shadow-lg);
+  outline: none;
+}
+
+.shortcut-modal h2 {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+.shortcut-modal table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.shortcut-modal td {
+  padding: .45rem 0;
+  border-bottom: 1px solid var(--border);
+  font-size: .92rem;
+}
+
+.shortcut-modal td:first-child { white-space: nowrap; width: 1%; padding-right: 1rem; }
+
+.shortcut-modal kbd {
+  font-family: 'Consolas', 'Monaco', monospace;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: .1rem .45rem;
+  font-size: .82rem;
+}
+
+.shortcut-close { margin-top: 1.2rem; }
 
 /* ===== 언어 선택기 ===== */
 .lang-switcher {
@@ -612,8 +714,22 @@ footer {
 @media (max-width: 640px) {
   .hero h1 { font-size: 1.7rem; }
   .card-grid { grid-template-columns: 1fr; }
-  .nav-links a { display: none; }
-  .nav-links a:first-child { display: inline; }
+  .nav-toggle { display: flex; }
+  .nav-links {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: flex-start;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    box-shadow: var(--shadow);
+    padding: 1rem 1.5rem;
+    gap: .8rem;
+    display: none;
+  }
+  .nav-links.open { display: flex; }
   .footer-content { flex-direction: column; text-align: center; }
   .footer-links { justify-content: center; }
 }

@@ -16,7 +16,7 @@
       src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4794002106764884"
       crossorigin="anonymous"
     ></script>
-    <title data-i18n="tools_base64.title">
+    <title>
       Base64 Encoder / Decoder - Online Encode & Decode | WebTools
     </title>
     <meta
@@ -164,7 +164,7 @@
       <nav>
         <a href="../index.html" class="logo">Web<span>Tools</span></a>
         <ul class="nav-links">
-          <li><a href="../index.html" data-i18n="nav.home">홈</a></li>
+          <li><a href="../index.html" data-i18n="nav.home">Home</a></li>
           <li class="lang-switcher">
             <button
               class="lang-btn" data-lang="ko" onclick="i18n.switchLang('ko')">KO</button><button class="lang-btn active" data-lang="en" onclick="i18n.switchLang('en')">EN</button>
@@ -175,21 +175,20 @@
     </header>
     <main class="container">
       <div class="tool-header">
-        <h1 data-i18n="tools_base64.title">Base64 인코더 / 디코더</h1>
+        <h1 data-i18n="tools_base64.title">Base64 Encoder / Decoder</h1>
         <p data-i18n="tools_base64.desc">
-          텍스트 ↔ Base64 간 변환을 손쉽게 수행하세요. UTF-8을 기준으로
-          처리됩니다.
+          Easily convert between text and Base64. UTF-8 encoding is used.
         </p>
       </div>
       <div class="tool-box">
         <div class="form-group">
           <label for="text-input" data-i18n="tools_base64.input_label">
-            입력 텍스트
+            Input Text
           </label>
           <textarea
             id="text-input"
             rows="6"
-            placeholder="인코딩할 텍스트를 입력하세요."
+            placeholder="Enter text to encode."
           ></textarea>
         </div>
         <div class="btn-row">
@@ -198,61 +197,60 @@
             onclick="encodeBase64()"
             data-i18n="tools_base64.btn_encode"
           >
-            🔼 인코딩
+            🔼 Encode
           </button>
           <button
             class="btn"
             onclick="decodeBase64()"
             data-i18n="tools_base64.btn_decode"
           >
-            🔽 디코딩
+            🔽 Decode
           </button>
           <button
             class="btn btn-outline"
             onclick="copyResult()"
             data-i18n="common.copy"
           >
-            📋 결과 복사
+            📋 Copy
           </button>
           <button
             class="btn btn-outline"
             onclick="downloadResult()"
             data-i18n="common.download"
           >
-            💾 다운로드
+            💾 Download
           </button>
           <button
             class="btn btn-outline"
             onclick="clearAll()"
             data-i18n="common.clear"
           >
-            🗑️ 초기화
+            🗑️ Clear
           </button>
         </div>
         <div class="form-group result-group">
-          <label for="text-output" data-i18n="common.result">결과</label>
+          <label for="text-output" data-i18n="common.result">Result</label>
           <div
             id="text-output"
             class="result-box"
             aria-live="polite"
             data-i18n="common.result_placeholder"
           >
-            결과가 여기에 표시됩니다.
+            Result will appear here.
           </div>
         </div>
       </div>
       <section class="usage-section">
-        <h2 data-i18n="tools_base64.usage_title">📖 사용 방법</h2>
+        <h2 data-i18n="tools_base64.usage_title">📖 How to Use</h2>
         <div class="usage-steps">
           <div class="usage-step">
             <div class="usage-step-badge">1</div>
             <div class="usage-step-content">
               <strong data-i18n="tools_base64.usage_step1_title">
-                텍스트 입력
+                Enter Text
               </strong>
               <p data-i18n="tools_base64.usage_step1_desc">
-                인코딩하거나 디코딩할 텍스트를 입력창에 입력합니다. 한글,
-                특수문자 등 모든 UTF-8 문자를 지원합니다.
+                Type or paste text to encode or decode. Supports all UTF-8 characters including Korean, Japanese, and special symbols.
               </p>
             </div>
           </div>
@@ -260,14 +258,10 @@
             <div class="usage-step-badge">2</div>
             <div class="usage-step-content">
               <strong data-i18n="tools_base64.usage_step2_title">
-                인코딩 또는 디코딩
+                Encode or Decode
               </strong>
               <p data-i18n="tools_base64.usage_step2_desc">
-                입력한 텍스트를 Base64로 변환하려면
-                <strong>🔼 인코딩</strong>
-                버튼을, Base64를 원래 텍스트로 복원하려면
-                <strong>🔽 디코딩</strong>
-                버튼을 클릭합니다.
+                Click 🔼 Encode to convert text to Base64, or 🔽 Decode to convert Base64 back to text.
               </p>
             </div>
           </div>
@@ -275,22 +269,17 @@
             <div class="usage-step-badge">3</div>
             <div class="usage-step-content">
               <strong data-i18n="tools_base64.usage_step3_title">
-                결과 활용
+                Use the Result
               </strong>
               <p data-i18n="tools_base64.usage_step3_desc">
-                <strong>📋 결과 복사</strong>
-                버튼으로 변환된 값을 클립보드에 저장하거나,
-                <strong>🗑️ 초기화</strong>
-                버튼으로 입력을 지웁니다.
+                Click 📋 Copy to save to clipboard, or 🗑️ Clear to start over.
               </p>
             </div>
           </div>
         </div>
         <div class="usage-tip">
           <span data-i18n="tools_base64.usage_tip">
-            <strong>💡 팁:</strong>
-            Base64는 이메일 첨부파일, 데이터 URI, API 인증 토큰 등 다양한 곳에서
-            사용됩니다. 디코딩 시 올바른 Base64 형식인지 확인하세요.
+            💡 Tip: Base64 is commonly used for email attachments, data URIs, and API authentication tokens.
           </span>
         </div>
       </section>
@@ -300,19 +289,19 @@
         <div class="footer-brand">
           <a href="../index.html" class="logo">Web<span>Tools</span></a>
           <p data-i18n="footer.brand_desc">
-            설치 없이 바로 쓰는 온라인 개발 도구 모음
+            Free online developer tools — no installation required.
           </p>
         </div>
       </div>
       <div class="footer-bottom">
         <p>
           <span data-i18n="footer.copyright">
-            © 2026 WebTools. 온라인 도구 모음.
+            © 2026 WebTools. Online Tool Suite.
           </span>
           |
           <a href="../sitemap.xml" data-i18n="footer.sitemap">Sitemap</a>
           |
-          <a href="https://github.com/core13773/webtools/issues" target="_blank" rel="noopener noreferrer" data-i18n="feedback.link">도구 제안 및 피드백 보내기</a>
+          <a href="https://github.com/core13773/webtools/issues" target="_blank" rel="noopener noreferrer" data-i18n="feedback.link">Suggest a tool or send feedback</a>
         </p>
       </div>
     </footer>

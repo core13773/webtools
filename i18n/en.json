@@ -147,6 +147,11 @@
       "title": "Image to Base64",
       "desc": "Encode image files to Base64 string via drag & drop or file picker.",
       "tag": "Utility"
+    },
+    "slug_generator": {
+      "title": "Slug Generator",
+      "desc": "Turn titles and text into clean, SEO-friendly URL slugs.",
+      "tag": "Dev"
     }
   },
   "footer": {
@@ -269,6 +274,17 @@
     "title": "404 - Page Not Found | WebTools",
     "message": "The page you requested could not be found.",
     "home_btn": "🏠 Back to Home"
+  },
+  "a11y": {
+    "skip": "Skip to content",
+    "menu_toggle": "Menu",
+    "shortcut_title": "Keyboard Shortcuts",
+    "shortcut_search": "Focus search box",
+    "shortcut_run": "Run / Convert",
+    "shortcut_copy": "Copy result",
+    "shortcut_clear": "Clear",
+    "shortcut_help": "Show this help",
+    "shortcut_close": "Close"
   },
   "tools_json": {
     "title": "JSON Formatter & Validator",
@@ -506,6 +522,8 @@
     "replace_label": "Replacement String",
     "result_label": "Result",
     "matches_label": "Match Results",
+    "match": "Match",
+    "index": "index",
     "usage_title": "📖 How to Use",
     "usage_step1_title": "Enter Pattern",
     "usage_step1_desc": "Type the regex pattern to test. e.g. \\d+, [a-z]+",
@@ -604,6 +622,21 @@
     "label_size": "Size",
     "label_type": "Type",
     "usage_tip": "💡 Tip: Base64-encoded images can be used directly in CSS background-image or HTML img src. Note that file size increases by about 33%."
+  },
+  "tools_slug": {
+    "title": "Slug Generator",
+    "desc": "Convert titles and text into clean, URL-safe slugs instantly.",
+    "input_label": "Input Text",
+    "separator_label": "Separator",
+    "lower_label": "Lowercase",
+    "usage_title": "📖 How to Use",
+    "usage_step1_title": "Enter Text",
+    "usage_step1_desc": "Type or paste a title, heading, or any text you want to turn into a URL slug.",
+    "usage_step2_title": "Choose Options",
+    "usage_step2_desc": "Pick a separator (hyphen or underscore) and toggle lowercase. Accented characters are automatically folded (é → e).",
+    "usage_step3_title": "Copy Result",
+    "usage_step3_desc": "The slug updates in real time. Click 📋 Copy to save it to your clipboard.",
+    "usage_tip": "💡 Tip: URL slugs should be short, lowercase, and use hyphens to separate words. This improves readability and SEO for blog posts, product pages, and documentation."
   },
   "privacy": {
     "title": "Privacy Policy",

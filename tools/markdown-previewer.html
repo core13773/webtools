@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://pagead2.googlesyndication.com" crossorigin="anonymous" />
     <link rel="preconnect" href="https://googleads.g.doubleclick.net" />
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4794002106764884" crossorigin="anonymous"></script>
-    <title data-i18n="tools_markdown.title">Markdown Previewer - Live Markdown to HTML Renderer | WebTools</title>
+    <title>Markdown Previewer - Live Markdown to HTML Renderer | WebTools</title>
     <meta name="description" content="Render Markdown syntax to HTML in real time with live preview." />
     <meta name="robots" content="index, follow" />
     <meta name="keywords" content="Markdown previewer, Markdown to HTML, live Markdown render, Markdown viewer, online Markdown tool" />
@@ -43,7 +43,7 @@
             "@id": "https://webtool.monster/tools/markdown-previewer.html#webapplication",
             "name": "Markdown Previewer",
             "url": "https://webtool.monster/tools/markdown-previewer.html",
-            "description": "Markdown 문법을 실시간으로 HTML로 렌더링하고 미리보는 온라인 도구",
+            "description": "Render Markdown syntax to HTML in real time with live preview.",
             "applicationCategory": "DeveloperApplication",
             "operatingSystem": "All",
             "browserRequirements": "Modern browser with JavaScript enabled",
@@ -98,7 +98,7 @@
       <nav>
         <a href="../index.html" class="logo">Web<span>Tools</span></a>
         <ul class="nav-links">
-          <li><a href="../index.html" data-i18n="nav.home">홈</a></li>
+          <li><a href="../index.html" data-i18n="nav.home">Home</a></li>
           <li class="lang-switcher">
             <button class="lang-btn" data-lang="ko" onclick="i18n.switchLang('ko')">KO</button><button class="lang-btn active" data-lang="en" onclick="i18n.switchLang('en')">EN</button>
           </li>
@@ -109,52 +109,52 @@
     <main class="container">
       <div class="tool-header">
         <h1 data-i18n="tools_markdown.title">Markdown Previewer</h1>
-        <p data-i18n="tools_markdown.desc">Markdown 문법을 실시간으로 HTML로 렌더링하고 미리보기합니다.</p>
+        <p data-i18n="tools_markdown.desc">Render Markdown syntax to HTML in real time with live preview.</p>
       </div>
       <div class="tool-box">
         <div class="btn-row" style="margin-bottom:1rem">
-          <button class="btn btn-outline" onclick="copyHtml()" data-i18n="tools_markdown.btn_copy_html">📋 HTML 복사</button>
-          <button class="btn btn-outline" onclick="downloadMd()" data-i18n="tools_markdown.btn_download_md">💾 Markdown 다운로드</button>
-          <button class="btn btn-outline" onclick="document.getElementById('md-input').value='';renderMarkdown();" data-i18n="common.clear">🗑️ 초기화</button>
+          <button class="btn btn-outline" onclick="copyHtml()" data-i18n="tools_markdown.btn_copy_html">📋 Copy HTML</button>
+          <button class="btn btn-outline" onclick="downloadMd()" data-i18n="tools_markdown.btn_download_md">💾 Download Markdown</button>
+          <button class="btn btn-outline" onclick="document.getElementById('md-input').value='';renderMarkdown();" data-i18n="common.clear">🗑️ Clear</button>
         </div>
         <div class="md-wrap">
           <div class="form-group" style="margin-bottom:0">
-            <label for="md-input" data-i18n="tools_markdown.input_label">Markdown 입력</label>
-            <textarea id="md-input" rows="12" placeholder="# 제목&#10;**굵게**와 *기울임*&#10;- 목록1&#10;- 목록2"></textarea>
+            <label for="md-input" data-i18n="tools_markdown.input_label">Markdown Input</label>
+            <textarea id="md-input" rows="12" placeholder="# Heading&#10;**bold** and *italic*&#10;- item1&#10;- item2"></textarea>
           </div>
           <div class="form-group" style="margin-bottom:0">
-            <label data-i18n="tools_markdown.preview_label">미리보기</label>
+            <label data-i18n="tools_markdown.preview_label">Preview</label>
             <div id="md-preview"></div>
           </div>
         </div>
       </div>
       <section class="usage-section">
-        <h2 data-i18n="tools_markdown.usage_title">📖 사용 방법</h2>
+        <h2 data-i18n="tools_markdown.usage_title">📖 How to Use</h2>
         <div class="usage-steps">
           <div class="usage-step">
             <div class="usage-step-badge">1</div>
             <div class="usage-step-content">
-              <strong data-i18n="tools_markdown.usage_step1_title">Markdown 입력</strong>
-              <p data-i18n="tools_markdown.usage_step1_desc">Markdown 문법으로 작성된 텍스트를 입력합니다. # 제목, **굵게**, `코드` 등을 지원합니다.</p>
+              <strong data-i18n="tools_markdown.usage_step1_title">Enter Markdown</strong>
+              <p data-i18n="tools_markdown.usage_step1_desc">Type Markdown text. Supports # headings, **bold**, `code`, and more.</p>
             </div>
           </div>
           <div class="usage-step">
             <div class="usage-step-badge">2</div>
             <div class="usage-step-content">
-              <strong data-i18n="tools_markdown.usage_step2_title">실시간 미리보기</strong>
-              <p data-i18n="tools_markdown.usage_step2_desc">입력과 동시에 HTML 렌더링 결과가 실시간으로 표시됩니다.</p>
+              <strong data-i18n="tools_markdown.usage_step2_title">Live Preview</strong>
+              <p data-i18n="tools_markdown.usage_step2_desc">The rendered HTML is displayed in real time as you type.</p>
             </div>
           </div>
           <div class="usage-step">
             <div class="usage-step-badge">3</div>
             <div class="usage-step-content">
-              <strong data-i18n="tools_markdown.usage_step3_title">HTML 복사 또는 다운로드</strong>
-              <p data-i18n="tools_markdown.usage_step3_desc">📋 HTML 복사 버튼으로 렌더링된 HTML을 클립보드에 저장하거나, 💾 다운로드로 Markdown 파일을 저장합니다.</p>
+              <strong data-i18n="tools_markdown.usage_step3_title">Copy HTML or Download</strong>
+              <p data-i18n="tools_markdown.usage_step3_desc">Use 📋 Copy HTML to save the rendered HTML, or 💾 Download to save the Markdown file.</p>
             </div>
           </div>
         </div>
         <div class="usage-tip">
-          <span data-i18n="tools_markdown.usage_tip">💡 팁: 이 도구는 GitHub Flavored Markdown의 기본 문법을 지원합니다. 테이블, 목록, 코드 블록 등 다양한 요소를 미리 확인하세요.</span>
+          <span data-i18n="tools_markdown.usage_tip">💡 Tip: This tool supports basic GitHub Flavored Markdown syntax. Preview tables, lists, code blocks, and more.</span>
         </div>
       </section>
     </main>
@@ -162,14 +162,14 @@
       <div class="footer-content">
         <div class="footer-brand">
           <a href="../index.html" class="logo">Web<span>Tools</span></a>
-          <p data-i18n="footer.brand_desc">설치 없이 바로 쓰는 온라인 개발 도구 모음</p>
+          <p data-i18n="footer.brand_desc">Free online developer tools — no installation required.</p>
         </div>
       </div>
       <div class="footer-bottom">
         <p>
-          <span data-i18n="footer.copyright">© 2026 WebTools. 온라인 도구 모음.</span>
+          <span data-i18n="footer.copyright">© 2026 WebTools. Online Tool Suite.</span>
           | <a href="../sitemap.xml" data-i18n="footer.sitemap">Sitemap</a>
-          | <a href="https://github.com/core13773/webtools/issues" target="_blank" rel="noopener noreferrer" data-i18n="feedback.link">도구 제안 및 피드백 보내기</a>
+          | <a href="https://github.com/core13773/webtools/issues" target="_blank" rel="noopener noreferrer" data-i18n="feedback.link">Suggest a tool or send feedback</a>
         </p>
       </div>
     </footer>

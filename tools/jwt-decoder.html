@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://pagead2.googlesyndication.com" crossorigin="anonymous" />
     <link rel="preconnect" href="https://googleads.g.doubleclick.net" />
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4794002106764884" crossorigin="anonymous"></script>
-    <title data-i18n="tools_jwt.title">JWT Decoder - Decode JSON Web Token Header & Payload | WebTools</title>
+    <title>JWT Decoder - Decode JSON Web Token Header & Payload | WebTools</title>
     <meta name="description" content="Decode JWT (JSON Web Token) header, payload, and signature to inspect claims." />
     <meta name="robots" content="index, follow" />
     <meta name="keywords" content="JWT decoder, JSON Web Token decoder, JWT token decode, claims inspector, online JWT tool" />
@@ -43,7 +43,7 @@
             "@id": "https://webtool.monster/tools/jwt-decoder.html#webapplication",
             "name": "JWT Decoder",
             "url": "https://webtool.monster/tools/jwt-decoder.html",
-            "description": "JWT(JSON Web Token)의 헤더, 페이로드, 서명을 디코딩하고 claims를 확인하는 온라인 도구",
+            "description": "Decode JWT (JSON Web Token) header, payload, and signature to inspect claims online",
             "applicationCategory": "DeveloperApplication",
             "operatingSystem": "All",
             "browserRequirements": "Modern browser with JavaScript enabled",
@@ -90,7 +90,7 @@
       <nav>
         <a href="../index.html" class="logo">Web<span>Tools</span></a>
         <ul class="nav-links">
-          <li><a href="../index.html" data-i18n="nav.home">홈</a></li>
+          <li><a href="../index.html" data-i18n="nav.home">Home</a></li>
           <li class="lang-switcher">
             <button class="lang-btn" data-lang="ko" onclick="i18n.switchLang('ko')">KO</button><button class="lang-btn active" data-lang="en" onclick="i18n.switchLang('en')">EN</button>
           </li>
@@ -101,59 +101,59 @@
     <main class="container">
       <div class="tool-header">
         <h1 data-i18n="tools_jwt.title">JWT Decoder</h1>
-        <p data-i18n="tools_jwt.desc">JWT(JSON Web Token)의 헤더, 페이로드, 서명을 디코딩하고 claims를 확인합니다.</p>
+        <p data-i18n="tools_jwt.desc">Decode JWT (JSON Web Token) header, payload, and signature to inspect claims.</p>
       </div>
       <div class="tool-box">
         <div class="form-group">
-          <label for="jwt-input" data-i18n="tools_jwt.input_label">JWT 토큰 입력</label>
+          <label for="jwt-input" data-i18n="tools_jwt.input_label">Enter JWT Token</label>
           <textarea id="jwt-input" rows="4" placeholder="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."></textarea>
         </div>
         <div class="btn-row">
-          <button class="btn" onclick="decodeJWT()" data-i18n="tools_jwt.btn_decode">🔓 디코딩</button>
-          <button class="btn btn-outline" onclick="copyHeader()" data-i18n="tools_jwt.btn_copy_header">📋 헤더 복사</button>
-          <button class="btn btn-outline" onclick="copyPayload()" data-i18n="tools_jwt.btn_copy_payload">📋 페이로드 복사</button>
-          <button class="btn btn-outline" onclick="document.getElementById('jwt-input').value='';document.getElementById('jwt-header').textContent='';document.getElementById('jwt-payload').textContent='';document.getElementById('jwt-signature').textContent='';" data-i18n="common.clear">🗑️ 초기화</button>
+          <button class="btn" onclick="decodeJWT()" data-i18n="tools_jwt.btn_decode">🔓 Decode</button>
+          <button class="btn btn-outline" onclick="copyHeader()" data-i18n="tools_jwt.btn_copy_header">📋 Copy Header</button>
+          <button class="btn btn-outline" onclick="copyPayload()" data-i18n="tools_jwt.btn_copy_payload">📋 Copy Payload</button>
+          <button class="btn btn-outline" onclick="document.getElementById('jwt-input').value='';document.getElementById('jwt-header').textContent='';document.getElementById('jwt-payload').textContent='';document.getElementById('jwt-signature').textContent='';" data-i18n="common.clear">🗑️ Clear</button>
         </div>
         <div class="form-group result-group">
-          <label data-i18n="tools_jwt.header_label">헤더 (Header)</label>
+          <label data-i18n="tools_jwt.header_label">Header</label>
           <div id="jwt-header" class="result-box" aria-live="polite"></div>
         </div>
         <div class="form-group result-group">
-          <label data-i18n="tools_jwt.payload_label">페이로드 (Payload)</label>
+          <label data-i18n="tools_jwt.payload_label">Payload</label>
           <div id="jwt-payload" class="result-box" aria-live="polite"></div>
         </div>
         <div class="form-group result-group">
-          <label data-i18n="tools_jwt.signature_label">서명 (Signature)</label>
+          <label data-i18n="tools_jwt.signature_label">Signature</label>
           <div id="jwt-signature" class="result-box" aria-live="polite"></div>
         </div>
       </div>
       <section class="usage-section">
-        <h2 data-i18n="tools_jwt.usage_title">📖 사용 방법</h2>
+        <h2 data-i18n="tools_jwt.usage_title">📖 How to Use</h2>
         <div class="usage-steps">
           <div class="usage-step">
             <div class="usage-step-badge">1</div>
             <div class="usage-step-content">
-              <strong data-i18n="tools_jwt.usage_step1_title">JWT 입력</strong>
-              <p data-i18n="tools_jwt.usage_step1_desc">디코딩할 JWT 토큰을 입력합니다. 예: eyJhbGciOiJIUzI1NiIs...</p>
+              <strong data-i18n="tools_jwt.usage_step1_title">Enter JWT</strong>
+              <p data-i18n="tools_jwt.usage_step1_desc">Paste the JWT token you want to decode. e.g. eyJhbGciOiJIUzI1NiIs...</p>
             </div>
           </div>
           <div class="usage-step">
             <div class="usage-step-badge">2</div>
             <div class="usage-step-content">
-              <strong data-i18n="tools_jwt.usage_step2_title">디코딩 확인</strong>
-              <p data-i18n="tools_jwt.usage_step2_desc">🔓 디코딩 버튼을 클릭하면 헤더, 페이로드, 서명이 분리되어 표시됩니다.</p>
+              <strong data-i18n="tools_jwt.usage_step2_title">Decode</strong>
+              <p data-i18n="tools_jwt.usage_step2_desc">Click 🔓 Decode to split and display the header, payload, and signature.</p>
             </div>
           </div>
           <div class="usage-step">
             <div class="usage-step-badge">3</div>
             <div class="usage-step-content">
-              <strong data-i18n="tools_jwt.usage_step3_title">결과 복사</strong>
-              <p data-i18n="tools_jwt.usage_step3_desc">📋 복사 버튼으로 헤더나 페이로드를 클립보드에 저장합니다.</p>
+              <strong data-i18n="tools_jwt.usage_step3_title">Copy Result</strong>
+              <p data-i18n="tools_jwt.usage_step3_desc">Use 📋 Copy buttons to save the header or payload to clipboard.</p>
             </div>
           </div>
         </div>
         <div class="usage-tip">
-          <span data-i18n="tools_jwt.usage_tip">💡 팁: JWT는 서버 인증에 많이 사용됩니다. 페이로드는 Base64Url로 인코딩되어 있어 누구나 읽을 수 있으나, 서명을 통해서만 위변조 여부를 확인할 수 있습니다.</span>
+          <span data-i18n="tools_jwt.usage_tip">💡 Tip: JWTs are commonly used for server authentication. The payload is Base64Url-encoded and readable by anyone, but only the signature can verify tampering.</span>
         </div>
       </section>
     </main>
@@ -161,14 +161,14 @@
       <div class="footer-content">
         <div class="footer-brand">
           <a href="../index.html" class="logo">Web<span>Tools</span></a>
-          <p data-i18n="footer.brand_desc">설치 없이 바로 쓰는 온라인 개발 도구 모음</p>
+          <p data-i18n="footer.brand_desc">Free online developer tools — no installation required.</p>
         </div>
       </div>
       <div class="footer-bottom">
         <p>
-          <span data-i18n="footer.copyright">© 2026 WebTools. 온라인 도구 모음.</span>
+          <span data-i18n="footer.copyright">© 2026 WebTools. Online Tool Suite.</span>
           | <a href="../sitemap.xml" data-i18n="footer.sitemap">Sitemap</a>
-          | <a href="https://github.com/core13773/webtools/issues" target="_blank" rel="noopener noreferrer" data-i18n="feedback.link">도구 제안 및 피드백 보내기</a>
+          | <a href="https://github.com/core13773/webtools/issues" target="_blank" rel="noopener noreferrer" data-i18n="feedback.link">Suggest a tool or send feedback</a>
         </p>
       </div>
     </footer>

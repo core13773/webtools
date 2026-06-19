@@ -16,7 +16,7 @@
       src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4794002106764884"
       crossorigin="anonymous"
     ></script>
-    <title data-i18n="tools_uuid.title">
+    <title>
       UUID Generator - Generate UUID v4 (GUID) Identifiers | WebTools
     </title>
     <meta
@@ -89,7 +89,7 @@
             "@id": "https://webtool.monster/tools/uuid-generator.html#webapplication",
             "name": "UUID Generator",
             "url": "https://webtool.monster/tools/uuid-generator.html",
-            "description": "범용 고유 식별자(UUID v4)를 한 번에 여러 개 생성하는 온라인 도구",
+            "description": "Generate multiple UUID v4 (GUID) identifiers at once online",
             "applicationCategory": "DeveloperApplication",
             "operatingSystem": "All",
             "browserRequirements": "Modern browser with JavaScript enabled",
@@ -164,7 +164,7 @@
       <nav>
         <a href="../index.html" class="logo">Web<span>Tools</span></a>
         <ul class="nav-links">
-          <li><a href="../index.html" data-i18n="nav.home">홈</a></li>
+          <li><a href="../index.html" data-i18n="nav.home">Home</a></li>
           <li class="lang-switcher">
             <button
               class="lang-btn" data-lang="ko" onclick="i18n.switchLang('ko')">KO</button><button class="lang-btn active" data-lang="en" onclick="i18n.switchLang('en')">EN</button>
@@ -177,13 +177,13 @@
       <div class="tool-header">
         <h1 data-i18n="tools_uuid.title">UUID Generator</h1>
         <p data-i18n="tools_uuid.desc">
-          범용 고유 식별자(UUID v4)를 즉시 생성합니다.
+          Generate UUID v4 (GUID) identifiers instantly.
         </p>
       </div>
       <div class="tool-box">
         <div class="form-group">
           <label for="count" data-i18n="tools_uuid.count_label">
-            생성 개수
+            Number of UUIDs
           </label>
           <input type="number" id="count" value="5" min="1" max="100" />
         </div>
@@ -193,47 +193,46 @@
             onclick="generate()"
             data-i18n="tools_uuid.btn_generate"
           >
-            🎲 UUID 생성
+            🎲 Generate UUIDs
           </button>
           <button
             class="btn btn-outline"
             onclick="copyResult()"
             data-i18n="common.copy"
           >
-            📋 복사
+            📋 Copy
           </button>
           <button
             class="btn btn-outline"
             onclick="downloadResult()"
             data-i18n="common.download"
           >
-            💾 다운로드
+            💾 Download
           </button>
         </div>
         <div class="form-group result-group">
-          <label data-i18n="tools_uuid.output_label">생성 결과</label>
+          <label data-i18n="tools_uuid.output_label">Generated UUIDs</label>
           <div
             id="uuid-output"
             class="result-box"
             aria-live="polite"
             data-i18n="common.result_placeholder"
           >
-            결과가 여기에 표시됩니다.
+            Result will appear here.
           </div>
         </div>
       </div>
       <section class="usage-section">
-        <h2 data-i18n="tools_uuid.usage_title">📖 사용 방법</h2>
+        <h2 data-i18n="tools_uuid.usage_title">📖 How to Use</h2>
         <div class="usage-steps">
           <div class="usage-step">
             <div class="usage-step-badge">1</div>
             <div class="usage-step-content">
               <strong data-i18n="tools_uuid.usage_step1_title">
-                생성 개수 설정
+                Set the Count
               </strong>
               <p data-i18n="tools_uuid.usage_step1_desc">
-                생성할 UUID의 개수를 입력합니다. 최소 1개에서 최대 100개까지 한
-                번에 생성할 수 있습니다.
+                Enter how many UUIDs to generate (1 to 100).
               </p>
             </div>
           </div>
@@ -241,12 +240,10 @@
             <div class="usage-step-badge">2</div>
             <div class="usage-step-content">
               <strong data-i18n="tools_uuid.usage_step2_title">
-                UUID 생성
+                Generate UUIDs
               </strong>
               <p data-i18n="tools_uuid.usage_step2_desc">
-                <strong>🎲 UUID 생성</strong>
-                버튼을 클릭하면 UUID v4 형식의 고유 식별자가 지정된 개수만큼
-                생성됩니다.
+                Click 🎲 Generate UUIDs to create unique identifiers in v4 format.
               </p>
             </div>
           </div>
@@ -254,23 +251,17 @@
             <div class="usage-step-badge">3</div>
             <div class="usage-step-content">
               <strong data-i18n="tools_uuid.usage_step3_title">
-                결과 복사 및 사용
+                Copy and Use
               </strong>
               <p data-i18n="tools_uuid.usage_step3_desc">
-                <strong>📋 복사</strong>
-                버튼으로 생성된 모든 UUID를 클립보드에 저장합니다. 각 UUID는
-                <code>xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx</code>
-                형식입니다.
+                Click 📋 Copy to save all generated UUIDs to your clipboard.
               </p>
             </div>
           </div>
         </div>
         <div class="usage-tip">
           <span data-i18n="tools_uuid.usage_tip">
-            <strong>💡 팁:</strong>
-            UUID(Universally Unique Identifier)는 데이터베이스 기본 키, API
-            식별자, 세션 토큰 등 중복되면 안 되는 고유 값이 필요할 때
-            사용됩니다.
+            💡 Tip: UUIDs are used for database primary keys, API identifiers, session tokens, and any situation requiring unique values.
           </span>
         </div>
       </section>
@@ -280,19 +271,19 @@
         <div class="footer-brand">
           <a href="../index.html" class="logo">Web<span>Tools</span></a>
           <p data-i18n="footer.brand_desc">
-            설치 없이 바로 쓰는 온라인 개발 도구 모음
+            Free online developer tools — no installation required.
           </p>
         </div>
       </div>
       <div class="footer-bottom">
         <p>
           <span data-i18n="footer.copyright">
-            © 2026 WebTools. 온라인 도구 모음.
+            © 2026 WebTools. Online Tool Suite.
           </span>
           |
           <a href="../sitemap.xml" data-i18n="footer.sitemap">Sitemap</a>
           |
-          <a href="https://github.com/core13773/webtools/issues" target="_blank" rel="noopener noreferrer" data-i18n="feedback.link">도구 제안 및 피드백 보내기</a>
+          <a href="https://github.com/core13773/webtools/issues" target="_blank" rel="noopener noreferrer" data-i18n="feedback.link">Suggest a tool or send feedback</a>
         </p>
       </div>
     </footer>

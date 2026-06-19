@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://pagead2.googlesyndication.com" crossorigin="anonymous" />
     <link rel="preconnect" href="https://googleads.g.doubleclick.net" />
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4794002106764884" crossorigin="anonymous"></script>
-    <title data-i18n="tools_css.title">CSS Formatter & Minifier - Prettify & Minify CSS Online | WebTools</title>
+    <title>CSS Formatter & Minifier - Prettify & Minify CSS Online | WebTools</title>
     <meta name="description" content="Prettify CSS code or minify it to reduce file size." />
     <meta name="robots" content="index, follow" />
     <meta name="keywords" content="CSS formatter, CSS minifier, CSS beautifier, CSS pretty print, online CSS tool" />
@@ -90,7 +90,7 @@
       <nav>
         <a href="../index.html" class="logo">Web<span>Tools</span></a>
         <ul class="nav-links">
-          <li><a href="../index.html" data-i18n="nav.home">홈</a></li>
+          <li><a href="../index.html" data-i18n="nav.home">Home</a></li>
           <li class="lang-switcher">
             <button class="lang-btn" data-lang="ko" onclick="i18n.switchLang('ko')">KO</button><button class="lang-btn active" data-lang="en" onclick="i18n.switchLang('en')">EN</button>
           </li>
@@ -100,17 +100,17 @@
     </header>
     <main class="container">
       <div class="tool-header">
-        <h1 data-i18n="tools_css.title">CSS Formatter & Minifier & 미니파이어</h1>
-        <p data-i18n="tools_css.desc">CSS 코드를 보기 좋게 정렬하거나 최소화하여 용량을 줄입니다.</p>
+        <h1 data-i18n="tools_css.title">CSS Formatter & Minifier</h1>
+        <p data-i18n="tools_css.desc">Prettify CSS code or minify it to reduce file size.</p>
       </div>
       <div class="tool-box">
         <div class="form-group">
-          <label for="css-input" data-i18n="tools_css.input_label">CSS 입력</label>
+          <label for="css-input" data-i18n="tools_css.input_label">Input CSS</label>
           <textarea id="css-input" rows="8" placeholder="body{color:#333;margin:0}"></textarea>
         </div>
         <div class="options">
           <label>
-            <span data-i18n="tools_css.indent_label">들여쓰기</span>
+            <span data-i18n="tools_css.indent_label">Indentation</span>
             <select id="css-indent">
               <option value="2">2 spaces</option>
               <option value="4">4 spaces</option>
@@ -119,43 +119,43 @@
           </label>
         </div>
         <div class="btn-row">
-          <button class="btn" onclick="formatCSS()" data-i18n="tools_css.btn_format">✨ 포맷팅</button>
-          <button class="btn btn-outline" onclick="minifyCSS()" data-i18n="tools_css.btn_minify">🗜️ 최소화</button>
-          <button class="btn btn-outline" onclick="copyCssResult()" data-i18n="common.copy">📋 복사</button>
-          <button class="btn btn-outline" onclick="document.getElementById('css-input').value='';document.getElementById('css-output').textContent='';" data-i18n="common.clear">🗑️ 초기화</button>
+          <button class="btn" onclick="formatCSS()" data-i18n="tools_css.btn_format">✨ Format</button>
+          <button class="btn btn-outline" onclick="minifyCSS()" data-i18n="tools_css.btn_minify">🗜️ Minify</button>
+          <button class="btn btn-outline" onclick="copyCssResult()" data-i18n="common.copy">📋 Copy</button>
+          <button class="btn btn-outline" onclick="document.getElementById('css-input').value='';document.getElementById('css-output').textContent='';" data-i18n="common.clear">🗑️ Clear</button>
         </div>
         <div class="form-group result-group">
-          <label for="css-output" data-i18n="common.result">결과</label>
-          <div id="css-output" class="result-box" aria-live="polite" data-i18n="common.result_placeholder">결과가 여기에 표시됩니다.</div>
+          <label for="css-output" data-i18n="common.result">Result</label>
+          <div id="css-output" class="result-box" aria-live="polite" data-i18n="common.result_placeholder">Result will appear here.</div>
         </div>
       </div>
       <section class="usage-section">
-        <h2 data-i18n="tools_css.usage_title">📖 사용 방법</h2>
+        <h2 data-i18n="tools_css.usage_title">📖 How to Use</h2>
         <div class="usage-steps">
           <div class="usage-step">
             <div class="usage-step-badge">1</div>
             <div class="usage-step-content">
-              <strong data-i18n="tools_css.usage_step1_title">CSS 입력</strong>
-              <p data-i18n="tools_css.usage_step1_desc">정렬하거나 최소화할 CSS 코드를 입력합니다.</p>
+              <strong data-i18n="tools_css.usage_step1_title">Enter CSS</strong>
+              <p data-i18n="tools_css.usage_step1_desc">Paste the CSS code you want to format or minify.</p>
             </div>
           </div>
           <div class="usage-step">
             <div class="usage-step-badge">2</div>
             <div class="usage-step-content">
-              <strong data-i18n="tools_css.usage_step2_title">포맷팅 또는 최소화</strong>
-              <p data-i18n="tools_css.usage_step2_desc">✨ 포맷팅으로 코드를 보기 좋게 정렬하거나, 🗜️ 최소화로 공백과 줄바꿈을 제거합니다.</p>
+              <strong data-i18n="tools_css.usage_step2_title">Format or Minify</strong>
+              <p data-i18n="tools_css.usage_step2_desc">Click ✨ Format to prettify the code, or 🗜️ Minify to remove whitespace and newlines.</p>
             </div>
           </div>
           <div class="usage-step">
             <div class="usage-step-badge">3</div>
             <div class="usage-step-content">
-              <strong data-i18n="tools_css.usage_step3_title">결과 복사</strong>
-              <p data-i18n="tools_css.usage_step3_desc">📋 복사 버튼으로 변환된 CSS를 클립보드에 저장합니다.</p>
+              <strong data-i18n="tools_css.usage_step3_title">Copy Result</strong>
+              <p data-i18n="tools_css.usage_step3_desc">Use 📋 Copy to save the transformed CSS to clipboard.</p>
             </div>
           </div>
         </div>
         <div class="usage-tip">
-          <span data-i18n="tools_css.usage_tip">💡 팁: 최소화된 CSS는 웹사이트 로딩 속도를 빠르게 합니다. 포맷팅은 코드 리뷰나 디버깅 시 유용합니다.</span>
+          <span data-i18n="tools_css.usage_tip">💡 Tip: Minified CSS improves website loading speed. Formatting is useful for code review and debugging.</span>
         </div>
       </section>
     </main>
@@ -163,14 +163,14 @@
       <div class="footer-content">
         <div class="footer-brand">
           <a href="../index.html" class="logo">Web<span>Tools</span></a>
-          <p data-i18n="footer.brand_desc">설치 없이 바로 쓰는 온라인 개발 도구 모음</p>
+          <p data-i18n="footer.brand_desc">Free online developer tools — no installation required.</p>
         </div>
       </div>
       <div class="footer-bottom">
         <p>
-          <span data-i18n="footer.copyright">© 2026 WebTools. 온라인 도구 모음.</span>
+          <span data-i18n="footer.copyright">© 2026 WebTools. Online Tool Suite.</span>
           | <a href="../sitemap.xml" data-i18n="footer.sitemap">Sitemap</a>
-          | <a href="https://github.com/core13773/webtools/issues" target="_blank" rel="noopener noreferrer" data-i18n="feedback.link">도구 제안 및 피드백 보내기</a>
+          | <a href="https://github.com/core13773/webtools/issues" target="_blank" rel="noopener noreferrer" data-i18n="feedback.link">Suggest a tool or send feedback</a>
         </p>
       </div>
     </footer>

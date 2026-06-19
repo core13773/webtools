@@ -1,10 +1,11 @@
 {
   "name": "webtools",
   "version": "1.0.0",
-  "description": "19 free online developer tools — JSON Formatter, Base64, URL Encoder, Password Generator, and more. No installation required. | 설치 없이 바로 쓰는 19가지 온라인 개발 도구 모음",
+  "description": "20 free online developer tools — JSON Formatter, Base64, URL Encoder, Password Generator, and more. No installation required. | 설치 없이 바로 쓰는 20가지 온라인 개발 도구 모음",
   "main": "index.html",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node --test",
+    "minify": "node scripts/minify.js"
   },
   "repository": {
     "type": "git",
@@ -29,7 +30,9 @@
   "homepage": "https://github.com/core13773/webtools#readme",
   "devDependencies": {
     "@resvg/resvg-js": "^2.6.2",
+    "csso": "^5.0.5",
     "esbuild": "^0.28.0",
-    "html-minifier": "^4.0.0"
+    "html-minifier": "^4.0.0",
+    "terser": "^5.31.0"
   }
 }

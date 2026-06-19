@@ -16,7 +16,7 @@
       src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4794002106764884"
       crossorigin="anonymous"
     ></script>
-    <title data-i18n="tools_html.title">
+    <title>
       HTML Encoder / Decoder - Online HTML Entity Tool | WebTools
     </title>
     <meta
@@ -89,7 +89,7 @@
             "@id": "https://webtool.monster/tools/html-encoder.html#webapplication",
             "name": "HTML Encoder / Decoder",
             "url": "https://webtool.monster/tools/html-encoder.html",
-            "description": "특수문자를 HTML Entity(&lt;, &amp; 등)로 변환하거나 원래 문자로 되돌리는 온라인 도구",
+            "description": "Escape special characters to HTML entities or revert them.",
             "applicationCategory": "DeveloperApplication",
             "operatingSystem": "All",
             "browserRequirements": "Modern browser with JavaScript enabled",
@@ -164,7 +164,7 @@
       <nav>
         <a href="../index.html" class="logo">Web<span>Tools</span></a>
         <ul class="nav-links">
-          <li><a href="../index.html" data-i18n="nav.home">홈</a></li>
+          <li><a href="../index.html" data-i18n="nav.home">Home</a></li>
           <li class="lang-switcher">
             <button
               class="lang-btn" data-lang="ko" onclick="i18n.switchLang('ko')">KO</button><button class="lang-btn active" data-lang="en" onclick="i18n.switchLang('en')">EN</button>
@@ -175,21 +175,20 @@
     </header>
     <main class="container">
       <div class="tool-header">
-        <h1 data-i18n="tools_html.title">HTML 인코더 / 디코더</h1>
+        <h1 data-i18n="tools_html.title">HTML Encoder / Decoder</h1>
         <p data-i18n="tools_html.desc">
-          특수문자를 HTML Entity(&amp;lt;, &amp;amp; 등)로 변환하거나
-          되돌립니다.
+          Convert special characters to HTML entities (&lt;, &amp;, etc.) and back.
         </p>
       </div>
       <div class="tool-box">
         <div class="form-group">
           <label for="text-input" data-i18n="tools_html.input_label">
-            입력 텍스트
+            Input Text
           </label>
           <textarea
             id="text-input"
             rows="8"
-            placeholder='예: <div>안녕하세요! "WebTools"</div>'
+            placeholder="e.g. &lt;div&gt;Hello &quot;World&quot;&lt;/div&gt;"
           ></textarea>
         </div>
         <div class="btn-row">
@@ -198,64 +197,60 @@
             onclick="encodeHtml()"
             data-i18n="tools_html.btn_encode"
           >
-            🔼 HTML 인코딩
+            🔼 HTML Encode
           </button>
           <button
             class="btn"
             onclick="decodeHtml()"
             data-i18n="tools_html.btn_decode"
           >
-            🔽 HTML 디코딩
+            🔽 HTML Decode
           </button>
           <button
             class="btn btn-outline"
             onclick="copyResult()"
             data-i18n="common.copy"
           >
-            📋 결과 복사
+            📋 Copy
           </button>
           <button
             class="btn btn-outline"
             onclick="downloadResult()"
             data-i18n="common.download"
           >
-            💾 다운로드
+            💾 Download
           </button>
           <button
             class="btn btn-outline"
             onclick="clearAll()"
             data-i18n="common.clear"
           >
-            🗑️ 초기화
+            🗑️ Clear
           </button>
         </div>
         <div class="form-group result-group">
-          <label for="text-output" data-i18n="common.result">결과</label>
+          <label for="text-output" data-i18n="common.result">Result</label>
           <div
             id="text-output"
             class="result-box"
             aria-live="polite"
             data-i18n="common.result_placeholder"
           >
-            결과가 여기에 표시됩니다.
+            Result will appear here.
           </div>
         </div>
       </div>
       <section class="usage-section">
-        <h2 data-i18n="tools_html.usage_title">📖 사용 방법</h2>
+        <h2 data-i18n="tools_html.usage_title">📖 How to Use</h2>
         <div class="usage-steps">
           <div class="usage-step">
             <div class="usage-step-badge">1</div>
             <div class="usage-step-content">
               <strong data-i18n="tools_html.usage_step1_title">
-                텍스트 입력
+                Enter Text
               </strong>
               <p data-i18n="tools_html.usage_step1_desc">
-                HTML 특수문자가 포함된 텍스트를 입력합니다. 예:
-                <code>
-                  &lt;div&gt;안녕하세요!
-                  &amp;quot;WebTools&amp;quot;&lt;/div&gt;
-                </code>
+                Type or paste text containing HTML special characters.
               </p>
             </div>
           </div>
@@ -263,19 +258,10 @@
             <div class="usage-step-badge">2</div>
             <div class="usage-step-content">
               <strong data-i18n="tools_html.usage_step2_title">
-                인코딩 또는 디코딩
+                Encode or Decode
               </strong>
               <p data-i18n="tools_html.usage_step2_desc">
-                <strong>🔼 HTML 인코딩</strong>
-                버튼으로
-                <code>&lt;</code>
-                ,
-                <code>&gt;</code>
-                ,
-                <code>&amp;</code>
-                등을 HTML Entity로 변환합니다.
-                <strong>🔽 HTML 디코딩</strong>
-                버튼으로 다시 원래 문자로 복원합니다.
+                Click 🔼 HTML Encode to convert &lt;, &gt;, &amp; to entities, or 🔽 HTML Decode to revert them.
               </p>
             </div>
           </div>
@@ -283,21 +269,17 @@
             <div class="usage-step-badge">3</div>
             <div class="usage-step-content">
               <strong data-i18n="tools_html.usage_step3_title">
-                결과 복사
+                Copy Result
               </strong>
               <p data-i18n="tools_html.usage_step3_desc">
-                <strong>📋 결과 복사</strong>
-                버튼으로 변환된 HTML을 클립보드에 저장합니다. 인코딩된 HTML은
-                웹페이지에 안전하게 삽입할 수 있습니다.
+                Click 📋 Copy to save the encoded/decoded HTML to your clipboard.
               </p>
             </div>
           </div>
         </div>
         <div class="usage-tip">
           <span data-i18n="tools_html.usage_tip">
-            <strong>💡 팁:</strong>
-            HTML 인코딩은 XSS(크로스사이트 스크립팅) 공격을 방지하고, 사용자
-            입력을 안전하게 웹페이지에 표시할 때 필수적으로 사용됩니다.
+            💡 Tip: HTML encoding is essential for preventing XSS attacks and safely displaying user input on web pages.
           </span>
         </div>
       </section>
@@ -307,19 +289,19 @@
         <div class="footer-brand">
           <a href="../index.html" class="logo">Web<span>Tools</span></a>
           <p data-i18n="footer.brand_desc">
-            설치 없이 바로 쓰는 온라인 개발 도구 모음
+            Free online developer tools — no installation required.
           </p>
         </div>
       </div>
       <div class="footer-bottom">
         <p>
           <span data-i18n="footer.copyright">
-            © 2026 WebTools. 온라인 도구 모음.
+            © 2026 WebTools. Online Tool Suite.
           </span>
           |
           <a href="../sitemap.xml" data-i18n="footer.sitemap">Sitemap</a>
           |
-          <a href="https://github.com/core13773/webtools/issues" target="_blank" rel="noopener noreferrer" data-i18n="feedback.link">도구 제안 및 피드백 보내기</a>
+          <a href="https://github.com/core13773/webtools/issues" target="_blank" rel="noopener noreferrer" data-i18n="feedback.link">Suggest a tool or send feedback</a>
         </p>
       </div>
     </footer>

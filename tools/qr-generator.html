@@ -16,7 +16,7 @@
       src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4794002106764884"
       crossorigin="anonymous"
     ></script>
-    <title data-i18n="tools_qr.title">
+    <title>
       QR Code Generator - Create QR Codes Online | WebTools
     </title>
     <meta
@@ -89,7 +89,7 @@
             "@id": "https://webtool.monster/tools/qr-generator.html#webapplication",
             "name": "QR Code Generator",
             "url": "https://webtool.monster/tools/qr-generator.html",
-            "description": "URL이나 텍스트를 스캔할 수 있는 QR 코드 이미지로 즉시 변환하는 온라인 도구",
+            "description": "Turn URLs or text into scannable QR code images instantly.",
             "applicationCategory": "UtilitiesApplication",
             "operatingSystem": "All",
             "browserRequirements": "Modern browser with JavaScript enabled",
@@ -164,7 +164,7 @@
       <nav>
         <a href="../index.html" class="logo">Web<span>Tools</span></a>
         <ul class="nav-links">
-          <li><a href="../index.html" data-i18n="nav.home">홈</a></li>
+          <li><a href="../index.html" data-i18n="nav.home">Home</a></li>
           <li class="lang-switcher">
             <button
               class="lang-btn" data-lang="ko" onclick="i18n.switchLang('ko')">KO</button><button class="lang-btn active" data-lang="en" onclick="i18n.switchLang('en')">EN</button>
@@ -177,18 +177,18 @@
       <div class="tool-header">
         <h1 data-i18n="tools_qr.title">QR Code Generator</h1>
         <p data-i18n="tools_qr.desc">
-          URL이나 텍스트를 QR 코드 이미지로 변환합니다.
+          Convert URLs or text into scannable QR code images.
         </p>
       </div>
       <div class="tool-box">
         <div class="form-group">
           <label for="qr-input" data-i18n="tools_qr.input_label">
-            텍스트 또는 URL 입력
+            Text or URL
           </label>
           <textarea
             id="qr-input"
             rows="4"
-            placeholder="예: https://webtool.monster/"
+            placeholder="e.g. https://example.com"
           ></textarea>
         </div>
         <div class="btn-row">
@@ -197,44 +197,43 @@
             onclick="generateQR()"
             data-i18n="tools_qr.btn_generate"
           >
-            📱 QR 코드 생성
+            📱 Generate QR Code
           </button>
           <button
             class="btn btn-outline"
             onclick="downloadResult()"
             data-i18n="tools_qr.btn_save_text"
           >
-            💾 텍스트 저장
+            💾 Save Text
           </button>
           <button
             class="btn btn-outline"
             onclick="clearAll()"
             data-i18n="common.clear"
           >
-            🗑️ 초기화
+            🗑️ Clear
           </button>
         </div>
         <div class="form-group qr-result-group">
-          <label data-i18n="tools_qr.output_label">생성된 QR 코드</label>
+          <label data-i18n="tools_qr.output_label">Generated QR Code</label>
           <div id="qr-result" aria-live="polite">
             <p class="qr-placeholder" data-i18n="tools_qr.qr_placeholder">
-              텍스트를 입력하고 생성 버튼을 누르세요.
+              Enter text and click Generate.
             </p>
           </div>
         </div>
       </div>
       <section class="usage-section">
-        <h2 data-i18n="tools_qr.usage_title">📖 사용 방법</h2>
+        <h2 data-i18n="tools_qr.usage_title">📖 How to Use</h2>
         <div class="usage-steps">
           <div class="usage-step">
             <div class="usage-step-badge">1</div>
             <div class="usage-step-content">
               <strong data-i18n="tools_qr.usage_step1_title">
-                텍스트 또는 URL 입력
+                Enter Text or URL
               </strong>
               <p data-i18n="tools_qr.usage_step1_desc">
-                QR 코드로 변환할 URL이나 텍스트를 입력합니다. 예: 웹사이트 주소,
-                연락처 정보, Wi-Fi 설정 등.
+                Type the URL or text you want to convert into a QR code.
               </p>
             </div>
           </div>
@@ -242,11 +241,10 @@
             <div class="usage-step-badge">2</div>
             <div class="usage-step-content">
               <strong data-i18n="tools_qr.usage_step2_title">
-                QR 코드 생성
+                Generate QR Code
               </strong>
               <p data-i18n="tools_qr.usage_step2_desc">
-                <strong>📱 QR 코드 생성</strong>
-                버튼을 클릭하면 입력한 내용이 QR 코드 이미지로 즉시 변환됩니다.
+                Click 📱 Generate QR Code to instantly create the QR code image.
               </p>
             </div>
           </div>
@@ -254,21 +252,17 @@
             <div class="usage-step-badge">3</div>
             <div class="usage-step-content">
               <strong data-i18n="tools_qr.usage_step3_title">
-                스캔 및 다운로드
+                Scan and Download
               </strong>
               <p data-i18n="tools_qr.usage_step3_desc">
-                스마트폰 카메라로 QR 코드를 스캔하여 내용을 확인하거나,
-                <strong>이미지 다운로드</strong>
-                링크로 PNG 파일을 저장합니다.
+                Use your phone camera to scan the QR code, or click the download link to save the PNG image.
               </p>
             </div>
           </div>
         </div>
         <div class="usage-tip">
           <span data-i18n="tools_qr.usage_tip">
-            <strong>💡 팁:</strong>
-            URL이 긴 경우에도 QR 코드는 안정적으로 인식됩니다. 생성된 QR 코드는
-            브라우저 내에서 직접 생성되어 외부로 전송되지 않아 안전합니다.
+            💡 Tip: QR codes work reliably even with long URLs. Generated codes are permanent and never expire.
           </span>
         </div>
       </section>
@@ -278,19 +272,19 @@
         <div class="footer-brand">
           <a href="../index.html" class="logo">Web<span>Tools</span></a>
           <p data-i18n="footer.brand_desc">
-            설치 없이 바로 쓰는 온라인 개발 도구 모음
+            Free online developer tools — no installation required.
           </p>
         </div>
       </div>
       <div class="footer-bottom">
         <p>
           <span data-i18n="footer.copyright">
-            © 2026 WebTools. 온라인 도구 모음.
+            © 2026 WebTools. Online Tool Suite.
           </span>
           |
           <a href="../sitemap.xml" data-i18n="footer.sitemap">Sitemap</a>
           |
-          <a href="https://github.com/core13773/webtools/issues" target="_blank" rel="noopener noreferrer" data-i18n="feedback.link">도구 제안 및 피드백 보내기</a>
+          <a href="https://github.com/core13773/webtools/issues" target="_blank" rel="noopener noreferrer" data-i18n="feedback.link">Suggest a tool or send feedback</a>
         </p>
       </div>
     </footer>

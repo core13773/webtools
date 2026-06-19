@@ -36,7 +36,7 @@ function testRegex() {
     });
     html += escapeHtml(text.slice(lastIndex));
     resultBox.innerHTML = html || escapeHtml(text);
-    matchesBox.textContent = matches.map((m, i) => `${i18n.t('tools_regex.match') || 'Match'} ${i + 1}: "${m[0]}" (${i18n.t('tools_regex.index') || 'index'}: ${m.index})`).join('\n') || i18n.t('tools_regex.no_matches');
+    matchesBox.textContent = matches.map((m, i) => `${i18n.t('tools_regex.match')} ${i + 1}: "${m[0]}" (${i18n.t('tools_regex.index')}: ${m.index})`).join('\n') || i18n.t('tools_regex.no_matches');
   } catch (e) {
     resultBox.textContent = '❌ ' + e.message;
     matchesBox.textContent = '';

@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://pagead2.googlesyndication.com" crossorigin="anonymous" />
     <link rel="preconnect" href="https://googleads.g.doubleclick.net" />
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4794002106764884" crossorigin="anonymous"></script>
-    <title data-i18n="tools_csv_json.title">CSV ↔ JSON Converter - Convert CSV to JSON & JSON to CSV | WebTools</title>
+    <title>CSV ↔ JSON Converter - Convert CSV to JSON & JSON to CSV | WebTools</title>
     <meta name="description" content="Convert CSV data to JSON array and JSON to CSV freely." />
     <meta name="robots" content="index, follow" />
     <meta name="keywords" content="CSV to JSON, JSON to CSV, CSV converter, JSON converter, online CSV JSON tool" />
@@ -90,7 +90,7 @@
       <nav>
         <a href="../index.html" class="logo">Web<span>Tools</span></a>
         <ul class="nav-links">
-          <li><a href="../index.html" data-i18n="nav.home">홈</a></li>
+          <li><a href="../index.html" data-i18n="nav.home">Home</a></li>
           <li class="lang-switcher">
             <button class="lang-btn" data-lang="ko" onclick="i18n.switchLang('ko')">KO</button><button class="lang-btn active" data-lang="en" onclick="i18n.switchLang('en')">EN</button>
           </li>
@@ -101,16 +101,16 @@
     <main class="container">
       <div class="tool-header">
         <h1 data-i18n="tools_csv_json.title">CSV ↔ JSON Converter</h1>
-        <p data-i18n="tools_csv_json.desc">CSV 데이터를 JSON 배열로, JSON을 CSV로 자유롭게 변환합니다.</p>
+        <p data-i18n="tools_csv_json.desc">Convert CSV data to JSON array and JSON to CSV freely.</p>
       </div>
       <div class="tool-box">
         <div class="form-group">
-          <label for="csv-input" data-i18n="tools_csv_json.input_label">입력 데이터</label>
+          <label for="csv-input" data-i18n="tools_csv_json.input_label">Input Data</label>
           <textarea id="csv-input" rows="8" placeholder="name,age&#10;Alice,30&#10;Bob,25"></textarea>
         </div>
         <div class="options">
           <label>
-            <span data-i18n="tools_csv_json.delimiter_label">구분자</span>
+            <span data-i18n="tools_csv_json.delimiter_label">Delimiter</span>
             <select id="csv-delimiter">
               <option value=",">,</option>
               <option value="\t">Tab</option>
@@ -119,48 +119,48 @@
           </label>
           <label>
             <input type="checkbox" id="csv-header" checked="checked" />
-            <span data-i18n="tools_csv_json.has_header">첫 줄을 헤더로 사용</span>
+            <span data-i18n="tools_csv_json.has_header">Use first row as header</span>
           </label>
         </div>
         <div class="btn-row">
           <button class="btn" onclick="csvToJson()" data-i18n="tools_csv_json.btn_csv_to_json">CSV → JSON</button>
           <button class="btn btn-outline" onclick="jsonToCsv()" data-i18n="tools_csv_json.btn_json_to_csv">JSON → CSV</button>
-          <button class="btn btn-outline" onclick="copyCsvResult()" data-i18n="common.copy">📋 복사</button>
-          <button class="btn btn-outline" onclick="downloadCsvResult()" data-i18n="common.download">💾 다운로드</button>
-          <button class="btn btn-outline" onclick="document.getElementById('csv-input').value='';document.getElementById('csv-output').textContent='';" data-i18n="common.clear">🗑️ 초기화</button>
+          <button class="btn btn-outline" onclick="copyCsvResult()" data-i18n="common.copy">📋 Copy</button>
+          <button class="btn btn-outline" onclick="downloadCsvResult()" data-i18n="common.download">💾 Download</button>
+          <button class="btn btn-outline" onclick="document.getElementById('csv-input').value='';document.getElementById('csv-output').textContent='';" data-i18n="common.clear">🗑️ Clear</button>
         </div>
         <div class="form-group result-group">
-          <label for="csv-output" data-i18n="tools_csv_json.result_label">결과</label>
-          <div id="csv-output" class="result-box" aria-live="polite" data-i18n="common.result_placeholder">결과가 여기에 표시됩니다.</div>
+          <label for="csv-output" data-i18n="tools_csv_json.result_label">Result</label>
+          <div id="csv-output" class="result-box" aria-live="polite" data-i18n="common.result_placeholder">Result will appear here.</div>
         </div>
       </div>
       <section class="usage-section">
-        <h2 data-i18n="tools_csv_json.usage_title">📖 사용 방법</h2>
+        <h2 data-i18n="tools_csv_json.usage_title">📖 How to Use</h2>
         <div class="usage-steps">
           <div class="usage-step">
             <div class="usage-step-badge">1</div>
             <div class="usage-step-content">
-              <strong data-i18n="tools_csv_json.usage_step1_title">데이터 입력</strong>
-              <p data-i18n="tools_csv_json.usage_step1_desc">CSV 또는 JSON 데이터를 입력합니다.</p>
+              <strong data-i18n="tools_csv_json.usage_step1_title">Enter Data</strong>
+              <p data-i18n="tools_csv_json.usage_step1_desc">Paste CSV or JSON data into the input area.</p>
             </div>
           </div>
           <div class="usage-step">
             <div class="usage-step-badge">2</div>
             <div class="usage-step-content">
-              <strong data-i18n="tools_csv_json.usage_step2_title">변환 방향 선택</strong>
-              <p data-i18n="tools_csv_json.usage_step2_desc">CSV → JSON 또는 JSON → CSV 버튼을 클릭합니다.</p>
+              <strong data-i18n="tools_csv_json.usage_step2_title">Choose Direction</strong>
+              <p data-i18n="tools_csv_json.usage_step2_desc">Click CSV → JSON or JSON → CSV to convert.</p>
             </div>
           </div>
           <div class="usage-step">
             <div class="usage-step-badge">3</div>
             <div class="usage-step-content">
-              <strong data-i18n="tools_csv_json.usage_step3_title">결과 복사</strong>
-              <p data-i18n="tools_csv_json.usage_step3_desc">변환된 결과를 확인하고 📋 복사 버튼으로 저장합니다.</p>
+              <strong data-i18n="tools_csv_json.usage_step3_title">Copy Result</strong>
+              <p data-i18n="tools_csv_json.usage_step3_desc">Verify the converted result and click 📋 Copy to save.</p>
             </div>
           </div>
         </div>
         <div class="usage-tip">
-          <span data-i18n="tools_csv_json.usage_tip">💡 팁: CSV의 첫 줄을 헤더로 사용하면 JSON 객체 배열로, 사용하지 않으면 2차원 배열로 변환됩니다.</span>
+          <span data-i18n="tools_csv_json.usage_tip">💡 Tip: When using the first row as header, CSV converts to an array of objects. Otherwise it converts to a 2D array.</span>
         </div>
       </section>
     </main>
@@ -168,14 +168,14 @@
       <div class="footer-content">
         <div class="footer-brand">
           <a href="../index.html" class="logo">Web<span>Tools</span></a>
-          <p data-i18n="footer.brand_desc">설치 없이 바로 쓰는 온라인 개발 도구 모음</p>
+          <p data-i18n="footer.brand_desc">Free online developer tools — no installation required.</p>
         </div>
       </div>
       <div class="footer-bottom">
         <p>
-          <span data-i18n="footer.copyright">© 2026 WebTools. 온라인 도구 모음.</span>
+          <span data-i18n="footer.copyright">© 2026 WebTools. Online Tool Suite.</span>
           | <a href="../sitemap.xml" data-i18n="footer.sitemap">Sitemap</a>
-          | <a href="https://github.com/core13773/webtools/issues" target="_blank" rel="noopener noreferrer" data-i18n="feedback.link">도구 제안 및 피드백 보내기</a>
+          | <a href="https://github.com/core13773/webtools/issues" target="_blank" rel="noopener noreferrer" data-i18n="feedback.link">Suggest a tool or send feedback</a>
         </p>
       </div>
     </footer>

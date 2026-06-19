@@ -1,5 +1,5 @@
 /* WebTools Service Worker */
-const CACHE = "webtools-v2";
+const CACHE = "webtools-v4";
 const STATIC_ASSETS = [
   "/index.html",
   "/404.html",
@@ -46,13 +46,15 @@ const STATIC_ASSETS = [
   "/tools/markdown-previewer.html",
   "/tools/px-converter.html",
   "/tools/image-base64.html",
+  "/tools/slug-generator.html",
   "/js/tools/jwt-decoder.js",
   "/js/tools/regex-tester.js",
   "/js/tools/csv-json-converter.js",
   "/js/tools/css-formatter.js",
   "/js/tools/markdown-previewer.js",
   "/js/tools/px-converter.js",
-  "/js/tools/image-base64.js"
+  "/js/tools/image-base64.js",
+  "/js/tools/slug-generator.js"
 ];
 
 // Install: cache app shell

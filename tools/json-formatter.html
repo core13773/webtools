@@ -16,7 +16,7 @@
       src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4794002106764884"
       crossorigin="anonymous"
     ></script>
-    <title data-i18n="tools_json.title">
+    <title>
       JSON Formatter - Online JSON Pretty Print & Validation | WebTools
     </title>
     <meta
@@ -163,7 +163,7 @@
       <nav>
         <a href="../index.html" class="logo">Web<span>Tools</span></a>
         <ul class="nav-links">
-          <li><a href="../index.html" data-i18n="nav.home">홈</a></li>
+          <li><a href="../index.html" data-i18n="nav.home">Home</a></li>
           <li class="lang-switcher">
             <button
               class="lang-btn" data-lang="ko" onclick="i18n.switchLang('ko')">KO</button><button class="lang-btn active" data-lang="en" onclick="i18n.switchLang('en')">EN</button>
@@ -176,13 +176,13 @@
       <div class="tool-header">
         <h1 data-i18n="tools_json.title">JSON Formatter & Validator</h1>
         <p data-i18n="tools_json.desc">
-          JSON 문자열을 보기 좋게 정렬하고 문법 오류를 확인하세요.
+          Pretty-print JSON strings and check for syntax errors.
         </p>
       </div>
       <div class="tool-box">
         <div class="form-group">
           <label for="json-input" data-i18n="tools_json.input_label">
-            입력 JSON
+            Input JSON
           </label>
           <textarea
             id="json-input"
@@ -193,11 +193,11 @@
         <div class="options">
           <label>
             <input type="checkbox" id="sort-keys" checked="checked" />
-            <span data-i18n="tools_json.sort_keys">키 알파벳 순 정렬</span>
+            <span data-i18n="tools_json.sort_keys">Sort keys alphabetically</span>
           </label>
           <label>
             <input type="checkbox" id="compact" checked="checked" />
-            <span data-i18n="tools_json.compact">간결하게 (2칸 들여쓰기)</span>
+            <span data-i18n="tools_json.compact">Compact (2-space indent)</span>
           </label>
         </div>
         <div class="btn-row">
@@ -206,63 +206,63 @@
             onclick="formatJSON()"
             data-i18n="tools_json.btn_format"
           >
-            ✨ 포맷팅
+            ✨ Format
           </button>
           <button
             class="btn btn-outline"
             onclick="minifyJSON()"
             data-i18n="tools_json.btn_minify"
           >
-            🗜️ 최소화
+            🗜️ Minify
           </button>
           <button
             class="btn btn-outline"
             onclick="copyResult()"
             data-i18n="common.copy"
           >
-            📋 결과 복사
+            📋 Copy
           </button>
           <button
             class="btn btn-outline"
             onclick="downloadResult()"
             data-i18n="common.download"
           >
-            💾 다운로드
+            💾 Download
           </button>
           <button
             class="btn btn-outline"
             onclick="clearAll()"
             data-i18n="common.clear"
           >
-            🗑️ 초기화
+            🗑️ Clear
           </button>
         </div>
         <div class="form-group result-group">
-          <label for="json-output" data-i18n="common.result">결과</label>
+          <label for="json-output" data-i18n="common.result">Result</label>
           <div
             id="json-output"
             class="result-box"
             aria-live="polite"
             data-i18n="common.result_placeholder"
           >
-            결과가 여기에 표시됩니다.
+            Result will appear here.
           </div>
         </div>
       </div>
       <section class="usage-section">
-        <h2 data-i18n="tools_json.usage_title">📖 사용 방법</h2>
+        <h2 data-i18n="tools_json.usage_title">📖 How to Use</h2>
         <div class="usage-steps">
           <div class="usage-step">
             <div class="usage-step-badge">1</div>
             <div class="usage-step-content">
               <strong data-i18n="tools_json.usage_step1_title">
-                JSON 입력
+                Enter JSON
               </strong>
               <p>
                 <span data-i18n="tools_json.usage_step1_desc">
-                  정렬이 필요한 JSON 문자열을 입력창에 붙여넣습니다.
+                  Paste a JSON string into the input field.
                 </span>
-                예:
+                e.g.
                 <code>{"name":"WebTools","version":1}</code>
               </p>
             </div>
@@ -271,13 +271,10 @@
             <div class="usage-step-badge">2</div>
             <div class="usage-step-content">
               <strong data-i18n="tools_json.usage_step2_title">
-                옵션 선택
+                Choose Options
               </strong>
               <p data-i18n="tools_json.usage_step2_desc">
-                <strong>키 알파벳 순 정렬</strong>
-                체크 시 객체 키가 가나다순으로 정렬됩니다.
-                <strong>간결하게 (2칸 들여쓰기)</strong>
-                로 들여쓰기 간격을 조절할 수 있습니다.
+                Toggle key sorting and adjust indentation (2 or 4 spaces).
               </p>
             </div>
           </div>
@@ -285,13 +282,10 @@
             <div class="usage-step-badge">3</div>
             <div class="usage-step-content">
               <strong data-i18n="tools_json.usage_step3_title">
-                포맷팅 또는 최소화
+                Format or Minify
               </strong>
               <p data-i18n="tools_json.usage_step3_desc">
-                <strong>✨ 포맷팅</strong>
-                버튼으로 JSON을 보기 좋게 정렬하거나,
-                <strong>🗜️ 최소화</strong>
-                버튼으로 공백을 제거하여 용량을 줄입니다.
+                Click ✨ Format to pretty-print, or 🗜️ Minify to remove whitespace.
               </p>
             </div>
           </div>
@@ -299,21 +293,17 @@
             <div class="usage-step-badge">4</div>
             <div class="usage-step-content">
               <strong data-i18n="tools_json.usage_step4_title">
-                결과 복사
+                Copy Result
               </strong>
               <p data-i18n="tools_json.usage_step4_desc">
-                <strong>📋 결과 복사</strong>
-                버튼으로 변환된 JSON을 클립보드에 저장합니다. JSON 문법이 잘못된
-                경우 오류 메시지가 표시됩니다.
+                Click 📋 Copy to save the formatted JSON to your clipboard.
               </p>
             </div>
           </div>
         </div>
         <div class="usage-tip">
           <span data-i18n="tools_json.usage_tip">
-            <strong>💡 팁:</strong>
-            JSON 데이터는 브라우저 내에서만 처리되며 서버로 전송되지 않습니다.
-            민감한 데이터도 안전하게 사용하세요.
+            💡 Tip: JSON is processed entirely in your browser. No data is sent to any server — safe for sensitive information.
           </span>
         </div>
       </section>
@@ -323,19 +313,19 @@
         <div class="footer-brand">
           <a href="../index.html" class="logo">Web<span>Tools</span></a>
           <p data-i18n="footer.brand_desc">
-            설치 없이 바로 쓰는 온라인 개발 도구 모음
+            Free online developer tools — no installation required.
           </p>
         </div>
       </div>
       <div class="footer-bottom">
         <p>
           <span data-i18n="footer.copyright">
-            © 2026 WebTools. 온라인 도구 모음.
+            © 2026 WebTools. Online Tool Suite.
           </span>
           |
           <a href="../sitemap.xml" data-i18n="footer.sitemap">Sitemap</a>
           |
-          <a href="https://github.com/core13773/webtools/issues" target="_blank" rel="noopener noreferrer" data-i18n="feedback.link">도구 제안 및 피드백 보내기</a>
+          <a href="https://github.com/core13773/webtools/issues" target="_blank" rel="noopener noreferrer" data-i18n="feedback.link">Suggest a tool or send feedback</a>
         </p>
       </div>
     </footer>
