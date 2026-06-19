@@ -2,7 +2,7 @@
 <html lang="en" id="root-html">
   <head>
     <meta charset="UTF-8" />
-    <script>(function(){const t=localStorage.getItem('theme')||'light';document.documentElement.setAttribute('data-theme',t);})();</script>
+    <script>(function(){var s=localStorage.getItem('theme');var t=s||((window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)?'dark':'light');document.documentElement.setAttribute('data-theme',t);})();</script>
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <meta name="google-adsense-account" content="ca-pub-4794002106764884" />
     <link rel="preconnect" href="https://pagead2.googlesyndication.com" crossorigin="anonymous" />
@@ -30,7 +30,7 @@
     <meta name="theme-color" content="#4f46e5" />
     <link rel="manifest" href="manifest.json" />
     <link rel="icon" href="favicon.svg" sizes="any" type="image/svg+xml" />
-    <link rel="apple-touch-icon" href="icons/icon-192.svg" />
+    <link rel="apple-touch-icon" href="icons/icon-192.png" />
     <meta name="google-site-verification" content="HupS0aGMVI74b6C3cIMnTCLXv2w-G_7HkHvmDCajf5E" />
     <meta name="naver-site-verification" content="f2ee86bf2dbffd9f349214dc82766bbf8066ed00" />
     <script type="application/ld+json">

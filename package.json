@@ -5,7 +5,8 @@
   "main": "index.html",
   "scripts": {
     "test": "node --test",
-    "minify": "node scripts/minify.js"
+    "minify": "node scripts/minify.js",
+    "icons": "node scripts/generate-icons.js"
   },
   "repository": {
     "type": "git",
@@ -31,8 +32,6 @@
   "devDependencies": {
     "@resvg/resvg-js": "^2.6.2",
     "csso": "^5.0.5",
-    "esbuild": "^0.28.0",
-    "html-minifier": "^4.0.0",
     "terser": "^5.31.0"
   }
 }

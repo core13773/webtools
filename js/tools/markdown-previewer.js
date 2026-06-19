@@ -10,6 +10,33 @@ function parseMarkdown(md) {
   let html = escapeHtml(md);
   // Code blocks first (before other transformations)
   html = html.replace(/```([\s\S]*?)```/gm, '<pre><code>$1</code></pre>');
+  // Horizontal rule (--- / *** / ___ on its own line)
+  html = html.replace(/^(?:-{3,}|\*{3,}|_{3,})[ \t]*$/gm, '<hr>');
+  // Blockquote: consecutive lines starting with '> ' (escaped to '&gt; ')
+  html = html.replace(/^&gt; ?(.*)$/gm, '<bq>$1</bq>');
+  html = html.replace(/(?:<bq>.*<\/bq>\n?)+/g, function(match){
+    return '<blockquote>' + match.replace(/<\/?bq>/g, '').replace(/\n/g, '<br>').trim() + '</blockquote>';
+  });
+  // GFM table: header row, separator row (with optional :align:), then body rows
+  html = html.replace(/^(\|[^\n]+)\n(\|[\s:|\-]+)\n((?:\|[^\n]+\n?)+)/gm, function(match, headerRow, sepRow, bodyRows){
+    var parseRow = function(row){ return row.replace(/^\s*\||\|\s*$/g, '').split('|'); };
+    var aligns = parseRow(sepRow).map(function(c){
+      c = c.trim();
+      if(/^:-+:$/.test(c)) return 'center';
+      if(/^:-+$/.test(c)) return 'left';
+      if(/^-+:$/.test(c)) return 'right';
+      return '';
+    });
+    var makeCell = function(content, i, tag){
+      var a = aligns[i] ? ' style="text-align:' + aligns[i] + '"' : '';
+      return '<' + tag + a + '>' + content.trim() + '</' + tag + '>';
+    };
+    var head = parseRow(headerRow).map(function(c, i){ return makeCell(c, i, 'th'); }).join('');
+    var rows = bodyRows.trim().split('\n').map(function(r){
+      return '<tr>' + parseRow(r).map(function(c, i){ return makeCell(c, i, 'td'); }).join('') + '</tr>';
+    }).join('');
+    return '<table><thead><tr>' + head + '</tr></thead><tbody>' + rows + '</tbody></table>';
+  });
   html = html.replace(/^#### (.*$)/gim, '<h4>$1</h4>');
   html = html.replace(/^### (.*$)/gim, '<h3>$1</h3>');
   html = html.replace(/^## (.*$)/gim, '<h2>$1</h2>');

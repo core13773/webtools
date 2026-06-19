@@ -30,7 +30,14 @@ function hexToHsl(hex){
  return `hsl(${Math.round(h*360)}, ${Math.round(s*100)}%, ${Math.round(l*100)}%)`;
 }
 
+// 3자리 HEX(#abc)를 6자리(#aabbcc)로 확장
+function expandHex(hex){
+ if(/^#[0-9A-Fa-f]{3}$/.test(hex)) return '#' + hex[1]+hex[1]+hex[2]+hex[2]+hex[3]+hex[3];
+ return hex;
+}
+
 function update(hex){
+ hex = expandHex(hex);
  if(!/^#[0-9A-Fa-f]{6}$/.test(hex)){
   rgbOut.value = '';
   hslOut.value = '';
@@ -49,9 +56,10 @@ picker.addEventListener('input', (e)=>{
 
 hexInput.addEventListener('input', (e)=>{
  let v = e.target.value;
- if(v.length===7){
- picker.value = v;
- update(v);
+ if(/^#[0-9A-Fa-f]{3}$/.test(v) || /^#[0-9A-Fa-f]{6}$/.test(v)){
+ const full = expandHex(v);
+ picker.value = full;
+ update(full);
  }
 });
 

@@ -1,4 +1,4 @@
-name: Minify CSS & JS
+name: Test & Minify
 
 on:
   push:
@@ -14,7 +14,7 @@ permissions:
   contents: write
 
 jobs:
-  minify:
+  build:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
@@ -25,26 +25,19 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
+          cache: npm
 
-      - name: Install minifiers
-        run: npm install -g csso terser
+      - name: Install dependencies
+        run: npm ci
 
-      - name: Minify CSS (in-place)
-        run: |
-          csso css/style.css --output css/style.css
-          csso css/tools.css --output css/tools.css
+      # 압축 전 소스 기준으로 회귀 테스트 실행 (MD5/CSV/i18n/슬러그/마크다운/컬러)
+      - name: Run tests
+        run: npm test
 
-      - name: Minify core JS (in-place)
-        run: |
-          terser js/i18n.js --compress --mangle --output js/i18n.js
-          terser js/app.js --compress --mangle --output js/app.js
-          terser js/layout.js --compress --mangle --output js/layout.js
-
-      - name: Minify tool JS files (in-place)
-        run: |
-          for f in js/tools/*.js; do
-            terser "$f" --compress --mangle --output "$f"
-          done
+      # 압축. scripts/minify.js는 테스트가 추출하는 함수명(md5, toSlug 등)을
+      # 맹글링에서 보존(reserved)하므로, 압축 후에도 npm test 가 동작한다.
+      - name: Minify CSS & JS
+        run: npm run minify
 
       - name: Commit minified files
         uses: stefanzweifel/git-auto-commit-action@v5

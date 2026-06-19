@@ -28,7 +28,7 @@ function write(rel, data) { fs.writeFileSync(path.join(root, rel), data); }
     // 테스트(test/)가 함수명으로 추출하므로 해당 이름은 맹글링에서 보존.
     const res = await terserMinify(read(f), {
       compress: true,
-      mangle: { reserved: ['md5', 'toSlug', 'parseCSVLine', 'escapeCsv', 'getSep'] },
+      mangle: { reserved: ['md5', 'toSlug', 'parseCSVLine', 'escapeCsv', 'getSep', 'expandHex', 'parseMarkdown', 'escapeHtml'] },
     });
     if (res.error) throw res.error;
     write(f, res.code);

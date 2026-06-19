@@ -1,5 +1,5 @@
 /* WebTools Service Worker */
-const CACHE = "webtools-v4";
+const CACHE = "webtools-v5";
 const STATIC_ASSETS = [
   "/index.html",
   "/404.html",
@@ -13,6 +13,9 @@ const STATIC_ASSETS = [
   "/favicon.svg",
   "/icons/icon-192.svg",
   "/icons/icon-512.svg",
+  "/icons/icon-192.png",
+  "/icons/icon-512.png",
+  "/icons/icon-maskable-512.png",
   "/i18n/ko.json",
   "/i18n/en.json",
   "/tools/json-formatter.html",

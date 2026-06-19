@@ -159,7 +159,8 @@
     });
     const themeToggle = document.getElementById('theme-toggle');
     if (themeToggle) {
-      const savedTheme = localStorage.getItem('theme') || 'light';
+      // 인라인 스크립트가 설정한 실제 data-theme(시스템 설정 반영)를 읽는다.
+      const savedTheme = document.documentElement.getAttribute('data-theme') || 'light';
       themeToggle.textContent = savedTheme === 'dark' ? '☀️' : '🌙';
     }
 

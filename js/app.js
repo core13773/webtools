@@ -1,6 +1,8 @@
 // 다크모드 토글 및 저장
 const themeToggle = document.getElementById('theme-toggle');
-const savedTheme = localStorage.getItem('theme') || 'light';
+// 인라인 head 스크립트가 이미 prefers-color-scheme을 반영해 data-theme을 설정하므로
+// 실제 적용된 값을 읽어 토글 아이콘을 맞춘다.
+const savedTheme = document.documentElement.getAttribute('data-theme') || 'light';
 
 // Note: FOIT prevention is handled by inline script in <head>
 if(themeToggle) themeToggle.textContent = savedTheme === 'dark' ? '☀️' : '🌙';
