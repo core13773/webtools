@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en" id="root-html">
+  <head>
+    <meta charset="UTF-8" />
+    <script>(function(){var s=localStorage.getItem('theme');var t=s||((window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)?'dark':'light');document.documentElement.setAttribute('data-theme',t);})();()</script>
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="google-adsense-account" content="ca-pub-4794002106764884" />
+    <link rel="preconnect" href="https://pagead2.googlesyndication.com" crossorigin="anonymous" />
+    <link rel="preconnect" href="https://googleads.g.doubleclick.net" />
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4794002106764884" crossorigin="anonymous"></script>
+    <title>Blog - Developer Guides &amp; Best Practices | WebTools</title>
+    <meta name="description" content="Practical developer guides on JSON formatting, Base64 encoding, secure password generation, and more. Clear explanations written by working developers." />
+    <meta name="robots" content="index, follow" />
+    <meta name="author" content="WebTools" />
+    <link rel="canonical" href="https://webtool.monster/blog/index.html" />
+    <link rel="alternate" hreflang="en" href="https://webtool.monster/blog/index.html" />
+    <link rel="alternate" hreflang="ko" href="https://webtool.monster/blog/index.html" />
+    <link rel="alternate" hreflang="x-default" href="https://webtool.monster/blog/index.html" />
+    <meta property="og:title" content="Blog - Developer Guides &amp; Best Practices | WebTools" />
+    <meta property="og:description" content="Practical developer guides on JSON, Base64, passwords, and more — clear explanations by working developers." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://webtool.monster/blog/index.html" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:locale:alternate" content="ko_KR" />
+    <meta property="og:image" content="https://webtool.monster/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content="https://webtool.monster/og-image.png" />
+    <meta name="twitter:title" content="Blog - Developer Guides &amp; Best Practices | WebTools" />
+    <meta name="twitter:description" content="Practical developer guides on JSON, Base64, passwords, and more." />
+    <meta name="theme-color" content="#4f46e5" />
+    <link rel="manifest" href="../manifest.json" />
+    <link rel="icon" href="../favicon.svg" sizes="any" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="../icons/icon-192.png" />
+    <meta name="google-site-verification" content="HupS0aGMVI74b6C3cIMnTCLXv2w-G_7HkHvmDCajf5E" />
+    <meta name="naver-site-verification" content="f2ee86bf2dbffd9f349214dc82766bbf8066ed00" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Blog",
+        "name": "WebTools Blog",
+        "description": "Practical developer guides on JSON, Base64, passwords, and more.",
+        "url": "https://webtool.monster/blog/index.html",
+        "publisher": { "@id": "https://webtool.monster/#organization" }
+      }
+    </script>
+    <style>
+      :root{--bg:#f8f9fa;--surface:#fff;--text:#212529;--text-muted:#5b6470;--primary:#4f46e5;--primary-hover:#4338ca;--primary-light:rgba(79,70,229,0.1);--border:#dee2e6;--radius:12px;--radius-sm:8px;--font:'Segoe UI','Apple SD Gothic Neo','Noto Sans KR','Malgun Gothic',sans-serif}
+      [data-theme="dark"]{--bg:#0f172a;--surface:#1e293b;--text:#f1f5f9;--text-muted:#94a3b8;--primary:#818cf8;--primary-hover:#6366f1;--primary-light:rgba(129,140,248,0.1);--border:#334155}
+      *{box-sizing:border-box;margin:0;padding:0}
+      body{font-family:var(--font);background:var(--bg);color:var(--text);line-height:1.6}
+      header{background:var(--surface);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100}
+      nav{max-width:1100px;margin:0 auto;padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-between}
+      .logo{font-size:1.4rem;font-weight:800;color:var(--primary);text-decoration:none;letter-spacing:-.5px}
+      .logo span{color:var(--text)}
+      .nav-links{display:flex;gap:1.2rem;align-items:center;list-style:none}
+      .container{max-width:1100px;margin:0 auto;padding:2rem 1.5rem}
+    </style>
+    <link rel="preload" href="../css/style.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+    <noscript><link rel="stylesheet" href="../css/style.css" /></noscript>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-DJK0ZFRYKM"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() { dataLayer.push(arguments); }
+      gtag("js", new Date());
+      gtag("config", "G-DJK0ZFRYKM");
+    </script>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <a href="../index.html" class="logo">Web<span>Tools</span></a>
+        <ul class="nav-links">
+          <li><a href="../index.html" data-i18n="nav.home">Home</a></li>
+          <li><a href="../index.html#tools" data-i18n="nav.tools">Tools</a></li>
+          <li><a href="index.html" data-i18n="nav.blog">Blog</a></li>
+          <li class="lang-switcher">
+            <button class="lang-btn" data-lang="en" onclick="i18n.switchLang('en')">EN</button>
+            <button class="lang-btn" data-lang="ko" onclick="i18n.switchLang('ko')">KO</button>
+          </li>
+          <li><button id="theme-toggle" title="Toggle dark mode" aria-label="Toggle dark mode">🌙</button></li>
+        </ul>
+      </nav>
+    </header>
+    <main class="container" style="max-width: 1000px; padding-top: 3rem; padding-bottom: 4rem;">
+      <nav aria-label="Breadcrumb" style="font-size:0.9rem;color:var(--text-muted);margin-bottom:1rem;">
+        <a href="../index.html" style="color:var(--primary);">Home</a> <span aria-hidden="true">›</span> <span>Blog</span>
+      </nav>
+      <h1 style="font-size:2.2rem;font-weight:800;margin-bottom:.6rem;">The WebTools Blog</h1>
+      <p style="color:var(--text-muted);font-size:1.05rem;max-width:680px;margin-bottom:2.5rem;">
+        Plain-language guides for the tools on this site. We break down the ideas behind everyday developer
+        tasks &mdash; how JSON actually parses, why Base64 inflates files by a third, what makes a password
+        genuinely unguessable &mdash; so you understand the fundamentals, not just the buttons.
+      </p>
+
+      <div class="card-grid">
+        <a href="json-formatting-best-practices.html" class="card">
+          <div class="card-icon" aria-hidden="true">📋</div>
+          <h3>JSON Formatting Best Practices</h3>
+          <p>Structure, validation, nesting, and the errors that break parsers &mdash; plus when to minify and when to pretty-print.</p>
+          <span class="card-tag">Data</span>
+          <p style="margin-top:.4rem;font-size:.8rem;color:var(--text-muted);">
+            <time datetime="2026-06-21">June 21, 2026</time> &middot; 9 min read
+          </p>
+        </a>
+        <a href="base64-encoding-explained.html" class="card">
+          <div class="card-icon" aria-hidden="true">🔐</div>
+          <h3>Base64 Encoding Explained</h3>
+            <p>What the Base64 alphabet is, why it costs ~33% more bytes, how it handles UTF-8, and why it is not encryption.</p>
+          <span class="card-tag">Encoding</span>
+          <p style="margin-top:.4rem;font-size:.8rem;color:var(--text-muted);">
+            <time datetime="2026-06-21">June 21, 2026</time> &middot; 8 min read
+          </p>
+        </a>
+        <a href="secure-password-generation.html" class="card">
+          <div class="card-icon" aria-hidden="true">🔑</div>
+          <h3>Generating Secure Passwords</h3>
+          <p>Entropy, length versus complexity, modulo bias, passphrases, and what NIST actually recommends.</p>
+          <span class="card-tag">Security</span>
+          <p style="margin-top:.4rem;font-size:.8rem;color:var(--text-muted);">
+            <time datetime="2026-06-21">June 21, 2026</time> &middot; 9 min read
+          </p>
+        </a>
+      </div>
+    </main>
+    <footer>
+      <div class="footer-content">
+        <div class="footer-brand">
+          <a href="../index.html" class="logo">Web<span>Tools</span></a>
+          <p data-i18n="footer.brand_desc">No install required &mdash; free online developer tools</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>
+          <span data-i18n="footer.copyright">&copy; 2026 WebTools. Online Developer Tools.</span>
+          | <a href="../privacy.html" data-i18n="footer.privacy">Privacy Policy</a>
+          | <a href="../terms.html" data-i18n="footer.terms">Terms</a>
+          | <a href="../contact.html" data-i18n="footer.contact">Contact</a>
+          | <a href="../sitemap.xml">Sitemap</a>
+          | <a href="https://github.com/core13773/webtools/issues" target="_blank" rel="noopener noreferrer" data-i18n="feedback.link">Suggest a tool or send feedback</a>
+        </p>
+      </div>
+    </footer>
+    <script defer src="../js/layout.js"></script>
+    <script defer src="../js/i18n.js"></script>
+    <script defer src="../js/app.js"></script>
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('../sw.js').catch(() => {});
+        });
+      }
+    </script>
+  </body>
+</html>

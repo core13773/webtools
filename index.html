@@ -144,6 +144,7 @@
         <ul class="nav-links">
           <li><a href="index.html" data-i18n="nav.home">Home</a></li>
           <li><a href="#tools" data-i18n="nav.tools">Tools</a></li>
+          <li><a href="blog/index.html" data-i18n="nav.blog">Blog</a></li>
           <li><a href="#about" data-i18n="nav.about">About</a></li>
           <li class="lang-switcher">
             <button
@@ -497,6 +498,30 @@
           <span class="card-tag" data-i18n="tool_cards.slug_generator.tag">Dev</span>
         </a>
       </div>
+      <section id="blog" class="section-header" style="margin-top: 3rem">
+        <h2>📚 From the Blog</h2>
+        <p>Guides and best practices for the tools you use every day</p>
+      </section>
+      <div class="card-grid">
+        <a href="blog/json-formatting-best-practices.html" class="card">
+          <div class="card-icon" aria-hidden="true">📋</div>
+          <h3>JSON Formatting Best Practices</h3>
+          <p>How to structure, validate, and ship JSON that won't bite you at 2am.</p>
+          <span class="card-tag">Guide</span>
+        </a>
+        <a href="blog/base64-encoding-explained.html" class="card">
+          <div class="card-icon" aria-hidden="true">🔐</div>
+          <h3>Base64 Encoding Explained</h3>
+          <p>What the 33% size tax really costs you, and why Base64 is not encryption.</p>
+          <span class="card-tag">Guide</span>
+        </a>
+        <a href="blog/secure-password-generation.html" class="card">
+          <div class="card-icon" aria-hidden="true">🔑</div>
+          <h3>Generating Secure Passwords</h3>
+          <p>Entropy, length vs complexity, modulo bias, and what NIST actually says.</p>
+          <span class="card-tag">Guide</span>
+        </a>
+      </div>
       <section id="about" class="section-header" style="margin-top: 3rem">
         <h2 data-i18n="sections.about.title">ℹ️ About This Site</h2>
       </section>
@@ -538,6 +563,9 @@
           <p data-i18n="footer.brand_desc">Free online developer tools — no installation required.</p>
         </div>
         <div class="footer-links">
+          <a
+            href="blog/index.html"
+            data-i18n="nav.blog">Blog</a>
           <a
             href="tools/json-formatter.html"
             data-i18n="footer.links.json_formatter">JSON Formatter</a>

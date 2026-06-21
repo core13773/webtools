@@ -217,4 +217,40 @@
   <xhtml:link rel="alternate" hreflang="en" href="https://webtool.monster/contact.html" />
   <xhtml:link rel="alternate" hreflang="x-default" href="https://webtool.monster/contact.html" />
  </url>
+ <url>
+  <loc>https://webtool.monster/blog/index.html</loc>
+  <lastmod>2026-06-21</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+  <xhtml:link rel="alternate" hreflang="ko" href="https://webtool.monster/blog/index.html" />
+  <xhtml:link rel="alternate" hreflang="en" href="https://webtool.monster/blog/index.html" />
+  <xhtml:link rel="alternate" hreflang="x-default" href="https://webtool.monster/blog/index.html" />
+ </url>
+ <url>
+  <loc>https://webtool.monster/blog/json-formatting-best-practices.html</loc>
+  <lastmod>2026-06-21</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.7</priority>
+  <xhtml:link rel="alternate" hreflang="ko" href="https://webtool.monster/blog/json-formatting-best-practices.html" />
+  <xhtml:link rel="alternate" hreflang="en" href="https://webtool.monster/blog/json-formatting-best-practices.html" />
+  <xhtml:link rel="alternate" hreflang="x-default" href="https://webtool.monster/blog/json-formatting-best-practices.html" />
+ </url>
+ <url>
+  <loc>https://webtool.monster/blog/base64-encoding-explained.html</loc>
+  <lastmod>2026-06-21</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.7</priority>
+  <xhtml:link rel="alternate" hreflang="ko" href="https://webtool.monster/blog/base64-encoding-explained.html" />
+  <xhtml:link rel="alternate" hreflang="en" href="https://webtool.monster/blog/base64-encoding-explained.html" />
+  <xhtml:link rel="alternate" hreflang="x-default" href="https://webtool.monster/blog/base64-encoding-explained.html" />
+ </url>
+ <url>
+  <loc>https://webtool.monster/blog/secure-password-generation.html</loc>
+  <lastmod>2026-06-21</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.7</priority>
+  <xhtml:link rel="alternate" hreflang="ko" href="https://webtool.monster/blog/secure-password-generation.html" />
+  <xhtml:link rel="alternate" hreflang="en" href="https://webtool.monster/blog/secure-password-generation.html" />
+  <xhtml:link rel="alternate" hreflang="x-default" href="https://webtool.monster/blog/secure-password-generation.html" />
+ </url>
 </urlset>

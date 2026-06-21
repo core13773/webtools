@@ -1,0 +1,348 @@
+<!doctype html>
+<html lang="en" id="root-html">
+  <head>
+    <meta charset="UTF-8" />
+    <script>(function(){var s=localStorage.getItem('theme');var t=s||((window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)?'dark':'light');document.documentElement.setAttribute('data-theme',t);})();()</script>
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="google-adsense-account" content="ca-pub-4794002106764884" />
+    <link rel="preconnect" href="https://pagead2.googlesyndication.com" crossorigin="anonymous" />
+    <link rel="preconnect" href="https://googleads.g.doubleclick.net" />
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4794002106764884" crossorigin="anonymous"></script>
+    <title>Base64 Encoding Explained | WebTools Blog</title>
+    <meta name="description" content="What Base64 actually is: the alphabet, the 33% size overhead, UTF-8 handling, common use cases, and why Base64 is not encryption." />
+    <meta name="robots" content="index, follow" />
+    <meta name="author" content="WebTools" />
+    <link rel="canonical" href="https://webtool.monster/blog/base64-encoding-explained.html" />
+    <link rel="alternate" hreflang="en" href="https://webtool.monster/blog/base64-encoding-explained.html" />
+    <link rel="alternate" hreflang="ko" href="https://webtool.monster/blog/base64-encoding-explained.html" />
+    <link rel="alternate" hreflang="x-default" href="https://webtool.monster/blog/base64-encoding-explained.html" />
+    <meta property="og:title" content="Base64 Encoding Explained | WebTools Blog" />
+    <meta property="og:description" content="The Base64 alphabet, why it inflates files by ~33%, UTF-8 handling, real use cases, and why it is not encryption." />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://webtool.monster/blog/base64-encoding-explained.html" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:locale:alternate" content="ko_KR" />
+    <meta property="og:image" content="https://webtool.monster/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content="https://webtool.monster/og-image.png" />
+    <meta name="twitter:title" content="Base64 Encoding Explained | WebTools Blog" />
+    <meta name="twitter:description" content="The Base64 alphabet, the 33% size tax, UTF-8, and why it is not encryption." />
+    <meta name="theme-color" content="#4f46e5" />
+    <link rel="manifest" href="../manifest.json" />
+    <link rel="icon" href="../favicon.svg" sizes="any" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="../icons/icon-192.png" />
+    <meta name="google-site-verification" content="HupS0aGMVI74b6C3cIMnTCLXv2w-G_7HkHvmDCajf5E" />
+    <meta name="naver-site-verification" content="f2ee86bf2dbffd9f349214dc82766bbf8066ed00" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "TechArticle",
+        "headline": "Base64 Encoding Explained",
+        "description": "The Base64 alphabet, why it inflates files by ~33%, UTF-8 handling, real use cases, and why it is not encryption.",
+        "datePublished": "2026-06-21",
+        "dateModified": "2026-06-21",
+        "inLanguage": "en",
+        "mainEntityOfPage": "https://webtool.monster/blog/base64-encoding-explained.html",
+        "image": "https://webtool.monster/og-image.png",
+        "author": { "@type": "Organization", "name": "WebTools" },
+        "publisher": { "@id": "https://webtool.monster/#organization" }
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://webtool.monster/" },
+          { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://webtool.monster/blog/index.html" },
+          { "@type": "ListItem", "position": 3, "name": "Base64 Encoding Explained", "item": "https://webtool.monster/blog/base64-encoding-explained.html" }
+        ]
+      }
+    </script>
+    <style>
+      :root{--bg:#f8f9fa;--surface:#fff;--text:#212529;--text-muted:#5b6470;--primary:#4f46e5;--primary-hover:#4338ca;--primary-light:rgba(79,70,229,0.1);--border:#dee2e6;--radius:12px;--radius-sm:8px;--font:'Segoe UI','Apple SD Gothic Neo','Noto Sans KR','Malgun Gothic',sans-serif}
+      [data-theme="dark"]{--bg:#0f172a;--surface:#1e293b;--text:#f1f5f9;--text-muted:#94a3b8;--primary:#818cf8;--primary-hover:#6366f1;--primary-light:rgba(129,140,248,0.1);--border:#334155}
+      *{box-sizing:border-box;margin:0;padding:0}
+      body{font-family:var(--font);background:var(--bg);color:var(--text);line-height:1.6}
+      header{background:var(--surface);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100}
+      nav{max-width:1100px;margin:0 auto;padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-between}
+      .logo{font-size:1.4rem;font-weight:800;color:var(--primary);text-decoration:none;letter-spacing:-.5px}
+      .logo span{color:var(--text)}
+      .nav-links{display:flex;gap:1.2rem;align-items:center;list-style:none}
+      .container{max-width:1100px;margin:0 auto;padding:2rem 1.5rem}
+    </style>
+    <link rel="preload" href="../css/style.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+    <noscript><link rel="stylesheet" href="../css/style.css" /></noscript>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-DJK0ZFRYKM"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() { dataLayer.push(arguments); }
+      gtag("js", new Date());
+      gtag("config", "G-DJK0ZFRYKM");
+    </script>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <a href="../index.html" class="logo">Web<span>Tools</span></a>
+        <ul class="nav-links">
+          <li><a href="../index.html" data-i18n="nav.home">Home</a></li>
+          <li><a href="../index.html#tools" data-i18n="nav.tools">Tools</a></li>
+          <li><a href="index.html" data-i18n="nav.blog">Blog</a></li>
+          <li class="lang-switcher">
+            <button class="lang-btn" data-lang="en" onclick="i18n.switchLang('en')">EN</button>
+            <button class="lang-btn" data-lang="ko" onclick="i18n.switchLang('ko')">KO</button>
+          </li>
+          <li><button id="theme-toggle" title="Toggle dark mode" aria-label="Toggle dark mode">🌙</button></li>
+        </ul>
+      </nav>
+    </header>
+    <main class="container" style="max-width:780px;padding-top:3rem;padding-bottom:4rem;">
+      <article>
+        <nav aria-label="Breadcrumb" style="font-size:0.9rem;color:var(--text-muted);margin-bottom:1.2rem;">
+          <a href="../index.html" style="color:var(--primary);">Home</a>
+          <span aria-hidden="true"> › </span>
+          <a href="index.html" style="color:var(--primary);">Blog</a>
+          <span aria-hidden="true"> › </span>
+          <span>Base64 Encoding Explained</span>
+        </nav>
+
+        <h1 style="font-size:2.1rem;font-weight:800;line-height:1.25;margin-bottom:.6rem;">Base64 Encoding Explained</h1>
+        <p style="color:var(--text-muted);font-size:.92rem;margin-bottom:2rem;">
+          Published <time datetime="2026-06-21">June 21, 2026</time> &middot; 8 min read
+        </p>
+
+        <p>
+          Base64 shows up everywhere &mdash; in JWT tokens, in <code>src="data:..."</code> image attributes, in HTTP
+          Basic authentication headers, in email attachments. It looks like gibberish, and that is exactly the
+          point: Base64 re-encodes arbitrary binary data using only 64 printable ASCII characters, so it can travel
+          through systems that were built for text. This guide explains what is actually happening when you encode
+          something, why the output is always about a third larger than the input, and the one misconception about
+          Base64 that gets people into trouble.
+        </p>
+
+        <h2 style="margin-top:2rem;">The core idea</h2>
+        <p>
+          A byte is 8 bits, which gives 256 possible values. Many of those values are control characters:
+          newlines, null bytes, the ASCII bell. Protocols designed in the 1980s &mdash; SMTP for email, HTTP
+          headers, many databases &mdash; treat some of those control bytes as special. If you try to send a raw
+          JPEG through SMTP, the mail transfer agent interprets the first byte that happens to equal a line feed
+          as &ldquo;end of line,&rdquo; and your image is corrupted before it arrives.
+        </p>
+        <p>
+          Base64 sidesteps the problem. It takes the input bytes, regroups them into chunks of 6 bits
+          (because 2<sup>6</sup> = 64), and maps each 6-bit chunk to one of 64 safe printable characters.
+          Because every output character is plain ASCII, the encoded text can flow through any text-only channel
+          without being mangled.
+        </p>
+        <p>
+          Three input bytes (24 bits) become exactly four output characters (4 &times; 6 = 24 bits). That 3-to-4
+          ratio is the whole reason Base64 is bigger than the original &mdash; more on that in a moment.
+        </p>
+
+        <h2 style="margin-top:2rem;">The alphabet</h2>
+        <p>The 64 characters are defined by <a href="https://www.rfc-editor.org/rfc/rfc4648" target="_blank" rel="noopener noreferrer">RFC 4648</a>:</p>
+        <pre style="background:var(--bg);border:1px solid var(--border);border-radius:var(--radius-sm);padding:1rem;overflow-x:auto;font-size:.85rem;margin:1rem 0;"><code>Value  Char      Value  Char      Value  Char      Value  Char
+   0    A          17    R          34    i          51    z
+   1    B          18    S          35    j          52    0
+   2    C          19    T          36    k          53    1
+   ...             ...             ...             ...
+  25    Z          42    q          59    7
+  26    a          43    r          60    8
+  27    b          44    s          61    9
+  28    c          45    t          62    +   (or -  in base64url)
+  29    d          46    u          63    /   (or _  in base64url)
+  ...
+  50    y          50    y    (padding =)</code></pre>
+        <p>
+          <strong>A&ndash;Z</strong>, <strong>a&ndash;z</strong>, <strong>0&ndash;9</strong> give 62 characters.
+          The last two are <code>+</code> and <code>/</code> in standard Base64. The variant called
+          <em>base64url</em> &mdash; used in JWTs and filenames &mdash; replaces those with <code>-</code> and
+          <code>_</code> so the output is safe in URLs and file paths.
+        </p>
+        <p>
+          If the input length is not a multiple of three, padding with <code>=</code> characters brings the output
+          length up to a multiple of four. The string <code>"Man"</code> encodes to <code>TWFu</code>; the string
+          <code>"Ma"</code> encodes to <code>TWE=</code>; the single character <code>"M"</code> encodes to
+          <code>TQ==</code>. The number of trailing <code>=</code> signs tells the decoder exactly how many bytes
+          to drop from the final group.
+        </p>
+
+        <h2 style="margin-top:2rem;">Why the output is ~33% bigger</h2>
+        <p>
+          Three bytes of input become four characters of output. Four thirds is roughly 1.33, so the encoded form
+          is about 33% larger than the raw bytes. Encode a 300&nbsp;KB PNG and you ship ~400&nbsp;KB. Add the
+          padding and newline wrapping that some implementations insert every 76 characters, and the overhead
+          creeps higher.
+        </p>
+        <p>
+          This matters in practice. Embedding images as Base64 in CSS removes an HTTP request, but it forces the
+          browser to download a third again as many bytes and blocks rendering until the (larger) CSS parses.
+          For small icons under a few kilobytes the trade-off usually wins. For anything larger, ship the file as
+          a separate asset and let the browser cache it.
+        </p>
+        <p>
+          gzip and Brotli partly claw the overhead back &mdash; Base64 text compresses well because it uses so few
+          distinct characters &mdash; but compression happens at the transport layer, and the decompressed payload
+          still has to fit in memory.
+        </p>
+
+        <h2 style="margin-top:2rem;">Text, UTF-8, and the encoding pipeline</h2>
+        <p>
+          People say &ldquo;encode this string to Base64,&rdquo; but there is an invisible first step. Base64
+          operates on <em>bytes</em>, not on characters. To Base64-encode a string you first convert the string to
+          bytes using a character encoding &mdash; almost always UTF-8 &mdash; and then Base64-encode the bytes.
+        </p>
+        <pre style="background:var(--bg);border:1px solid var(--border);border-radius:var(--radius-sm);padding:1rem;overflow-x:auto;font-size:.85rem;margin:1rem 0;"><code>// JavaScript
+const text = "안녕";                       // 2 Korean characters
+const bytes = new TextEncoder().encode(text); // 6 bytes (UTF-8: 3 per char)
+const b64   = btoa(String.fromCharCode(...bytes)); // 7Z2E7JyF
+const back  = new TextDecoder().decode(
+  Uint8Array.from(atob(b64), c => c.charCodeAt(0))
+); // "안녕" again</code></pre>
+        <p>
+          The classic mistake is calling <code>btoa("안녕")</code> directly. <code>btoa</code> expects a
+          Latin-1 string and throws <code>InvalidCharacterError</code> on any character above code point 255. The
+          fix is always the same: encode to UTF-8 bytes first, then Base64. Conversely, when you decode, you get
+          bytes back; you must then interpret those bytes as UTF-8 to recover the original text. Skipping that
+          last step is how you end up with <code></code> where your emoji used to be.
+        </p>
+
+        <h2 style="margin-top:2rem;">Where you will actually use it</h2>
+        <ul style="margin:1rem 0 1rem 1.5rem;">
+          <li>
+            <strong>Data URIs in HTML and CSS.</strong>
+            <code>&lt;img src="data:image/png;base64,iVBORw0KG..."&gt;</code> inlines an image directly in the
+            document. Handy for tiny icons and sprites; a bad idea for large images because of the size tax and
+            the loss of caching. The <a href="../tools/image-base64.html">Image to Base64</a> tool produces these
+            strings from a drag-and-dropped file.
+          </li>
+          <li>
+            <strong>HTTP Basic authentication.</strong>
+            The <code>Authorization: Basic</code> header sends <code>username:password</code> Base64-encoded. This
+            is not security &mdash; it is reversible by anyone who sees the header &mdash; so Basic auth must
+            always travel over HTTPS.
+          </li>
+          <li>
+            <strong>JWT tokens.</strong>
+            The three dot-separated parts of a JWT are each Base64url-encoded JSON. The signature part is a
+            Base64url encoding of the raw HMAC bytes. You can decode and read a JWT with a
+            <a href="../tools/jwt-decoder.html">JWT decoder</a> in seconds &mdash; which is exactly why you should
+            never put secrets in a JWT payload.
+          </li>
+          <li>
+            <strong>Email MIME attachments.</strong>
+            SMTP was originally text-only; MIME wraps binary attachments in Base64 so they survive transit. This
+            is the historical reason the format exists at all.
+          </li>
+          <li>
+            <strong>Embedding binary in JSON or YAML.</strong>
+            When you need to ship a small binary blob inside a text format, Base64 is the standard escape hatch.
+          </li>
+        </ul>
+
+        <h2 style="margin-top:2rem;">Base64 is not encryption</h2>
+        <p>
+          This is the misconception that causes real harm. Base64 is reversible by anyone, instantly, with no key.
+          Encoding a password or an API token in Base64 provides <strong>zero</strong> confidentiality. It is
+          obfuscation at best, and often not even that &mdash; a Base64 string is so recognizable
+          (<code>==</code> padding, the limited alphabet) that scanners flag it automatically.
+        </p>
+        <p>
+          If you need to keep data secret, use encryption (AES-GCM for symmetric, RSA or ECDSA for asymmetric).
+          If you need to verify data has not been tampered with, use a <a href="../tools/hash-generator.html">cryptographic hash or HMAC</a>.
+          If you need to transmit binary safely through a text channel, <em>then</em> Base64 is the right tool.
+          Mixing up these three jobs is how &ldquo;encrypted&rdquo; API keys end up readable in a GitHub commit.
+        </p>
+
+        <h2 style="margin-top:2rem;">Variants and line wrapping</h2>
+        <p>
+          There are a few flavors of Base64 in the wild, and mixing them up is a common bug. <strong>Standard
+          Base64</strong> uses <code>+</code> and <code>/</code> and pads with <code>=</code>.
+          <strong>Base64url</strong> swaps in <code>-</code> and <code>_</code> so the output is safe inside a
+          URL path or query string without further percent-encoding &mdash; this is the variant JWT uses. Some
+          base64url implementations also drop the trailing <code>=</code> padding entirely and infer it from the
+          string length, which is fine until you feed the unpadded string into a strict decoder that expects the
+          padding.
+        </p>
+        <p>
+          PEM (used for SSL certificates and SSH keys) is standard Base64 wrapped at 64 characters per line with
+          <code>-----BEGIN CERTIFICATE-----</code> headers. MIME email wraps at 76 characters. The line breaks are
+          not part of the Base64 data; they exist so 1980s-era mail servers would not choke on long lines. Most
+          modern decoders ignore whitespace, but if you are writing one yourself, remember to strip newlines
+          before decoding or you will get a length error.
+        </p>
+
+        <h2 style="margin-top:2rem;">When you should not reach for Base64</h2>
+        <p>
+          Because Base64 trades 33% more bytes for transport safety, it is the wrong tool whenever the channel is
+          already binary-safe. Sending Base64-encoded image data through a <code>multipart/form-data</code> upload
+          is strictly worse than sending the raw bytes &mdash; you pay the size tax for nothing, because the
+          upload protocol handles binary fine. Storing Base64 in a database BLOB column wastes a third of the
+          space and forces every reader to decode. The rule: use Base64 at the boundary with a text-only system,
+          and store or transmit raw bytes everywhere else.
+        </p>
+        <p>
+          A related anti-pattern is Base64-encoding then gzipping, or gzipping then Base64-encoding, in the hope
+          of saving space. Base64-then-gzip recovers much of the overhead (Base64 text compresses to roughly the
+          original size) but the result is no longer text-safe, which defeats the only reason to encode in the
+          first place. gzip-then-Base64 doubles the work and still pays the size tax. If you need compression,
+          compress; if you need text-safety, encode; doing both in sequence is almost always a mistake.
+        </p>
+
+        <h2 style="margin-top:2rem;">A short summary</h2>
+        <ul style="margin:1rem 0 1rem 1.5rem;">
+          <li>Base64 maps any bytes to 64 printable ASCII characters so binary can travel through text channels.</li>
+          <li>Three input bytes become four output characters, so the result is about 33% larger.</li>
+          <li>Strings must be UTF-8-encoded to bytes first; decode yields bytes that must be UTF-8-decoded back to text.</li>
+          <li>Use it for data URIs, Basic auth, JWTs, MIME, and embedding binary in text formats.</li>
+          <li>Base64 is <em>encoding</em>, not encryption. It hides nothing from anyone.</li>
+        </ul>
+        <p>
+          Once you internalize that Base64 is purely a transport trick &mdash; bytes in, slightly more bytes out,
+          fully reversible &mdash; the rest follows. You reach for it when a channel cannot safely carry raw
+          bytes, and you reach for something else (TLS, real encryption, a hash) when you need actual protection.
+        </p>
+
+        <section style="margin-top:3rem;padding:1.25rem 1.5rem;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);">
+          <h2 style="font-size:1.15rem;margin-bottom:.6rem;">Related tools</h2>
+          <ul style="list-style:none;margin:0;padding:0;">
+            <li style="margin:.3rem 0;"><a href="../tools/base64.html" style="color:var(--primary);">Base64 Encoder / Decoder</a> &mdash; convert text to and from Base64 with full UTF-8 support.</li>
+            <li style="margin:.3rem 0;"><a href="../tools/image-base64.html" style="color:var(--primary);">Image to Base64</a> &mdash; turn an image file into a ready-to-paste data URI.</li>
+          </ul>
+        </section>
+        <p style="margin-top:1.5rem;">
+          <a href="index.html" style="color:var(--primary);">&larr; Back to blog</a>
+        </p>
+      </article>
+    </main>
+    <footer>
+      <div class="footer-content">
+        <div class="footer-brand">
+          <a href="../index.html" class="logo">Web<span>Tools</span></a>
+          <p data-i18n="footer.brand_desc">No install required &mdash; free online developer tools</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>
+          <span data-i18n="footer.copyright">&copy; 2026 WebTools. Online Developer Tools.</span>
+          | <a href="../privacy.html" data-i18n="footer.privacy">Privacy Policy</a>
+          | <a href="../terms.html" data-i18n="footer.terms">Terms</a>
+          | <a href="../contact.html" data-i18n="footer.contact">Contact</a>
+          | <a href="../sitemap.xml">Sitemap</a>
+          | <a href="https://github.com/core13773/webtools/issues" target="_blank" rel="noopener noreferrer" data-i18n="feedback.link">Suggest a tool or send feedback</a>
+        </p>
+      </div>
+    </footer>
+    <script defer src="../js/layout.js"></script>
+    <script defer src="../js/i18n.js"></script>
+    <script defer src="../js/app.js"></script>
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('../sw.js').catch(() => {});
+        });
+      }
+    </script>
+  </body>
+</html>
