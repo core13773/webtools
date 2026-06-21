@@ -1,5 +1,5 @@
 /* WebTools Service Worker */
-const CACHE = "webtools-v5";
+const CACHE = "webtools-v6";
 const STATIC_ASSETS = [
   "/index.html",
   "/404.html",
@@ -96,7 +96,7 @@ self.addEventListener("fetch", (event) => {
 
   // HTML pages (tool pages): network-first, fallback to cache
   if (request.mode === "navigate" || url.pathname.endsWith(".html")) {
-    event.respondWith(networkFirst(request));
+    event.respondWith(networkFirst(request, { fallbackTo404: true }));
     return;
   }
 
@@ -106,8 +106,9 @@ self.addEventListener("fetch", (event) => {
     return;
   }
 
-  // Everything else: network-first
-  event.respondWith(networkFirst(request));
+  // Everything else (incl. /ads.txt, /robots.txt): network-only.
+  // Never serve a cached HTML/404 for arbitrary text files — return 503 when offline.
+  event.respondWith(networkFirst(request, { fallbackTo404: false }));
 });
 
 async function cacheFirst(request) {
@@ -125,7 +126,8 @@ async function cacheFirst(request) {
   }
 }
 
-async function networkFirst(request) {
+async function networkFirst(request, opts) {
+  const fallbackTo404 = opts && opts.fallbackTo404;
   try {
     const response = await fetch(request);
     if (response.ok) {
@@ -136,9 +138,11 @@ async function networkFirst(request) {
   } catch {
     const cached = await caches.match(request);
     if (cached) return cached;
-    // Fallback to 404 page for unknown pages
-    const fallback = await caches.match("/404.html");
-    if (fallback) return fallback;
+    // HTML 탐색 실패 시에만 404 페이지 폴백. 그 외(ads.txt 등)는 503 반환.
+    if (fallbackTo404) {
+      const fallback = await caches.match("/404.html");
+      if (fallback) return fallback;
+    }
     return new Response("Offline", { status: 503 });
   }
 }

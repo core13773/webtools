@@ -178,7 +178,10 @@
       "markdown_previewer": "Markdown",
       "px_converter": "PX Converter",
       "image_base64": "Image Base64"
-    }
+    },
+    "privacy": "Privacy Policy",
+    "terms": "Terms",
+    "contact": "Contact"
   },
   "common": {
     "copy": "📋 Copy",
@@ -656,5 +659,35 @@
     "contact_title": "7. Contact",
     "contact_text": "If you have questions about this Privacy Policy, please contact us:",
     "github_text": "You can also open an issue on our GitHub repository:"
+  },
+  "contact": {
+    "title": "Contact Us",
+    "intro": "We'd love to hear from you. Whether you have a feature request, found a bug, or want to suggest a new tool, here's how to reach us.",
+    "email_title": "Email",
+    "email_text": "For general inquiries and support:",
+    "github_title": "GitHub",
+    "github_text": "Report bugs or request new tools by opening an issue:",
+    "response_title": "Response Time",
+    "response_text": "We are a small team and aim to respond within 2–3 business days. Thank you for your patience."
+  },
+  "terms": {
+    "title": "Terms of Service",
+    "last_updated": "Last updated: June 21, 2026",
+    "accept_title": "1. Acceptance of Terms",
+    "accept_text": "By accessing or using WebTools (the \"Site\"), you agree to be bound by these Terms of Service. If you do not agree with any part of these terms, please do not use the Site.",
+    "use_title": "2. Use of the Tools",
+    "use_text": "WebTools provides free, browser-based developer utilities. You may use the tools for any lawful personal or commercial purpose. All processing happens locally in your browser; we do not receive, store, or transmit the data you enter into the tools.",
+    "disclaimer_title": "3. Disclaimer of Warranty",
+    "disclaimer_text": "The tools and content on this Site are provided \"as is\" and \"as available\", without warranties of any kind, express or implied. We do not guarantee that the tools will be accurate, error-free, or uninterrupted. You use the tools at your own risk.",
+    "liability_title": "4. Limitation of Liability",
+    "liability_text": "To the fullest extent permitted by law, WebTools shall not be liable for any direct, indirect, incidental, or consequential damages arising from your use of, or inability to use, the Site or its tools.",
+    "ads_title": "5. Advertising",
+    "ads_text": "This Site displays advertisements served by Google AdSense and other third-party networks. We are not responsible for the content of advertisements or the products and services they promote.",
+    "ip_title": "6. Intellectual Property",
+    "ip_text": "The Site design, branding, and original content are owned by WebTools. The tools process your input without claiming any ownership over the data you enter.",
+    "changes_title": "7. Changes to These Terms",
+    "changes_text": "We may update these Terms from time to time. Continued use of the Site after changes are posted constitutes your acceptance of the revised Terms.",
+    "contact_title": "8. Contact",
+    "contact_text": "Questions about these Terms? Please contact us:"
   }
 }

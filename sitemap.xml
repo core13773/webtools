@@ -3,7 +3,7 @@
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
  <url>
   <loc>https://webtool.monster/</loc>
-  <lastmod>2026-06-12</lastmod>
+  <lastmod>2026-06-21</lastmod>
   <changefreq>weekly</changefreq>
   <priority>1.0</priority>
   <xhtml:link rel="alternate" hreflang="ko" href="https://webtool.monster/" />
@@ -183,7 +183,7 @@
  </url>
  <url>
   <loc>https://webtool.monster/tools/slug-generator.html</loc>
-  <lastmod>2026-06-19</lastmod>
+  <lastmod>2026-06-21</lastmod>
   <changefreq>monthly</changefreq>
   <priority>0.7</priority>
   <xhtml:link rel="alternate" hreflang="ko" href="https://webtool.monster/tools/slug-generator.html" />
@@ -192,11 +192,29 @@
  </url>
  <url>
   <loc>https://webtool.monster/privacy.html</loc>
-  <lastmod>2026-06-12</lastmod>
+  <lastmod>2026-06-21</lastmod>
   <changefreq>monthly</changefreq>
   <priority>0.5</priority>
   <xhtml:link rel="alternate" hreflang="ko" href="https://webtool.monster/privacy.html" />
   <xhtml:link rel="alternate" hreflang="en" href="https://webtool.monster/privacy.html" />
   <xhtml:link rel="alternate" hreflang="x-default" href="https://webtool.monster/privacy.html" />
+ </url>
+ <url>
+  <loc>https://webtool.monster/terms.html</loc>
+  <lastmod>2026-06-21</lastmod>
+  <changefreq>yearly</changefreq>
+  <priority>0.4</priority>
+  <xhtml:link rel="alternate" hreflang="ko" href="https://webtool.monster/terms.html" />
+  <xhtml:link rel="alternate" hreflang="en" href="https://webtool.monster/terms.html" />
+  <xhtml:link rel="alternate" hreflang="x-default" href="https://webtool.monster/terms.html" />
+ </url>
+ <url>
+  <loc>https://webtool.monster/contact.html</loc>
+  <lastmod>2026-06-21</lastmod>
+  <changefreq>yearly</changefreq>
+  <priority>0.4</priority>
+  <xhtml:link rel="alternate" hreflang="ko" href="https://webtool.monster/contact.html" />
+  <xhtml:link rel="alternate" hreflang="en" href="https://webtool.monster/contact.html" />
+  <xhtml:link rel="alternate" hreflang="x-default" href="https://webtool.monster/contact.html" />
  </url>
 </urlset>
