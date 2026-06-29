@@ -2,7 +2,7 @@
 <html lang="en" id="root-html">
   <head>
     <meta charset="UTF-8" />
-    <script>(function(){var s=localStorage.getItem('theme');var t=s||((window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)?'dark':'light');document.documentElement.setAttribute('data-theme',t);})();</script>
+    <script>(function(){var s=localStorage.getItem('theme');var t=s||((window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)?'dark':'light');document.documentElement.setAttribute('data-theme',t);var l=localStorage.getItem('lang');if(!l){l=((navigator.language||'').startsWith('ko')?'ko':'en');}document.documentElement.lang=l;})();</script>
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <meta name="google-adsense-account" content="ca-pub-4794002106764884" />
     <link rel="preconnect" href="https://pagead2.googlesyndication.com" crossorigin="anonymous" />
@@ -64,6 +64,53 @@
             "url": "https://webtool.monster/",
             "name": "WebTools - Free Online Developer Tools",
             "publisher": { "@id": "https://webtool.monster/#organization" }
+          },
+          {
+            "@type": "FAQPage",
+            "@id": "https://webtool.monster/tools/image-base64.html#faqpage",
+            "url": "https://webtool.monster/tools/image-base64.html",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "What is a data URI?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "A data URI is a URL whose payload is embedded inline rather than fetched. It begins with the scheme data:, followed by a MIME type such as image/png, an optional ;base64 flag, and the encoded bytes. A browser can render data:image/png;base64,.... directly as an image with no separate HTTP request."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "How much larger is a Base64-encoded image?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Base64 encodes every 3 bytes of binary into 4 ASCII characters, so the encoded string is about 33% larger than the original file. For small icons and sprites this overhead is negligible; for large photos or video it is wasteful and a separate file is usually better."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "When should I inline an image as Base64?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Inlining helps for small, rarely-changing assets (favicons, UI icons, tiny logos) where avoiding an extra HTTP request outweighs the size cost. It hurts for large images, since the inlined bytes bloat HTML, cannot be cached independently, and block parsing of the document."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Are my images uploaded anywhere?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "No. The file is read with the browser FileReader API and encoded locally. The bytes never leave your device, so the tool is safe for confidential or unreleased artwork."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Does Base64 affect Content Security Policy?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "It can. A strict img-src directive must allow data: URIs (img-src 'self' data:) for inlined images to load. Check your CSP headers before relying on data URIs in production."
+                }
+              }
+            ]
           }
         ]
       }
@@ -154,6 +201,122 @@
           <span data-i18n="tools_image_base64.usage_tip">💡 Tip: Base64-encoded images can be used directly in CSS background-image or HTML img src. Note that file size increases by about 33%.</span>
         </div>
       </section>
+
+      <!-- ===== Long-form content (EN) ===== -->
+      <div class="lang-en">
+        <section class="tool-content">
+          <section>
+            <h2>About the Image to Base64 Encoder</h2>
+            <p>Normally a browser fetches each image with its own HTTP request, trading a small latency cost for caching the file independently. Sometimes you would rather embed the bytes directly &mdash; a favicon in an HTML email, a tiny logo in a single-file widget, or a UI icon inside a component. Base64 encoding makes that possible: it rewrites binary image data as a plain ASCII string the browser decodes inline. This tool reads a dropped file and produces that string, ready to paste into an <code>&lt;img src&gt;</code> or a CSS <code>url()</code>.</p>
+          </section>
+          <section>
+            <h2>How it works</h2>
+            <p>The output uses the <strong>data URI scheme</strong>: <code>data:&lt;mime&gt;;base64,&lt;bytes&gt;</code>. For a PNG the prefix is <code>data:image/png;base64,</code> followed by the Base64 bytes; a JPEG uses <code>data:image/jpeg;base64,</code>, and SVG can be inlined as <code>data:image/svg+xml,</code> without the base64 flag. Base64 maps every three bytes of input onto four printable characters from a 64-symbol alphabet (<code>A&ndash;Z</code>, <code>a&ndash;z</code>, <code>0&ndash;9</code>, <code>+</code>, <code>/</code>), padded with <code>=</code>. That is what lets arbitrary binary travel safely inside a text format.</p>
+            <p>The trade-off is size. Because four characters carry only three bytes, the string is roughly <strong>33% larger</strong> than the original. Inlining also defeats separate caching &mdash; the bytes live inside the HTML and re-fetched every time the document is &mdash; and bloats the page, which can delay first paint for large images. A strict <strong>Content Security Policy</strong> must also explicitly allow <code>data:</code> in <code>img-src</code> for these URIs to load.</p>
+          </section>
+          <section>
+            <h2>Common use cases</h2>
+            <ul>
+              <li>Embedding a favicon or logo in a single HTML file or email</li>
+              <li>Inlining small UI icons inside a CSS bundle to cut HTTP requests</li>
+              <li>Shipping a self-contained SVG/PNG demo with no asset folder</li>
+              <li>Passing an image as a string inside JSON for a config payload</li>
+            </ul>
+          </section>
+          <section>
+            <h2>Worked example</h2>
+            <p>A 1 KB PNG dropped in produces a data URI that begins:</p>
+            <pre><code>data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAA...</code></pre>
+            <p>Paste that straight into markup:</p>
+            <pre><code>&lt;img src="data:image/png;base64,iVBORw0KGgo..."
+     alt="logo" width="32" height="32"&gt;</code></pre>
+            <p>Or into CSS as a background:</p>
+            <pre><code>.logo { background: url("data:image/png;base64,iVBORw0KGgo..."); }</code></pre>
+            <p>Note the ~33% overhead &mdash; the 1 KB PNG becomes about 1.3 KB in HTML.</p>
+          </section>
+        </section>
+        <section class="faq-section">
+          <h2>Frequently asked questions</h2>
+          <details class="faq-item">
+            <summary>What is a data URI?</summary>
+            <div class="faq-answer"><p>A data URI is a URL whose payload is embedded inline rather than fetched. It begins with the scheme <code>data:</code>, followed by a MIME type such as <code>image/png</code>, an optional <code>;base64</code> flag, and the encoded bytes. A browser can render <code>data:image/png;base64,....</code> directly as an image with no separate HTTP request.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>How much larger is a Base64-encoded image?</summary>
+            <div class="faq-answer"><p>Base64 encodes every 3 bytes of binary into 4 ASCII characters, so the encoded string is about 33% larger than the original file. For small icons and sprites this overhead is negligible; for large photos or video it is wasteful and a separate file is usually better.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>When should I inline an image as Base64?</summary>
+            <div class="faq-answer"><p>Inlining helps for small, rarely-changing assets (favicons, UI icons, tiny logos) where avoiding an extra HTTP request outweighs the size cost. It hurts for large images, since the inlined bytes bloat HTML, cannot be cached independently, and block parsing of the document.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>Are my images uploaded anywhere?</summary>
+            <div class="faq-answer"><p>No. The file is read with the browser <code>FileReader</code> API and encoded locally. The bytes never leave your device, so the tool is safe for confidential or unreleased artwork.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>Does Base64 affect Content Security Policy?</summary>
+            <div class="faq-answer"><p>It can. A strict <code>img-src</code> directive must allow <code>data:</code> URIs (<code>img-src 'self' data:</code>) for inlined images to load. Check your CSP headers before relying on data URIs in production.</p></div>
+          </details>
+        </section>
+      </div>
+
+      <!-- ===== Long-form content (KO) ===== -->
+      <div class="lang-ko" lang="ko">
+        <section class="tool-content">
+          <section>
+            <h2>이미지 Base64 인코더란?</h2>
+            <p>보통 브라우저는 각 이미지를 별도의 HTTP 요청으로 가져오며, 파일을 독립적으로 캐시할 수 있는 이점과 작은 지연을 맞바꿉니다. 하지만 바이트를 문서에 직접 포함시키고 싶을 때가 있습니다 &mdash; HTML 이메일의 파비콘, 단일 파일 위젯 안의 작은 로고, 또는 별도 에셋 없이 컴포넌트에 담아 배포하는 UI 아이콘처럼요. Base64 인코딩이 이를 가능하게 합니다. 이진 이미지 데이터를 브라우저가 인라인으로 디코딩할 수 있는 일반 ASCII 문자열로 다시 쓰는 것입니다. 이 도구는 드롭한 파일을 읽고 그 문자열을 만들어 <code>&lt;img src&gt;</code>나 CSS <code>url()</code>에 바로 붙여넣을 수 있게 합니다.</p>
+          </section>
+          <section>
+            <h2>작동 방식</h2>
+            <p>결과물은 <strong>data URI 스킴</strong>을 따릅니다: <code>data:&lt;mime&gt;;base64,&lt;bytes&gt;</code>. PNG의 접두사는 <code>data:image/png;base64,</code> 뒤에 Base64로 인코딩된 이미지가 오고, JPEG는 <code>data:image/jpeg;base64,</code>를 씁니다. SVG는 base64 플래그 없이 <code>data:image/svg+xml,</code>로 인라인할 수도 있습니다. Base64 자체는 입력의 3바이트마다 64개 기호 알파벳(<code>A&ndash;Z</code>, <code>a&ndash;z</code>, <code>0&ndash;9</code>, <code>+</code>, <code>/</code>)의 출력 가능 문자 4개로 매핑하며, 끝은 <code>=</code>으로 패딩합니다. 이 덕분에 임의의 이진 데이터가 HTML, CSS, JSON 같은 텍스트 형식 안에서 안전하게 이동할 수 있습니다.</p>
+            <p>트레이드오프는 크기입니다. 문자 4개가 3바이트만 담으므로 인코딩된 문자열은 원본보다 대략 <strong>33% 더 큽니다</strong>. 인라인은 또한 개별 캐싱을 무력화합니다 &mdash; 바이트가 HTML 안에 살고 문서를 가져올 때마다 함께 다시 전송됩니다 &mdash; 그리고 페이지를 부풀려 큰 이미지에 쓰면 첫 페인트를 지연시킬 수 있습니다. 마지막으로 엄격한 <strong>Content Security Policy</strong>는 이 URI가 로드되려면 <code>img-src</code>에 <code>data:</code>를 명시적으로 허용해야 합니다.</p>
+          </section>
+          <section>
+            <h2>자주 쓰는 경우</h2>
+            <ul>
+              <li>단일 HTML 파일이나 이메일에 파비콘·로고 embed하기</li>
+              <li>CSS 번들 안에 작은 UI 아이콘을 인라인해 HTTP 요청 줄이기</li>
+              <li>에셋 폴더 없이 자체 포함된 SVG/PNG 데모 배포하기</li>
+              <li>이미지를 JSON 안의 문자열로 config 페이로드에 담기</li>
+            </ul>
+          </section>
+          <section>
+            <h2>사용 예</h2>
+            <p>1킬로바이트짜리 PNG를 드롭하면 다음으로 시작하는 data URI가 나옵니다:</p>
+            <pre><code>data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAA...</code></pre>
+            <p>이를 마크업에 바로 붙여넣을 수 있습니다:</p>
+            <pre><code>&lt;img src="data:image/png;base64,iVBORw0KGgo..."
+     alt="logo" width="32" height="32"&gt;</code></pre>
+            <p>또는 CSS 배경으로:</p>
+            <pre><code>.logo { background: url("data:image/png;base64,iVBORw0KGgo..."); }</code></pre>
+            <p>약 33%의 크기 오버헤드에 유의하세요 &mdash; 디스크에서 1 KB였던 같은 PNG가 HTML 안에서는 약 1.3 KB가 됩니다.</p>
+          </section>
+        </section>
+        <section class="faq-section">
+          <h2>자주 묻는 질문</h2>
+          <details class="faq-item">
+            <summary>data URI란 무엇인가요?</summary>
+            <div class="faq-answer"><p>data URI는 페이로드를 가져오지 않고 인라인으로 embed한 URL입니다. <code>data:</code> 스킴으로 시작해 <code>image/png</code> 같은 MIME 타입, 선택적 <code>;base64</code> 플래그, 인코딩된 바이트가 이어집니다. 브라우저는 별도 HTTP 요청 없이 <code>data:image/png;base64,....</code>를 이미지로 바로 렌더링할 수 있습니다.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>Base64로 인코딩된 이미지는 얼마나 커지나요?</summary>
+            <div class="faq-answer"><p>Base64는 이진 3바이트마다 ASCII 문자 4개로 인코딩하므로, 인코딩된 문자열은 원본보다 약 33% 더 큽니다. 작은 아이콘이나 스프라이트에는 오버헤드가 미미하지만, 큰 사진이나 비디오에는 낭비이므로 보통 별도 파일이 낫습니다.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>이미지를 Base64로 언제 인라인해야 하나요?</summary>
+            <div class="faq-answer"><p>추가 HTTP 요청을 피하는 이득이 크기 비용보다 큰, 작고 잘 안 바뀌는 에셋(파비콘, UI 아이콘, 작은 로고)에 인라인이 유리합니다. 큰 이미지에는 불리합니다 &mdash; 인라인된 바이트가 HTML을 부풀리고, 독립적으로 캐시할 수 없으며, 문서 파싱을 막기 때문입니다.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>제 이미지가 어디로 업로드되나요?</summary>
+            <div class="faq-answer"><p>아닙니다. 파일은 브라우저의 <code>FileReader</code> API로 읽고 로컬에서 인코딩됩니다. 바이트는 기기를 떠나지 않으므로 기밀이나 미공개 아트워크에도 안전합니다.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>Base64가 Content Security Policy에 영향을 주나요?</summary>
+            <div class="faq-answer"><p>줄 수 있습니다. 엄격한 <code>img-src</code> 디렉티브는 인라인 이미지가 로드되려면 data URI를 허용해야 합니다(<code>img-src 'self' data:</code>). 운영 환경에서 data URI에 의존하기 전에 CSP 헤더를 확인하세요.</p></div>
+          </details>
+        </section>
+      </div>
     </main>
     <footer>
       <div class="footer-content">

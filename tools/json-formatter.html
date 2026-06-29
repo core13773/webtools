@@ -2,7 +2,7 @@
 <html lang="en" id="root-html">
   <head>
     <meta charset="UTF-8" />
-    <script>(function(){var s=localStorage.getItem('theme');var t=s||((window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)?'dark':'light');document.documentElement.setAttribute('data-theme',t);})();</script>
+    <script>(function(){var s=localStorage.getItem('theme');var t=s||((window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)?'dark':'light');document.documentElement.setAttribute('data-theme',t);var l=localStorage.getItem('lang');if(!l){l=((navigator.language||'').startsWith('ko')?'ko':'en');}document.documentElement.lang=l;})();</script>
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <meta name="google-adsense-account" content="ca-pub-4794002106764884" />
     <link
@@ -127,6 +127,53 @@
             "publisher": {
               "@id": "https://webtool.monster/#organization"
             }
+          },
+          {
+            "@type": "FAQPage",
+            "@id": "https://webtool.monster/tools/json-formatter.html#faqpage",
+            "url": "https://webtool.monster/tools/json-formatter.html",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "Is my JSON sent to a server?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "No. Parsing and formatting run entirely in your browser through the native JSON.parse / JSON.stringify APIs. Your input never leaves your device, so it is safe for tokens, credentials, and production data."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Why does my JSON show a syntax error?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "The most common causes are single quotes instead of double quotes, a trailing comma after the last item, an unquoted key, or a raw control character inside a string. The tool reports the character position so you can jump straight to the mistake."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "What is the difference between Format and Minify?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Format adds indentation and newlines for readability. Minify removes all optional whitespace to produce the smallest valid string, which is ideal for transmission and storage."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Does sorting keys change the data?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "No. JSON objects are unordered by specification, so reordering keys never changes meaning. Sorting only produces stable, diff-friendly output."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Is there a maximum input size?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "There is no artificial limit, but very large documents (tens of MB) can freeze the tab while parsing. For multi-gigabyte files, a streaming parser is a better fit than an in-browser formatter."
+                }
+              }
+            ]
           }
         ]
       }
@@ -307,6 +354,138 @@
           </span>
         </div>
       </section>
+
+      <!-- ===== Long-form content (EN) ===== -->
+      <div class="lang-en">
+        <section class="tool-content">
+          <section>
+            <h2>About the JSON Formatter</h2>
+            <p>JSON (JavaScript Object Notation, RFC 8259) is a lightweight, text-based format for exchanging structured data between systems. Despite the name, it is language-independent and has become the de-facto standard for REST APIs, configuration files, NoSQL document stores such as MongoDB, and serialized application state. This formatter takes any JSON string &mdash; whether minified onto a single line, deeply nested, or returned raw from an API response &mdash; and re-emits it with consistent indentation so a human can actually read it.</p>
+          </section>
+          <section>
+            <h2>How the formatter works</h2>
+            <p>The tool parses your input with a strict JSON parser (the same grammar a browser uses), so it only accepts syntactically valid JSON. When parsing succeeds, the value is re-serialized with a configurable indent of 2 or 4 spaces and optional alphabetical key sorting. When parsing fails, the tool reports the position of the syntax error instead of silently producing wrong output &mdash; which is what makes it a validator as well as a beautifier. Everything runs in your browser through the native <code>JSON.parse</code> / <code>JSON.stringify</code> pipeline; not a byte of your input is transmitted anywhere.</p>
+            <p>A few rules are worth remembering: JSON requires <strong>double-quoted</strong> strings (single quotes are invalid), keys must always be strings, and a trailing comma after the last element is a syntax error. Numbers such as <code>1e3</code> and <code>0.5</code> are valid, but <code>NaN</code> and <code>Infinity</code> are not.</p>
+          </section>
+          <section>
+            <h2>Common use cases</h2>
+            <ul>
+              <li>Pretty-printing a minified API response to inspect nested fields</li>
+              <li>Debugging a failing <code>JSON.parse</code> by locating the exact error position</li>
+              <li>Normalizing indentation before committing a <code>.json</code> config file</li>
+              <li>Sorting object keys for stable, reviewable diffs in version control</li>
+              <li>Shrinking payload size with the Minify action before sending over the network</li>
+            </ul>
+          </section>
+          <section>
+            <h2>Worked example</h2>
+            <p>Given minified input:</p>
+            <pre><code>{"user":"ada","roles":["admin","editor"],"meta":{"active":true,"logins":42}}</code></pre>
+            <p>Formatting with a 2-space indent (and key sorting on) yields:</p>
+            <pre><code>{
+  "meta": {
+    "active": true,
+    "logins": 42
+  },
+  "roles": [
+    "admin",
+    "editor"
+  ],
+  "user": "ada"
+}</code></pre>
+            <p>Because JSON objects are unordered, reordering keys changes nothing about the meaning of the data &mdash; only how it reads.</p>
+          </section>
+        </section>
+        <section class="faq-section">
+          <h2>Frequently asked questions</h2>
+          <details class="faq-item">
+            <summary>Is my JSON sent to a server?</summary>
+            <div class="faq-answer"><p>No. Parsing and formatting run entirely in your browser through the native <code>JSON.parse</code> / <code>JSON.stringify</code> APIs. Your input never leaves your device, so it is safe for tokens, credentials, and production data.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>Why does my JSON show a syntax error?</summary>
+            <div class="faq-answer"><p>The most common causes are single quotes instead of double quotes, a trailing comma after the last item, an unquoted key, or a raw control character inside a string. The tool reports the character position so you can jump straight to the mistake.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>What is the difference between Format and Minify?</summary>
+            <div class="faq-answer"><p>Format adds indentation and newlines for readability. Minify removes all optional whitespace to produce the smallest valid string, which is ideal for transmission and storage.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>Does sorting keys change the data?</summary>
+            <div class="faq-answer"><p>No. JSON objects are unordered by specification, so reordering keys never changes meaning. Sorting only produces stable, diff-friendly output.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>Is there a maximum input size?</summary>
+            <div class="faq-answer"><p>There is no artificial limit, but very large documents (tens of MB) can freeze the tab while parsing. For multi-gigabyte files, a streaming parser is a better fit than an in-browser formatter.</p></div>
+          </details>
+        </section>
+      </div>
+
+      <!-- ===== Long-form content (KO) ===== -->
+      <div class="lang-ko" lang="ko">
+        <section class="tool-content">
+          <section>
+            <h2>JSON 포매터란?</h2>
+            <p>JSON(JavaScript Object Notation, RFC 8259)은 시스템 간에 구조화된 데이터를 주고받기 위한 가볍고 텍스트 기반의 형식입니다. 이름과 달리 언어에 독립적이며, REST API, 설정 파일, MongoDB 같은 NoSQL 문서 저장소, 직렬화된 애플리케이션 상태 등에서 사실상 표준으로 자리 잡았습니다. 이 포매터는 한 줄로 압축되었거나 깊게 중첩되었거나 API 응답으로 그대로 내려온 어떤 JSON 문자열이든 일관된 들여쓰기로 다시 출력해 사람이 읽을 수 있게 만들어 줍니다.</p>
+          </section>
+          <section>
+            <h2>작동 방식</h2>
+            <p>이 도구는 입력을 엄격한 JSON 파서(브라우저가 사용하는 것과 같은 문법)로 분석하므로, 문법적으로 유효한 JSON만 받아들입니다. 파싱에 성공하면 값을 2칸 또는 4칸의 구성 가능한 들여쓰기와 선택적 키 알파벳 정렬로 다시 직렬화합니다. 파싱에 실패하면 잘못된 결과를 조용히 내는 대신 구문 오류의 위치를 알려 줍니다 &mdash; 덕분에 검증기 역할도 함께 합니다. 모든 처리는 브라우저 안에서 네이티브 <code>JSON.parse</code> / <code>JSON.stringify</code> 파이프라인으로 이루어지며, 입력의 어떤 바이트도 외부로 전송되지 않습니다.</p>
+            <p>몇 가지 규칙을 기억해 두면 좋습니다. JSON은 <strong>큰따옴표</strong> 문자열만 허용합니다(작은따옴표는 잘못됨). 키는 항상 문자열이어야 하며, 마지막 원소 뒤의 후행 쉼표는 구문 오류입니다. <code>1e3</code>이나 <code>0.5</code> 같은 숫자는 유효하지만 <code>NaN</code>과 <code>Infinity</code>는 유효하지 않습니다.</p>
+          </section>
+          <section>
+            <h2>자주 쓰는 경우</h2>
+            <ul>
+              <li>최소화된 API 응답을 보기 좋게 펼쳐 중첩 필드 확인하기</li>
+              <li>실패한 <code>JSON.parse</code>의 정확한 오류 위치를 찾아 디버깅하기</li>
+              <li><code>.json</code> 설정 파일을 커밋하기 전 들여쓰기 통일하기</li>
+              <li>버전 관리에서 안정적이고 검토하기 쉬운 diff를 위해 객체 키 정렬하기</li>
+              <li>네트워크 전송 전에 Minify 동작으로 페이로드 크기 줄이기</li>
+            </ul>
+          </section>
+          <section>
+            <h2>사용 예</h2>
+            <p>최소화된 입력이 주어지면:</p>
+            <pre><code>{"user":"ada","roles":["admin","editor"],"meta":{"active":true,"logins":42}}</code></pre>
+            <p>2칸 들여쓰기(키 정렬 켜짐)로 포맷하면:</p>
+            <pre><code>{
+  "meta": {
+    "active": true,
+    "logins": 42
+  },
+  "roles": [
+    "admin",
+    "editor"
+  ],
+  "user": "ada"
+}</code></pre>
+            <p>JSON 객체는 순서가 없으므로 키를 재정렬해도 데이터의 의미는 달라지지 않습니다 &mdash; 달라지는 것은 읽는 방식뿐입니다.</p>
+          </section>
+        </section>
+        <section class="faq-section">
+          <h2>자주 묻는 질문</h2>
+          <details class="faq-item">
+            <summary>제 JSON이 서버로 전송되나요?</summary>
+            <div class="faq-answer"><p>아닙니다. 파싱과 포맷은 전적으로 브라우저에서 네이티브 <code>JSON.parse</code> / <code>JSON.stringify</code> API로 처리됩니다. 입력은 기기를 떠나지 않으므로 토큰, 자격증명, 운영 데이터에도 안전합니다.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>JSON에서 구문 오류가 나는 이유는?</summary>
+            <div class="faq-answer"><p>가장 흔한 원인은 큰따옴표 대신 작은따옴표, 마지막 항목 뒤의 후행 쉼표, 따옴표 없는 키, 문자열 안의 제어 문자입니다. 도구가 문자 위치를 알려 주어 해당 위치로 바로 이동할 수 있습니다.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>Format과 Minify의 차이는?</summary>
+            <div class="faq-answer"><p>Format은 가독성을 위해 들여쓰기와 줄바꿈을 추가합니다. Minify는 전송과 저장에 적합한 가장 작은 유효 문자열을 만들기 위해 모든 선택적 공백을 제거합니다.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>키 정렬이 데이터를 바꾸나요?</summary>
+            <div class="faq-answer"><p>아닙니다. JSON 객체는 사양상 순서가 없으므로 키 순서를 바꿔도 의미는 변하지 않습니다. 정렬은 안정적이고 diff하기 쉬운 출력을 만들 뿐입니다.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>최대 입력 크기가 있나요?</summary>
+            <div class="faq-answer"><p>인위적인 제한은 없지만, 아주 큰 문서(수십 MB)는 파싱 중 탭을 멈추게 할 수 있습니다. 수 GB 파일에는 브라우저 내 포매터보다 스트리밍 파서가 더 적합합니다.</p></div>
+          </details>
+        </section>
+      </div>
     </main>
     <footer>
       <div class="footer-content">

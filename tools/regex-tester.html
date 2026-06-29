@@ -2,7 +2,7 @@
 <html lang="en" id="root-html">
   <head>
     <meta charset="UTF-8" />
-    <script>(function(){var s=localStorage.getItem('theme');var t=s||((window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)?'dark':'light');document.documentElement.setAttribute('data-theme',t);})();</script>
+    <script>(function(){var s=localStorage.getItem('theme');var t=s||((window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)?'dark':'light');document.documentElement.setAttribute('data-theme',t);var l=localStorage.getItem('lang');if(!l){l=((navigator.language||'').startsWith('ko')?'ko':'en');}document.documentElement.lang=l;})();</script>
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <meta name="google-adsense-account" content="ca-pub-4794002106764884" />
     <link rel="preconnect" href="https://pagead2.googlesyndication.com" crossorigin="anonymous" />
@@ -64,6 +64,17 @@
             "url": "https://webtool.monster/",
             "name": "WebTools - Free Online Developer Tools",
             "publisher": { "@id": "https://webtool.monster/#organization" }
+          },
+          {
+            "@type": "FAQPage",
+            "@id": "https://webtool.monster/tools/regex-tester.html#faqpage",
+            "url": "https://webtool.monster/tools/regex-tester.html",
+            "mainEntity": [
+              { "@type": "Question", "name": "What is the difference between a regex literal and the constructor?", "acceptedAnswer": { "@type": "Answer", "text": "A literal such as /abc/gi is compiled once when the script loads and needs no extra escaping of backslashes. The constructor new RegExp('abc', 'gi') accepts a runtime string, which is useful when the pattern is built from variables but requires you to double-escape backslashes in the source." } },
+              { "@type": "Question", "name": "What do the common flags do?", "acceptedAnswer": { "@type": "Answer", "text": "g finds every match, i is case-insensitive, m makes ^ and $ match line boundaries, s lets the dot match newlines, u enables full Unicode handling, and y anchors each match at lastIndex. You can combine them, for example gi." } },
+              { "@type": "Question", "name": "How do capture groups work?", "acceptedAnswer": { "@type": "Answer", "text": "Parentheses form a capture group that remembers the substring it matched. match and matchAll return the full match plus each group, replace can reference them as $1 and $2, and exec exposes them on the result array." } },
+              { "@type": "Question", "name": "Are my inputs sent to a server?", "acceptedAnswer": { "@type": "Answer", "text": "No. Pattern compilation, matching, and substitution all run in your browser through the native RegExp engine. Patterns and test strings stay on your device." } }
+            ]
           }
         ]
       }
@@ -164,6 +175,124 @@
           <span data-i18n="tools_regex.usage_tip">💡 Tip: g flag = global search, i = case-insensitive, m = multiline mode.</span>
         </div>
       </section>
+
+      <!-- ===== Long-form content (EN) ===== -->
+      <div class="lang-en">
+        <section class="tool-content">
+          <section>
+            <h2>About the Regex Tester</h2>
+            <p>A regular expression is a compact pattern language for matching, extracting, and replacing text. In JavaScript it lives on the <code>RegExp</code> object and powers everything from form validation and route matching to log scraping. This tester compiles your pattern against a sample string in real time, highlights every match, and lets you run a substitution &mdash; all in the browser, so patterns and input never leave your machine.</p>
+          </section>
+          <section>
+            <h2>How it works</h2>
+            <p>A pattern can be written two ways. A <strong>regex literal</strong> such as <code>/\d+/g</code> is delimited by forward slashes and compiled when the script loads. The <strong>constructor</strong> form <code>new RegExp("\\d+", "g")</code> takes a runtime string, which is essential when the pattern is assembled from variables &mdash; but you must double the backslashes because the string layer consumes one. After the closing slash (or as the second constructor argument) come <strong>flags</strong>: <code>g</code> for global (every match, not just the first), <code>i</code> for case-insensitive, <code>m</code> for multiline (<code>^</code> and <code>$</code> match line boundaries), <code>s</code> for dotAll (the dot matches newlines), <code>u</code> for full Unicode handling, and <code>y</code> for sticky (match anchored at <code>lastIndex</code>).</p>
+            <p>Several methods consume a compiled pattern: <code>test()</code> returns a boolean, <code>exec()</code> returns one match object with capture groups, <code>String.match()</code> returns the first match (or all matches with the <code>g</code> flag), <code>String.matchAll()</code> iterates every match with its groups, and <code>String.replace()</code> substitutes matched text. <strong>Capture groups</strong> &mdash; parenthesized sub-patterns &mdash; remember the substring they matched and surface it as <code>$1</code>, <code>$2</code>, and so on. <strong>Lookahead</strong> (<code>(?=...)</code>, <code>(?!...)</code>) and <strong>lookbehind</strong> (<code>(?&lt;=...)</code>, <code>(?&lt;!...)</code>) assert context without consuming characters, letting you match a token only when it is preceded or followed by something specific.</p>
+          </section>
+          <section>
+            <h2>Common use cases</h2>
+            <ul>
+              <li>Validating emails, phone numbers, and other structured inputs</li>
+              <li>Extracting every URL, hashtag, or mention from a block of text</li>
+              <li>Scrubbing or redacting sensitive tokens from a log file</li>
+              <li>Building a <code>replace</code> call that reorders captured fields</li>
+              <li>Debugging why a pattern matches (or fails to match) before deploying it</li>
+            </ul>
+          </section>
+          <section>
+            <h2>Worked example</h2>
+            <p>Pattern with two capture groups, tested against a sample string:</p>
+<pre><code>Pattern:  /(\w+)@(\w+\.\w+)/g
+Flags:    g
+String:   contact ada@example.com or bob@test.org</code></pre>
+            <p>The engine finds two full matches and captures the local part and the domain of each:</p>
+<pre><code>Match 1: ada@example.com
+  group 1 (local):   ada
+  group 2 (domain):  example.com
+Match 2: bob@test.org
+  group 1 (local):   bob
+  group 2 (domain):  test.org</code></pre>
+            <p>With those groups you can run <code>replace</code> using <code>$2</code> then <code>$1</code> to swap their order &mdash; capture groups are what make a regex more than a yes/no test.</p>
+          </section>
+        </section>
+        <section class="faq-section">
+          <h2>Frequently asked questions</h2>
+          <details class="faq-item">
+            <summary>What is the difference between a regex literal and the constructor?</summary>
+            <div class="faq-answer"><p>A literal such as /abc/gi is compiled once when the script loads and needs no extra escaping of backslashes. The constructor new RegExp('abc', 'gi') accepts a runtime string, which is useful when the pattern is built from variables but requires you to double-escape backslashes in the source.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>What do the common flags do?</summary>
+            <div class="faq-answer"><p>g finds every match, i is case-insensitive, m makes ^ and $ match line boundaries, s lets the dot match newlines, u enables full Unicode handling, and y anchors each match at lastIndex. You can combine them, for example gi.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>How do capture groups work?</summary>
+            <div class="faq-answer"><p>Parentheses form a capture group that remembers the substring it matched. match and matchAll return the full match plus each group, replace can reference them as $1 and $2, and exec exposes them on the result array.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>Are my inputs sent to a server?</summary>
+            <div class="faq-answer"><p>No. Pattern compilation, matching, and substitution all run in your browser through the native RegExp engine. Patterns and test strings stay on your device.</p></div>
+          </details>
+        </section>
+      </div>
+
+      <!-- ===== Long-form content (KO) ===== -->
+      <div class="lang-ko" lang="ko">
+        <section class="tool-content">
+          <section>
+            <h2>정규식 테스터란?</h2>
+            <p>정규식(Regular Expression)은 텍스트를 검사·추출·치환하기 위한 간결한 패턴 언어입니다. JavaScript에서는 <code>RegExp</code> 객체에 자리 잡고 있으며 폼 검증, 라우트 매칭, 로그 분석, 편집기의 찾기바꾸기까지 두루 쓰입니다. 이 테스터는 패턴을 샘플 문자열에 대해 실시간으로 컴파일해 모든 일치를 강조 표시하고 치환까지 실행할 수 있게 합니다 &mdash; 모두 브라우저 안에서 처리되므로 패턴과 입력이 기기를 떠나지 않습니다.</p>
+          </section>
+          <section>
+            <h2>작동 방식</h2>
+            <p>패턴은 두 가지 방식으로 작성할 수 있습니다. 슬래시로 감싼 <strong>정규식 리터럴</strong> <code>/\d+/g</code>은 스크립트가 로드될 때 컴파일됩니다. <strong>생성자</strong> 형태 <code>new RegExp("\\d+", "g")</code>는 런타임 문자열을 받으며, 변수로 패턴을 조립할 때 필수적입니다 &mdash; 다만 문자열 단계에서 백슬래시 하나를 소비하므로 두 개로 겹쳐 써야 합니다. 닫는 슬래시 뒤(또는 생성자의 두 번째 인자로)에 <strong>플래그</strong>가 옵니다. <code>g</code>는 전역(첫 일치가 아니라 모든 일치), <code>i</code>는 대소문자 무시, <code>m</code>은 멀티라인(<code>^</code>과 <code>$</code>가 줄 경계에 일치), <code>s</code>는 dotAll(점이 줄바꿈에도 일치), <code>u</code>는 완전한 유니코드 처리, <code>y</code>는 sticky(<code>lastIndex</code>에 고정해 일치)입니다.</p>
+            <p>컴파일된 패턴을 소비하는 메서드는 여럿입니다. <code>test()</code>는 불리언을 반환하고, <code>exec()</code>는 캡처 그룹을 포함한 일치 객체 하나를 반환하며, <code>String.match()</code>는 첫 일치(또는 <code>g</code> 플래그일 때 모든 일치)를, <code>String.matchAll()</code>는 각 일치와 그룹을 순회하고, <code>String.replace()</code>는 일치한 텍스트를 치환합니다. <strong>캡처 그룹</strong> &mdash; 괄호로 감싼 하위 패턴 &mdash;은 자신이 일치한 부분 문자열을 기억하고 <code>$1</code>, <code>$2</code> 식으로 노출합니다. <strong>룩어헤드</strong>(<code>(?=...)</code>, <code>(?!...)</code>)와 <strong>룩비하인드</strong>(<code>(?&lt;=...)</code>, <code>(?&lt;!...)</code>)는 문자를 소비하지 않고 문맥을 단언하므로, 어떤 토큰이 특정 무언가의 앞(또는 뒤)에 있을 때만 일치시킬 수 있습니다.</p>
+          </section>
+          <section>
+            <h2>자주 쓰는 경우</h2>
+            <ul>
+              <li>이메일, 전화번호 등 구조화된 입력 검증하기</li>
+              <li>텍스트 블록에서 모든 URL, 해시태그, 멘션 추출하기</li>
+              <li>로그 파일에서 민감한 토큰을 스크럽하거나 마스킹하기</li>
+              <li>캡처한 필드 순서를 바꾸는 <code>replace</code> 호출 만들기</li>
+              <li>패턴이 일치하는지(또는 실패하는지) 배포 전에 디버깅하기</li>
+            </ul>
+          </section>
+          <section>
+            <h2>사용 예</h2>
+            <p>두 개의 캡처 그룹을 가진 패턴을 샘플 문자열에 대해 검사합니다:</p>
+<pre><code>패턴:  /(\w+)@(\w+\.\w+)/g
+플래그: g
+문자열: contact ada@example.com or bob@test.org</code></pre>
+            <p>엔진은 두 개의 전체 일치를 찾고 각각의 로컬 파트와 도메인을 캡처합니다:</p>
+<pre><code>일치 1: ada@example.com
+  그룹 1 (local):   ada
+  그룹 2 (domain):  example.com
+일치 2: bob@test.org
+  그룹 1 (local):   bob
+  그룹 2 (domain):  test.org</code></pre>
+            <p>이 그룹들로 <code>replace</code>에서 <code>$2</code>와 <code>$1</code>을 써 순서를 바꾸거나 도메인만 뽑아낼 수 있습니다 &mdash; 캡처 그룹이 정규식을 단순한 예/아니오 검사 이상으로 만듭니다.</p>
+          </section>
+        </section>
+        <section class="faq-section">
+          <h2>자주 묻는 질문</h2>
+          <details class="faq-item">
+            <summary>정규식 리터럴과 생성자의 차이는?</summary>
+            <div class="faq-answer"><p>/abc/gi 같은 리터럴은 스크립트가 로드될 때 한 번 컴파일되며 백슬래시를 추가로 이스케이프할 필요가 없습니다. new RegExp('abc', 'gi') 생성자는 런타임 문자열을 받아 변수로 패턴을 만들 때 유용하지만, 소스에서 백슬래시를 두 번 써야 합니다.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>주요 플래그는 무엇을 하나요?</summary>
+            <div class="faq-answer"><p>g는 모든 일치를 찾고, i는 대소문자를 무시하며, m은 ^와 $가 줄 경계에 일치하게 하고, s는 점이 줄바꿈에도 일치하게 하며, u는 완전한 유니코드 처리를 켜고, y는 lastIndex에 일치를 고정합니다. gi처럼 조합할 수 있습니다.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>캡처 그룹은 어떻게 동작하나요?</summary>
+            <div class="faq-answer"><p>괄호는 자신이 일치한 부분 문자열을 기억하는 캡처 그룹을 만듭니다. match와 matchAll은 전체 일치와 각 그룹을 반환하고, replace는 $1과 $2로 참조할 수 있으며, exec는 결과 배열에 노출합니다.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>입력이 서버로 전송되나요?</summary>
+            <div class="faq-answer"><p>아닙니다. 패턴 컴파일, 일치, 치환은 모두 브라우저에서 네이티브 RegExp 엔진으로 실행됩니다. 패턴과 테스트 문자열은 기기에 머뭅니다.</p></div>
+          </details>
+        </section>
+      </div>
     </main>
     <footer>
       <div class="footer-content">

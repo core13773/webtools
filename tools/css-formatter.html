@@ -2,7 +2,7 @@
 <html lang="en" id="root-html">
   <head>
     <meta charset="UTF-8" />
-    <script>(function(){var s=localStorage.getItem('theme');var t=s||((window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)?'dark':'light');document.documentElement.setAttribute('data-theme',t);})();</script>
+    <script>(function(){var s=localStorage.getItem('theme');var t=s||((window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)?'dark':'light');document.documentElement.setAttribute('data-theme',t);var l=localStorage.getItem('lang');if(!l){l=((navigator.language||'').startsWith('ko')?'ko':'en');}document.documentElement.lang=l;})();</script>
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <meta name="google-adsense-account" content="ca-pub-4794002106764884" />
     <link rel="preconnect" href="https://pagead2.googlesyndication.com" crossorigin="anonymous" />
@@ -64,6 +64,18 @@
             "url": "https://webtool.monster/",
             "name": "WebTools - Free Online Developer Tools",
             "publisher": { "@id": "https://webtool.monster/#organization" }
+          },
+          {
+            "@type": "FAQPage",
+            "@id": "https://webtool.monster/tools/css-formatter.html#faqpage",
+            "url": "https://webtool.monster/tools/css-formatter.html",
+            "mainEntity": [
+              { "@type": "Question", "name": "Does formatting change how my styles render?", "acceptedAnswer": { "@type": "Answer", "text": "No. The formatter only changes whitespace, newlines, and indentation. It never reorders rules, alters selectors, or modifies property values, so cascade order and specificity are preserved exactly." } },
+              { "@type": "Question", "name": "What does minify actually remove?", "acceptedAnswer": { "@type": "Answer", "text": "Minify strips comments, removes all non-significant whitespace, and drops optional trailing semicolons. Property values, selectors, at-rules, and the cascade itself are left intact, so the rendered result is identical but the byte count drops." } },
+              { "@type": "Question", "name": "Are comments preserved when formatting?", "acceptedAnswer": { "@type": "Answer", "text": "Formatting keeps comments intact and re-indents them with the surrounding rules. Minify removes them entirely, since they have no runtime effect and only add bytes to the file." } },
+              { "@type": "Question", "name": "Is my CSS sent to a server?", "acceptedAnswer": { "@type": "Answer", "text": "No. Parsing and re-serialization happen entirely in your browser. The stylesheet you paste never leaves your device, which makes this tool safe for proprietary design systems and unreleased product styles." } },
+              { "@type": "Question", "name": "Why does a malformed rule disappear from the output?", "acceptedAnswer": { "@type": "Answer", "text": "The parser is tolerant: a rule with an unbalanced brace or missing block is skipped rather than producing broken CSS. Fix the offending declaration and it will reappear in the formatted or minified result." } }
+            ]
           }
         ]
       }
@@ -158,6 +170,140 @@
           <span data-i18n="tools_css.usage_tip">💡 Tip: Minified CSS improves website loading speed. Formatting is useful for code review and debugging.</span>
         </div>
       </section>
+
+      <!-- ===== Long-form content (EN) ===== -->
+      <div class="lang-en">
+        <section class="tool-content">
+          <section>
+            <h2>About the CSS Formatter</h2>
+            <p>CSS is the language that describes how HTML is painted on screen, but as stylesheets grow they accumulate inconsistent indentation, single-line rules, leftover debug comments, and stray trailing semicolons. This formatter gives you two complementary operations on the same input: <strong>Format</strong> rebuilds a stylesheet with predictable indentation so it reads cleanly in a code review, and <strong>Minify</strong> strips every byte that is not strictly necessary so the file ships faster over the network. Both run entirely in your browser &mdash; no stylesheet is ever uploaded.</p>
+          </section>
+          <section>
+            <h2>How it works</h2>
+            <p>The formatter starts by <strong>parsing</strong> the stylesheet into a tree of rules. Each rule has two parts: a <em>selector</em> (the part before the braces, which may be a type, class, id, attribute, or compound selector) and a list of <em>declarations</em> (the <code>property: value</code> pairs inside the braces). At-rules such as <code>@media</code> and <code>@keyframes</code> are handled as nested blocks. Once the input is parsed into this structure, it is <strong>re-serialized</strong>: pretty-print mode emits each declaration on its own line with the chosen indent (2 spaces, 4 spaces, or a tab), and minify mode joins everything back into the shortest valid string.</p>
+            <p>Minify removes comments, all non-significant whitespace, and the optional semicolon after the last declaration in a block, while preserving every property value, selector, and at-rule. The critical constraint is that <strong>safe reformatting must not change the cascade or specificity</strong>: rules keep their original order, selectors are not merged or split, and shorthand properties are left untouched. As long as those invariants hold, formatted and minified output render identically to the original.</p>
+          </section>
+          <section>
+            <h2>Common use cases</h2>
+            <ul>
+              <li>Normalizing indentation before committing a hand-edited stylesheet</li>
+              <li>Shrinking a large CSS bundle before deploying to production</li>
+              <li>Cleaning up CSS pasted from a minified bundle so it can be read</li>
+              <li>Producing a consistent style for an entire design-system codebase</li>
+              <li>Stripping author comments and dead whitespace before code review</li>
+            </ul>
+          </section>
+          <section>
+            <h2>Worked example</h2>
+            <p>Given messy, single-line input:</p>
+<pre><code>.btn{color:#fff;background:#4f46e5;padding:8px 16px;border-radius:6px}
+.btn:hover{background:#4338ca}</code></pre>
+            <p>Formatting with a 2-space indent yields the readable form:</p>
+<pre><code>.btn {
+  color: #fff;
+  background: #4f46e5;
+  padding: 8px 16px;
+  border-radius: 6px;
+}
+.btn:hover {
+  background: #4338ca;
+}</code></pre>
+            <p>And minify collapses it back to the smallest valid form, with the trailing semicolons and newlines removed:</p>
+<pre><code>.btn{color:#fff;background:#4f46e5;padding:8px 16px;border-radius:6px}.btn:hover{background:#4338ca}</code></pre>
+            <p>All three forms apply the exact same styles &mdash; only the human readability and byte count differ.</p>
+          </section>
+        </section>
+        <section class="faq-section">
+          <h2>Frequently asked questions</h2>
+          <details class="faq-item">
+            <summary>Does formatting change how my styles render?</summary>
+            <div class="faq-answer"><p>No. The formatter only changes whitespace, newlines, and indentation. It never reorders rules, alters selectors, or modifies property values, so cascade order and specificity are preserved exactly.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>What does minify actually remove?</summary>
+            <div class="faq-answer"><p>Minify strips comments, removes all non-significant whitespace, and drops optional trailing semicolons. Property values, selectors, at-rules, and the cascade itself are left intact, so the rendered result is identical but the byte count drops.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>Are comments preserved when formatting?</summary>
+            <div class="faq-answer"><p>Formatting keeps comments intact and re-indents them with the surrounding rules. Minify removes them entirely, since they have no runtime effect and only add bytes to the file.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>Is my CSS sent to a server?</summary>
+            <div class="faq-answer"><p>No. Parsing and re-serialization happen entirely in your browser. The stylesheet you paste never leaves your device, which makes this tool safe for proprietary design systems and unreleased product styles.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>Why does a malformed rule disappear from the output?</summary>
+            <div class="faq-answer"><p>The parser is tolerant: a rule with an unbalanced brace or missing block is skipped rather than producing broken CSS. Fix the offending declaration and it will reappear in the formatted or minified result.</p></div>
+          </details>
+        </section>
+      </div>
+
+      <!-- ===== Long-form content (KO) ===== -->
+      <div class="lang-ko" lang="ko">
+        <section class="tool-content">
+          <section>
+            <h2>CSS 포매터란?</h2>
+            <p>CSS는 HTML이 화면에 어떻게 그려지는지를 기술하는 언어이지만, 스타일시트가 커지면 들여쓰기가 제각각이고 한 줄 규칙, 디버그 주석 찌꺼기, 불필요한 후행 세미콜론이 쌓입니다. 이 포매터는 같은 입력에 대해 두 가지 보완적 동작을 제공합니다. <strong>Format</strong>은 예측 가능한 들여쓰기로 스타일시트를 다시 만들어 코드 리뷰에서 읽기 좋게 하고, <strong>Minify</strong>는 꼭 필요하지 않은 바이트를 모두 제거해 네트워크 전송을 빠르게 합니다. 두 동작 모두 브라우저에서만 수행되며 어떤 스타일시트도 업로드되지 않습니다.</p>
+          </section>
+          <section>
+            <h2>작동 방식</h2>
+            <p>포매터는 먼저 스타일시트를 규칙 트리로 <strong>파싱</strong>합니다. 각 규칙은 두 부분으로 이루어집니다. 중괄호 앞의 <em>셀렉터</em>(타입, 클래스, 아이디, 속성, 복합 셀렉터 등)와 중괄호 안의 <em>선언</em> 목록(<code>property: value</code> 쌍)입니다. <code>@media</code>나 <code>@keyframes</code> 같은 at-규칙은 중첩 블록으로 처리됩니다. 입력이 이 구조로 파싱되면 <strong>재직렬화</strong>됩니다. pretty-print 모드는 각 선언을 자체 줄에 선택한 들여쓰기(2칸, 4칸, 탭)로 출력하고, minify 모드는 모두 다시 가장 짧은 유효 문자열로 합칩니다.</p>
+            <p>minify는 주석, 의미 없는 모든 공백, 블록의 마지막 선언 뒤 선택적 세미콜론을 제거하되 모든 속성값, 셀렉터, at-규칙은 보존합니다. 핵심 제약은 <strong>안전한 재포맷은 캐스케이드나 명시도를 바꾸지 않아야 한다</strong>는 것입니다. 규칙은 원래 순서를 유지하고, 셀렉터는 병합되거나 분할되지 않으며, 단축 속성은 그대로 둡니다. 이 불변 조건이 유지되는 한 포맷된 출력과 minify된 출력은 원본과 동일하게 렌더링됩니다.</p>
+          </section>
+          <section>
+            <h2>자주 쓰는 경우</h2>
+            <ul>
+              <li>손으로 편집한 스타일시트를 커밋하기 전 들여쓰기 통일하기</li>
+              <li>대용량 CSS 번들을 프로덕션 배포 전에 줄이기</li>
+              <li>minify된 번들에서 붙여넣은 CSS를 읽기 좋게 정리하기</li>
+              <li>디자인 시스템 코드베이스 전체에 일관된 스타일 적용하기</li>
+              <li>코드 리뷰 전 작성자 주석과 죽은 공백 제거하기</li>
+            </ul>
+          </section>
+          <section>
+            <h2>사용 예</h2>
+            <p>지저분하고 한 줄로 된 입력이 주어지면:</p>
+<pre><code>.btn{color:#fff;background:#4f46e5;padding:8px 16px;border-radius:6px}
+.btn:hover{background:#4338ca}</code></pre>
+            <p>2칸 들여쓰기로 포맷하면 읽기 좋은 형태가 됩니다:</p>
+<pre><code>.btn {
+  color: #fff;
+  background: #4f46e5;
+  padding: 8px 16px;
+  border-radius: 6px;
+}
+.btn:hover {
+  background: #4338ca;
+}</code></pre>
+            <p>그리고 minify는 후행 세미콜론과 줄바꿈을 제거해 다시 가장 작은 유효 형태로 압축합니다:</p>
+<pre><code>.btn{color:#fff;background:#4f46e5;padding:8px 16px;border-radius:6px}.btn:hover{background:#4338ca}</code></pre>
+            <p>세 가지 형태 모두 정확히 같은 스타일을 적용합니다 &mdash; 달라지는 것은 사람이 읽기 좋은 정도와 바이트 수뿐입니다.</p>
+          </section>
+        </section>
+        <section class="faq-section">
+          <h2>자주 묻는 질문</h2>
+          <details class="faq-item">
+            <summary>포맷하면 스타일이 렌더링되는 방식이 바뀌나요?</summary>
+            <div class="faq-answer"><p>아닙니다. 포매터는 공백, 줄바꿈, 들여쓰기만 바꿉니다. 규칙의 순서를 바꾸거나 셀렉터를 변경하거나 속성값을 수정하지 않으므로 캐스케이드 순서와 명시도가 정확히 보존됩니다.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>minify가 실제로 무엇을 제거하나요?</summary>
+            <div class="faq-answer"><p>minify는 주석, 의미 없는 모든 공백, 선택적 후행 세미콜론을 제거합니다. 속성값, 셀렉터, at-규칙, 캐스케이드 자체는 그대로 두므로 렌더링 결과는 동일하지만 바이트 수는 줄어듭니다.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>포맷할 때 주석이 보존되나요?</summary>
+            <div class="faq-answer"><p>포맷은 주석을 그대로 유지하고 주변 규칙에 맞춰 들여쓰기를 다시 적용합니다. minify는 주석이 런타임에 영향을 주지 않고 파일 크기만 늘리므로 주석을 완전히 제거합니다.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>CSS가 서버로 전송되나요?</summary>
+            <div class="faq-answer"><p>아닙니다. 파싱과 재직렬화는 전적으로 브라우저에서 이루어집니다. 붙여넣은 스타일시트는 기기를 떠나지 않으므로 독점 디자인 시스템과 미출시 제품 스타일에도 안전합니다.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>잘못된 규칙이 출력에서 사라지는 이유는?</summary>
+            <div class="faq-answer"><p>파서는 관대합니다. 중괄호 짝이 안 맞거나 블록이 빠진 규칙은 깨진 CSS를 만드는 대신 건너뜁니다. 문제가 되는 선언을 고치면 포맷이나 minify 결과에 다시 나타납니다.</p></div>
+          </details>
+        </section>
+      </div>
     </main>
     <footer>
       <div class="footer-content">

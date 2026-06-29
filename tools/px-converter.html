@@ -2,7 +2,7 @@
 <html lang="en" id="root-html">
   <head>
     <meta charset="UTF-8" />
-    <script>(function(){var s=localStorage.getItem('theme');var t=s||((window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)?'dark':'light');document.documentElement.setAttribute('data-theme',t);})();</script>
+    <script>(function(){var s=localStorage.getItem('theme');var t=s||((window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)?'dark':'light');document.documentElement.setAttribute('data-theme',t);var l=localStorage.getItem('lang');if(!l){l=((navigator.language||'').startsWith('ko')?'ko':'en');}document.documentElement.lang=l;})();</script>
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <meta name="google-adsense-account" content="ca-pub-4794002106764884" />
     <link rel="preconnect" href="https://pagead2.googlesyndication.com" crossorigin="anonymous" />
@@ -64,6 +64,53 @@
             "url": "https://webtool.monster/",
             "name": "WebTools - Free Online Developer Tools",
             "publisher": { "@id": "https://webtool.monster/#organization" }
+          },
+          {
+            "@type": "FAQPage",
+            "@id": "https://webtool.monster/tools/px-converter.html#faqpage",
+            "url": "https://webtool.monster/tools/px-converter.html",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "What is the difference between rem and em?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "rem is relative to the root element (html) font-size, so one rem is the same length everywhere in the document. em is relative to the current element's own font-size, which compounds when nested. rem gives you a single, predictable scale; em is useful when a value should scale with its surrounding text."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "What is the default browser root font size?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Browsers default the html element to 16px, so 1rem equals 16px out of the box. The conversion formula is px/rem = root font-size: 24px at a 16px root is 24/16 = 1.5rem."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Why is rem preferred for accessibility?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "rem respects the root font-size, which users can change through browser zoom or a custom default font size in settings. Sizing margins, padding, and media-query breakpoints in rem lets the whole layout scale with that choice, unlike hard-coded px which ignores the user preference."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Does the converter change my CSS?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "No. It only performs the arithmetic locally in your browser and shows the result. No file is modified and nothing is uploaded."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "What base font size should I set?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Use whatever your design system declares as the root font-size - commonly 16px, but frameworks like Tailwind or custom setups may use a different value. Set the base field to match your project so the rem output is correct."
+                }
+              }
+            ]
           }
         ]
       }
@@ -153,6 +200,120 @@
           <span data-i18n="tools_px.usage_tip">💡 Tip: 1rem equals the root element (html) font size. Using rem is recommended for responsive and accessible web design.</span>
         </div>
       </section>
+
+      <!-- ===== Long-form content (EN) ===== -->
+      <div class="lang-en">
+        <section class="tool-content">
+          <section>
+            <h2>About the PX / REM / EM Converter</h2>
+            <p>CSS gives you three ways to express a length. <strong>px</strong> is an absolute pixel tied to the screen. <strong>rem</strong> (root em) is relative to the font-size of the root <code>&lt;html&gt;</code> element, and <strong>em</strong> is relative to the font-size of the nearest parent. A <code>rem</code> value stays consistent across the document, while <code>em</code> compounds as it inherits down through nested elements &mdash; both scale with the user's font settings, which fixed <code>px</code> does not. This converter does the arithmetic so you can move a design token from Figma to a stylesheet without re-doing the math.</p>
+          </section>
+          <section>
+            <h2>How it works</h2>
+            <p>The whole conversion hinges on one number: the root element's font-size. Browsers default the <code>&lt;html&gt;</code> element to <strong>16px</strong>, so out of the box <code>1rem = 16px</code>. The formula is simply <code>px / rem = root font-size</code>. To convert pixels to rem you divide by the root; to go the other way you multiply. <code>em</code> uses the same formula but against the parent element's font-size instead of the root's &mdash; which is why an <code>em</code> value can resolve to a different pixel count in two parts of the same page.</p>
+            <p>rem is the recommended unit for accessible scaling. When a user raises their browser's default font size or zooms the page, the root font-size changes, and every <code>rem</code>-based margin, padding, and breakpoint rescales with it. Hard-coded <code>px</code> ignores that preference and locks the layout to the developer's screen. The one exception is hairline borders and device-physical concerns like <code>1px</code> lines, where you genuinely want a fixed pixel.</p>
+          </section>
+          <section>
+            <h2>Common use cases</h2>
+            <ul>
+              <li>Converting a Figma pixel value to <code>rem</code> for an accessible stylesheet</li>
+              <li>Checking what a <code>0.875rem</code> token resolves to at a 16px root</li>
+              <li>Verifying that a <code>1.25em</code> heading stays proportional inside a card</li>
+              <li>Building a spacing scale (4 / 8 / 16 / 24px) in <code>rem</code> for a design system</li>
+            </ul>
+          </section>
+          <section>
+            <h2>Worked example</h2>
+            <p>Convert 24px to rem at the default 16px root:</p>
+            <pre><code>rem = px / root
+     = 24 / 16
+     = 1.5rem</code></pre>
+            <p>Going back the other way confirms the round trip:</p>
+            <pre><code>px = rem * root = 1.5 * 16 = 24px</code></pre>
+            <p>If the project instead sets the root to 20px, the same 24px becomes <code>24 / 20 = 1.2rem</code> &mdash; one reason to keep the base field in sync with your design system.</p>
+          </section>
+        </section>
+        <section class="faq-section">
+          <h2>Frequently asked questions</h2>
+          <details class="faq-item">
+            <summary>What is the difference between rem and em?</summary>
+            <div class="faq-answer"><p><code>rem</code> is relative to the root element (<code>html</code>) font-size, so one rem is the same length everywhere in the document. <code>em</code> is relative to the current element's own font-size, which compounds when nested. rem gives you a single, predictable scale; em is useful when a value should scale with its surrounding text.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>What is the default browser root font size?</summary>
+            <div class="faq-answer"><p>Browsers default the <code>html</code> element to 16px, so <code>1rem</code> equals 16px out of the box. The formula is <code>px / rem = root font-size</code>: 24px at a 16px root is <code>24 / 16 = 1.5rem</code>.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>Why is rem preferred for accessibility?</summary>
+            <div class="faq-answer"><p>rem respects the root font-size, which users can change through browser zoom or a custom default font size in settings. Sizing margins, padding, and media-query breakpoints in rem lets the whole layout scale with that choice, unlike hard-coded px which ignores the user preference.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>Does the converter change my CSS?</summary>
+            <div class="faq-answer"><p>No. It only performs the arithmetic locally in your browser and shows the result. No file is modified and nothing is uploaded.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>What base font size should I set?</summary>
+            <div class="faq-answer"><p>Use whatever your design system declares as the root font-size &mdash; commonly 16px, but frameworks like Tailwind or custom setups may use a different value. Set the base field to match your project so the rem output is correct.</p></div>
+          </details>
+        </section>
+      </div>
+
+      <!-- ===== Long-form content (KO) ===== -->
+      <div class="lang-ko" lang="ko">
+        <section class="tool-content">
+          <section>
+            <h2>PX / REM / EM 변환기란?</h2>
+            <p>CSS는 길이를 표현하는 세 가지 방법을 제공합니다. <strong>px</strong>은 물리적 화면에 묶인 절대 픽셀입니다. <strong>rem</strong>(root em)은 루트 <code>&lt;html&gt;</code> 요소의 font-size를 기준으로 하고, <strong>em</strong>은 가장 가까운 부모 요소의 font-size를 기준으로 합니다. <code>rem</code>으로 표현한 크기는 문서 전체에서 일관되지만, <code>em</code>은 중첩되며 상속되면서 합성됩니다 &mdash; 둘 다 사용자의 글꼴 설정에 따라 늘어나는데, 이는 고정된 <code>px</code> 값은 하지 못하는 일입니다. 이 변환기는 세 단위 간의 산술을 처리해 Figma의 디자인 토큰을 스타일시트로 직접 옮길 수 있게 해 줍니다.</p>
+          </section>
+          <section>
+            <h2>작동 방식</h2>
+            <p>변환 전체는 하나의 숫자에 달려 있습니다. 바로 루트 요소의 font-size입니다. 브라우저는 <code>&lt;html&gt;</code> 요소를 기본적으로 <strong>16px</strong>로 잡으므로, 별도 설정이 없으면 <code>1rem = 16px</code>입니다. 공식은 단순히 <code>px / rem = 루트 font-size</code>입니다. 픽셀을 rem으로 바꾸려면 루트로 나누고, 반대 방향은 곱합니다. <code>em</code>은 같은 공식을 쓰되 루트가 아니라 부모 요소의 font-size를 기준으로 삼습니다 &mdash; 그래서 같은 <code>em</code> 값이 페이지의 위치에 따라 다른 픽셀 수로 풀릴 수 있습니다.</p>
+            <p>rem이 접근성 스케일링에 권장되는 단위입니다. 사용자가 브라우저 기본 글꼴 크기를 올리거나 페이지를 확대하면 루트 font-size가 바뀌고, rem 기반의 마진·패딩·브레이크포인트가 모두 함께 조정됩니다. 하드코딩된 <code>px</code>은 그 사용자 설정을 무시하고 레이아웃을 개발자의 화면에 고정합니다. 예외는 정말로 고정 픽셀이 필요한 경우, 가령 <code>1px</code>선처럼 얇은 테두리나 기기 물리적 단위가 중요한 곳입니다.</p>
+          </section>
+          <section>
+            <h2>자주 쓰는 경우</h2>
+            <ul>
+              <li>Figma의 픽셀 값을 접근성을 고려한 <code>rem</code>으로 변환하기</li>
+              <li><code>0.875rem</code> 토큰이 16px 루트에서 어떻게 풀리는지 확인하기</li>
+              <li>카드 안에서 <code>1.25em</code> 제목이 비율을 유지하는지 검증하기</li>
+              <li>디자인 시스템의 간격 스케일(4 / 8 / 16 / 24px)을 <code>rem</code>으로 만들기</li>
+            </ul>
+          </section>
+          <section>
+            <h2>사용 예</h2>
+            <p>기본값 16px 루트에서 24px을 rem으로 변환합니다:</p>
+            <pre><code>rem = px / root
+     = 24 / 16
+     = 1.5rem</code></pre>
+            <p>반대 방향으로 돌리면 왕복이 맞는지 확인할 수 있습니다:</p>
+            <pre><code>px = rem * root = 1.5 * 16 = 24px</code></pre>
+            <p>만약 프로젝트가 루트를 20px로 설정했다면 같은 24px은 <code>24 / 20 = 1.2rem</code>이 됩니다 &mdash; base 필드를 디자인 시스템과 맞춰야 하는 이유입니다.</p>
+          </section>
+        </section>
+        <section class="faq-section">
+          <h2>자주 묻는 질문</h2>
+          <details class="faq-item">
+            <summary>rem과 em의 차이는?</summary>
+            <div class="faq-answer"><p><code>rem</code>은 루트 요소(<code>html</code>)의 font-size를 기준으로 하므로 문서 어디서나 같은 길이입니다. <code>em</code>은 현재 요소 자신의 font-size를 기준으로 하며, 중첩되면 합성됩니다. rem은 하나의 예측 가능한 스케일을 주고, em은 주변 텍스트와 함께 늘어나야 할 값에 적합합니다.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>브라우저 기본 루트 글꼴 크기는?</summary>
+            <div class="faq-answer"><p>브라우저는 <code>html</code> 요소를 기본적으로 16px로 설정하므로, 별도 설정이 없으면 <code>1rem</code>은 16px입니다. 공식은 <code>px / rem = 루트 font-size</code>이며, 16px 루트에서 24px은 <code>24 / 16 = 1.5rem</code>입니다.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>접근성에 rem이 권장되는 이유는?</summary>
+            <div class="faq-answer"><p>rem은 루트 font-size를 따르며, 사용자는 브라우저 확대나 설정의 기본 글꼴 크기로 이 값을 바꿀 수 있습니다. 마진, 패딩, 미디어쿼리 브레이크포인트를 rem으로 잡으면 전체 레이아웃이 그 선택에 맞춰 조정됩니다. 하드코딩된 px은 사용자 설정을 무시합니다.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>변환기가 제 CSS를 바꾸나요?</summary>
+            <div class="faq-answer"><p>아닙니다. 브라우저 안에서 산술만 수행하고 결과를 보여 줄 뿐입니다. 어떤 파일도 수정되지 않고 업로드되는 것도 없습니다.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>base 글꼴 크기는 무엇으로 설정해야 하나요?</summary>
+            <div class="faq-answer"><p>디자인 시스템이 루트 font-size로 선언한 값을 사용하세요 &mdash; 보통 16px이지만, Tailwind 같은 프레임워크나 커스텀 설정은 다른 값을 쓸 수 있습니다. rem 결과가 정확하도록 base 필드를 프로젝트에 맞추세요.</p></div>
+          </details>
+        </section>
+      </div>
     </main>
     <footer>
       <div class="footer-content">

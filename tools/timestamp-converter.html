@@ -2,7 +2,7 @@
 <html lang="en" id="root-html">
   <head>
     <meta charset="UTF-8" />
-    <script>(function(){var s=localStorage.getItem('theme');var t=s||((window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)?'dark':'light');document.documentElement.setAttribute('data-theme',t);})();</script>
+    <script>(function(){var s=localStorage.getItem('theme');var t=s||((window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)?'dark':'light');document.documentElement.setAttribute('data-theme',t);var l=localStorage.getItem('lang');if(!l){l=((navigator.language||'').startsWith('ko')?'ko':'en');}document.documentElement.lang=l;})();</script>
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <meta name="google-adsense-account" content="ca-pub-4794002106764884" />
     <link
@@ -128,6 +128,53 @@
             "publisher": {
               "@id": "https://webtool.monster/#organization"
             }
+          },
+          {
+            "@type": "FAQPage",
+            "@id": "https://webtool.monster/tools/timestamp-converter.html#faqpage",
+            "url": "https://webtool.monster/tools/timestamp-converter.html",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "What is a Unix timestamp?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "A Unix timestamp counts the seconds that have elapsed since the Unix epoch, 1970-01-01T00:00:00Z, excluding leap seconds. It is a single integer that is timezone-independent and widely used by APIs, databases, and log files."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "What is the difference between seconds and milliseconds?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Classic Unix time and MySQL store seconds (typically 10 digits around 2020-2030), while JavaScript Date.getTime and Java Instant use milliseconds (13 digits). Mixing them up shifts the date by a factor of 1000, so the tool auto-detects 10- versus 13-digit input."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Is a Unix timestamp affected by timezones?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "No. The timestamp itself is always UTC-based. Only how you format it for display depends on the local timezone, so the same instant always produces the same numeric timestamp everywhere in the world."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "What is the Year 2038 problem?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Signed 32-bit Unix time overflows on 2038-01-19T03:14:07Z, wrapping to a date in 1901. Systems that store time as a 64-bit integer, as JavaScript and Java do, are not affected."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Does this tool work offline?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Yes. All conversion runs in your browser through the native Date object, so timestamps are converted locally without contacting any server."
+                }
+              }
+            ]
           }
         ]
       }
@@ -292,6 +339,114 @@
           </span>
         </div>
       </section>
+
+      <!-- ===== Long-form content (EN) ===== -->
+      <div class="lang-en">
+        <section class="tool-content">
+          <section>
+            <h2>About the Timestamp Converter</h2>
+            <p>A Unix timestamp is the number of seconds that have elapsed since the <strong>Unix epoch</strong>, defined as <code>1970-01-01T00:00:00Z</code> (UTC), excluding leap seconds. Because it is a single integer with no timezone, no locale, and no formatting ambiguity, it is the lingua franca for time in software &mdash; the format you will find in REST API responses, database columns, log files, message queues, and cron schedules. This converter translates a Unix timestamp into a human-readable date and back, in both directions, entirely in your browser.</p>
+          </section>
+          <section>
+            <h2>How it works</h2>
+            <p>The tool reads an integer and decides whether it is in <strong>seconds</strong> or <strong>milliseconds</strong>. Classic Unix time and MySQL's <code>TIMESTAMP</code> store seconds (a 10-digit number around 2020&ndash;2030), while JavaScript's <code>Date.getTime()</code> and Java's <code>Instant</code> use milliseconds (a 13-digit number). Feeding a 13-digit value where seconds are expected shifts the date by roughly 31,000 years, so the converter auto-detects magnitude by digit length and chooses the right unit. Internally it delegates to the browser's <code>Date</code> object, which represents every instant as a millisecond count from the epoch.</p>
+            <p>Two subtleties matter. First, the timestamp itself is always <strong>UTC</strong>; only the way you format it into year/month/day depends on a timezone. The same instant produces the same numeric timestamp in Seoul, London, and New York &mdash; what differs is the wall-clock string you render from it. Second, Unix time deliberately excludes <strong>leap seconds</strong>, so each UTC day is treated as exactly 86,400 seconds and the count advances linearly. The converter also accepts fractional seconds and emits ISO 8601 (<code>YYYY-MM-DDTHH:mm:ss.sssZ</code>) for round-tripping into any other system.</p>
+          </section>
+          <section>
+            <h2>Common use cases</h2>
+            <ul>
+              <li>Decoding a 10- or 13-digit timestamp from an API response into a local time</li>
+              <li>Encoding a chosen date and time back into a Unix value for storage</li>
+              <li>Comparing two instants across timezones by their UTC timestamp</li>
+              <li>Debugging off-by-1000 bugs caused by mixing seconds and milliseconds</li>
+              <li>Generating <code>exp</code> or <code>iat</code> claims for short-lived tokens</li>
+            </ul>
+          </section>
+          <section>
+            <h2>Worked example</h2>
+            <p>The Unix timestamp <code>1717200000</code> converts to the ISO 8601 instant:</p>
+            <pre><code>2024-06-01T04:00:00.000Z</code></pre>
+            <p>Converting it back is lossless &mdash; parsing that ISO string with the browser's <code>Date</code> object returns exactly <code>1717200000</code>. Because the <code>Z</code> suffix pins the value to UTC, the round-trip is independent of the viewer's local timezone. If you instead used <code>1717200000000</code> (13 digits, milliseconds) the same logic yields the identical instant; only the assumed unit changes.</p>
+          </section>
+        </section>
+        <section class="faq-section">
+          <h2>Frequently asked questions</h2>
+          <details class="faq-item">
+            <summary>What is a Unix timestamp?</summary>
+            <div class="faq-answer"><p>A Unix timestamp counts the seconds that have elapsed since the Unix epoch, <code>1970-01-01T00:00:00Z</code>, excluding leap seconds. It is a single integer that is timezone-independent and widely used by APIs, databases, and log files.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>What is the difference between seconds and milliseconds?</summary>
+            <div class="faq-answer"><p>Classic Unix time and MySQL store seconds (typically 10 digits around 2020&ndash;2030), while JavaScript <code>Date.getTime</code> and Java <code>Instant</code> use milliseconds (13 digits). Mixing them up shifts the date by a factor of 1000, so the tool auto-detects 10- versus 13-digit input.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>Is a Unix timestamp affected by timezones?</summary>
+            <div class="faq-answer"><p>No. The timestamp itself is always UTC-based. Only how you format it for display depends on the local timezone, so the same instant always produces the same numeric timestamp everywhere in the world.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>What is the Year 2038 problem?</summary>
+            <div class="faq-answer"><p>Signed 32-bit Unix time overflows on <code>2038-01-19T03:14:07Z</code>, wrapping to a date in 1901. Systems that store time as a 64-bit integer, as JavaScript and Java do, are not affected.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>Does this tool work offline?</summary>
+            <div class="faq-answer"><p>Yes. All conversion runs in your browser through the native <code>Date</code> object, so timestamps are converted locally without contacting any server.</p></div>
+          </details>
+        </section>
+      </div>
+
+      <!-- ===== Long-form content (KO) ===== -->
+      <div class="lang-ko" lang="ko">
+        <section class="tool-content">
+          <section>
+            <h2>타임스탬프 변환기란?</h2>
+            <p>Unix 타임스탬프는 <strong>Unix 에포크</strong>인 <code>1970-01-01T00:00:00Z</code>(UTC) 이후에 경과한 초 수입니다(윤초 제외). 단일 정수이며 시간대, 로캘, 형식 모호성이 없기 때문에 소프트웨어에서 시간을 표현하는 사실상의 공용어입니다 &mdash; REST API 응답, 데이터베이스 칼럼, 로그 파일, 메시지 큐, cron 스케줄에서 흔히 볼 수 있는 형식입니다. 이 변환기는 Unix 타임스탬프를 사람이 읽을 수 있는 날짜로, 또 그 반대로 양방향 변환하며, 모든 처리가 브라우저 안에서 이루어집니다.</p>
+          </section>
+          <section>
+            <h2>작동 방식</h2>
+            <p>이 도구는 정수를 읽어 <strong>초</strong> 단위인지 <strong>밀리초</strong> 단위인지 판별합니다. 전통적인 Unix 시간과 MySQL의 <code>TIMESTAMP</code>는 초를 저장하고(2020~2030 무렵에는 10자리), JavaScript의 <code>Date.getTime()</code>와 Java의 <code>Instant</code>는 밀리초를 사용합니다(13자리). 초를 기대하는 자리에 13자리 값을 넣으면 날짜가 약 31,000년쯤 어긋나므로, 변환기는 자릿수 길이로 크기를 판별해 알맞은 단위를 선택합니다. 내부적으로는 에포크 이후의 밀리초 수로 모든 순간을 표현하는 브라우저의 <code>Date</code> 객체에 위임합니다.</p>
+            <p>두 가지 세부 사항이 중요합니다. 첫째, 타임스탬프 자체는 항상 <strong>UTC</strong>이며, 연/월/일로 변환해 표시하는 방식만 시간대에 따라 달라집니다. 서울, 런던, 뉴욕 어디서든 같은 순간은 같은 숫자 타임스탬프를 가집니다 &mdash; 달라지는 것은 그 값에서 렌더링한 시계 문자열뿐입니다. 둘째, Unix 시간은 의도적으로 <strong>윤초</strong>를 제외하므로, 매 UTC 일을 정확히 86,400초로 취급하고 카운트가 선형으로 증가합니다. 이 변환기는 소수 초도 받아들이고, 어떤 다른 시스템으로도 되돌릴 수 있도록 ISO 8601(<code>YYYY-MM-DDTHH:mm:ss.sssZ</code>) 형태로 출력합니다.</p>
+          </section>
+          <section>
+            <h2>자주 쓰는 경우</h2>
+            <ul>
+              <li>API 응답의 10자리 또는 13자리 타임스탬프를 로컬 시간으로 해독</li>
+              <li>원하는 날짜와 시간을 다시 Unix 값으로 인코딩해 저장</li>
+              <li>UTC 타임스탬프로 시간대가 다른 두 순간 비교</li>
+              <li>초와 밀리초를 혼용해 발생하는 1000배 오차 버그 디버깅</li>
+              <li>수명이 짧은 토큰의 <code>exp</code> 또는 <code>iat</code> 클레임 생성</li>
+            </ul>
+          </section>
+          <section>
+            <h2>사용 예</h2>
+            <p>Unix 타임스탬프 <code>1717200000</code>는 다음 ISO 8601 순간으로 변환됩니다:</p>
+            <pre><code>2024-06-01T04:00:00.000Z</code></pre>
+            <p>역방향 변환은 무손실입니다 &mdash; 이 ISO 문자열을 브라우저의 <code>Date</code> 객체로 파싱하면 정확히 <code>1717200000</code>을 반환합니다. <code>Z</code> 접미사가 값을 UTC로 고정하므로 이 왕복은 보는 사람의 로컬 시간대와 무관합니다. 대신 <code>1717200000000</code>(13자리, 밀리초)을 사용해도 같은 로직으로 동일한 순간이 나오며, 달라지는 것은 가정한 단위뿐입니다.</p>
+          </section>
+        </section>
+        <section class="faq-section">
+          <h2>자주 묻는 질문</h2>
+          <details class="faq-item">
+            <summary>Unix 타임스탬프란 무엇인가요?</summary>
+            <div class="faq-answer"><p>Unix 타임스탬프는 Unix 에포크인 <code>1970-01-01T00:00:00Z</code> 이후에 경과한 초 수입니다(윤초 제외). 시간대에 영향을 받지 않는 단일 정수이며 API, 데이터베이스, 로그 파일에서 널리 사용됩니다.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>초와 밀리초의 차이는?</summary>
+            <div class="faq-answer"><p>전통적인 Unix 시간과 MySQL은 초를 저장하고(2020~2030 무렵에 보통 10자리), JavaScript <code>Date.getTime</code>와 Java <code>Instant</code>는 밀리초를 사용합니다(13자리). 혼용하면 날짜가 1000배 어긋나므로 이 도구는 10자리와 13자리 입력을 자동으로 감지합니다.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>Unix 타임스탬프는 시간대의 영향을 받나요?</summary>
+            <div class="faq-answer"><p>아닙니다. 타임스탬프 자체는 항상 UTC 기준입니다. 표시용으로 변환하는 방식만 로컬 시간대에 따라 달라지므로, 같은 순간은 전 세계 어디서나 같은 숫자 타임스탬프를 가집니다.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>2038년 문제란 무엇인가요?</summary>
+            <div class="faq-answer"><p>부호 있는 32비트 Unix 시간은 <code>2038-01-19T03:14:07Z</code>에 오버플로되어 1901년 날짜로 되돌아갑니다. JavaScript와 Java처럼 시간을 64비트 정수로 저장하는 시스템은 영향을 받지 않습니다.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>이 도구는 오프라인에서도 동작하나요?</summary>
+            <div class="faq-answer"><p>네. 모든 변환은 브라우저에서 네이티브 <code>Date</code> 객체로 실행되므로, 타임스탬프는 서버와 통신하지 않고 로컬에서 변환됩니다.</p></div>
+          </details>
+        </section>
+      </div>
     </main>
     <footer>
       <div class="footer-content">

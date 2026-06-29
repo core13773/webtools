@@ -2,7 +2,7 @@
 <html lang="en" id="root-html">
   <head>
     <meta charset="UTF-8" />
-    <script>(function(){var s=localStorage.getItem('theme');var t=s||((window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)?'dark':'light');document.documentElement.setAttribute('data-theme',t);})();</script>
+    <script>(function(){var s=localStorage.getItem('theme');var t=s||((window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)?'dark':'light');document.documentElement.setAttribute('data-theme',t);var l=localStorage.getItem('lang');if(!l){l=((navigator.language||'').startsWith('ko')?'ko':'en');}document.documentElement.lang=l;})();</script>
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <meta name="google-adsense-account" content="ca-pub-4794002106764884" />
     <link
@@ -128,6 +128,53 @@
             "publisher": {
               "@id": "https://webtool.monster/#organization"
             }
+          },
+          {
+            "@type": "FAQPage",
+            "@id": "https://webtool.monster/tools/qr-generator.html#faqpage",
+            "url": "https://webtool.monster/tools/qr-generator.html",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "What is a QR code?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "A QR (Quick Response) code is a two-dimensional matrix of black and white modules. A QR stores data in both dimensions, unlike a 1D barcode, so a small square can hold a URL, contact card, or Wi-Fi credentials and still scan from a phone camera."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "What do QR versions 1 to 40 mean?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "The version sets the matrix size. Version 1 is 21x21 modules and each version adds 4 per side, up to version 40 at 177x177. The encoder picks the smallest version that fits the input plus the chosen error-correction level."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "What are the error-correction levels L, M, Q, and H?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "They are the four Reed-Solomon recovery levels: L recovers ~7% of damaged modules, M ~15%, Q ~25%, and H ~30%. Higher levels survive more smudging or occlusion but reduce capacity, suiting rough prints or center logos."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Is there a maximum amount of data a QR code can hold?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Yes, depending on content type and error correction. At version 40 with level L, a QR holds up to 7,089 numeric digits, 4,296 alphanumeric characters, or 2,953 bytes. Keep URLs short so the code stays scannable at a distance."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Do the generated codes expire or need a server?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "No. The matrix is computed locally from your text, so the code is permanent and works offline. Only dynamic QR services that redirect through a short link need a server."
+                }
+              }
+            ]
           }
         ]
       }
@@ -266,6 +313,120 @@
           </span>
         </div>
       </section>
+
+      <!-- ===== Long-form content (EN) ===== -->
+      <div class="lang-en">
+        <section class="tool-content">
+          <section>
+            <h2>About the QR Code Generator</h2>
+            <p>A QR (Quick Response) code is a two-dimensional barcode: a square matrix of black and white <em>modules</em> a phone camera decodes in either orientation. A 1D barcode stores data only along its width, but a QR uses both axes, so a small square can hold a full URL, a vCard, or Wi-Fi credentials and still scan reliably. This tool turns any text or URL into such a matrix and renders it as a PNG you can save or embed.</p>
+          </section>
+          <section>
+            <h2>How it works</h2>
+            <p>Every QR carries a <strong>version</strong> from 1 to 40 that fixes the matrix size. Version 1 is <code>21&times;21</code> modules, each step adds 4 per side, so version 40 is <code>177&times;177</code>. The encoder picks the smallest version that fits the data at the chosen <strong>error-correction level</strong>. There are four, defined by their Reed-Solomon recovery: <strong>L</strong> recovers ~7% of damaged modules, <strong>M</strong> ~15%, <strong>Q</strong> ~25%, and <strong>H</strong> ~30%. Higher recovery eats capacity but tolerates smudging, partial occlusion, or a center logo.</p>
+            <p>Capacity also depends on the encoding mode &mdash; <em>numeric</em> is densest, then <em>alphanumeric</em>, then <em>byte</em>. At version 40 with level L a code holds up to 7,089 numeric digits, 4,296 alphanumeric characters, or 2,953 bytes. Finally a <strong>mask pattern</strong> is applied: the encoder tries several masks and keeps the one whose black/white distribution is most balanced, so readers can separate data modules from the finder and timing patterns in the corners.</p>
+          </section>
+          <section>
+            <h2>Common use cases</h2>
+            <ul>
+              <li>Linking a poster or business card to a site without typing a URL</li>
+              <li>Sharing Wi-Fi credentials guests scan to join instantly</li>
+              <li>Encoding a vCard so a phone imports the contact directly</li>
+              <li>Attaching a stable link to a product label or menu</li>
+            </ul>
+          </section>
+          <section>
+            <h2>Worked example</h2>
+            <p>Generate a QR for the URL <code>https://example.com</code>. The encoder:</p>
+            <pre><code>input:  https://example.com   (24 bytes, byte mode)
+level:  M  (~15% recovery)
+picks:  version 1, 21x21 modules
+applies: best mask of the 8 candidates
+output: scannable PNG</code></pre>
+            <p>The short URL fits in version 1, so the code stays small and scans at low resolution; a longer URL forces a larger, denser matrix.</p>
+          </section>
+        </section>
+        <section class="faq-section">
+          <h2>Frequently asked questions</h2>
+          <details class="faq-item">
+            <summary>What is a QR code?</summary>
+            <div class="faq-answer"><p>A QR (Quick Response) code is a two-dimensional matrix of black and white modules. A QR stores data in both dimensions, unlike a 1D barcode, so a small square can hold a URL, contact card, or Wi-Fi credentials and still scan from a phone camera.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>What do QR versions 1 to 40 mean?</summary>
+            <div class="faq-answer"><p>The version sets the matrix size. Version 1 is <code>21&times;21</code> modules and each version adds 4 per side, up to version 40 at <code>177&times;177</code>. The encoder picks the smallest version that fits the input plus the chosen error-correction level.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>What are the error-correction levels L, M, Q, and H?</summary>
+            <div class="faq-answer"><p>They are the four Reed-Solomon recovery levels: L recovers ~7% of damaged modules, M ~15%, Q ~25%, and H ~30%. Higher levels survive more smudging or occlusion but reduce capacity, suiting rough prints or center logos.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>Is there a maximum amount of data a QR code can hold?</summary>
+            <div class="faq-answer"><p>Yes, depending on content type and error correction. At version 40 with level L, a QR holds up to 7,089 numeric digits, 4,296 alphanumeric characters, or 2,953 bytes. Keep URLs short so the code stays scannable at a distance.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>Do the generated codes expire or need a server?</summary>
+            <div class="faq-answer"><p>No. The matrix is computed locally from your text, so the code is permanent and works offline. Only dynamic QR services that redirect through a short link need a server.</p></div>
+          </details>
+        </section>
+      </div>
+
+      <!-- ===== Long-form content (KO) ===== -->
+      <div class="lang-ko" lang="ko">
+        <section class="tool-content">
+          <section>
+            <h2>QR 코드 생성기란?</h2>
+            <p>QR(Quick Response) 코드는 2차원 바코드입니다. 흑백 <em>모듈</em>로 이루어진 정사각형 행렬이며, 휴대폰 카메라가 어느 방향에서든 디코딩할 수 있습니다. 1차원 바코드가 가로 방향으로만 데이터를 저장하는 반면, QR은 두 축을 모두 사용합니다. 그래서 작은 정사각형 하나가 전체 URL, vCard, 또는 Wi-Fi 자격증명을 담으면서도 안정적으로 스캔됩니다. 이 도구는 입력한 텍스트나 URL을 이런 행렬로 만들어 저장·인쇄·삽입할 수 있는 PNG로 렌더링합니다.</p>
+          </section>
+          <section>
+            <h2>작동 방식</h2>
+            <p>모든 QR은 1부터 40까지의 <strong>버전</strong>을 가지며, 이게 행렬 크기를 결정합니다. 버전 1은 <code>21&times;21</code> 모듈이고, 한 단계마다 한 변당 모듈이 4개씩 늘어 버전 40은 <code>177&times;177</code>이 됩니다. 인코더는 선택한 <strong>오류 정정 레벨</strong>에서 데이터를 담을 수 있는 가장 작은 버전을 고릅니다. 레벨은 적용되는 리드-솔로몬(Reed-Solomon) 복구에 따라 네 가지입니다: <strong>L</strong>은 손상 모듈의 약 7%, <strong>M</strong>은 약 15%, <strong>Q</strong>는 약 25%, <strong>H</strong>는 약 30%를 복구합니다. 복구율이 높으면 용량은 줄어들지만 더러움이나 부분 가림, 가운데 로고 삽입을 견딥니다.</p>
+            <p>용량은 인코딩 모드에도 좌우됩니다 &mdash; <em>숫자(numeric)</em>(숫자만)가 가장 밀도가 높고, 다음이 <em>영숫자(alphanumeric)</em>(0&ndash;9, A&ndash;Z, 일부 기호), 그다음이 <em>바이트(byte)</em>(UTF-8)입니다. 버전 40에서 레벨 L일 때 코드는 숫자 7,089자리, 영숫자 4,296자, 또는 2,953바이트까지 담습니다. 마지막으로 <strong>마스크 패턴</strong>이 적용됩니다. 인코더는 여러 마스크를 시도해 흑백 분포가 가장 균형 잡힌 것을 유지하므로, 리더가 모서리의 파인더/타이밍 패턴과 데이터 모듈을 구분할 수 있습니다.</p>
+          </section>
+          <section>
+            <h2>자주 쓰는 경우</h2>
+            <ul>
+              <li>포스터나 명함에서 URL 입력 없이 웹사이트로 연결하기</li>
+              <li>게스트가 스캔해 바로 연결할 수 있는 Wi-Fi 자격증명 공유</li>
+              <li>vCard를 인코딩해 휴대폰이 연락처를 바로 가져가게 하기</li>
+              <li>제품 라벨이나 식당 메뉴에 안정적인 링크 붙이기</li>
+            </ul>
+          </section>
+          <section>
+            <h2>사용 예</h2>
+            <p>URL <code>https://example.com</code>의 QR을 생성합니다. 인코더는:</p>
+            <pre><code>input:  https://example.com   (24바이트, byte 모드)
+level:  M  (약 15% 복구)
+picks:  버전 1, 21x21 모듈
+applies: 8개 후 중 최적 마스크
+output: 스캔 가능한 PNG</code></pre>
+            <p>짧은 URL은 버전 1에 여유 있게 들어가 결과 코드가 작아 저해상도에서도 스캔됩니다. 훨씬 긴 URL은 인코더를 더 큰 버전과 더 조밀한 행렬로 밀어 올립니다.</p>
+          </section>
+        </section>
+        <section class="faq-section">
+          <h2>자주 묻는 질문</h2>
+          <details class="faq-item">
+            <summary>QR 코드란 무엇인가요?</summary>
+            <div class="faq-answer"><p>QR(Quick Response) 코드는 흑백 모듈의 2차원 행렬입니다. 가로로만 데이터를 저장하는 1차원 바코드와 달리 QR은 두 방향 모두에 데이터를 저장하므로 URL, 연락처, Wi-Fi 자격증명을 담으면서도 휴대폰 카메라로 스캔할 수 있습니다.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>QR 버전 1~40은 무엇을 의미하나요?</summary>
+            <div class="faq-answer"><p>버전은 행렬의 물리적 크기를 정합니다. 버전 1은 <code>21&times;21</code> 모듈이고 버전이 오를 때마다 한 변당 모듈이 4개씩 늘어 버전 40은 <code>177&times;177</code>이 됩니다. 큰 버전이 더 많은 데이터를 담으므로, 인코더는 입력과 선택한 오류 정정 레벨을 모두 담을 수 있는 가장 작은 버전을 고릅니다.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>오류 정정 레벨 L, M, Q, H는 무엇인가요?</summary>
+            <div class="faq-answer"><p>네 가지 리드-솔로몬 복구 레벨입니다: L은 손상 모듈 약 7%, M은 약 15%, Q는 약 25%, H는 약 30%를 복구합니다. 높은 레벨은 더러움이나 가림을 더 견디지만 데이터 용량이 줄어들어, 거친 표면에 인쇄하거나 가운데 로고를 넣을 때 적합합니다.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>QR 코드가 담을 수 있는 데이터에 최대치가 있나요?</summary>
+            <div class="faq-answer"><p>네, 콘텐츠 종류와 오류 정정에 따라 다릅니다. 버전 40에서 낮은(L) 정정일 때 QR은 숫자 7,089자리, 영숫자 4,296자, 또는 원시 데이터 2,953바이트까지 담습니다. URL은 거리에서 스캔 가능하도록 짧게 유지하세요.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>생성된 코드는 만료되거나 서버가 필요한가요?</summary>
+            <div class="faq-answer"><p>아닙니다. 행렬은 텍스트에서 로컬로 계산되므로 코드는 영구적이며 오프라인으로 작동합니다. 짧은 링크로 리디렉션하는 동적 QR 서비스만 서버가 필요합니다 &mdash; 이 도구가 만드는 정적 QR은 만료되지 않습니다.</p></div>
+          </details>
+        </section>
+      </div>
     </main>
     <footer>
       <div class="footer-content">

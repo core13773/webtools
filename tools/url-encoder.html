@@ -2,7 +2,7 @@
 <html lang="en" id="root-html">
   <head>
     <meta charset="UTF-8" />
-    <script>(function(){var s=localStorage.getItem('theme');var t=s||((window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)?'dark':'light');document.documentElement.setAttribute('data-theme',t);})();</script>
+    <script>(function(){var s=localStorage.getItem('theme');var t=s||((window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)?'dark':'light');document.documentElement.setAttribute('data-theme',t);var l=localStorage.getItem('lang');if(!l){l=((navigator.language||'').startsWith('ko')?'ko':'en');}document.documentElement.lang=l;})();</script>
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <meta name="google-adsense-account" content="ca-pub-4794002106764884" />
     <link
@@ -128,6 +128,53 @@
             "publisher": {
               "@id": "https://webtool.monster/#organization"
             }
+          },
+          {
+            "@type": "FAQPage",
+            "@id": "https://webtool.monster/tools/url-encoder.html#faqpage",
+            "url": "https://webtool.monster/tools/url-encoder.html",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "What is percent-encoding?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Percent-encoding is the mechanism defined in RFC 3986 for representing characters inside a URI. Any byte that is not an unreserved character is written as a percent sign followed by the two hexadecimal digits of that byte, for example a space becomes %20."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "What is the difference between encodeURI and encodeURIComponent?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "encodeURI leaves reserved characters such as : / ? # [ ] @ intact, so it is meant for a whole URL. encodeURIComponent encodes those reserved characters too, so it is meant for a single query parameter value or path segment where they must not be treated as delimiters."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Why do spaces sometimes become %20 and sometimes +?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Both represent a space. %20 is the percent-encoded form used by RFC 3986 in the path and query. The plus sign is the older application/x-www-form-urlencoded form inherited from HTML forms. This tool uses the standard percent-encoded form (%20)."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "How are Korean or emoji characters encoded?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Non-ASCII characters are first converted to their UTF-8 byte sequence, then each byte is percent-encoded. Hangul is usually three bytes, so one Korean character turns into three %XX groups. Decoding reverses the process to recover the original text."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Is my input sent to a server?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "No. Encoding and decoding run entirely in your browser using the native encodeURI and decodeURIComponent functions. Your input never leaves your device."
+                }
+              }
+            ]
           }
         ]
       }
@@ -287,6 +334,128 @@
           </span>
         </div>
       </section>
+
+      <!-- ===== Long-form content (EN) ===== -->
+      <div class="lang-en">
+        <section class="tool-content">
+          <section>
+            <h2>About the URL Encoder / Decoder</h2>
+            <p>A URL (URI, defined by RFC 3986) may only carry a limited set of ASCII characters. Anything outside that set &mdash; a space, a brace, Hangul, an emoji, or any byte with the high bit set &mdash; must be <em>percent-encoded</em> before it can appear in a URL. This tool performs that encoding and its reverse, so you can safely embed arbitrary text in a path or query string and recover the original later. Everything runs in your browser; nothing is sent anywhere.</p>
+          </section>
+          <section>
+            <h2>How it works</h2>
+            <p>Percent-encoding writes a byte as a percent sign followed by two hexadecimal digits: <code>%XX</code>. RFC 3986 splits characters into two groups. <strong>Unreserved</strong> characters &mdash; <code>A</code>&ndash;<code>Z</code>, <code>a</code>&ndash;<code>z</code>, <code>0</code>&ndash;<code>9</code>, and <code>-</code> <code>.</code> <code>_</code> <code>~</code> &mdash; never need encoding because they have no special meaning. <strong>Reserved</strong> characters &mdash; the gen-delims <code>: / ? # [ ] @</code> and the sub-delims <code>! $ &amp; ' ( ) * + , ; =</code> &mdash; act as delimiters, so whether they must be encoded depends on where they appear.</p>
+            <p>JavaScript exposes two functions for this. <code>encodeURI</code> leaves the reserved characters <em>untouched</em>, because it assumes you are encoding an entire URL where <code>://</code> and <code>?q=</code> must stay literal. <code>encodeURIComponent</code> encodes those reserved characters too, because it targets a single component &mdash; a query value or a path segment &mdash; where a literal <code>?</code> or <code>&amp;</code> would be misread as a delimiter. For non-ASCII text such as Hangul, the text is first converted to its UTF-8 byte sequence and each byte is then percent-encoded; a single Korean character usually becomes three <code>%XX</code> groups.</p>
+          </section>
+          <section>
+            <h2>Common use cases</h2>
+            <ul>
+              <li>Building a query string whose value contains spaces or non-ASCII text</li>
+              <li>Passing a redirect URL inside another URL as a parameter</li>
+              <li>Embedding JSON, Base64, or free-form search terms safely in a path</li>
+              <li>Handling Hangul, CJK, or emoji in shareable links</li>
+              <li>Debugging a broken link by inspecting or reverting percent-encoding</li>
+            </ul>
+          </section>
+          <section>
+            <h2>Worked example</h2>
+            <p>Encoding a search URL whose query contains spaces and Korean text:</p>
+            <pre><code>Input:
+https://example.com/search?q=hello world 한국어
+
+encodeURIComponent("hello world 한국어")
+=&gt; "hello%20world%20%ED%95%9C%EA%B5%AD%EC%96%B4"
+
+Full encoded URL:
+https://example.com/search?q=hello%20world%20%ED%95%9C%EA%B5%AD%EC%96%B4</code></pre>
+            <p>The space becomes <code>%20</code>, and each Hangul syllable expands to three UTF-8 bytes (<code>%ED%95%9C</code> for <code>한</code>, and so on). The reserved <code>?</code> and <code>=</code> in the full URL are left intact, exactly as <code>encodeURI</code> would.</p>
+          </section>
+        </section>
+        <section class="faq-section">
+          <h2>Frequently asked questions</h2>
+          <details class="faq-item">
+            <summary>What is percent-encoding?</summary>
+            <div class="faq-answer"><p>Percent-encoding is the mechanism defined in RFC 3986 for representing characters inside a URI. Any byte that is not an unreserved character is written as a percent sign followed by the two hexadecimal digits of that byte, for example a space becomes <code>%20</code>.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>What is the difference between encodeURI and encodeURIComponent?</summary>
+            <div class="faq-answer"><p><code>encodeURI</code> leaves reserved characters such as <code>: / ? # [ ] @</code> intact, so it is meant for a whole URL. <code>encodeURIComponent</code> encodes those reserved characters too, so it is meant for a single query parameter value or path segment where they must not be treated as delimiters.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>Why do spaces sometimes become %20 and sometimes +?</summary>
+            <div class="faq-answer"><p>Both represent a space. <code>%20</code> is the percent-encoded form used by RFC 3986 in the path and query. The plus sign is the older <code>application/x-www-form-urlencoded</code> form inherited from HTML forms. This tool uses the standard percent-encoded form (<code>%20</code>).</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>How are Korean or emoji characters encoded?</summary>
+            <div class="faq-answer"><p>Non-ASCII characters are first converted to their UTF-8 byte sequence, then each byte is percent-encoded. Hangul is usually three bytes, so one Korean character turns into three <code>%XX</code> groups. Decoding reverses the process to recover the original text.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>Is my input sent to a server?</summary>
+            <div class="faq-answer"><p>No. Encoding and decoding run entirely in your browser using the native <code>encodeURI</code> and <code>decodeURIComponent</code> functions. Your input never leaves your device.</p></div>
+          </details>
+        </section>
+      </div>
+
+      <!-- ===== Long-form content (KO) ===== -->
+      <div class="lang-ko" lang="ko">
+        <section class="tool-content">
+          <section>
+            <h2>URL 인코더/디코더란?</h2>
+            <p>URL(URI, RFC 3986에 정의됨)은 제한된 ASCII 문자만 담을 수 있습니다. 그 집합 밖의 모든 것 &mdash; 공백, 중괄호, 한글, 이모지, 최상위 비트가 1인 바이트 &mdash; 은 URL에 들어가기 전에 <em>퍼센트 인코딩</em>되어야 합니다. 이 도구는 그 인코딩과 역연산을 수행하여 경로나 쿼리 문자열에 임의 텍스트를 안전하게 넣고 나중에 원본을 되찾을 수 있게 합니다. 모든 처리는 브라우저에서 이루어지며 외부로 전송되지 않습니다.</p>
+          </section>
+          <section>
+            <h2>작동 방식</h2>
+            <p>퍼센트 인코딩은 바이트를 퍼센트 기호와 두 자리 16진수로 표기합니다: <code>%XX</code>. RFC 3986은 문자를 두 그룹으로 나눕니다. <strong>비예약(unreserved)</strong> 문자 &mdash; <code>A</code>&ndash;<code>Z</code>, <code>a</code>&ndash;<code>z</code>, <code>0</code>&ndash;<code>9</code>, 그리고 <code>-</code> <code>.</code> <code>_</code> <code>~</code> &mdash; 은 특별한 의미가 없어 인코딩할 필요가 없습니다. <strong>예약(reserved)</strong> 문자 &mdash; 일반 구분자 <code>: / ? # [ ] @</code>와 하위 구분자 <code>! $ &amp; ' ( ) * + , ; =</code> &mdash; 는 구분자 역할을 하므로, 인코딩해야 하는지는 등장 위치에 따라 다릅니다.</p>
+            <p>자바스크립트는 이를 위한 함수 두 개를 제공합니다. <code>encodeURI</code>는 예약 문자를 <em>그대로</em> 둡니다. 전체 URL을 인코딩한다고 가정하여 <code>://</code>와 <code>?q=</code>가 리터럴로 남아야 하기 때문입니다. 반면 <code>encodeURIComponent</code>는 예약 문자까지 인코딩합니다. 쿼리 값이나 경로 세그먼트 같은 단일 컴포넌트를 대상으로 하여, 리터럴 <code>?</code>나 <code>&amp;</code>가 구분자로 잘못 읽히는 것을 막습니다. 한글 같은 비-ASCII 텍스트는 먼저 UTF-8 바이트 시퀀스로 변환된 뒤 각 바이트가 퍼센트 인코딩되며, 한 글자는 보통 세 개의 <code>%XX</code> 그룹이 됩니다.</p>
+          </section>
+          <section>
+            <h2>자주 쓰는 경우</h2>
+            <ul>
+              <li>값에 공백이나 비-ASCII 텍스트가 있는 쿼리 문자열 만들기</li>
+              <li>리다이렉트 URL을 다른 URL의 파라미터로 전달하기</li>
+              <li>JSON, Base64, 자유 형식 검색어를 경로에 안전하게 넣기</li>
+              <li>공유 가능한 링크에서 한글, CJK, 이모지 처리하기</li>
+              <li>퍼센트 인코딩을 검사하거나 되돌려 깨진 링크 디버깅하기</li>
+            </ul>
+          </section>
+          <section>
+            <h2>사용 예</h2>
+            <p>쿼리에 공백과 한국어가 포함된 검색 URL을 인코딩하면:</p>
+            <pre><code>Input:
+https://example.com/search?q=hello world 한국어
+
+encodeURIComponent("hello world 한국어")
+=&gt; "hello%20world%20%ED%95%9C%EA%B5%AD%EC%96%B4"
+
+Full encoded URL:
+https://example.com/search?q=hello%20world%20%ED%95%9C%EA%B5%AD%EC%96%B4</code></pre>
+            <p>공백은 <code>%20</code>이 되고, 한글 음절 각각은 UTF-8 3바이트로 확장됩니다(<code>한</code> &rarr; <code>%ED%95%9C</code>). 전체 URL 안의 예약 문자 <code>?</code>와 <code>=</code>는 <code>encodeURI</code>가 하듯 그대로 남습니다.</p>
+          </section>
+        </section>
+        <section class="faq-section">
+          <h2>자주 묻는 질문</h2>
+          <details class="faq-item">
+            <summary>퍼센트 인코딩이란 무엇인가요?</summary>
+            <div class="faq-answer"><p>퍼센트 인코딩은 URI 안의 문자를 표현하기 위해 RFC 3986에 정의된 메커니즘입니다. 비예약 문자가 아닌 모든 바이트는 퍼센트 기호 뒤에 해당 바이트의 두 자리 16진수를 붙여 표기합니다. 예를 들어 공백은 <code>%20</code>이 됩니다.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>encodeURI와 encodeURIComponent의 차이는?</summary>
+            <div class="faq-answer"><p><code>encodeURI</code>는 <code>: / ? # [ ] @</code> 같은 예약 문자를 그대로 두어 전체 URL 용도로 쓰입니다. <code>encodeURIComponent</code>는 예약 문자까지 인코딩하여 단일 쿼리 파라미터 값이나 경로 세그먼트처럼 예약 문자가 구분자로 취급되면 안 되는 곳에 씁니다.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>공백이 어떨 땐 %20, 어떨 땐 +가 되는 이유는?</summary>
+            <div class="faq-answer"><p>둘 다 공백을 뜻합니다. <code>%20</code>은 RFC 3986에서 경로와 쿼리에 쓰는 퍼센트 인코딩 형태입니다. 더하기 기호는 HTML 폼에서 유래한 오래된 <code>application/x-www-form-urlencoded</code> 형태입니다. 이 도구는 표준 퍼센트 인코딩 형태(<code>%20</code>)를 사용합니다.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>한국어나 이모지는 어떻게 인코딩되나요?</summary>
+            <div class="faq-answer"><p>비-ASCII 문자는 먼저 UTF-8 바이트 시퀀스로 변환된 뒤 각 바이트가 퍼센트 인코딩됩니다. 한글은 보통 3바이트이므로 한 글자가 세 개의 <code>%XX</code> 그룹이 됩니다. 디코딩하면 과정이 역순으로 진행되어 원본 텍스트가 복원됩니다.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>입력이 서버로 전송되나요?</summary>
+            <div class="faq-answer"><p>아닙니다. 인코딩과 디코딩은 전적으로 브라우저에서 네이티브 <code>encodeURI</code>/<code>decodeURIComponent</code> 함수로 처리됩니다. 입력은 기기를 떠나지 않습니다.</p></div>
+          </details>
+        </section>
+      </div>
     </main>
     <footer>
       <div class="footer-content">

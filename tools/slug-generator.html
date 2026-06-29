@@ -2,7 +2,7 @@
 <html lang="en" id="root-html">
   <head>
     <meta charset="UTF-8" />
-    <script>(function(){var s=localStorage.getItem('theme');var t=s||((window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)?'dark':'light');document.documentElement.setAttribute('data-theme',t);})();</script>
+    <script>(function(){var s=localStorage.getItem('theme');var t=s||((window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)?'dark':'light');document.documentElement.setAttribute('data-theme',t);var l=localStorage.getItem('lang');if(!l){l=((navigator.language||'').startsWith('ko')?'ko':'en');}document.documentElement.lang=l;})();</script>
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <meta name="google-adsense-account" content="ca-pub-4794002106764884" />
     <link rel="preconnect" href="https://pagead2.googlesyndication.com" crossorigin="anonymous" />
@@ -64,6 +64,53 @@
             "url": "https://webtool.monster/",
             "name": "WebTools - Free Online Developer Tools",
             "publisher": { "@id": "https://webtool.monster/#organization" }
+          },
+          {
+            "@type": "FAQPage",
+            "@id": "https://webtool.monster/tools/slug-generator.html#faqpage",
+            "url": "https://webtool.monster/tools/slug-generator.html",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "What makes a good URL slug?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "A good slug is lowercase, short, descriptive, and uses hyphens to separate words. It contains only URL-safe ASCII characters, avoids punctuation and spaces, and reads naturally so both search engines and humans can understand the page topic from the URL alone."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "How are accented characters handled?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Accented characters are normalized with Unicode NFKD, which decomposes a composed character into its base letter plus combining marks. The combining marks are then stripped, so e-with-acute becomes plain e. This folds most Latin accents to their ASCII equivalent."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Why hyphens instead of underscores?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Google treats a hyphen as a word separator but not an underscore, so hello-world is read as two words while hello_world is read as one. Hyphens are also reserved characters that never need encoding in a URL path, making them the safer choice for readability and SEO."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "What happens to non-ASCII scripts like Korean?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "NFKD normalization does not decompose Hangul into ASCII, so the default pipeline strips or transliterates those characters depending on the tool's mode. For full international slugs you may need a dedicated transliteration step that maps each syllable to a romanized form (for example annyeong) before generating the slug."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Is my text sent to a server?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "No. Slugs are generated entirely in your browser through string normalization and replacement. Nothing is uploaded, so the tool is safe for unpublished titles, draft content, and confidential material."
+                }
+              }
+            ]
           }
         ]
       }
@@ -160,6 +207,118 @@
           <span data-i18n="tools_slug.usage_tip">💡 Tip: URL slugs should be short, lowercase, and use hyphens to separate words. This improves readability and SEO for blog posts, product pages, and documentation.</span>
         </div>
       </section>
+
+      <!-- ===== Long-form content (EN) ===== -->
+      <div class="lang-en">
+        <section class="tool-content">
+          <section>
+            <h2>About the Slug Generator</h2>
+            <p>A <strong>URL slug</strong> is the human-readable tail of a web address &mdash; the part after the domain that identifies a page, such as <code>how-to-bake-bread</code> in <code>example.com/blog/how-to-bake-bread</code>. Good slugs are short, lowercase, descriptive, and use hyphens to separate words, which helps search engines and readers understand the page at a glance. The Slug Generator turns an arbitrary title into such a slug automatically, applying normalization and cleaning rules that would otherwise be a tedious manual edit.</p>
+          </section>
+          <section>
+            <h2>How it works</h2>
+            <p>The pipeline applies a fixed sequence of transforms. First the input is <strong>lowercased</strong>. Next, accented characters are normalized with Unicode <strong>NFKD</strong> decomposition: a composed character such as <code>&eacute;</code> is split into its base letter <code>e</code> plus a combining acute accent, and the combining marks are then stripped, so <code>&eacute;</code> collapses to <code>e</code>. After folding, <strong>punctuation and symbols are removed</strong> and every run of whitespace (spaces, tabs, newlines) is replaced with a single separator &mdash; a hyphen by default, or an underscore if you select it. Consecutive separators are collapsed and leading or trailing ones are trimmed. The result contains only URL-safe characters.</p>
+            <p>The reason for NFKD rather than NFC is decomposition: NFKD breaks composed forms into base plus diacritics, which is what lets the stripper recover the plain ASCII letter. Scripts that NFKD does not map to ASCII (Hangul, CJK, Cyrillic, Arabic) need an additional <strong>transliteration</strong> step that substitutes a romanized equivalent &mdash; for example romanizing the Korean greeting to <code>annyeong</code> &mdash; because stripping them outright would lose the word. Hyphens are preferred over underscores because search engines treat a hyphen as a word boundary.</p>
+          </section>
+          <section>
+            <h2>Common use cases</h2>
+            <ul>
+              <li>Generating SEO-friendly permalinks for blog posts and articles</li>
+              <li>Creating product or category URLs from marketing titles</li>
+              <li>Building anchor links and fragment identifiers from headings</li>
+              <li>Producing <code>kebab-case</code> keys for documentation pages</li>
+              <li>Cleaning pasted titles into safe filename or path segments</li>
+            </ul>
+          </section>
+          <section>
+            <h2>Worked example</h2>
+            <p>Take the mixed-language title:</p>
+            <pre><code>Héllo, World! 안녕</code></pre>
+            <p>Lowercasing and NFKD normalization fold <code>&eacute;</code> to <code>e</code> and strip the punctuation, then whitespace runs become hyphens. With a transliteration step applied to the Hangul, the final slug is:</p>
+            <pre><code>hello-world-annyeong</code></pre>
+            <p>If transliteration is disabled the Hangul is dropped instead, leaving <code>hello-world</code> &mdash; still URL-safe, but missing the second word.</p>
+          </section>
+        </section>
+        <section class="faq-section">
+          <h2>Frequently asked questions</h2>
+          <details class="faq-item">
+            <summary>What makes a good URL slug?</summary>
+            <div class="faq-answer"><p>A good slug is lowercase, short, descriptive, and uses hyphens to separate words. It contains only URL-safe ASCII characters, avoids punctuation and spaces, and reads naturally so both search engines and humans can understand the page topic from the URL alone.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>How are accented characters handled?</summary>
+            <div class="faq-answer"><p>Accented characters are normalized with Unicode <strong>NFKD</strong>, which decomposes a composed character into its base letter plus combining marks. The combining marks are then stripped, so e-with-acute becomes plain <code>e</code>. This folds most Latin accents to their ASCII equivalent.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>Why hyphens instead of underscores?</summary>
+            <div class="faq-answer"><p>Google treats a hyphen as a word separator but not an underscore, so <code>hello-world</code> is read as two words while <code>hello_world</code> is read as one. Hyphens are also reserved characters that never need encoding in a URL path, making them the safer choice for readability and SEO.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>What happens to non-ASCII scripts like Korean?</summary>
+            <div class="faq-answer"><p>NFKD normalization does not decompose Hangul into ASCII, so the default pipeline strips or transliterates those characters depending on the tool's mode. For full international slugs you may need a dedicated transliteration step that maps each syllable to a romanized form (for example <code>annyeong</code>) before generating the slug.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>Is my text sent to a server?</summary>
+            <div class="faq-answer"><p>No. Slugs are generated entirely in your browser through string normalization and replacement. Nothing is uploaded, so the tool is safe for unpublished titles, draft content, and confidential material.</p></div>
+          </details>
+        </section>
+      </div>
+
+      <!-- ===== Long-form content (KO) ===== -->
+      <div class="lang-ko" lang="ko">
+        <section class="tool-content">
+          <section>
+            <h2>슬러그 생성기란?</h2>
+            <p><strong>URL 슬러그</strong>는 웹 주소의 사람이 읽을 수 있는 끝부분입니다. 도메인 뒤에 붙어 한 페이지를 식별하는 부분으로, <code>example.com/blog/how-to-bake-bread</code>에서 <code>how-to-bake-bread</code>가 슬러그입니다. 좋은 슬러그는 짧고, 소문자이며, 설명적이고, 단어를 하이픈으로 구분합니다. 그래야 검색엔진과 독자 모두 URL만 봐도 페이지를 파악할 수 있습니다. 슬러그 생성기는 임의의 제목이나 헤딩을 이런 슬러그로 자동 변환하며, 직접 하면 귀찮을 정규화와 정리 작업을 한 번에 처리해 줍니다.</p>
+          </section>
+          <section>
+            <h2>작동 방식</h2>
+            <p>파이프라인은 고정된 변환 순서를 따릅니다. 먼저 입력을 <strong>소문자로 변환</strong>합니다. 다음으로 악센트가 있는 문자를 유니코드 <strong>NFKD</strong> 분해로 정규화합니다. 합쳐진 문자 <code>&eacute;</code>는 기본 글자 <code>e</code>와 결합 악센트로 분해되고, 결합 부호가 제거되면서 <code>&eacute;</code>는 <code>e</code>로 합쳐집니다. 폴딩이 끝나면 <strong>구두점과 기호를 제거</strong>하고, 공백 문자열(스페이스, 탭, 줄바꿈)을 하나의 구분자 &mdash; 기본값은 하이픈, 선택 시 밑줄 &mdash; 로 바꿉니다. 연속된 구분자는 하나로 합쳐지고 앞뒤 구분자는 다듬습니다. 결과에는 URL에 안전한 문자만 남습니다.</p>
+            <p>NFC가 아니라 NFKD를 쓰는 이유는 분해 때문입니다. NFKD는 합쳐진 형태를 기본 글자와 분음 부호로 나누어 주므로, 제거 단계에서 순수 ASCII 글자를 복원할 수 있습니다. NFKD가 ASCII로 매핑하지 않는 문자 체계(한글, 한자, 키릴, 아랍어 등)에는 추가 <strong>음역(transliteration)</strong> 단계가 필요합니다. 각 문자를 로마자 표기로 치환하는 단계로, 한국어 인사를 <code>annyeong</code>으로 바꾸는 식입니다. 이 단계 없이 통째로 지우면 단어가 사라지기 때문입니다. 하이픈을 밑줄보다 선호하는 이유는 검색엔진이 하이픈을 단어 경계로 인식하기 때문입니다.</p>
+          </section>
+          <section>
+            <h2>자주 쓰는 경우</h2>
+            <ul>
+              <li>블로그 게시물/기사용 SEO 친화적 퍼마링크 생성</li>
+              <li>마케팅 제목에서 제품/카테고리 URL 만들기</li>
+              <li>헤딩에서 앵커 링크와 프래그먼트 식별자 생성</li>
+              <li>문서 페이지용 <code>kebab-case</code> 키 생성</li>
+              <li>붙여 넣은 제목을 안전한 파일명/경로 세그먼트로 정리</li>
+            </ul>
+          </section>
+          <section>
+            <h2>사용 예</h2>
+            <p>여러 언어가 섞인 제목을 예로 듭니다.</p>
+            <pre><code>Héllo, World! 안녕</code></pre>
+            <p>소문자 변환과 NFKD 정규화가 <code>&eacute;</code>를 <code>e</code>로 폴딩하고 구두점을 제거한 뒤, 공백 문자열이 하이픈이 됩니다. 한글에 음역 단계를 적용하면 최종 슬러그는 다음과 같습니다.</p>
+            <pre><code>hello-world-annyeong</code></pre>
+            <p>음역을 끄면 한글이 제거되어 <code>hello-world</code>가 됩니다 &mdash; 여전히 URL에 안전하지만 두 번째 단어가 빠집니다.</p>
+          </section>
+        </section>
+        <section class="faq-section">
+          <h2>자주 묻는 질문</h2>
+          <details class="faq-item">
+            <summary>좋은 URL 슬러그의 조건은?</summary>
+            <div class="faq-answer"><p>좋은 슬러그는 소문자이고, 짧고, 설명적이며, 단어를 하이픈으로 구분합니다. URL에 안전한 ASCII 문자만 포함하고 구두점과 공백을 피하며, 자연스럽게 읽혀서 검색엔진과 사람 모두 URL만으로 페이지 주제를 이해할 수 있어야 합니다.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>악센트 문자는 어떻게 처리되나요?</summary>
+            <div class="faq-answer"><p>악센트 문자는 유니코드 <strong>NFKD</strong>로 정규화되어 합쳐진 문자를 기본 글자와 결합 부호로 분해합니다. 그다음 결합 부호를 제거하므로 e-with-acute는 순수 <code>e</code>가 됩니다. 이 과정이 대부분의 라틴 악센트를 해당 ASCII 글자로 폴딩합니다.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>왜 밑줄 대신 하이픈인가요?</summary>
+            <div class="faq-answer"><p>구글은 하이픈은 단어 구분자로 인식하지만 밑줄은 그렇지 않습니다. 그래서 <code>hello-world</code>는 두 단어로, <code>hello_world</code>는 한 단어로 읽힙니다. 하이픈은 URL 경로에서 인코딩이 필요 없는 예약 문자이기도 하므로 가독성과 SEO 모두에서 더 안전한 선택입니다.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>한국어 같은 비 ASCII 문자는 어떻게 되나요?</summary>
+            <div class="faq-answer"><p>NFKD 정규화는 한글을 ASCII로 분해하지 않으므로, 기본 파이프라인은 도구 모드에 따라 이 문자들을 제거하거나 음역합니다. 완전한 다국어 슬러그를 원하면 슬러그 생성 전에 각 음절을 로마자 표기(예: <code>annyeong</code>)로 매핑하는 전용 음역 단계가 필요할 수 있습니다.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>제 텍스트가 서버로 전송되나요?</summary>
+            <div class="faq-answer"><p>아닙니다. 슬러그는 전적으로 브라우저에서 문자열 정규화와 치환으로 생성됩니다. 업로드되는 것은 없으므로 미공개 제목, 초안 콘텐츠, 기밀 자료에도 안전합니다.</p></div>
+          </details>
+        </section>
+      </div>
     </main>
     <footer>
       <div class="footer-content">

@@ -2,7 +2,7 @@
 <html lang="en" id="root-html">
   <head>
     <meta charset="UTF-8" />
-    <script>(function(){var s=localStorage.getItem('theme');var t=s||((window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)?'dark':'light');document.documentElement.setAttribute('data-theme',t);})();</script>
+    <script>(function(){var s=localStorage.getItem('theme');var t=s||((window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)?'dark':'light');document.documentElement.setAttribute('data-theme',t);var l=localStorage.getItem('lang');if(!l){l=((navigator.language||'').startsWith('ko')?'ko':'en');}document.documentElement.lang=l;})();</script>
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <meta name="google-adsense-account" content="ca-pub-4794002106764884" />
     <link
@@ -128,6 +128,53 @@
             "publisher": {
               "@id": "https://webtool.monster/#organization"
             }
+          },
+          {
+            "@type": "FAQPage",
+            "@id": "https://webtool.monster/tools/html-encoder.html#faqpage",
+            "url": "https://webtool.monster/tools/html-encoder.html",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "Which characters should be encoded?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "In body content the four essential characters are < (less-than), > (greater-than), & (ampersand), and \" (double quote). In attribute values you should also escape the quote character that wraps the value (\" or '). Encoding these prevents the browser from treating user text as live HTML markup."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "What is the difference between named and numeric entities?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "A named entity uses a readable name such as &lt; or &amp;. A numeric entity references the Unicode code point directly, either in decimal (&#60;) or in hexadecimal (&#x3C;). They resolve to the same character; named entities are easier to read while numeric entities can represent any code point that has no name."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Does HTML encoding prevent XSS?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Yes, for content reflected into HTML text or attributes. Escaping <, >, and \" stops the browser from parsing attacker-supplied <script> tags as real elements, so the payload renders as inert text instead of executing. This is context-dependent output encoding, which is the primary defense against reflected and stored XSS."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Why does my encoded text look the same after decoding?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Because decoding is the exact inverse of encoding. The decoder walks the string, finds entities such as &lt; or &#60;, and replaces each with the character it stands for, returning the original text. Encoding then escaping that text again yields the same entities, so round-tripping is lossless."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Is my text uploaded anywhere?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "No. Encoding and decoding run entirely in your browser through string replacement. Nothing is sent to a server, so the tool is safe for templates, source code, and sensitive content."
+                }
+              }
+            ]
           }
         ]
       }
@@ -283,6 +330,118 @@
           </span>
         </div>
       </section>
+
+      <!-- ===== Long-form content (EN) ===== -->
+      <div class="lang-en">
+        <section class="tool-content">
+          <section>
+            <h2>About the HTML Encoder / Decoder</h2>
+            <p>HTML reserves a few characters for its own syntax &mdash; <code>&lt;</code>, <code>&gt;</code>, <code>&amp;</code>, and the quote characters &mdash; so any that appear in your <em>content</em> must be written as <strong>character entity references</strong> rather than literally. The HTML Encoder does that translation in both directions: <em>encoding</em> replaces reserved characters with entities so the browser renders them as visible text, and <em>decoding</em> reverses entities back to the original characters. It is the standard primitive for safely embedding user-provided strings in an HTML document.</p>
+          </section>
+          <section>
+            <h2>How it works</h2>
+            <p>Entities come in two families. <strong>Named entities</strong> use a readable name wrapped in <code>&amp;</code> and <code>;</code>: <code>&amp;lt;</code> renders <code>&lt;</code>, <code>&amp;gt;</code> renders <code>&gt;</code>, <code>&amp;amp;</code> renders <code>&amp;</code>, <code>&amp;quot;</code> renders <code>&quot;</code>, and <code>&amp;apos;</code> renders <code>&#39;</code>. <strong>Numeric entities</strong> reference the Unicode code point directly &mdash; decimal <code>&amp;#60;</code> or hexadecimal <code>&amp;#x3C;</code> &mdash; and can express any code point. Both families decode to the same character.</p>
+            <p>Encoding matters because the parser is greedy: seeing <code>&lt;script&gt;</code> it tries to build an element, and seeing a bare <code>&amp;</code> it starts looking for an entity name. Escaping those bytes forces the browser to treat them as text. That is also why encoding is the first line of defense against <strong>XSS (Cross-Site Scripting)</strong>: if attacker-controlled input is reflected into HTML with <code>&lt;</code>, <code>&gt;</code>, and <code>&quot;</code> escaped, a payload like <code>&lt;script&gt;alert(1)&lt;/script&gt;</code> renders as inert text rather than executing. Decoding reverses the process by scanning for <code>&amp;name;</code> / <code>&amp;#NN;</code> / <code>&amp;#xHH;</code> patterns and substituting the matching character, so the round-trip is lossless.</p>
+          </section>
+          <section>
+            <h2>Common use cases</h2>
+            <ul>
+              <li>Safely displaying user comments or form input in an HTML page</li>
+              <li>Showing a code snippet with HTML tags without it being parsed</li>
+              <li>Preparing sample markup for a tutorial or docs page</li>
+              <li>Hardening a template against reflected and stored XSS</li>
+              <li>Decoding scraped text that arrives full of entities</li>
+            </ul>
+          </section>
+          <section>
+            <h2>Worked example</h2>
+            <p>Take a snippet with a script tag and an ampersand:</p>
+            <pre><code>&lt;script&gt;alert("a & b")&lt;/script&gt;</code></pre>
+            <p>After encoding it becomes entities that the browser will render as text instead of executing:</p>
+            <pre><code>&amp;lt;script&amp;gt;alert(&amp;quot;a &amp;amp; b&amp;quot;)&amp;lt;/script&amp;gt;</code></pre>
+            <p>Decoding that output returns the original snippet exactly, because every entity maps back to one character.</p>
+          </section>
+        </section>
+        <section class="faq-section">
+          <h2>Frequently asked questions</h2>
+          <details class="faq-item">
+            <summary>Which characters should be encoded?</summary>
+            <div class="faq-answer"><p>In body content the four essential characters are <code>&lt;</code> (less-than), <code>&gt;</code> (greater-than), <code>&amp;</code> (ampersand), and <code>&quot;</code> (double quote). In attribute values you should also escape the quote character that wraps the value (<code>&quot;</code> or <code>&#39;</code>). Encoding these prevents the browser from treating user text as live HTML markup.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>What is the difference between named and numeric entities?</summary>
+            <div class="faq-answer"><p>A named entity uses a readable name such as <code>&amp;lt;</code> or <code>&amp;amp;</code>. A numeric entity references the Unicode code point directly, either in decimal (<code>&amp;#60;</code>) or in hexadecimal (<code>&amp;#x3C;</code>). They resolve to the same character; named entities are easier to read while numeric entities can represent any code point that has no name.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>Does HTML encoding prevent XSS?</summary>
+            <div class="faq-answer"><p>Yes, for content reflected into HTML text or attributes. Escaping <code>&lt;</code>, <code>&gt;</code>, and <code>&quot;</code> stops the browser from parsing attacker-supplied <code>&lt;script&gt;</code> tags as real elements, so the payload renders as inert text instead of executing. This is context-dependent output encoding, which is the primary defense against reflected and stored XSS.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>Why does my encoded text look the same after decoding?</summary>
+            <div class="faq-answer"><p>Because decoding is the exact inverse of encoding. The decoder walks the string, finds entities such as <code>&amp;lt;</code> or <code>&amp;#60;</code>, and replaces each with the character it stands for, returning the original text. Encoding then escaping that text again yields the same entities, so round-tripping is lossless.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>Is my text uploaded anywhere?</summary>
+            <div class="faq-answer"><p>No. Encoding and decoding run entirely in your browser through string replacement. Nothing is sent to a server, so the tool is safe for templates, source code, and sensitive content.</p></div>
+          </details>
+        </section>
+      </div>
+
+      <!-- ===== Long-form content (KO) ===== -->
+      <div class="lang-ko" lang="ko">
+        <section class="tool-content">
+          <section>
+            <h2>HTML 인코더/디코더란?</h2>
+            <p>HTML은 일부 문자를 자체 문법용으로 예약해 둡니다 &mdash; <code>&lt;</code>, <code>&gt;</code>, <code>&amp;</code>, 따옴표 문자가 그것입니다. 그래서 <em>콘텐츠</em> 안에 이런 문자가 나오면 글자 그대로가 아니라 <strong>문자 엔터티 참조(character entity reference)</strong>로 써야 합니다. HTML 인코더는 이 변환을 양방향으로 수행합니다. <em>인코딩</em>은 예약 문자를 엔터티로 바꾸어 브라우저가 이를 보이는 텍스트로 렌더링하게 만들고, <em>디코딩</em>은 엔터티를 원래 문자로 되돌립니다. 사용자가 제공한 문자열을 HTML 문서에 안전하게 끼워 넣을 때 쓰는 표준 프리미티브입니다.</p>
+          </section>
+          <section>
+            <h2>작동 방식</h2>
+            <p>엔터티에는 두 가지 계열이 있습니다. <strong>이름 엔터티(named entity)</strong>는 <code>&amp;</code>와 <code>;</code>로 감싼 읽기 쉬운 이름을 씁니다. <code>&amp;lt;</code>는 <code>&lt;</code>, <code>&amp;gt;</code>는 <code>&gt;</code>, <code>&amp;amp;</code>는 <code>&amp;</code>, <code>&amp;quot;</code>는 <code>&quot;</code>, <code>&amp;apos;</code>는 <code>&#39;</code>로 렌더링됩니다. <strong>숫자 엔터티(numeric entity)</strong>는 유니코드 코드 포인트를 직접 참조합니다 &mdash; 십진 <code>&amp;#60;</code> 또는 십육진 <code>&amp;#x3C;</code> &mdash; 이름이 없는 어떤 코드 포인트라도 표현할 수 있습니다. 두 계열 모두 같은 문자로 디코딩됩니다.</p>
+            <p>인코딩이 중요한 이유는 파서가 탐욕적이기 때문입니다. <code>&lt;script&gt;</code>를 보면 요소를 만들려 하고, 그냥 <code>&amp;</code>를 보면 엔터티 이름을 찾기 시작합니다. 이 바이트들을 이스케이프하면 브라우저가 이를 텍스트로 취급하게 만듭니다. 그래서 인코딩이 <strong>XSS(크로스 사이트 스크립팅)</strong> 방어의 첫 번째 방패이기도 합니다. 공격자가 제어한 입력이 <code>&lt;</code>, <code>&gt;</code>, <code>&quot;</code>를 이스케이프한 채 HTML로 출력되면, <code>&lt;script&gt;alert(1)&lt;/script&gt;</code> 같은 페이로드는 실행되지 않고 무효한 텍스트로 렌더링됩니다. 디코딩은 역방향으로, <code>&amp;name;</code> / <code>&amp;#NN;</code> / <code>&amp;#xHH;</code> 패턴을 스캔해 대응 문자로 치환하므로 왕복이 무손실입니다.</p>
+          </section>
+          <section>
+            <h2>자주 쓰는 경우</h2>
+            <ul>
+              <li>사용자 댓글이나 폼 입력을 HTML 페이지에 안전하게 표시하기</li>
+              <li>HTML 태그를 포함한 코드 조각이 파싱되지 않고 보이게 출력하기</li>
+              <li>튜토리얼/문서 페이지용 샘플 마크업 준비</li>
+              <li>반사형/저장형 XSS에 대한 템플릿 방어 강화</li>
+              <li>엔터티 투성이로 수집/저장된 텍스트 디코딩</li>
+            </ul>
+          </section>
+          <section>
+            <h2>사용 예</h2>
+            <p>script 태그와 앰퍼샌드가 포함된 조각을 예로 듭니다.</p>
+            <pre><code>&lt;script&gt;alert("a & b")&lt;/script&gt;</code></pre>
+            <p>HTML 인코딩을 거치면 브라우저가 실행 대신 텍스트로 렌더링하는 엔터티 문자열이 됩니다.</p>
+            <pre><code>&amp;lt;script&amp;gt;alert(&amp;quot;a &amp;amp; b&amp;quot;)&amp;lt;/script&amp;gt;</code></pre>
+            <p>이 출력을 디코딩하면 원래 조각이 그대로 돌아옵니다. 모든 엔터티가 한 문자에 매핑되므로 더해지거나 잃히는 것은 없습니다.</p>
+          </section>
+        </section>
+        <section class="faq-section">
+          <h2>자주 묻는 질문</h2>
+          <details class="faq-item">
+            <summary>어떤 문자를 인코딩해야 하나요?</summary>
+            <div class="faq-answer"><p>본문 콘텐츠에서 필수적인 네 문자는 <code>&lt;</code>(보다 작음), <code>&gt;</code>(보다 큼), <code>&amp;</code>(앰퍼샌드), <code>&quot;</code>(큰따옴표)입니다. 속성값에서는 값을 감싼 따옴표 문자(<code>&quot;</code> 또는 <code>&#39;</code>)도 이스케이프해야 합니다. 이 문자들을 인코딩하면 브라우저가 사용자 텍스트를 살아 있는 HTML 마크업으로 취급하지 않습니다.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>이름 엔터티와 숫자 엔터티의 차이는?</summary>
+            <div class="faq-answer"><p>이름 엔터티는 <code>&amp;lt;</code>, <code>&amp;amp;</code>처럼 읽기 쉬운 이름을 씁니다. 숫자 엔터티는 유니코드 코드 포인트를 직접 참조하며, 십진(<code>&amp;#60;</code>) 또는 십육진(<code>&amp;#x3C;</code>) 형식이 있습니다. 둘은 같은 문자로 해석됩니다. 이름 엔터티가 읽기 편하고, 숫자 엔터티는 이름이 없는 모든 코드 포인트를 표현할 수 있습니다.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>HTML 인코딩이 XSS를 막나요?</summary>
+            <div class="faq-answer"><p>네, HTML 텍스트나 속성으로 출력되는 콘텐츠에 한해서 그렇습니다. <code>&lt;</code>, <code>&gt;</code>, <code>&quot;</code>를 이스케이프하면 브라우저가 공격자가 넣은 <code>&lt;script&gt;</code> 태그를 실제 요소로 파싱하지 못하므로, 페이로드가 실행되는 대신 무효한 텍스트로 렌더링됩니다. 이것이 문맥에 따른 출력 이스케이프이며, 반사형/저장형 XSS에 대한 1차 방어 수단입니다.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>인코딩한 텍스트를 디코딩하면 왜 같아 보이나요?</summary>
+            <div class="faq-answer"><p>디코딩이 인코딩의 정확한 역이기 때문입니다. 디코더는 문자열을 훑으며 <code>&amp;lt;</code>나 <code>&amp;#60;</code> 같은 엔터티를 찾아 각각이 가리키는 문자로 치환해 원래 텍스트를 돌려줍니다. 이 텍스트를 다시 인코딩하면 같은 엔터티가 나오므로 왕복이 무손실입니다.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>제 텍스트가 외부로 전송되나요?</summary>
+            <div class="faq-answer"><p>아닙니다. 인코딩과 디코딩은 전적으로 브라우저 안에서 문자열 치환으로 이루어집니다. 서버로 전송되는 것은 없으므로 템플릿, 소스 코드, 민감한 내용에도 안전합니다.</p></div>
+          </details>
+        </section>
+      </div>
     </main>
     <footer>
       <div class="footer-content">

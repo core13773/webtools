@@ -2,7 +2,7 @@
 <html lang="en" id="root-html">
   <head>
     <meta charset="UTF-8" />
-    <script>(function(){var s=localStorage.getItem('theme');var t=s||((window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)?'dark':'light');document.documentElement.setAttribute('data-theme',t);})();</script>
+    <script>(function(){var s=localStorage.getItem('theme');var t=s||((window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)?'dark':'light');document.documentElement.setAttribute('data-theme',t);var l=localStorage.getItem('lang');if(!l){l=((navigator.language||'').startsWith('ko')?'ko':'en');}document.documentElement.lang=l;})();</script>
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <meta name="google-adsense-account" content="ca-pub-4794002106764884" />
     <link rel="preconnect" href="https://pagead2.googlesyndication.com" crossorigin="anonymous" />
@@ -64,6 +64,19 @@
             "url": "https://webtool.monster/",
             "name": "WebTools - Free Online Developer Tools",
             "publisher": { "@id": "https://webtool.monster/#organization" }
+          },
+          {
+            "@type": "FAQPage",
+            "@id": "https://webtool.monster/tools/markdown-previewer.html#faqpage",
+            "url": "https://webtool.monster/tools/markdown-previewer.html",
+            "mainEntity": [
+              { "@type": "Question", "name": "What flavor of Markdown does this support?", "acceptedAnswer": { "@type": "Answer", "text": "The renderer follows the CommonMark specification and adds GitHub-Flavored Markdown extras such as tables, task lists, strikethrough, and fenced code blocks. Together these cover the syntax most documentation and README files use." } },
+              { "@type": "Question", "name": "Does Markdown compile to HTML?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Markdown is a plain-text shorthand. The parser tokenizes block and inline constructs and emits HTML elements, which the preview pane renders and the Copy HTML action lets you reuse elsewhere." } },
+              { "@type": "Question", "name": "Is the rendered HTML safe from XSS?", "acceptedAnswer": { "@type": "Answer", "text": "The output is sanitized before it is inserted into the page, so raw script tags, inline event handlers, and javascript: URLs are stripped. You should still sanitize again if you embed the exported HTML into your own site, since trust boundaries differ." } },
+              { "@type": "Question", "name": "Are my documents uploaded to a server?", "acceptedAnswer": { "@type": "Answer", "text": "No. Parsing, rendering, and HTML export all run locally in your browser. Drafts, notes, and any pasted content stay on your device." } },
+              { "@type": "Question", "name": "What is the difference between block and inline Markdown?", "acceptedAnswer": { "@type": "Answer", "text": "Block constructs such as headings, lists, code fences, and blockquotes structure the document into elements. Inline syntax such as bold, italics, links, and inline code styles text within a paragraph. The parser handles each layer with its own rules." } },
+              { "@type": "Question", "name": "Can I download the source Markdown?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. The Download Markdown action saves the exact text in the input area as an .md file, preserving code fences, tables, and all formatting exactly as you wrote it." } }
+            ]
           }
         ]
       }
@@ -157,6 +170,146 @@
           <span data-i18n="tools_markdown.usage_tip">💡 Tip: This tool supports basic GitHub Flavored Markdown syntax. Preview tables, lists, code blocks, and more.</span>
         </div>
       </section>
+
+      <!-- ===== Long-form content (EN) ===== -->
+      <div class="lang-en">
+        <section class="tool-content">
+          <section>
+            <h2>About the Markdown Previewer</h2>
+            <p>Markdown is a lightweight plain-text format that lets writers produce structured HTML without ever touching an angle bracket. It powers README files on GitHub, documentation sites, static-site generators, chat apps, and note-taking tools. This previewer takes the text you type, parses it into HTML in real time, and shows the rendered result side by side &mdash; so you see exactly how the published page will look while you write. Everything runs in your browser; no draft is ever uploaded.</p>
+          </section>
+          <section>
+            <h2>How it works</h2>
+            <p>The renderer targets <strong>CommonMark</strong>, the unambiguous specification of Markdown, layered with <strong>GitHub-Flavored Markdown</strong> (GFM) extras. The parser first tokenizes <em>block-level</em> constructs: headings (<code>#</code>, <code>##</code>), ordered and unordered lists (<code>1.</code>, <code>-</code>), fenced code blocks (triple backticks), blockquotes (<code>&gt;</code>), thematic breaks, and paragraphs. It then resolves <em>inline</em> constructs inside each block: bold (<code>**text**</code>), italics (<code>*text*</code>), links (<code>[text](url)</code>), and inline code (single backticks). Each token becomes a corresponding HTML element, so Markdown is fundamentally a compiler from shorthand text to HTML.</p>
+            <p>GFM adds constructs that plain CommonMark lacks: pipe <strong>tables</strong>, <strong>task lists</strong> with <code>[ ]</code> / <code>[x]</code> checkboxes, and <strong>strikethrough</strong> with <code>~~text~~</code>. Because the output is HTML that will live in a page, the rendered string is <strong>sanitized</strong> before insertion: raw <code>&lt;script&gt;</code> tags, inline event handlers such as <code>onclick</code>, and <code>javascript:</code> URLs are stripped. That sanitization is what prevents stored cross-site scripting (XSS) when user-authored Markdown is displayed &mdash; the single most important security property of any Markdown renderer.</p>
+          </section>
+          <section>
+            <h2>Common use cases</h2>
+            <ul>
+              <li>Drafting a project README and previewing it before pushing to GitHub</li>
+              <li>Writing documentation that will be published as static HTML</li>
+              <li>Checking that tables, task lists, and code fences render correctly</li>
+              <li>Grabbing clean HTML to paste into a CMS or email template</li>
+              <li>Reviewing GFM-specific syntax that plain Markdown parsers miss</li>
+            </ul>
+          </section>
+          <section>
+            <h2>Worked example</h2>
+            <p>Given this Markdown snippet:</p>
+<pre><code># Release notes
+- Added **dark mode**
+- Fixed `login` redirect
+&gt; Ships in v2.0</code></pre>
+            <p>The renderer compiles it to this HTML:</p>
+<pre><code>&lt;h1&gt;Release notes&lt;/h1&gt;
+&lt;ul&gt;
+  &lt;li&gt;Added &lt;strong&gt;dark mode&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;Fixed &lt;code&gt;login&lt;/code&gt; redirect&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;Ships in v2.0&lt;/p&gt;
+&lt;/blockquote&gt;</code></pre>
+            <p>The heading, list, inline <code>strong</code> and <code>code</code>, and blockquote all map one-to-one from their Markdown shorthand.</p>
+          </section>
+        </section>
+        <section class="faq-section">
+          <h2>Frequently asked questions</h2>
+          <details class="faq-item">
+            <summary>What flavor of Markdown does this support?</summary>
+            <div class="faq-answer"><p>The renderer follows the CommonMark specification and adds GitHub-Flavored Markdown extras such as tables, task lists, strikethrough, and fenced code blocks. Together these cover the syntax most documentation and README files use.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>Does Markdown compile to HTML?</summary>
+            <div class="faq-answer"><p>Yes. Markdown is a plain-text shorthand. The parser tokenizes block and inline constructs and emits HTML elements, which the preview pane renders and the Copy HTML action lets you reuse elsewhere.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>Is the rendered HTML safe from XSS?</summary>
+            <div class="faq-answer"><p>The output is sanitized before it is inserted into the page, so raw script tags, inline event handlers, and javascript: URLs are stripped. You should still sanitize again if you embed the exported HTML into your own site, since trust boundaries differ.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>Are my documents uploaded to a server?</summary>
+            <div class="faq-answer"><p>No. Parsing, rendering, and HTML export all run locally in your browser. Drafts, notes, and any pasted content stay on your device.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>What is the difference between block and inline Markdown?</summary>
+            <div class="faq-answer"><p>Block constructs such as headings, lists, code fences, and blockquotes structure the document into elements. Inline syntax such as bold, italics, links, and inline code styles text within a paragraph. The parser handles each layer with its own rules.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>Can I download the source Markdown?</summary>
+            <div class="faq-answer"><p>Yes. The Download Markdown action saves the exact text in the input area as an .md file, preserving code fences, tables, and all formatting exactly as you wrote it.</p></div>
+          </details>
+        </section>
+      </div>
+
+      <!-- ===== Long-form content (KO) ===== -->
+      <div class="lang-ko" lang="ko">
+        <section class="tool-content">
+          <section>
+            <h2>마크다운 프리뷰어란?</h2>
+            <p>마크다운은 작성자가 꺾쇠 괄호를 전혀 만지지 않고 구조화된 HTML을 만들 수 있게 해 주는 가벼운 일반 텍스트 형식입니다. GitHub의 README, 문서 사이트, 정적 사이트 생성기, 채팅 앱, 노트 앱까지 두루 쓰입니다. 이 프리뷰어는 입력한 텍스트를 받아 실시간으로 HTML로 파싱하고 렌더링 결과를 나란히 보여 줍니다 &mdash; 글을 쓰는 동안 게시될 페이지가 어떻게 보일지 정확히 볼 수 있습니다. 모든 처리는 브라우저에서 이루어지며 어떤 초안도 업로드되지 않습니다.</p>
+          </section>
+          <section>
+            <h2>작동 방식</h2>
+            <p>렌더러는 모호함 없는 마크다운 표준인 <strong>CommonMark</strong>를 대상으로 하며, 그 위에 <strong>GitHub-Flavored Markdown</strong>(GFM) 확장을 얹습니다. 파서는 먼저 <em>블록 수준</em> 구문을 토큰화합니다. 제목(<code>#</code>, <code>##</code>), 순서/비순서 목록(<code>1.</code>, <code>-</code>), 펜스 코드 블록(백틱 세 개), 인용구(<code>&gt;</code>), 수평선, 단락 등입니다. 그다음 각 블록 안의 <em>인라인</em> 구문을 해석합니다. 굵게(<code>**text**</code>), 기울임(<code>*text*</code>), 링크(<code>[text](url)</code>), 인라인 코드(백틱 하나)입니다. 각 토큰은 대응하는 HTML 요소가 되므로, 마크다운은 본질적으로 약어 텍스트에서 HTML로 가는 컴파일러입니다.</p>
+            <p>GFM은 일반 CommonMark에 없는 구문을 추가합니다. 파이프 <strong>테이블</strong>, <code>[ ]</code> / <code>[x]</code> 체크박스 <strong>작업 목록</strong>, <code>~~text~~</code> <strong>취소선</strong>입니다. 출력이 페이지에 들어갈 HTML이므로, 렌더링된 문자열은 삽입 전에 <strong>새니타이즈</strong>됩니다. 날것의 <code>&lt;script&gt;</code> 태그, <code>onclick</code> 같은 인라인 이벤트 핸들러, <code>javascript:</code> URL이 제거됩니다. 이 새니타이징이 사용자가 작성한 마크다운을 표시할 때 저장형 XSS(크로스사이트 스크립팅)를 막아 주며 &mdash; 모든 마크다운 렌더러에서 가장 중요한 보안 속성입니다.</p>
+          </section>
+          <section>
+            <h2>자주 쓰는 경우</h2>
+            <ul>
+              <li>프로젝트 README를 작성하고 GitHub에 푸시하기 전 미리 보기</li>
+              <li>정적 HTML로 게시될 문서 작성하기</li>
+              <li>테이블, 작업 목록, 코드 펜스가 올바르게 렌더링되는지 확인하기</li>
+              <li>CMS나 이메일 템플릿에 넣을 깨끗한 HTML 가져오기</li>
+              <li>일반 마크다운 파서가 놓치는 GFM 전용 구문 검토하기</li>
+            </ul>
+          </section>
+          <section>
+            <h2>사용 예</h2>
+            <p>다음 마크다운 조각이 주어지면:</p>
+<pre><code># Release notes
+- Added **dark mode**
+- Fixed `login` redirect
+&gt; Ships in v2.0</code></pre>
+            <p>렌더러는 이것을 다음 HTML로 컴파일합니다:</p>
+<pre><code>&lt;h1&gt;Release notes&lt;/h1&gt;
+&lt;ul&gt;
+  &lt;li&gt;Added &lt;strong&gt;dark mode&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;Fixed &lt;code&gt;login&lt;/code&gt; redirect&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;Ships in v2.0&lt;/p&gt;
+&lt;/blockquote&gt;</code></pre>
+            <p>제목, 목록, 인라인 <code>strong</code>과 <code>code</code>, 인용구가 모두 마크다운 약어에서 일대일로 대응됩니다.</p>
+          </section>
+        </section>
+        <section class="faq-section">
+          <h2>자주 묻는 질문</h2>
+          <details class="faq-item">
+            <summary>어떤 마크다운 변형을 지원하나요?</summary>
+            <div class="faq-answer"><p>렌더러는 CommonMark 사양을 따르며 테이블, 작업 목록, 취소선, 펜스 코드 블록 같은 GitHub-Flavored Markdown 확장을 추가합니다. 이 조합이 대부분의 문서와 README에서 쓰는 구문을 다룹니다.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>마크다운이 HTML로 컴파일되나요?</summary>
+            <div class="faq-answer"><p>네. 마크다운은 일반 텍스트 약어입니다. 파서가 블록과 인라인 구문을 토큰화하여 HTML 요소를 만들어 내며, 미리보기 창이 그것을 렌더링하고 Copy HTML 동작으로 다른 곳에 재사용할 수 있습니다.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>렌더링된 HTML이 XSS에 안전한가요?</summary>
+            <div class="faq-answer"><p>출력은 페이지에 삽입되기 전에 새니타이즈되므로 날것의 script 태그, 인라인 이벤트 핸들러, javascript: URL이 제거됩니다. 다만 내보낸 HTML을 자신의 사이트에 삽입할 때는 신뢰 경계가 다르므로 다시 새니타이즈하는 것이 좋습니다.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>문서가 서버로 업로드되나요?</summary>
+            <div class="faq-answer"><p>아닙니다. 파싱, 렌더링, HTML 내보내기는 모두 브라우저에서 로컬로 실행됩니다. 초안, 메모, 붙여넣은 모든 콘텐츠는 기기에 머뭅니다.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>블록 마크다운과 인라인 마크다운의 차이는?</summary>
+            <div class="faq-answer"><p>제목, 목록, 코드 펜스, 인용구 같은 블록 구문이 문서를 요소로 구조화합니다. 굵게, 기울임, 링크, 인라인 코드 같은 인라인 구문은 단락 안의 텍스트를 꾸밉니다. 파서는 각 계층을 자체 규칙으로 처리합니다.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>원본 마크다운을 다운로드할 수 있나요?</summary>
+            <div class="faq-answer"><p>네. Download Markdown 동작이 입력 영역의 텍스트를 그대로 .md 파일로 저장하며, 코드 펜스, 테이블, 모든 서식이 작성한 그대로 보존됩니다.</p></div>
+          </details>
+        </section>
+      </div>
     </main>
     <footer>
       <div class="footer-content">

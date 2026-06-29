@@ -2,7 +2,7 @@
 <html lang="en" id="root-html">
   <head>
     <meta charset="UTF-8" />
-    <script>(function(){var s=localStorage.getItem('theme');var t=s||((window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)?'dark':'light');document.documentElement.setAttribute('data-theme',t);})();</script>
+    <script>(function(){var s=localStorage.getItem('theme');var t=s||((window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)?'dark':'light');document.documentElement.setAttribute('data-theme',t);var l=localStorage.getItem('lang');if(!l){l=((navigator.language||'').startsWith('ko')?'ko':'en');}document.documentElement.lang=l;})();</script>
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <meta name="google-adsense-account" content="ca-pub-4794002106764884" />
     <link
@@ -128,6 +128,53 @@
             "publisher": {
               "@id": "https://webtool.monster/#organization"
             }
+          },
+          {
+            "@type": "FAQPage",
+            "@id": "https://webtool.monster/tools/hash-generator.html#faqpage",
+            "url": "https://webtool.monster/tools/hash-generator.html",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "Is hashing the same as encryption?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "No. A hash is a one-way function: you can compute a digest from input but you cannot recover the input from the digest, so there is no decryption. Encryption is reversible with a key; hashing is not reversible at all. That is exactly what makes hashes suitable for verifying data without exposing it."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Which algorithm should I use?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Prefer SHA-256. MD5 (128-bit) and SHA-1 (160-bit) are considered broken because practical collision attacks exist, so they must not be used for security. SHA-256 produces a 256-bit digest with no known practical collision attack and is the current industry default for integrity and signatures."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Why are MD5 and SHA-1 still shown?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "For compatibility and checksum verification of legacy systems. Many older file-integrity lists, ROM dumps, and download mirrors still publish MD5 or SHA-1 sums, so the tool computes them for matching purposes only, not for new security work."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Are hashes safe for storing passwords?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "A plain hash is not enough. Use a slow, salted password-hashing scheme such as bcrypt, scrypt, or Argon2. SHA-256 alone is too fast and would let an attacker test billions of guesses per second against a stolen hash table."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Does hashing run in my browser?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Yes. This tool uses the Web Crypto SubtleCrypto API (crypto.subtle.digest), which computes SHA-256 and SHA-1 natively in the browser. The input never leaves your device."
+                }
+              }
+            ]
           }
         ]
       }
@@ -289,6 +336,122 @@
           </span>
         </div>
       </section>
+
+      <!-- ===== Long-form content (EN) ===== -->
+      <div class="lang-en">
+        <section class="tool-content">
+          <section>
+            <h2>About the Hash Generator</h2>
+            <p>A cryptographic hash function takes an input of any size &mdash; a byte, a text file, a multi-gigabyte image &mdash; and returns a small, fixed-length fingerprint called a <em>digest</em>. The same input always yields the same digest, and any change, even one flipped bit, yields a completely different digest. This tool computes MD5, SHA-1, and SHA-256 in your browser through the Web Crypto SubtleCrypto API; the input never leaves your device.</p>
+          </section>
+          <section>
+            <h2>How it works</h2>
+            <p>Each algorithm returns a digest of a fixed bit length: <strong>MD5</strong> is 128-bit (32 hex characters), <strong>SHA-1</strong> is 160-bit (40 hex characters), and <strong>SHA-256</strong> is 256-bit (64 hex characters). The digest is shown as hexadecimal because each byte maps to two <code>0</code>&ndash;<code>9</code>/<code>a</code>&ndash;<code>f</code> characters. Most of these algorithms use the <strong>Merkle&ndash;Damg&aring;rd construction</strong>: the input is padded to a multiple of a 512-bit block, a length suffix is appended, and the message is processed one block at a time through a compression function that folds each block into a running state. The final state is the digest.</p>
+            <p>The defining property is <strong>collision resistance</strong>: finding two distinct inputs that hash to the same digest must be infeasible. MD5 and SHA-1 are <em>broken</em> &mdash; practical collision attacks exist &mdash; so they must not protect anything of value. SHA-256 has no known practical collision attack and is the current default. Hashing is <strong>one-way</strong>: there is no decryption. You can compute a digest from data, but not recover data from a digest, which makes hashes fit for integrity checks and content addressing.</p>
+          </section>
+          <section>
+            <h2>Common use cases</h2>
+            <ul>
+              <li>Verifying file integrity &mdash; compare a download's digest to a published checksum</li>
+              <li>Detecting changes in config, logs, or backups (a different digest means a change)</li>
+              <li>Content addressing in Git, IPFS, and content-addressable storage (the hash <em>is</em> the address)</li>
+              <li>Deduplicating data &mdash; identical content yields identical hashes</li>
+              <li>A building block inside keyed HMACs or digital signatures</li>
+            </ul>
+          </section>
+          <section>
+            <h2>Worked example</h2>
+            <p>Hashing the single line <code>hello</code> gives:</p>
+            <pre><code>Input:    hello
+
+MD5:      5d41402abc4b2a76b9719d911017c592
+SHA-1:    aaf4c61ddcc5e8a2dabede0f3b482cd9aea9434d
+SHA-256:  2cf24dba5fb0a30e26e83b2ac5b9e29e1b161e5c1fa7425e73043362938b9824</code></pre>
+            <p>Notice how the three algorithms return different-length digests for the same input, and how changing one character would scramble every digest completely. For storage that must resist attackers, prefer SHA-256 (or a salted scheme like bcrypt/Argon2 for passwords).</p>
+          </section>
+        </section>
+        <section class="faq-section">
+          <h2>Frequently asked questions</h2>
+          <details class="faq-item">
+            <summary>Is hashing the same as encryption?</summary>
+            <div class="faq-answer"><p>No. A hash is a one-way function: you can compute a digest from input but you cannot recover the input from the digest, so there is no decryption. Encryption is reversible with a key; hashing is not reversible at all. That is exactly what makes hashes suitable for verifying data without exposing it.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>Which algorithm should I use?</summary>
+            <div class="faq-answer"><p>Prefer SHA-256. MD5 (128-bit) and SHA-1 (160-bit) are considered broken because practical collision attacks exist, so they must not be used for security. SHA-256 produces a 256-bit digest with no known practical collision attack and is the current industry default for integrity and signatures.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>Why are MD5 and SHA-1 still shown?</summary>
+            <div class="faq-answer"><p>For compatibility and checksum verification of legacy systems. Many older file-integrity lists, ROM dumps, and download mirrors still publish MD5 or SHA-1 sums, so the tool computes them for matching purposes only, not for new security work.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>Are hashes safe for storing passwords?</summary>
+            <div class="faq-answer"><p>A plain hash is not enough. Use a slow, salted password-hashing scheme such as bcrypt, scrypt, or Argon2. SHA-256 alone is too fast and would let an attacker test billions of guesses per second against a stolen hash table.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>Does hashing run in my browser?</summary>
+            <div class="faq-answer"><p>Yes. This tool uses the Web Crypto SubtleCrypto API (<code>crypto.subtle.digest</code>), which computes SHA-256 and SHA-1 natively in the browser. The input never leaves your device.</p></div>
+          </details>
+        </section>
+      </div>
+
+      <!-- ===== Long-form content (KO) ===== -->
+      <div class="lang-ko" lang="ko">
+        <section class="tool-content">
+          <section>
+            <h2>해시 생성기란?</h2>
+            <p>암호학적 해시 함수는 1바이트, 텍스트 파일, 수 GB 디스크 이미지 등 <em>임의 크기</em>의 입력을 받아 고정 길이의 작은 지문인 <em>다이제스트</em>를 반환합니다. 같은 입력은 항상 같은 다이제스트를 내고, 1비트만 뒤집혀도 완전히 다른 다이제스트가 나옵니다. 이 도구는 MD5, SHA-1, SHA-256을 동시에 계산하며, 모든 처리는 브라우저의 Web Crypto SubtleCrypto API로 이루어져 입력이 기기를 떠나지 않습니다.</p>
+          </section>
+          <section>
+            <h2>작동 방식</h2>
+            <p>각 알고리즘은 고정된 비트 길이의 다이제스트를 냅니다. <strong>MD5</strong>는 128비트(16진수 32문자), <strong>SHA-1</strong>은 160비트(16진수 40문자), <strong>SHA-256</strong>은 256비트(16진수 64문자)입니다. 다이제스트는 16진수 텍스트로 표현되는데, 각 바이트가 <code>0</code>&ndash;<code>9</code>/<code>a</code>&ndash;<code>f</code> 두 문자로 깔끔히 대응되기 때문입니다. 이 알고리즘 대부분은 <strong>머클&ndash;담고(Merkle&ndash;Damg&aring;rd) 구조</strong> 위에 구축됩니다. 입력을 512비트 블록의 배수로 패딩하고 길이 접미사를 붙인 뒤, 메시지를 한 블록씩 압축 함수로 처리해 각 블록을 누적 상태에 접습니다. 그 최종 상태가 다이제스트입니다.</p>
+            <p>결정적인 보안 속성은 <strong>충돌 저항(collision resistance)</strong>입니다. 같은 다이제스트를 내는 두 개의 서로 다른 입력을 찾는 것이 현실적으로 불가능해야 합니다. MD5와 SHA-1은 실용적인 충돌 공격이 존재해 <em>깨진</em> 것으로 간주되며, 가치가 있는 것을 보호하는 데 쓰면 안 됩니다. SHA-256은 알려진 실용적 충돌 공격이 없어 현재 기본값입니다. 결정적으로 해시는 <strong>단방향</strong>입니다. 복호화가 없습니다. 데이터로부터 다이제스트는 계산할 수 있어도 다이제스트로부터 데이터를 복구할 수 없으며, 그래서 무결성 검사와 콘텐츠 어드레싱에 적합합니다.</p>
+          </section>
+          <section>
+            <h2>자주 쓰는 경우</h2>
+            <ul>
+              <li>파일 무결성 검증 &mdash; 다운로드의 다이제스트를 공개된 체크섬과 비교</li>
+              <li>설정, 로그, 백업의 변경 감지 (다이제스트가 다르면 변경된 것)</li>
+              <li>Git, IPFS, 콘텐츠 주소 가능 저장소의 콘텐츠 어드레싱 (해시가 곧 주소)</li>
+              <li>데이터 중복 제거 &mdash; 같은 콘텐츠는 같은 해시</li>
+              <li>키가 있는 HMAC이나 디지털 서명의 구성 요소로 사용</li>
+            </ul>
+          </section>
+          <section>
+            <h2>사용 예</h2>
+            <p>단일 줄 <code>hello</code>를 해싱하면:</p>
+            <pre><code>Input:    hello
+
+MD5:      5d41402abc4b2a76b9719d911017c592
+SHA-1:    aaf4c61ddcc5e8a2dabede0f3b482cd9aea9434d
+SHA-256:  2cf24dba5fb0a30e26e83b2ac5b9e29e1b161e5c1fa7425e73043362938b9824</code></pre>
+            <p>같은 입력에 대해 세 알고리즘이 서로 다르고 길이도 다른 다이제스트를 내는 것, 그리고 한 글자만 바꿔도 모든 다이제스트가 완전히 뒤섞이는 점을 확인하세요. 공격을 막아야 하는 저장에는 SHA-256을(비밀번호라면 bcrypt/Argon2 같은 솔트 방식을) 권장합니다.</p>
+          </section>
+        </section>
+        <section class="faq-section">
+          <h2>자주 묻는 질문</h2>
+          <details class="faq-item">
+            <summary>해시가 암호화와 같은 건가요?</summary>
+            <div class="faq-answer"><p>아닙니다. 해시는 단방향 함수입니다. 입력으로 다이제스트는 계산할 수 있어도 다이제스트에서 입력을 복구할 수 없으므로 복호화가 없습니다. 암호화는 키로 가역적이지만 해시는 전혀 가역적이지 않습니다. 그래서 데이터를 노출하지 않고 검증하는 용도에 딱 맞습니다.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>어떤 알고리즘을 써야 하나요?</summary>
+            <div class="faq-answer"><p>SHA-256을 권장합니다. MD5(128비트)와 SHA-1(160비트)은 실용적 충돌 공격이 존재해 보안 용도로는 깨진 것으로 간주됩니다. SHA-256은 알려진 실용적 충돌 공격이 없는 256비트 다이제스트를 내며 무결성과 서명의 현재 산업 기본값입니다.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>왜 MD5와 SHA-1도 여전히 보여 주나요?</summary>
+            <div class="faq-answer"><p>레거시 시스템과의 호환 및 체크섬 검증 때문입니다. 오래된 파일 무결성 목록, ROM 덤프, 다운로드 미러 많은 곳이 여전히 MD5나 SHA-1 합계를 게시하므로, 이 도구는 일치 확인 목적으로만 계산하며 새 보안 용도로는 쓰지 않습니다.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>비밀번호 저장에 해시가 안전한가요?</summary>
+            <div class="faq-answer"><p>평문 해시만으로는 부족합니다. bcrypt, scrypt, Argon2 같은 느리고 솔트가 있는 비밀번호 해시 방식을 사용하세요. SHA-256 단독은 너무 빨라서 해시 테이블을 탈취한 공격자가 초당 수십억 번의 추측을 시도할 수 있습니다.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>해싱이 제 브라우저에서 실행되나요?</summary>
+            <div class="faq-answer"><p>네. 이 도구는 브라우저에서 SHA-256과 SHA-1을 네이티브로 계산하는 Web Crypto SubtleCrypto API(<code>crypto.subtle.digest</code>)를 사용합니다. 입력은 기기를 떠나지 않습니다.</p></div>
+          </details>
+        </section>
+      </div>
     </main>
     <footer>
       <div class="footer-content">

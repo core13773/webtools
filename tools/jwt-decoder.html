@@ -2,7 +2,7 @@
 <html lang="en" id="root-html">
   <head>
     <meta charset="UTF-8" />
-    <script>(function(){var s=localStorage.getItem('theme');var t=s||((window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)?'dark':'light');document.documentElement.setAttribute('data-theme',t);})();</script>
+    <script>(function(){var s=localStorage.getItem('theme');var t=s||((window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)?'dark':'light');document.documentElement.setAttribute('data-theme',t);var l=localStorage.getItem('lang');if(!l){l=((navigator.language||'').startsWith('ko')?'ko':'en');}document.documentElement.lang=l;})();</script>
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <meta name="google-adsense-account" content="ca-pub-4794002106764884" />
     <link rel="preconnect" href="https://pagead2.googlesyndication.com" crossorigin="anonymous" />
@@ -64,6 +64,53 @@
             "url": "https://webtool.monster/",
             "name": "WebTools - Free Online Developer Tools",
             "publisher": { "@id": "https://webtool.monster/#organization" }
+          },
+          {
+            "@type": "FAQPage",
+            "@id": "https://webtool.monster/tools/jwt-decoder.html#faqpage",
+            "url": "https://webtool.monster/tools/jwt-decoder.html",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "Does decoding a JWT verify its signature?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "No. Decoding only base64url-decodes the header and payload so you can read the claims. Proving authenticity requires signature verification against the secret or public key, which this tool does not perform. Never trust claims from an unverified token."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Is the JWT payload encrypted?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "No. A standard JWT payload is base64url-encoded, not encrypted, so anyone who has the token can read it. Sensitive data must never be placed in a JWT payload unless you use a separate JSON Web Encryption (JWE) token."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "What are the common payload claims?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Standard registered claims include sub (subject), iss (issuer), aud (audience), exp (expiration time), iat (issued-at time), and nbf (not-before time). Custom application-specific claims can also appear alongside them."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Why does my token fail to decode?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "The most common causes are a truncated token, a missing third (signature) segment, copy-paste whitespace, or a JWE token that is encrypted rather than merely signed. The tool expects exactly three base64url parts separated by dots."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Is my token sent to a server?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "No. All decoding runs locally in your browser, so live access tokens and credentials never leave your device. This makes the tool safe for inspecting real authentication tokens."
+                }
+              }
+            ]
           }
         ]
       }
@@ -156,6 +203,132 @@
           <span data-i18n="tools_jwt.usage_tip">💡 Tip: JWTs are commonly used for server authentication. The payload is Base64Url-encoded and readable by anyone, but only the signature can verify tampering.</span>
         </div>
       </section>
+
+      <!-- ===== Long-form content (EN) ===== -->
+      <div class="lang-en">
+        <section class="tool-content">
+          <section>
+            <h2>About the JWT Decoder</h2>
+            <p>A JSON Web Token (JWT, RFC 7519) is a compact, URL-safe string used to assert claims between two parties, most commonly as a bearer credential after a user signs in to a web or mobile application. A JWT encodes a small JSON object that the server can read to identify a user, their roles, and an expiration, without a database lookup on every request. This decoder lets you inspect the contents of a token &mdash; its header, payload, and signature &mdash; entirely in your browser, which is exactly what you need when debugging authentication failures.</p>
+          </section>
+          <section>
+            <h2>How it works</h2>
+            <p>A JWT has three base64url-encoded parts joined by dots: <code>header.payload.signature</code>. The <strong>header</strong> declares the token type (<code>typ</code>) and the signing algorithm (<code>alg</code>, for example <code>HS256</code> or <code>RS256</code>). The <strong>payload</strong> carries the claims &mdash; standard ones like <code>sub</code> (subject), <code>exp</code> (expiration), <code>iat</code> (issued-at), <code>iss</code> (issuer), and <code>aud</code> (audience), plus any custom claims. The <strong>signature</strong> is computed by the issuer over the base64url of the header and payload using the algorithm from the header and a secret (HMAC) or private key (RSA/ECDSA).</p>
+            <p>Base64url is the variant this tool must handle: it replaces <code>+</code> with <code>-</code> and <code>/</code> with <code>_</code>, and omits the <code>=</code> padding, so the token is safe inside URLs and headers. Decoding is just reversing that and parsing JSON &mdash; it is <em>reading</em>, not security. The critical distinction: decoding reveals the payload to anyone who has the token (a JWT is signed, <strong>not encrypted</strong>); only signature <em>verification</em> against the secret or public key proves the token was not tampered with. This tool decodes and reads only &mdash; it does not verify signatures, so never trust claims from an unverified token.</p>
+          </section>
+          <section>
+            <h2>Common use cases</h2>
+            <ul>
+              <li>Inspecting a token returned by an OAuth2 or OpenID Connect server</li>
+              <li>Debugging an expired <code>exp</code> or wrong <code>aud</code> causing 401 responses</li>
+              <li>Auditing which claims and scopes an identity provider actually issued</li>
+              <li>Verifying the <code>alg</code> header before implementing server-side verification</li>
+              <li>Teaching how the three-part structure maps to header, payload, and signature</li>
+            </ul>
+          </section>
+          <section>
+            <h2>Worked example</h2>
+            <p>Given this (unsigned, sample) token:</p>
+            <pre><code>eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkFkYSBMb3ZlbGFjZSIsImlhdCI6MTczNTY4OTYwMCwiZXhwIjoxNzM1Nzc2MDAwfQ.sOmE_s1gN0tBp2xV7l3oFakeSig</code></pre>
+            <p>Decoding the first segment yields the header:</p>
+            <pre><code>{ "alg": "HS256", "typ": "JWT" }</code></pre>
+            <p>And the second segment yields the payload:</p>
+            <pre><code>{
+  "sub": "1234567890",
+  "name": "Ada Lovelace",
+  "iat": 1735689600,
+  "exp": 1735776000
+}</code></pre>
+            <p>Anyone can reproduce this output from the token &mdash; that is why a JWT must never contain secrets, and why you must verify the signature before acting on the claims.</p>
+          </section>
+        </section>
+        <section class="faq-section">
+          <h2>Frequently asked questions</h2>
+          <details class="faq-item">
+            <summary>Does decoding a JWT verify its signature?</summary>
+            <div class="faq-answer"><p>No. Decoding only base64url-decodes the header and payload so you can read the claims. Proving authenticity requires signature verification against the secret or public key, which this tool does not perform. Never trust claims from an unverified token.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>Is the JWT payload encrypted?</summary>
+            <div class="faq-answer"><p>No. A standard JWT payload is base64url-encoded, not encrypted, so anyone who has the token can read it. Sensitive data must never be placed in a JWT payload unless you use a separate JSON Web Encryption (JWE) token.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>What are the common payload claims?</summary>
+            <div class="faq-answer"><p>Standard registered claims include <code>sub</code> (subject), <code>iss</code> (issuer), <code>aud</code> (audience), <code>exp</code> (expiration time), <code>iat</code> (issued-at time), and <code>nbf</code> (not-before time). Custom application-specific claims can also appear alongside them.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>Why does my token fail to decode?</summary>
+            <div class="faq-answer"><p>The most common causes are a truncated token, a missing third (signature) segment, copy-paste whitespace, or a JWE token that is encrypted rather than merely signed. The tool expects exactly three base64url parts separated by dots.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>Is my token sent to a server?</summary>
+            <div class="faq-answer"><p>No. All decoding runs locally in your browser, so live access tokens and credentials never leave your device. This makes the tool safe for inspecting real authentication tokens.</p></div>
+          </details>
+        </section>
+      </div>
+
+      <!-- ===== Long-form content (KO) ===== -->
+      <div class="lang-ko" lang="ko">
+        <section class="tool-content">
+          <section>
+            <h2>JWT 디코더란?</h2>
+            <p>JSON Web Token(JWT, RFC 7519)은 두 주체 간에 클레임을 전달하기 위해 사용하는 간결하고 URL에 안전한 문자열로, 주로 사용자가 웹이나 모바일 애플리케이션에 로그인한 뒤 전달하는 베어러 자격증명으로 쓰입니다. JWT는 작은 JSON 객체를 인코딩하여 서버가 매 요청마다 데이터베이스를 조회하지 않고도 사용자와 역할, 만료 시간을 식별할 수 있게 해 줍니다. 이 디코더는 토큰의 내용 &mdash; 헤더, 페이로드, 서명 &mdash; 을 전적으로 브라우저 안에서 검사할 수 있게 해 주며, 인증 실패를 디버깅하거나 서버가 실제로 발급한 내용을 감사할 때 필요한 도구입니다.</p>
+          </section>
+          <section>
+            <h2>작동 방식</h2>
+            <p>JWT는 base64url로 인코딩된 세 부분을 점으로 이어 붙인 <code>header.payload.signature</code> 형태입니다. <strong>헤더</strong>는 토큰 유형(<code>typ</code>)과 서명 알고리즘(<code>alg</code>, 예: <code>HS256</code>, <code>RS256</code>)을 선언합니다. <strong>페이로드</strong>는 클레임을 담습니다 &mdash; <code>sub</code>(제목), <code>exp</code>(만료), <code>iat</code>(발급 시각), <code>iss</code>(발급자), <code>aud</code>(수신자) 같은 표준 클레임과 임의의 커스텀 클레임입니다. <strong>서명</strong>은 발급자가 헤더와 페이로드의 base64url에 대해 헤더에 명시된 알고리즘과 비밀키(HMAC) 또는 개인키(RSA/ECDSA)로 계산합니다.</p>
+            <p>Base64url은 이 도구가 반드시 다뤄야 하는 변형입니다. <code>+</code> 대신 <code>-</code>를, <code>/</code> 대신 <code>_</code>를 쓰고 <code>=</code> 패딩을 생략하여 토큰이 URL과 헤더에 들어가도 안전합니다. 디코딩은 이를 역으로 되돌리고 JSON을 파싱하는 것일 뿐, <em>읽기</em>이지 보안이 아닙니다. 핵심적인 구분: 디코딩은 토큰을 가진 누구나 페이로드를 볼 수 있게 합니다(JWT는 암호화가 아니라 서명된 값입니다). 서명 <em>검증</em>만이 비밀키 또는 공개키로 토큰이 변조되지 않았고 진짜 발급자에게서 왔음을 증명합니다. 이 도구는 디코딩/읽기만 하고 서명을 검증하지 않으므로, 검증되지 않은 토큰의 클레임은 절대 신뢰하지 마세요.</p>
+          </section>
+          <section>
+            <h2>자주 쓰는 경우</h2>
+            <ul>
+              <li>OAuth2 또는 OpenID Connect 서버가 반환한 토큰 검사</li>
+              <li>만료된 <code>exp</code> 또는 잘못된 <code>aud</code>로 인한 401 응답 디버깅</li>
+              <li>ID 공급자가 실제로 발급한 클레임과 스코프 감사</li>
+              <li>서버 측 검증을 구현하기 전 <code>alg</code> 헤더 확인</li>
+              <li>세 부분 구조가 헤더, 페이로드, 서명에 어떻게 대응되는지 학습</li>
+            </ul>
+          </section>
+          <section>
+            <h2>사용 예</h2>
+            <p>다음 (서명되지 않은 예시) 토큰이 주어지면:</p>
+            <pre><code>eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkFkYSBMb3ZlbGFjZSIsImlhdCI6MTczNTY4OTYwMCwiZXhwIjoxNzM1Nzc2MDAwfQ.sOmE_s1gN0tBp2xV7l3oFakeSig</code></pre>
+            <p>첫 번째 세그먼트를 디코딩하면 헤더가 나옵니다:</p>
+            <pre><code>{ "alg": "HS256", "typ": "JWT" }</code></pre>
+            <p>두 번째 세그먼트는 페이로드를 반환합니다:</p>
+            <pre><code>{
+  "sub": "1234567890",
+  "name": "Ada Lovelace",
+  "iat": 1735689600,
+  "exp": 1735776000
+}</code></pre>
+            <p>누구나 토큰에서 이 출력을 재현할 수 있습니다 &mdash; 그래서 JWT에 비밀을 담으면 안 되며, 클레임에 의존해 행동하기 전에 반드시 서명을 검증해야 합니다.</p>
+          </section>
+        </section>
+        <section class="faq-section">
+          <h2>자주 묻는 질문</h2>
+          <details class="faq-item">
+            <summary>JWT를 디코딩하면 서명이 검증되나요?</summary>
+            <div class="faq-answer"><p>아닙니다. 디코딩은 헤더와 페이로드를 base64url 디코딩하여 클레임을 읽을 수 있게 할 뿐입니다. 진위를 증명하려면 비밀키 또는 공개키로 서명 검증을 해야 하며 이 도구는 그 단계를 수행하지 않습니다. 검증되지 않은 토큰의 클레임은 절대 신뢰하지 마세요.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>JWT 페이로드는 암호화되어 있나요?</summary>
+            <div class="faq-answer"><p>아닙니다. 표준 JWT 페이로드는 암호화가 아니라 base64url로 인코딩된 값이므로 토큰을 가진 누구나 읽을 수 있습니다. 민감한 데이터는 별도의 JSON Web Encryption(JWE) 토큰을 쓰지 않는 한 JWT 페이로드에 두면 안 됩니다.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>페이로드의 일반적인 클레임은?</summary>
+            <div class="faq-answer"><p>표준 등록 클레임으로 <code>sub</code>(제목), <code>iss</code>(발급자), <code>aud</code>(수신자), <code>exp</code>(만료 시각), <code>iat</code>(발급 시각), <code>nbf</code>(시작 시각)가 있으며, 애플리케이션 고유의 커스텀 클레임도 함께 들어갈 수 있습니다.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>토큰이 디코딩에 실패하는 이유는?</summary>
+            <div class="faq-answer"><p>가장 흔한 원인은 토큰이 잘린 경우, 세 번째(서명) 세그먼트가 누락된 경우, 복사-붙여넣기 과정의 공백, 또는 단순 서명이 아니라 암호화된 JWE 토큰인 경우입니다. 이 도구는 점으로 구분된 base64url 세 부분을 정확히 기대합니다.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>제 토큰이 서버로 전송되나요?</summary>
+            <div class="faq-answer"><p>아닙니다. 모든 디코딩은 브라우저에서 로컬로 실행되므로 실제 액세스 토큰과 자격증명이 기기를 떠나지 않습니다. 그래서 실제 인증 토큰을 검사하기에도 안전합니다.</p></div>
+          </details>
+        </section>
+      </div>
     </main>
     <footer>
       <div class="footer-content">

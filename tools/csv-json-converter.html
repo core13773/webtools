@@ -2,7 +2,7 @@
 <html lang="en" id="root-html">
   <head>
     <meta charset="UTF-8" />
-    <script>(function(){var s=localStorage.getItem('theme');var t=s||((window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)?'dark':'light');document.documentElement.setAttribute('data-theme',t);})();</script>
+    <script>(function(){var s=localStorage.getItem('theme');var t=s||((window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)?'dark':'light');document.documentElement.setAttribute('data-theme',t);var l=localStorage.getItem('lang');if(!l){l=((navigator.language||'').startsWith('ko')?'ko':'en');}document.documentElement.lang=l;})();</script>
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <meta name="google-adsense-account" content="ca-pub-4794002106764884" />
     <link rel="preconnect" href="https://pagead2.googlesyndication.com" crossorigin="anonymous" />
@@ -64,6 +64,18 @@
             "url": "https://webtool.monster/",
             "name": "WebTools - Free Online Developer Tools",
             "publisher": { "@id": "https://webtool.monster/#organization" }
+          },
+          {
+            "@type": "FAQPage",
+            "@id": "https://webtool.monster/tools/csv-json-converter.html#faqpage",
+            "url": "https://webtool.monster/tools/csv-json-converter.html",
+            "mainEntity": [
+              { "@type": "Question", "name": "Is my CSV or JSON data uploaded anywhere?", "acceptedAnswer": { "@type": "Answer", "text": "No. Parsing, type inference, and re-serialization run locally in your browser through native JavaScript APIs. Your data never leaves your device, so it is safe for customer lists and production exports." } },
+              { "@type": "Question", "name": "What does RFC 4180 mean for my CSV?", "acceptedAnswer": { "@type": "Answer", "text": "RFC 4180 is the format standard this converter follows: comma delimiter, CRLF line endings, and fields wrapped in double quotes when they contain the delimiter, a quote, or a newline. A literal quote inside a quoted field is escaped by doubling it as two double quotes." } },
+              { "@type": "Question", "name": "Why are my numbers converted to strings?", "acceptedAnswer": { "@type": "Answer", "text": "CSV stores everything as raw text. With type inference on, the converter detects numbers and booleans; with it off, every value stays a JSON string. Toggle the option for typed values or an exact textual round-trip." } },
+              { "@type": "Question", "name": "How are nested objects handled when converting JSON to CSV?", "acceptedAnswer": { "@type": "Answer", "text": "CSV is strictly tabular, so nested objects and arrays are flattened into dot-notation keys (for example, address.city) or serialized back to a JSON string inside the cell. Round-tripping deeply nested data through CSV is lossy by design." } },
+              { "@type": "Question", "name": "What happens if the header row is missing?", "acceptedAnswer": { "@type": "Answer", "text": "When the first row is not used as a header, the converter treats every row identically and emits a JSON array of arrays instead of objects. Each inner array preserves the input column order." } }
+            ]
           }
         ]
       }
@@ -163,6 +175,127 @@
           <span data-i18n="tools_csv_json.usage_tip">💡 Tip: When using the first row as header, CSV converts to an array of objects. Otherwise it converts to a 2D array.</span>
         </div>
       </section>
+
+      <!-- ===== Long-form content (EN) ===== -->
+      <div class="lang-en">
+        <section class="tool-content">
+          <section>
+            <h2>About the CSV / JSON Converter</h2>
+            <p>CSV (Comma-Separated Values) and JSON (JavaScript Object Notation) are the two formats you reach for when tabular data must move between spreadsheets, databases, and APIs. CSV is compact and universally understood by Excel and import wizards; JSON is structured and typed, the native shape of REST payloads and NoSQL documents. This converter bridges the two formats losslessly in either direction, running entirely in your browser so customer lists and production exports never leave your machine.</p>
+          </section>
+          <section>
+            <h2>How it works</h2>
+            <p>The parser follows <strong>RFC 4180</strong>, the formal CSV specification. A record is a sequence of fields separated by the <code>,</code> delimiter and terminated by a line break (CRLF, <code>\r\n</code>). A field that contains the delimiter, a double quote, or a newline must be wrapped in double quotes; a literal double quote inside a quoted field is escaped by <strong>doubling</strong> it as <code>""</code>. These rules matter for fields like <code>"Smith, John"</code> or <code>"He said ""hi"""</code>, which naive comma splits would corrupt.</p>
+            <p>During <strong>CSV to JSON</strong>, the first row is read as the header and every subsequent row becomes a JSON object keyed by those headers. Optional <em>type inference</em> turns values that look like numbers (<code>42</code>, <code>3.14</code>) or booleans (<code>true</code>) into typed JSON values instead of strings. Going the other way, <strong>JSON to CSV</strong> flattens each object into a row using the union of keys as the header. Because CSV is tabular while JSON is nested and typed, deeply nested objects are flattened with dot-notation keys or serialized back to a JSON string &mdash; a tradeoff worth knowing before you convert.</p>
+          </section>
+          <section>
+            <h2>Common use cases</h2>
+            <ul>
+              <li>Turning a spreadsheet export into a JSON array for a frontend seed file</li>
+              <li>Feeding a REST API response into a reporting tool that only reads CSV</li>
+              <li>Normalizing inconsistent quoting before a database import</li>
+              <li>Comparing two CSV exports by diffing their normalized JSON form</li>
+            </ul>
+          </section>
+          <section>
+            <h2>Worked example</h2>
+            <p>Given this CSV input (note the quoted field with a comma):</p>
+<pre><code>name,role
+"Ada, B.",admin
+"Bob",editor</code></pre>
+            <p>Converting CSV to JSON (with the first row as header) yields:</p>
+<pre><code>[
+  { "name": "Ada, B.", "role": "admin" },
+  { "name": "Bob", "role": "editor" }
+]</code></pre>
+            <p>The doubled <code>""</code> and surrounding quotes are unwrapped automatically, so the comma inside <code>"Ada, B."</code> is preserved as data, not mistaken for a delimiter.</p>
+          </section>
+        </section>
+        <section class="faq-section">
+          <h2>Frequently asked questions</h2>
+          <details class="faq-item">
+            <summary>Is my CSV or JSON data uploaded anywhere?</summary>
+            <div class="faq-answer"><p>No. Parsing, type inference, and re-serialization run locally in your browser through native JavaScript APIs. Your data never leaves your device, so it is safe for customer lists and production exports.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>What does RFC 4180 mean for my CSV?</summary>
+            <div class="faq-answer"><p>RFC 4180 is the format standard this converter follows: comma delimiter, CRLF line endings, and fields wrapped in double quotes when they contain the delimiter, a quote, or a newline. A literal quote inside a quoted field is escaped by doubling it as two double quotes.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>Why are my numbers converted to strings?</summary>
+            <div class="faq-answer"><p>CSV stores everything as raw text. With type inference on, the converter detects numbers and booleans; with it off, every value stays a JSON string. Toggle the option for typed values or an exact textual round-trip.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>How are nested objects handled when converting JSON to CSV?</summary>
+            <div class="faq-answer"><p>CSV is strictly tabular, so nested objects and arrays are flattened into dot-notation keys (for example, address.city) or serialized back to a JSON string inside the cell. Round-tripping deeply nested data through CSV is lossy by design.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>What happens if the header row is missing?</summary>
+            <div class="faq-answer"><p>When the first row is not used as a header, the converter treats every row identically and emits a JSON array of arrays instead of objects. Each inner array preserves the input column order.</p></div>
+          </details>
+        </section>
+      </div>
+
+      <!-- ===== Long-form content (KO) ===== -->
+      <div class="lang-ko" lang="ko">
+        <section class="tool-content">
+          <section>
+            <h2>CSV / JSON 변환기란?</h2>
+            <p>CSV(Comma-Separated Values)와 JSON(JavaScript Object Notation)은 표 형태의 데이터를 스프레드시트, 데이터베이스, API 사이에서 옮길 때 가장 먼저 떠올리는 두 형식입니다. CSV는 Excel과 Google Sheets, 데이터베이스 가져오기 마법사가 모두 이해하는 간결한 형식이고, JSON은 구조화되고 타입이 있어 REST 페이로드와 NoSQL 문서의 원래 모습입니다. 이 변환기는 두 형식 사이의 손실 없는 양방향 변환을 브라우저 안에서만 수행하므로 고객 명단이나 운영 데이터가 기기를 떠나지 않습니다.</p>
+          </section>
+          <section>
+            <h2>작동 방식</h2>
+            <p>파서는 공식 CSV 표준인 <strong>RFC 4180</strong>을 따릅니다. 하나의 레코드는 <code>,</code> 구분자로 나뉜 필드들의 시퀀스이며 줄바꿈(CRLF, <code>\r\n</code>)으로 끝납니다. 구분자, 큰따옴표, 줄바꿈을 포함한 필드는 큰따옴표로 감싸야 하며, 따옴표로 묶인 필드 안의 글자 큰따옴표는 두 개를 연달아 쓴 <code>""</code>로 이스케이프합니다. 이 규칙은 <code>"Smith, John"</code>이나 <code>"He said ""hi"""</code> 같은 필드에서 중요한데, 단순한 쉼표 분할은 이런 값을 망가뜨리기 때문입니다.</p>
+            <p><strong>CSV to JSON</strong>에서는 첫 행을 헤더로 읽고, 이후의 각 행을 그 헤더를 키로 하는 JSON 객체로 만듭니다. 선택적 <em>타입 추론</em>은 숫자(<code>42</code>, <code>3.14</code>)나 불리언(<code>true</code>)처럼 보이는 값을 문자열 대신 타입이 있는 JSON 값으로 바꿉니다. 반대 방향인 <strong>JSON to CSV</strong>에서는 각 객체를 한 행으로 평탄화하며, 키들의 합집합을 헤더로 사용합니다. CSV는 엄격하게 표 형태이고 JSON은 중첩되고 타입이 있으므로, 깊이 중첩된 객체는 점 표기 키로 평탄화되거나 다시 JSON 문자열로 직렬화됩니다 &mdash; 변환 전에 알아둘 만한 트레이드오프입니다.</p>
+          </section>
+          <section>
+            <h2>자주 쓰는 경우</h2>
+            <ul>
+              <li>스프레드시트 내보내기를 프론트엔드 시드 파일용 JSON 배열로 바꾸기</li>
+              <li>CSV만 읽는 보고 도구에 REST API 응답 넣어 주기</li>
+              <li>데이터베이스 가져오기 전 일관성 없는 따옴표와 줄바꿈 정규화하기</li>
+              <li>두 CSV 내보내기를 정규화된 JSON 형태로 비교(diff)하기</li>
+              <li>테스트 스위트용 표 형태 픽스처 데이터 준비하기</li>
+            </ul>
+          </section>
+          <section>
+            <h2>사용 예</h2>
+            <p>다음 CSV 입력(쉼표를 포함한 따옴표 필드 주의)이 주어지면:</p>
+<pre><code>name,role
+"Ada, B.",admin
+"Bob",editor</code></pre>
+            <p>CSV를 JSON으로 변환(첫 행을 헤더로 사용)하면:</p>
+<pre><code>[
+  { "name": "Ada, B.", "role": "admin" },
+  { "name": "Bob", "role": "editor" }
+]</code></pre>
+            <p>연달아 쓴 <code>""</code>와 감싼 따옴표는 자동으로 풀리므로, <code>"Ada, B."</code> 안의 쉼표는 구분자로 잘못 해석되지 않고 데이터 그대로 보존됩니다.</p>
+          </section>
+        </section>
+        <section class="faq-section">
+          <h2>자주 묻는 질문</h2>
+          <details class="faq-item">
+            <summary>CSV나 JSON 데이터가 외부로 전송되나요?</summary>
+            <div class="faq-answer"><p>아닙니다. 파싱, 타입 추론, 재직렬화는 모두 브라우저에서 네이티브 JavaScript API로 로컬에서 처리됩니다. 데이터는 기기를 떠나지 않으므로 고객 명단과 운영 내보내기에도 안전합니다.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>RFC 4180이 제 CSV에 어떤 의미인가요?</summary>
+            <div class="faq-answer"><p>RFC 4180은 이 변환기가 따르는 형식 표준입니다. 쉼표 구분자, CRLF 줄바꿈, 그리고 구분자나 따옴표, 줄바꿈을 포함한 필드는 큰따옴표로 감쌉니다. 따옴표로 묶인 필드 안의 글자 큰따옴표는 두 개를 연달아 쓴 큰따옴표로 이스케이프합니다.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>숫자가 문자열로 변환되는 이유는?</summary>
+            <div class="faq-answer"><p>CSV는 모든 값을 날것의 텍스트로 저장합니다. 타입 추론을 켜면 변환기가 숫자와 불리언을 감지하고, 끄면 모든 값이 JSON 문자열로 유지됩니다. 타입이 있는 값이 필요한지, 정확한 텍스트 왕복이 필요한지에 따라 옵션을 선택하세요.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>JSON을 CSV로 변환할 때 중첩 객체는 어떻게 되나요?</summary>
+            <div class="faq-answer"><p>CSV는 엄격하게 표 형태이므로 중첩 객체와 배열은 점 표기 키(예: address.city)로 평탄화되거나 셀 안에서 다시 JSON 문자열로 직렬화됩니다. 깊이 중첩된 데이터를 CSV로 왕복하는 것은 설계상 손실이 발생합니다.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>헤더 행이 없으면 어떻게 되나요?</summary>
+            <div class="faq-answer"><p>첫 행을 헤더로 사용하지 않으면 변환기는 모든 행을 동일하게 취급하고 객체 대신 JSON 배열의 배열을 만듭니다. 각 내부 배열은 입력의 열 순서를 그대로 보존합니다.</p></div>
+          </details>
+        </section>
+      </div>
     </main>
     <footer>
       <div class="footer-content">
